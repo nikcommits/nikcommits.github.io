@@ -85,7 +85,7 @@ h3 { line-height: 1.2; }
 
 .section { padding-block: 5rem; }
 .layered-section { position: relative; z-index: 2; }
-.orientation { display: grid; gap: 2.5rem; margin-top: -0.5rem; padding-block: 4.5rem; background: var(--ivory); border-radius: var(--radius); }
+.orientation { display: grid; gap: 2.5rem; margin-top: 1.5rem; padding-block: 4.5rem; background: var(--ivory); border-radius: var(--radius); }
 .choice-list { border-top: 1px solid var(--line); }
 .choice-list a { min-height: 4.5rem; display: grid; grid-template-columns: 2rem 1fr; gap: 0.5rem; align-items: center; padding-block: 0.75rem; border-bottom: 1px solid var(--line); }
 .choice-list a span { color: var(--gold); font-size: 0.8rem; }
@@ -183,7 +183,7 @@ h3 { line-height: 1.2; }
   .hero { padding: 5.5rem 0 6rem; }
   h1 { font-size: clamp(3.35rem, 5.25vw, 5.4rem); }
   .hero-grid { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); align-items: center; gap: 5rem; }
-  .orientation { margin-top: -2rem; padding: 5rem 3rem; box-shadow: var(--shadow); }
+  .orientation { margin-top: 2rem; padding: 5rem 3rem; box-shadow: var(--shadow); }
   .service-content { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 3rem; }
   .section, .feature-section, .process, .contact { padding-block: 7rem; }
 }
@@ -192,13 +192,15 @@ h3 { line-height: 1.2; }
   @media (min-width: 62rem) {
     .layered-section { animation: paper-overlap linear both; animation-timeline: view(); animation-range: entry 0% entry 28%; }
     .image-reveal { overflow: hidden; animation: document-reveal linear both; animation-timeline: view(); animation-range: entry 5% entry 38%; }
+    .proof-grid p, .choice-list a, .steps li { animation: content-arrive linear both; animation-timeline: view(); animation-range: entry 8% entry 42%; }
   }
   @keyframes paper-overlap { from { transform: translateY(2.5rem); } to { transform: translateY(0); } }
   @keyframes document-reveal { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+  @keyframes content-arrive { from { opacity: 0; transform: translateY(1.1rem); } to { opacity: 1; transform: translateY(0); } }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .layered-section, .image-reveal { animation: none !important; clip-path: none !important; transform: none !important; }
+  .layered-section, .image-reveal, .proof-grid p, .choice-list a, .steps li { animation: none !important; clip-path: none !important; transform: none !important; }
 }
