@@ -17,14 +17,16 @@ const labels = isArabic
       <a class="language" href={isArabic ? "/" : "/ar"}>{isArabic ? "DE" : "العربية"}</a>
       <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
     </nav>
-    <details class="mobile-menu">
-      <summary>{isArabic ? "القائمة" : "Menü"}<span aria-hidden="true"></span></summary>
-      <nav aria-label={isArabic ? "التنقل للهاتف" : "Mobile Navigation"}>
-        {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}
-        <a href={isArabic ? "/" : "/ar"}>{isArabic ? "Deutsch" : "العربية"}</a>
-        <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
-      </nav>
-    </details>
+    <div class="mobile-actions">
+      <a class="mobile-language" href={isArabic ? "/" : "/ar"} aria-label={isArabic ? "Zur deutschen Seite wechseln" : "Zur arabischen Seite wechseln"}>{isArabic ? "DE" : "العربية"}</a>
+      <details class="mobile-menu">
+        <summary>{isArabic ? "القائمة" : "Menü"}<span aria-hidden="true"></span></summary>
+        <nav aria-label={isArabic ? "التنقل للهاتف" : "Mobile Navigation"}>
+          {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}
+          <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
+        </nav>
+      </details>
+    </div>
   </div>
 </header>
 <script is:inline>

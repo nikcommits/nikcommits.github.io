@@ -38,6 +38,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .wordmark { width: 10.75rem; padding-block: 0.25rem; }
 .wordmark img { width: 100%; }
 .desktop-nav { display: none; }
+.mobile-actions { display: flex; align-items: center; gap: 0.25rem; }
+.mobile-language { min-width: 3.5rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; padding-inline: 0.45rem; color: var(--navy); border: 1px solid var(--line); border-radius: 2px; font-size: 0.88rem; font-weight: 600; }
 .mobile-menu { position: relative; }
 .mobile-menu summary { min-width: 3.5rem; min-height: 2.75rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; color: var(--navy); font-weight: 600; cursor: pointer; list-style: none; }
 .mobile-menu summary::-webkit-details-marker { display: none; }
@@ -175,6 +177,7 @@ h3 { line-height: 1.2; }
   .site-header { position: sticky; top: 0; backdrop-filter: blur(0.75rem); }
   .nav-wrap { min-height: 5.25rem; }
   .wordmark { width: 13.5rem; }
+  .mobile-actions { display: none; }
   .mobile-menu { display: none; }
   .desktop-nav { display: flex; align-items: center; gap: 1.1rem; font-size: 0.94rem; }
   .desktop-nav a { min-height: 2.75rem; display: inline-flex; align-items: center; }
