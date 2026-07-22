@@ -1,0 +1,84 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import ResponsivePicture from "../components/ResponsivePicture.astro";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Shaker Consulting",
+  description: "Beglaubigte Übersetzungen Arabisch–Deutsch, Dolmetschen und Antragsunterstützung.",
+  address: { "@type": "PostalAddress", streetAddress: "Ostwall 70", postalCode: "47798", addressLocality: "Krefeld", addressCountry: "DE" },
+  telephone: "+4921516000430",
+  email: "uebersetzungsbuero.shaker@gmail.com",
+  openingHours: "Mo-Fr 10:00-16:30",
+  availableLanguage: ["German", "Arabic"],
+};
+---
+<BaseLayout structuredData={structuredData}>
+  <Nav />
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Übersetzungsbüro in Krefeld</p>
+          <h1>Beglaubigte Übersetzungen Arabisch–Deutsch</h1>
+          <p class="hero-text">Wir übersetzen wichtige Dokumente sorgfältig, vertraulich und mit persönlicher Begleitung – in Krefeld und bundesweit.</p>
+          <div class="actions"><a class="button" href="https://wa.me/4915736455464" target="_blank" rel="noreferrer">Dokument zur Einschätzung senden</a><a class="text-link" href="tel:+4921516000430">02151 6000430 anrufen</a></div>
+          <p class="privacy-note">Für eine erste Einschätzung genügt meist ein gut lesbares Foto oder ein Scan. Senden Sie nur die Seiten, die wir prüfen sollen.</p>
+        </div>
+        <div class="hero-media image-reveal">
+          <ResponsivePicture name="uebersetzerin-aktenmappe" alt="Weibliche Hände legen die leere Rückseite eines Dokuments auf eine geschlossene Aktenmappe" width={1440} height={960} eager={true} maxWidth={1440} sizes="(min-width: 1024px) 48vw, 100vw" />
+          <div class="hero-proof"><strong>Ermächtigte Übersetzerin für Arabisch</strong><span>Richtigkeit und Vollständigkeit werden mit Bestätigungsvermerk und Unterschrift bescheinigt.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Wichtige Hinweise"><div class="container proof-grid"><p><strong>Persönlich erreichbar</strong><span>Zahra Ali Shaker und Shahd Ali Shaker</span></p><p><strong>Vertrauliche Bearbeitung</strong><span>Dokumente werden mit der nötigen Sorgfalt behandelt</span></p><p><strong>Bundesweite Abwicklung</strong><span>Anfrage digital, Zustellung auf Wunsch per Post</span></p></div></section>
+
+    <section class="orientation layered-section container" aria-labelledby="anliegen-heading">
+      <div><p class="eyebrow">Direkt zum passenden Weg</p><h2 id="anliegen-heading">Wobei können wir helfen?</h2></div>
+      <div class="choice-list"><a href="#uebersetzungen"><span>01</span><strong>Ich benötige eine beglaubigte Übersetzung</strong></a><a href="#dolmetschen"><span>02</span><strong>Ich benötige einen Dolmetschtermin</strong></a><a href="#antraege"><span>03</span><strong>Ich benötige Hilfe bei einem Antrag</strong></a><a href="#anfrage"><span>04</span><strong>Ich möchte ein Dokument zur Einschätzung senden</strong></a></div>
+    </section>
+
+    <section id="uebersetzungen" class="section container service-layout">
+      <div class="section-intro"><p class="eyebrow">Unsere Kernleistung</p><h2>Beglaubigte Übersetzungen, klar erklärt</h2><p>Wir übersetzen zwischen Arabisch und Deutsch und berücksichtigen, wofür und bei welcher Stelle das Dokument verwendet werden soll.</p></div>
+      <div class="service-content">
+        <div class="document-types"><h3>Häufige Dokumente</h3><ul><li>Geburts-, Ehe- und Sterbeurkunden</li><li>Familien-, Aufenthalts- und Einbürgerungsunterlagen</li><li>Gerichtliche und behördliche Schreiben</li><li>Medizinische Befunde und Bescheinigungen</li></ul></div>
+        <div class="service-accordion">
+          <details open><summary>Was bedeutet „beglaubigte Übersetzung“?<span aria-hidden="true">+</span></summary><div><p>Die ermächtigte Übersetzerin bestätigt mit einem Vermerk, Ort, Datum und Unterschrift, dass die Übersetzung richtig und vollständig ist. Die Übersetzung selbst ist keine behördliche Urkunde.</p></div></details>
+          <details><summary>Was sind Apostille und Überbeglaubigung?<span aria-hidden="true">+</span></summary><div><p>Eine Apostille bestätigt bei bestimmten Urkunden deren Echtheit für die Verwendung im Ausland. Eine Überbeglaubigung kann eine zusätzliche Bestätigung sein. Beides ist vom Bestätigungsvermerk der Übersetzung zu unterscheiden.</p></div></details>
+          <details><summary>Wird die Übersetzung anerkannt?<span aria-hidden="true">+</span></summary><div><p>Das entscheidet die Stelle, bei der Sie das Dokument einreichen. Fragen Sie dort nach den konkreten Anforderungen und senden Sie uns diese gern mit. Das ist Orientierung und keine Rechtsberatung.</p></div></details>
+          <details><summary>Weitere Sprachen?<span aria-hidden="true">+</span></summary><div><p>Für Italienisch, Portugiesisch, Englisch, Kurdisch und Persisch koordinieren wir Anfragen über Kooperationspartner.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="dolmetschen" class="feature-section">
+      <div class="container feature-grid">
+        <div class="image-reveal"><ResponsivePicture name="vertrauliche-akte" alt="Weibliche Hände verschließen eine Aktenmappe mit einem schlichten Baumwollband" width={1280} height={1024} /></div>
+        <div><p class="eyebrow">Dolmetschen</p><h2>Verständigung bei wichtigen Gesprächen</h2><p>Wir dolmetschen Arabisch ↔ Deutsch bei Behörden, Gerichten, Rechtsanwältinnen und Rechtsanwälten, Arztpraxen, Krankenhäusern, Schulen und Beratungsstellen.</p><p>Vor dem Termin klären wir Anlass, Ort und vorhandene Unterlagen. So wissen alle Beteiligten, was vorbereitet werden muss.</p><a class="button button--dark" href="tel:+4921516000430">Dolmetschtermin besprechen</a></div>
+      </div>
+    </section>
+
+    <section id="ablauf" class="process layered-section">
+      <div class="container process-layout">
+        <div><p class="eyebrow">Ein verständlicher nächster Schritt</p><h2>So läuft Ihre Anfrage ab</h2><ol class="steps"><li><span>1</span><div><h3>Dokument senden</h3><p>Per WhatsApp oder E-Mail als gut lesbares Foto oder Scan.</p></div></li><li><span>2</span><div><h3>Einschätzung erhalten</h3><p>Wir teilen Ihnen Preis, Bearbeitungszeit und benötigte Unterlagen mit.</p></div></li><li><span>3</span><div><h3>Übersetzung erhalten</h3><p>Nach Qualitätsprüfung zur Abholung in Krefeld oder per Post.</p></div></li></ol></div>
+        <div class="image-reveal"><ResponsivePicture name="uebersetzung-versandmappe" alt="Weibliche Hände schieben eine geschlossene Dokumentenmappe in einen neutralen Versandumschlag" width={1280} height={1024} /></div>
+      </div>
+    </section>
+
+    <section id="antraege" class="section container support-grid"><div><p class="eyebrow">Ergänzende Unterstützung</p><h2>Formulare und Anträge verständlich angehen</h2></div><div><p>Wir unterstützen beim Verstehen und Ausfüllen von Pflegeanträgen, Schwerbehindertenanträgen, Verhinderungspflege, Nachbarschaftshilfe und weiteren Formularen – auf Deutsch und Arabisch.</p><p class="note-box">Diese Unterstützung ist keine Rechtsberatung. Bei rechtlichen Fragen nennen wir Ihnen den passenden nächsten Ansprechpartner.</p><a class="text-link" href="https://wa.me/4915736455464" target="_blank" rel="noreferrer">Anliegen per WhatsApp schildern</a></div></section>
+
+    <section class="faq section container" aria-labelledby="faq-heading"><div><p class="eyebrow">Vor dem Versand</p><h2 id="faq-heading">Häufige Fragen</h2></div><div class="service-accordion"><details><summary>Reicht ein Foto oder Scan?<span aria-hidden="true">+</span></summary><div><p>Für die erste Einschätzung meist ja. Ob später das Original benötigt wird, klären wir passend zum Dokument und zur zuständigen Stelle.</p></div></details><details><summary>Welche Angaben sollen wir mitsenden?<span aria-hidden="true">+</span></summary><div><p>Nennen Sie Sprachrichtung, Verwendungszweck, zuständige Stelle und gewünschten Termin. Senden Sie nur die Seiten und Daten, die für die Einschätzung nötig sind.</p></div></details><details><summary>Wie kann die Übersetzung zugestellt werden?<span aria-hidden="true">+</span></summary><div><p>Abholung in Krefeld und Versand per Post sind nach Abstimmung möglich.</p></div></details></div></section>
+
+    <aside id="mpu" class="secondary-offer container"><div><p class="eyebrow">Weitere Leistung</p><h2>MPU-Vorbereitung auf Deutsch und Arabisch</h2></div><div><p>Wir unterstützen beim Verständnis von Unterlagen, Ablauf und typischen Gesprächssituationen. Ohne Erfolgsgarantie; keine medizinische, psychologische oder rechtliche Beratung.</p><a class="text-link" href="mailto:mpu.shaker@gmail.com">Diskrete MPU-Anfrage senden</a></div></aside>
+
+    <aside class="network-note"><div class="container"><strong>Unser Netzwerk</strong><span>Weitere Sprachen über Kooperationspartner · Kfz-Gutachten: Ridouan Karkor · Gebäudegutachten: Boujamaa Karkor</span></div></aside>
+
+    <section id="anfrage" class="contact"><div class="container contact-grid"><div><p class="eyebrow">Persönlich und unkompliziert</p><h2>Senden Sie Ihr Dokument zur Einschätzung</h2><p>Wir melden uns nach der Prüfung mit dem nächsten sinnvollen Schritt. Bitte nennen Sie die Sprachrichtung und die Stelle, bei der Sie das Dokument einreichen möchten.</p><div class="actions"><a class="button" href="https://wa.me/4915736455464" target="_blank" rel="noreferrer">Per WhatsApp senden</a><a class="text-link" href="mailto:uebersetzungsbuero.shaker@gmail.com">Per E-Mail senden</a></div></div><address><strong>Shaker Consulting</strong><span>Ostwall 70 · 47798 Krefeld</span><a href="tel:+4921516000430">02151 6000430</a><a href="tel:+4915736455464">01573 6455464</a><span>Mo–Fr 10:00–16:30 Uhr<br />Sa nach Vereinbarung</span></address></div></section>
+  </main>
+  <Footer />
+  <div class="mobile-contact" aria-label="Schnellkontakt"><a href="tel:+4921516000430">Anrufen</a><a href="https://wa.me/4915736455464" target="_blank" rel="noreferrer">WhatsApp</a></div>
+</BaseLayout>

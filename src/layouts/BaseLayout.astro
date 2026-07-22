@@ -1,0 +1,22 @@
+---
+import "../styles.css";
+import SeoHead from "../components/SeoHead.astro";
+
+type Props = { title?: string; description?: string; lang?: "de" | "ar"; structuredData?: Record<string, unknown> };
+const { title, description, lang = "de", structuredData } = Astro.props;
+const isArabic = lang === "ar";
+---
+
+<!doctype html>
+<html lang={lang} dir={isArabic ? "rtl" : "ltr"}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#062741" />
+    <SeoHead title={title} description={description} structuredData={structuredData} lang={lang} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{isArabic ? "انتقل إلى المحتوى" : "Zum Inhalt springen"}</a>
+    <div class="site-shell"><slot /></div>
+  </body>
+</html>

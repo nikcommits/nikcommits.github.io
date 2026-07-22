@@ -1,0 +1,48 @@
+{
+  "name": "shaker-consulting-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mehrsprachige Website für Shaker Consulting, Übersetzungsbüro Arabisch–Deutsch in Krefeld.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Shaker Consulting",
+  "keywords": [
+    "astro",
+    "translations",
+    "arabic",
+    "german",
+    "seo",
+    "static-site"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "format": "prettier --write ."
+  },
+  "files": [
+    "astro.config.mjs",
+    "public",
+    "src",
+    "tsconfig.json"
+  ],
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/noto-sans-arabic": "^5.2.8",
+    "@fontsource/source-sans-3": "^5.2.9",
+    "astro": "^7.1.0",
+    "sharp": "^0.35.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "prettier": "^3.8.4",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "yaml": "^2.9.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

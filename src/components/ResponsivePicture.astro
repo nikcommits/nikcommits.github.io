@@ -1,0 +1,30 @@
+---
+type Props = {
+  name: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes?: string;
+  eager?: boolean;
+  class?: string;
+  maxWidth?: 1280 | 1440;
+};
+
+const { name, alt, width, height, sizes = "(min-width: 900px) 50vw, 100vw", eager = false, class: className, maxWidth = 1280 } = Astro.props;
+---
+<picture class={className}>
+  <source
+    type="image/webp"
+    srcset={`/images/${name}-640.webp 640w, /images/${name}-960.webp 960w, /images/${name}-${maxWidth}.webp ${maxWidth}w`}
+    sizes={sizes}
+  />
+  <img
+    src={`/images/${name}-960.webp`}
+    {alt}
+    {width}
+    {height}
+    loading={eager ? "eager" : "lazy"}
+    fetchpriority={eager ? "high" : "auto"}
+    decoding="async"
+  />
+</picture>
