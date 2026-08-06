@@ -1,0 +1,34 @@
+---
+import LegalPage from "../../components/LegalPage.astro";
+import { siteConfig } from "../../config/site";
+---
+
+<LegalPage
+  lang="ar"
+  title="بيانات الناشر"
+  description="بيانات الناشر لشاكر للاستشارات — صفحة مؤقتة تُستكمل بمعلومات صاحب الموقع."
+  heading="بيانات الناشر"
+>
+  <section class="legal-section" aria-labelledby="anbieter-heading-ar">
+    <h2 id="anbieter-heading-ar">مقدّم الخدمة</h2>
+    <p><strong>{siteConfig.name}</strong></p>
+    <p><bdi dir="ltr">{siteConfig.address}</bdi></p>
+    <p>
+      البريد الإلكتروني: <a href={`mailto:${siteConfig.email}`}><bdi dir="ltr">{siteConfig.email}</bdi></a><br />
+      الهاتف: <a href={`tel:+4921516000430`}><bdi dir="ltr">{siteConfig.phone}</bdi></a><br />
+      الجوال: <a href={`tel:+4915736455464`}><bdi dir="ltr">{siteConfig.mobile}</bdi></a>
+    </p>
+  </section>
+
+  <section class="legal-section" aria-labelledby="offen-heading-ar">
+    <h2 id="offen-heading-ar">ما زال مطلوبًا</h2>
+    <p>يحتاج صاحب الموقع إلى استكمال:</p>
+    <ul>
+      <li>التسمية القانونية الكاملة وشكل الشركة</li>
+      <li>الشخص المخوّل بالتمثيل</li>
+      <li>إن وُجد: السجل التجاري ورقم السجل ورقم الضريبة</li>
+      <li>أي بيانات أخرى يفرضها القانون</li>
+    </ul>
+    <p>نُشرت هذه الصفحة كمؤقتة حتى تكون بيانات الناشر وحماية البيانات متاحة بنقرة واحدة من التذييل.</p>
+  </section>
+</LegalPage>

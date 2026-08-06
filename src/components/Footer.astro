@@ -1,9 +1,11 @@
 ---
 import { siteConfig } from "../config/site";
+
 type Props = { lang?: "de" | "ar" };
 const { lang = "de" } = Astro.props;
 const isArabic = lang === "ar";
-const hasLegalLinks = Boolean(siteConfig.legal.imprintUrl || siteConfig.legal.privacyUrl);
+const imprintHref = isArabic ? siteConfig.legal.imprintUrlAr : siteConfig.legal.imprintUrl;
+const privacyHref = isArabic ? siteConfig.legal.privacyUrlAr : siteConfig.legal.privacyUrl;
 ---
 <footer class="site-footer">
   <div class="container footer-wrap">
@@ -20,15 +22,10 @@ const hasLegalLinks = Boolean(siteConfig.legal.imprintUrl || siteConfig.legal.pr
     </div>
     <div class="footer-meta">
       <p>© {new Date().getFullYear()} Shaker Consulting</p>
-      {siteConfig.legal.imprintUrl && <a href={siteConfig.legal.imprintUrl}>{isArabic ? "بيانات الناشر" : "Impressum"}</a>}
-      {siteConfig.legal.privacyUrl && <a href={siteConfig.legal.privacyUrl}>{isArabic ? "حماية البيانات" : "Datenschutz"}</a>}
-      {!hasLegalLinks && (
-        <p class="legal-pending">
-          {isArabic
-            ? "بيانات الناشر وإشعار حماية البيانات سيُضافان بعد تسليم المحتوى المعتمد من صاحب الموقع."
-            : "Impressum und Datenschutzerklärung werden ergänzt, sobald die geprüften Inhalte vom Website-Betreiber vorliegen."}
-        </p>
-      )}
+      <nav class="footer-legal" aria-label={isArabic ? "الصفحات القانونية" : "Rechtliche Seiten"}>
+        <a href={imprintHref}>{isArabic ? "بيانات الناشر" : "Impressum"}</a>
+        <a href={privacyHref}>{isArabic ? "حماية البيانات" : "Datenschutz"}</a>
+      </nav>
     </div>
   </div>
   <div class="container footer-disclosure">

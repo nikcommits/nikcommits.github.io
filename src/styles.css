@@ -154,10 +154,22 @@ h3 { line-height: 1.2; }
 .footer-wrap strong { color: white; font-size: 1.2rem; }
 .footer-wrap p { margin: 0.2rem 0; }
 .footer-wrap a { min-height: 2.75rem; display: inline-flex; align-items: center; }
-.footer-meta { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
-.legal-pending { max-width: 22rem; color: rgb(255 255 255 / 0.55); }
+.footer-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; }
+.footer-legal { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.footer-legal a { text-decoration: underline; text-decoration-color: var(--gold-soft); text-underline-offset: 0.2rem; }
 .footer-disclosure { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgb(255 255 255 / 0.12); }
 .footer-disclosure p { margin: 0; max-width: 54rem; color: rgb(255 255 255 / 0.55); font-size: 0.8rem; line-height: 1.5; }
+
+.legal-page { padding-block: 3.5rem 5rem; background: linear-gradient(180deg, #eef1ef 0%, var(--ivory) 28%); }
+.legal-article { max-width: 46rem; }
+.legal-article h1 { max-width: none; font-size: clamp(2.2rem, 8vw, 3.6rem); }
+.legal-placeholder-banner { margin: 1.5rem 0 2rem; padding: 1rem 1.1rem; color: var(--navy-deep); background: #edf1f2; border-inline-start: 3px solid var(--gold); }
+.legal-section + .legal-section { margin-top: 2.5rem; }
+.legal-section h2 { margin: 0 0 0.85rem; font-size: clamp(1.35rem, 4vw, 1.75rem); }
+.legal-section p, .legal-section li { color: var(--muted); }
+.legal-section ul { padding-inline-start: 1.2rem; }
+.legal-section li + li { margin-top: 0.4rem; }
+.legal-crosslinks { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .mobile-contact { position: fixed; z-index: 30; inset: auto 0 0; display: grid; grid-template-columns: 1fr 1fr; padding-bottom: env(safe-area-inset-bottom); background: var(--navy); box-shadow: 0 -0.25rem 1.25rem rgb(0 0 0 / 0.2); }
 .mobile-contact a { min-height: 3.75rem; display: grid; place-items: center; color: white; font-weight: 600; }
 .mobile-contact a + a { color: var(--navy-deep); background: var(--gold-soft); }
@@ -165,6 +177,7 @@ h3 { line-height: 1.2; }
 [dir="rtl"] body { font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif; line-height: 1.8; }
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif; letter-spacing: 0; line-height: 1.25; }
 [dir="rtl"] h1 { max-width: 13ch; font-size: clamp(2.55rem, 11vw, 5.3rem); }
+[dir="rtl"] .legal-article h1 { max-width: none; }
 [dir="rtl"] .eyebrow, [dir="rtl"] .button, [dir="rtl"] .text-link { font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif; }
 
 @media (min-width: 48rem) {

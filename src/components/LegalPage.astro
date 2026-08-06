@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "./Nav.astro";
+import Footer from "./Footer.astro";
+import { siteConfig } from "../config/site";
+
+type Props = {
+  lang?: "de" | "ar";
+  title: string;
+  description: string;
+  heading: string;
+};
+
+const { lang = "de", title, description, heading } = Astro.props;
+const isArabic = lang === "ar";
+const home = isArabic ? "/ar" : "/";
+const imprintHref = isArabic ? siteConfig.legal.imprintUrlAr : siteConfig.legal.imprintUrl;
+const privacyHref = isArabic ? siteConfig.legal.privacyUrlAr : siteConfig.legal.privacyUrl;
+const isImprint = Astro.url.pathname.replace(/\/$/, "").endsWith("impressum");
+---
+
+<BaseLayout lang={lang} title={title} description={description}>
+  <Nav lang={lang} />
+  <main id="main" class="legal-page">
+    <article class="container legal-article">
+      <p class="eyebrow">{isArabic ? "صفحة قانونية" : "Rechtliche Information"}</p>
+      <h1>{heading}</h1>
+      <p class="legal-placeholder-banner" role="status">
+        {isArabic
+          ? "هذه صفحة مؤقتة. سيُستكمل المحتوى النهائي من صاحب الموقع (شاكر للاستشارات)."
+          : "Dies ist ein Platzhalter. Der endgültige Text wird vom Website-Betreiber (Shaker Consulting) ergänzt."}
+      </p>
+      <slot />
+      <nav class="legal-crosslinks" aria-label={isArabic ? "صفحات قانونية أخرى" : "Weitere Rechtseiten"}>
+        <a class="text-link" href={home}>{isArabic ? "العودة إلى الصفحة الرئيسية" : "Zur Startseite"}</a>
+        {isImprint ? (
+          <a class="text-link" href={privacyHref}>{isArabic ? "حماية البيانات" : "Datenschutzerklärung"}</a>
+        ) : (
+          <a class="text-link" href={imprintHref}>{isArabic ? "بيانات الناشر" : "Impressum"}</a>
+        )}
+      </nav>
+    </article>
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

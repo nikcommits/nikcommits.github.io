@@ -3,7 +3,7 @@
 ## 1.1.0
 
 - KI-generierte Bilder (Logo, Inhaltsbilder, Social-Preview) sichtbar und barrierearm gekennzeichnet.
-- Footer-Hinweis zur KI-Herkunft sowie ausstehendem Impressum und Datenschutz ergänzt.
+- Platzhalterseiten für Impressum und Datenschutz (DE/AR) im Footer mit einem Klick verlinkt.
 - Offene Rechtsaufgaben in `LEGAL.md` und README hinterlegt.
 
 ## 1.0.0

@@ -26,13 +26,16 @@ PUBLIC_SITE_URL=https://www.beispiel.de npm run build
 
 Erst dann werden Canonicals, absolute Open-Graph-URLs, `hreflang`, Sitemap und der Sitemap-Verweis in `robots.txt` erzeugt. Ohne diese Variable bleibt der lokale Build gültig, ohne eine falsche Domain zu veröffentlichen.
 
-## Rechtliche Seiten (offen)
+## Rechtliche Seiten (Platzhalter)
 
-**Impressum und Datenschutzerklärung müssen noch ergänzt werden.** Die inhaltliche Verantwortung liegt beim Website-Betreiber; das Webteam setzt die Seiten und Links um, sobald geprüfte Texte vorliegen.
+Impressum und Datenschutz sind im **Footer** mit einem Klick erreichbar:
 
-Die Zielpfade werden in `src/config/site.ts` unter `legal` eingetragen. Solange die Werte leer sind, werden keine unvollständigen Rechtslinks angezeigt; der Footer weist auf die ausstehende Ergänzung hin.
+- `/impressum` und `/datenschutz` (Deutsch)
+- `/ar/impressum` und `/ar/datenschutz` (Arabisch)
 
-Vollständige Checkliste: [`LEGAL.md`](./LEGAL.md).
+Die Seiten enthalten bewusst nur Platzhalter plus bereits bekannte Kontaktdaten. **Endgültige Texte liefert der Website-Betreiber.** Checkliste: [`LEGAL.md`](./LEGAL.md).
+
+Konfiguration: `src/config/site.ts` → `legal`.
 
 ## KI-Kennzeichnung
 

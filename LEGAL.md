@@ -6,17 +6,22 @@ Dieses Dokument hält fest, was vor einem rechtssicheren Go-Live noch vom **Webs
 
 | Thema | Status | Zuständigkeit |
 | --- | --- | --- |
-| Impressum | **Offen – muss ergänzt werden** | Kunde liefert Inhalt, Webteam bindet Seite/Link ein |
-| Datenschutzerklärung | **Offen – muss ergänzt werden** | Kunde liefert Inhalt (ggf. mit Fachberatung), Webteam bindet Seite/Link ein |
+| Impressum | **Platzhalter live** – Inhalt muss ergänzt werden | Kunde liefert Text, Webteam ersetzt Platzhalter |
+| Datenschutzerklärung | **Platzhalter live** – Inhalt muss ergänzt werden | Kunde liefert Text (ggf. mit Fachberatung), Webteam ersetzt Platzhalter |
+| Footer-Verlinkung | Umgesetzt (ein Klick) | `/impressum`, `/datenschutz` sowie arabische Pendants |
 | KI-Kennzeichnung der Bilder | Umgesetzt auf der Website | Webteam (sichtbare Labels, Alt-Texte, Footer-Hinweis) |
 
-Konfiguration der späteren Links: `src/config/site.ts` → `legal.imprintUrl` und `legal.privacyUrl`.
+Seiten:
+
+- Deutsch: `/impressum`, `/datenschutz`
+- Arabisch: `/ar/impressum`, `/ar/datenschutz`
+- Konfiguration: `src/config/site.ts` → `legal.*`
 
 ## Impressum – vom Kunden benötigt
 
 - vollständige Anbieterangaben und vertretungsberechtigte Person
-- ladungsfähige Anschrift und Kontakt
-- falls vorhanden: Register, Registernummer, Umsatzsteuer-ID
+- ladungsfähige Anschrift und Kontakt (vorläufig aus der Site-Config eingetragen)
+- falls vorhanden: Registergericht, Registernummer, Umsatzsteuer-ID
 - weitere Pflichtangaben je nach Rechtsform und Tätigkeit
 
 ## Datenschutz – vom Kunden benötigt

@@ -1,0 +1,42 @@
+---
+import LegalPage from "../../components/LegalPage.astro";
+import { siteConfig } from "../../config/site";
+---
+
+<LegalPage
+  lang="ar"
+  title="حماية البيانات"
+  description="إشعار حماية البيانات لشاكر للاستشارات — صفحة مؤقتة تُستكمل بالنص المعتمد من صاحب الموقع."
+  heading="حماية البيانات"
+>
+  <section class="legal-section" aria-labelledby="verantwortung-heading-ar">
+    <h2 id="verantwortung-heading-ar">الجهة المسؤولة</h2>
+    <p>
+      بيانات اتصال مؤقتة لصاحب الموقع:<br />
+      <strong>{siteConfig.name}</strong><br />
+      <bdi dir="ltr">{siteConfig.address}</bdi><br />
+      <a href={`mailto:${siteConfig.email}`}><bdi dir="ltr">{siteConfig.email}</bdi></a>
+    </p>
+  </section>
+
+  <section class="legal-section" aria-labelledby="hinweis-heading-ar">
+    <h2 id="hinweis-heading-ar">ملاحظة حول الصفحة المؤقتة</h2>
+    <p>
+      هذه الصفحة لا تستوفي بعد متطلبات إشعار حماية بيانات كامل.
+      يجب أن يقدّم صاحب الموقع النص النهائي (ويُفضَّل بالاستعانة بمختص).
+    </p>
+  </section>
+
+  <section class="legal-section" aria-labelledby="offen-heading-ar">
+    <h2 id="offen-heading-ar">ما زال مطلوبًا</h2>
+    <ul>
+      <li>أغراض المعالجة والأسس القانونية</li>
+      <li>المستلمون ومعالجو البيانات</li>
+      <li>مدة الحفظ</li>
+      <li>حقوق أصحاب البيانات</li>
+      <li>تقييم قنوات التواصل: البريد والهاتف وواتساب</li>
+      <li>مزوّد الاستضافة</li>
+      <li>أي خدمات إحصاء أو خطوط أو شبكة توصيل محتوى أو أطراف ثالثة</li>
+    </ul>
+  </section>
+</LegalPage>

@@ -34,5 +34,5 @@ Target WCAG AA contrast. Support keyboard navigation and reduced motion. Arabic 
 
 ## Open legal work
 
-- Impressum and privacy policy content must still be supplied by the website operator and published before a compliant go-live. Tracked in `LEGAL.md`.
+- Impressum and privacy policy pages exist as footer-linked placeholders (`/impressum`, `/datenschutz` and Arabic counterparts). Final copy must still be supplied by the website operator before a compliant go-live. Tracked in `LEGAL.md`.
 - All site imagery is AI-generated and must remain clearly labelled for users.
