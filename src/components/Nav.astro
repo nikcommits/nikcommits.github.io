@@ -1,28 +1,34 @@
 ---
-import { siteConfig } from "../config/site";
+import { siteConfig, alternateLanguagePath } from "../config/site";
+
 type Props = { lang?: "de" | "ar" };
 const { lang = "de" } = Astro.props;
 const isArabic = lang === "ar";
+const home = isArabic ? "/ar" : "/";
 const labels = isArabic
   ? ["الترجمة", "الترجمة الشفوية", "الطلبات", "الخطوات"]
   : siteConfig.nav.map((item) => item.label);
+const brandName = isArabic ? "شاكر للاستشارات" : siteConfig.name;
+const languageHref = alternateLanguagePath(Astro.url.pathname, lang);
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="wordmark" href={isArabic ? "/ar" : "/"} aria-label={isArabic ? "شاكر للاستشارات – الصفحة الرئيسية" : "Shaker Consulting – Startseite"}>
-      <img src="/brand/shaker-consulting-logo-480.webp" srcset="/brand/shaker-consulting-logo-480.webp 480w, /brand/shaker-consulting-logo-960.webp 960w" sizes="220px" alt={isArabic ? "شعار شاكر للاستشارات، مكتب ترجمة عربي ألماني" : "Logo von Shaker Consulting, Übersetzungsbüro Arabisch–Deutsch"} width="480" height="160" />
-    </a>
+    <a class="wordmark" href={home}>{brandName}</a>
     <nav class="desktop-nav" aria-label={isArabic ? "التنقل الرئيسي" : "Hauptnavigation"}>
-      {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}
-      <a class="language" href={isArabic ? "/" : "/ar"}>{isArabic ? "DE" : "العربية"}</a>
+      {siteConfig.nav.map((item, index) => (
+        <a href={`${home}${item.href}`}>{labels[index]}</a>
+      ))}
+      <a class="language" href={languageHref}>{isArabic ? "DE" : "العربية"}</a>
       <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
     </nav>
     <div class="mobile-actions">
-      <a class="mobile-language" href={isArabic ? "/" : "/ar"} aria-label={isArabic ? "Zur deutschen Seite wechseln" : "Zur arabischen Seite wechseln"}>{isArabic ? "DE" : "العربية"}</a>
+      <a class="mobile-language" href={languageHref} aria-label={isArabic ? "Zur deutschen Seite wechseln" : "Zur arabischen Seite wechseln"}>{isArabic ? "DE" : "العربية"}</a>
       <details class="mobile-menu">
         <summary>{isArabic ? "القائمة" : "Menü"}<span aria-hidden="true"></span></summary>
         <nav aria-label={isArabic ? "التنقل للهاتف" : "Mobile Navigation"}>
-          {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}
+          {siteConfig.nav.map((item, index) => (
+            <a href={`${home}${item.href}`}>{labels[index]}</a>
+          ))}
           <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
         </nav>
       </details>

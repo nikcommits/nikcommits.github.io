@@ -31,3 +31,8 @@ Do not look like a generic translation marketplace, an immigration-law firm, or 
 ## Accessibility & Inclusion
 
 Target WCAG AA contrast. Support keyboard navigation and reduced motion. Arabic content must use native right-to-left layout and clear, readable typography.
+
+## Open legal work
+
+- Impressum and privacy policy pages exist as footer-linked placeholders (`/impressum`, `/datenschutz` and Arabic counterparts). Final copy must still be supplied by the website operator before a compliant go-live. Tracked in `LEGAL.md`.
+- All site imagery is AI-generated and must remain clearly labelled for users.

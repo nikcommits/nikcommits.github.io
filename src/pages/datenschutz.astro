@@ -1,0 +1,42 @@
+---
+import LegalPage from "../components/LegalPage.astro";
+import { siteConfig } from "../config/site";
+---
+
+<LegalPage
+  lang="de"
+  title="Datenschutz"
+  description="Datenschutzerklärung von Shaker Consulting – Platzhalter, wird durch den geprüften Text des Website-Betreibers ergänzt."
+  heading="Datenschutzerklärung"
+>
+  <section class="legal-section" aria-labelledby="verantwortung-heading">
+    <h2 id="verantwortung-heading">Verantwortliche Stelle</h2>
+    <p>
+      Vorläufige Kontaktdaten des Website-Betreibers:<br />
+      <strong>{siteConfig.name}</strong><br />
+      <bdi dir="ltr">{siteConfig.address}</bdi><br />
+      <a href={`mailto:${siteConfig.email}`}><bdi dir="ltr">{siteConfig.email}</bdi></a>
+    </p>
+  </section>
+
+  <section class="legal-section" aria-labelledby="hinweis-heading">
+    <h2 id="hinweis-heading">Hinweis zum Platzhalter</h2>
+    <p>
+      Diese Seite erfüllt noch nicht die Anforderungen einer vollständigen Datenschutzerklärung.
+      Der endgültige Text muss vom Website-Betreiber (ggf. mit Fachberatung) geliefert werden.
+    </p>
+  </section>
+
+  <section class="legal-section" aria-labelledby="offen-heading">
+    <h2 id="offen-heading">Noch zu ergänzen</h2>
+    <ul>
+      <li>Zwecke und Rechtsgrundlagen der Verarbeitung</li>
+      <li>Empfänger und Auftragsverarbeiter</li>
+      <li>Speicherdauer</li>
+      <li>Betroffenenrechte</li>
+      <li>Einordnung der Kontaktwege E-Mail, Telefon und WhatsApp</li>
+      <li>Hosting-Anbieter</li>
+      <li>ggf. Statistik-, Font-, CDN- oder sonstige Drittanbieter-Dienste</li>
+    </ul>
+  </section>
+</LegalPage>

@@ -1,13 +1,38 @@
 ---
 import { siteConfig } from "../config/site";
+
 type Props = { lang?: "de" | "ar" };
 const { lang = "de" } = Astro.props;
 const isArabic = lang === "ar";
+const imprintHref = isArabic ? siteConfig.legal.imprintUrlAr : siteConfig.legal.imprintUrl;
+const privacyHref = isArabic ? siteConfig.legal.privacyUrlAr : siteConfig.legal.privacyUrl;
 ---
 <footer class="site-footer">
   <div class="container footer-wrap">
-    <div><strong>Shaker Consulting</strong><p>{isArabic ? "مكتب الترجمة العربية – الألمانية" : "Übersetzungsbüro Arabisch–Deutsch"}</p><p><bdi dir="ltr">{siteConfig.address}</bdi></p><p>{isArabic ? <><span>الاثنين–الجمعة</span> <bdi dir="ltr">10:00–16:30</bdi><span> · السبت بالاتفاق</span></> : siteConfig.hours}</p></div>
-    <div><a href={`mailto:${siteConfig.email}`}><bdi dir="ltr">{siteConfig.email}</bdi></a><br /><a href={`tel:${siteConfig.phone.replace(/\s|\(|\)/g, "")}`}><bdi dir="ltr">{siteConfig.phone}</bdi></a><br /><a href={siteConfig.whatsapp} target="_blank" rel="noreferrer"><span>WhatsApp: </span><bdi dir="ltr">{siteConfig.mobile}</bdi></a></div>
-    <div class="footer-meta"><p>© {new Date().getFullYear()} Shaker Consulting</p>{siteConfig.legal.imprintUrl && <a href={siteConfig.legal.imprintUrl}>{isArabic ? "بيانات الناشر" : "Impressum"}</a>}{siteConfig.legal.privacyUrl && <a href={siteConfig.legal.privacyUrl}>{isArabic ? "حماية البيانات" : "Datenschutz"}</a>}</div>
+    <div>
+      <strong>Shaker Consulting</strong>
+      <p>{isArabic ? "مكتب الترجمة العربية – الألمانية" : "Übersetzungsbüro Arabisch–Deutsch"}</p>
+      <p><bdi dir="ltr">{siteConfig.address}</bdi></p>
+      <p>{isArabic ? <><span>الاثنين–الجمعة</span> <bdi dir="ltr">10:00–16:30</bdi><span> · السبت بالاتفاق</span></> : siteConfig.hours}</p>
+    </div>
+    <div>
+      <a href={`mailto:${siteConfig.email}`}><bdi dir="ltr">{siteConfig.email}</bdi></a><br />
+      <a href={`tel:${siteConfig.phone.replace(/\s|\(|\)/g, "")}`}><bdi dir="ltr">{siteConfig.phone}</bdi></a><br />
+      <a href={siteConfig.whatsapp} target="_blank" rel="noreferrer"><span>WhatsApp: </span><bdi dir="ltr">{siteConfig.mobile}</bdi></a>
+    </div>
+    <div class="footer-meta">
+      <p>© {new Date().getFullYear()} Shaker Consulting</p>
+      <nav class="footer-legal" aria-label={isArabic ? "الصفحات القانونية" : "Rechtliche Seiten"}>
+        <a href={imprintHref}>{isArabic ? "بيانات الناشر" : "Impressum"}</a>
+        <a href={privacyHref}>{isArabic ? "حماية البيانات" : "Datenschutz"}</a>
+      </nav>
+    </div>
+  </div>
+  <div class="container footer-disclosure">
+    <p>
+      {isArabic
+        ? "صور المحتوى وصورة المعاينة الاجتماعية على هذا الموقع مُنشأة بالذكاء الاصطناعي ومُعلَّمة وفقًا لالتزامات الشفافية."
+        : "Inhaltsbilder und Social-Preview auf dieser Website sind mit KI generiert und entsprechend gekennzeichnet."}
+    </p>
   </div>
 </footer>

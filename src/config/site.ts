@@ -17,8 +17,25 @@ export const siteConfig = {
     { label: "Anträge", href: "#antraege" },
     { label: "Ablauf", href: "#ablauf" },
   ],
+  /**
+   * Rechtsseiten sind als Platzhalter verlinkt (Footer, ein Klick).
+   * Endgültige Texte liefert der Website-Betreiber – siehe LEGAL.md.
+   */
   legal: {
-    imprintUrl: "",
-    privacyUrl: "",
+    imprintUrl: "/impressum",
+    privacyUrl: "/datenschutz",
+    imprintUrlAr: "/ar/impressum",
+    privacyUrlAr: "/ar/datenschutz",
   },
 } as const;
+
+/** Sprachwechsel-Pfad zur Parallelseite (DE ↔ AR). */
+export function alternateLanguagePath(pathname: string, lang: "de" | "ar"): string {
+  const normalized = pathname.replace(/\/$/, "") || "/";
+  if (lang === "ar") {
+    if (normalized === "/ar") return "/";
+    return normalized.replace(/^\/ar/, "") || "/";
+  }
+  if (normalized === "/") return "/ar";
+  return `/ar${normalized}`;
+}
