@@ -8,26 +8,12 @@ const home = isArabic ? "/ar" : "/";
 const labels = isArabic
   ? ["الترجمة", "الترجمة الشفوية", "الطلبات", "الخطوات"]
   : siteConfig.nav.map((item) => item.label);
-const logoAlt = isArabic
-  ? "شعار شاكر للاستشارات، مكتب ترجمة عربي ألماني. مُنشأ بالذكاء الاصطناعي."
-  : "Logo von Shaker Consulting, Übersetzungsbüro Arabisch–Deutsch. Mit KI generiert.";
-const aiLabel = isArabic ? "مُنشأ بالذكاء الاصطناعي" : "Mit KI generiert";
+const brandName = isArabic ? "شاكر للاستشارات" : siteConfig.name;
 const languageHref = alternateLanguagePath(Astro.url.pathname, lang);
 ---
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="wordmark" href={home} aria-label={isArabic ? "شاكر للاستشارات – الصفحة الرئيسية" : "Shaker Consulting – Startseite"}>
-      <img
-        src="/brand/shaker-consulting-logo-480.webp"
-        srcset="/brand/shaker-consulting-logo-480.webp 480w, /brand/shaker-consulting-logo-960.webp 960w"
-        sizes="220px"
-        alt={logoAlt}
-        width="480"
-        height="160"
-        data-ai-generated="true"
-      />
-      <span class="ai-media-label wordmark-ai-label">{aiLabel}</span>
-    </a>
+    <a class="wordmark" href={home}>{brandName}</a>
     <nav class="desktop-nav" aria-label={isArabic ? "التنقل الرئيسي" : "Hauptnavigation"}>
       {siteConfig.nav.map((item, index) => (
         <a href={`${home}${item.href}`}>{labels[index]}</a>

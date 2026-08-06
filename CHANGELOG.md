@@ -2,7 +2,7 @@
 
 ## 1.1.0
 
-- KI-generierte Bilder (Logo, Inhaltsbilder, Social-Preview) sichtbar und barrierearm gekennzeichnet.
+- KI-generierte Bilder (Inhaltsbilder, Social-Preview) sichtbar und barrierearm gekennzeichnet; Logo-Dateien bleiben im Repo, Navigation zeigt vorerst den Textnamen.
 - Platzhalterseiten für Impressum und Datenschutz (DE/AR) im Footer mit einem Klick verlinkt.
 - Offene Rechtsaufgaben in `LEGAL.md` und README hinterlegt.
 

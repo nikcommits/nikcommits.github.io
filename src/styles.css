@@ -35,9 +35,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 
 .site-header { position: relative; z-index: 20; color: var(--navy); background: rgb(251 250 247 / 0.96); border-bottom: 1px solid var(--line); }
 .nav-wrap { min-height: 4.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.wordmark { width: 10.75rem; padding-block: 0.25rem; display: grid; gap: 0.2rem; }
-.wordmark img { width: 100%; }
-.wordmark-ai-label { font-size: 0.68rem; font-weight: 600; color: var(--muted); letter-spacing: 0.01em; }
+.wordmark {
+  padding-block: 0.25rem;
+  color: var(--navy-deep);
+  font-size: clamp(1.05rem, 2.8vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
 .desktop-nav { display: none; }
 .mobile-actions { display: flex; align-items: center; gap: 0.25rem; }
 .mobile-language { min-width: 3.5rem; min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center; padding-inline: 0.45rem; color: var(--navy); border: 1px solid var(--line); border-radius: 2px; font-size: 0.88rem; font-weight: 600; }
@@ -178,6 +184,7 @@ h3 { line-height: 1.2; }
 [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif; letter-spacing: 0; line-height: 1.25; }
 [dir="rtl"] h1 { max-width: 13ch; font-size: clamp(2.55rem, 11vw, 5.3rem); }
 [dir="rtl"] .legal-article h1 { max-width: none; }
+[dir="rtl"] .wordmark,
 [dir="rtl"] .eyebrow, [dir="rtl"] .button, [dir="rtl"] .text-link { font-family: "Noto Sans Arabic", Tahoma, Arial, sans-serif; }
 
 @media (min-width: 48rem) {
@@ -196,7 +203,7 @@ h3 { line-height: 1.2; }
 @media (min-width: 62rem) {
   .site-header { position: sticky; top: 0; backdrop-filter: blur(0.75rem); }
   .nav-wrap { min-height: 5.25rem; }
-  .wordmark { width: 13.5rem; }
+  .wordmark { font-size: 1.25rem; }
   .mobile-actions { display: none; }
   .mobile-menu { display: none; }
   .desktop-nav { display: flex; align-items: center; gap: 1.1rem; font-size: 0.94rem; }

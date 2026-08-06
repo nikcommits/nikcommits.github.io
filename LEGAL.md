@@ -37,6 +37,6 @@ Seiten:
 
 ## KI-generierte Medien
 
-Alle Bilder der Website (Logo, Inhaltsbilder, Social-Preview `public/og.webp`) sind mit KI generiert. Auf der Seite sind sie sichtbar und barrierearm gekennzeichnet („Mit KI generiert“ / arabische Entsprechung), inklusive Footer-Hinweis.
+Alle Inhaltsbilder und die Social-Preview (`public/og.webp`) sind mit KI generiert und auf der Seite gekennzeichnet. Das Logo liegt weiterhin unter `public/brand/`, wird aktuell aber nicht angezeigt (Text-Wordmark in der Navigation).
 
 Technische Provenance-Markierungen in den Bilddateien selbst (maschinenlesbare Provider-Watermarks/Metadaten) bleiben ggf. zusätzlich zu prüfen, sobald verbindliche Praxisleitfäden und Datei-Workflows feststehen.
