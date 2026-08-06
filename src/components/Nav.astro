@@ -6,11 +6,24 @@ const isArabic = lang === "ar";
 const labels = isArabic
   ? ["الترجمة", "الترجمة الشفوية", "الطلبات", "الخطوات"]
   : siteConfig.nav.map((item) => item.label);
+const logoAlt = isArabic
+  ? "شعار شاكر للاستشارات، مكتب ترجمة عربي ألماني. مُنشأ بالذكاء الاصطناعي."
+  : "Logo von Shaker Consulting, Übersetzungsbüro Arabisch–Deutsch. Mit KI generiert.";
+const aiLabel = isArabic ? "مُنشأ بالذكاء الاصطناعي" : "Mit KI generiert";
 ---
 <header class="site-header">
   <div class="container nav-wrap">
     <a class="wordmark" href={isArabic ? "/ar" : "/"} aria-label={isArabic ? "شاكر للاستشارات – الصفحة الرئيسية" : "Shaker Consulting – Startseite"}>
-      <img src="/brand/shaker-consulting-logo-480.webp" srcset="/brand/shaker-consulting-logo-480.webp 480w, /brand/shaker-consulting-logo-960.webp 960w" sizes="220px" alt={isArabic ? "شعار شاكر للاستشارات، مكتب ترجمة عربي ألماني" : "Logo von Shaker Consulting, Übersetzungsbüro Arabisch–Deutsch"} width="480" height="160" />
+      <img
+        src="/brand/shaker-consulting-logo-480.webp"
+        srcset="/brand/shaker-consulting-logo-480.webp 480w, /brand/shaker-consulting-logo-960.webp 960w"
+        sizes="220px"
+        alt={logoAlt}
+        width="480"
+        height="160"
+        data-ai-generated="true"
+      />
+      <span class="ai-media-label wordmark-ai-label">{aiLabel}</span>
     </a>
     <nav class="desktop-nav" aria-label={isArabic ? "التنقل الرئيسي" : "Hauptnavigation"}>
       {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}

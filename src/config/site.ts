@@ -17,6 +17,13 @@ export const siteConfig = {
     { label: "Anträge", href: "#antraege" },
     { label: "Ablauf", href: "#ablauf" },
   ],
+  /**
+   * Offen: Impressum und Datenschutz müssen vom Website-Betreiber
+   * (Shaker Consulting) inhaltlich geliefert und hier verlinkt werden.
+   * Solange leer, werden keine Rechtslinks gerendert; der Footer zeigt
+   * einen Hinweis auf die ausstehende Ergänzung.
+   * Checkliste: siehe LEGAL.md
+   */
   legal: {
     imprintUrl: "",
     privacyUrl: "",
