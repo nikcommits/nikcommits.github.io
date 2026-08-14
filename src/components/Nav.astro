@@ -6,6 +6,7 @@ const isArabic = lang === "ar";
 const labels = isArabic
   ? ["الترجمة", "الترجمة الشفوية", "الطلبات", "الخطوات"]
   : siteConfig.nav.map((item) => item.label);
+const homePath = isArabic ? "/ar" : "/";
 ---
 <header class="site-header">
   <div class="container nav-wrap">
@@ -13,7 +14,7 @@ const labels = isArabic
       <img src="/brand/shaker-consulting-logo-480.webp" srcset="/brand/shaker-consulting-logo-480.webp 480w, /brand/shaker-consulting-logo-960.webp 960w" sizes="220px" alt={isArabic ? "شعار شاكر للاستشارات، مكتب ترجمة عربي ألماني" : "Logo von Shaker Consulting, Übersetzungsbüro Arabisch–Deutsch"} width="480" height="160" />
     </a>
     <nav class="desktop-nav" aria-label={isArabic ? "التنقل الرئيسي" : "Hauptnavigation"}>
-      {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}
+      {siteConfig.nav.map((item, index) => <a href={`${homePath}${item.href}`}>{labels[index]}</a>)}
       <a class="language" href={isArabic ? "/" : "/ar"}>{isArabic ? "DE" : "العربية"}</a>
       <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
     </nav>
@@ -22,7 +23,7 @@ const labels = isArabic
       <details class="mobile-menu">
         <summary>{isArabic ? "القائمة" : "Menü"}<span aria-hidden="true"></span></summary>
         <nav aria-label={isArabic ? "التنقل للهاتف" : "Mobile Navigation"}>
-          {siteConfig.nav.map((item, index) => <a href={item.href}>{labels[index]}</a>)}
+          {siteConfig.nav.map((item, index) => <a href={`${homePath}${item.href}`}>{labels[index]}</a>)}
           <a class="nav-cta" href={siteConfig.whatsapp} target="_blank" rel="noreferrer">{isArabic ? "واتساب" : "WhatsApp"}</a>
         </nav>
       </details>

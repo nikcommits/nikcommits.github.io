@@ -18,7 +18,7 @@ export const siteConfig = {
     { label: "Ablauf", href: "#ablauf" },
   ],
   legal: {
-    imprintUrl: "",
-    privacyUrl: "",
+    imprintUrl: "/impressum",
+    privacyUrl: "/datenschutz",
   },
 } as const;
