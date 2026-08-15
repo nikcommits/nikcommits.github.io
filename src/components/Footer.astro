@@ -3,11 +3,68 @@ import { siteConfig } from "../config/site";
 type Props = { lang?: "de" | "ar" };
 const { lang = "de" } = Astro.props;
 const isArabic = lang === "ar";
+const prefix = isArabic ? "/ar" : "";
 ---
 <footer class="site-footer">
-  <div class="container footer-wrap">
-    <div><strong>Shaker Consulting</strong><p>{isArabic ? "مكتب الترجمة العربية – الألمانية" : "Übersetzungsbüro Arabisch–Deutsch"}</p><p><bdi dir="ltr">{siteConfig.address}</bdi></p><p>{isArabic ? <><span>الاثنين–الجمعة</span> <bdi dir="ltr">10:00–16:30</bdi><span> · السبت بالاتفاق</span></> : siteConfig.hours}</p></div>
-    <div><a href={`mailto:${siteConfig.email}`}><bdi dir="ltr">{siteConfig.email}</bdi></a><br /><a href={`tel:${siteConfig.phone.replace(/\s|\(|\)/g, "")}`}><bdi dir="ltr">{siteConfig.phone}</bdi></a><br /><a href={siteConfig.whatsapp} target="_blank" rel="noreferrer"><span>WhatsApp: </span><bdi dir="ltr">{siteConfig.mobile}</bdi></a></div>
-    <div class="footer-meta"><p>© {new Date().getFullYear()} Shaker Consulting</p>{siteConfig.legal.imprintUrl && <a href={siteConfig.legal.imprintUrl}>{isArabic ? "بيانات الناشر" : "Impressum"}</a>}{siteConfig.legal.privacyUrl && <a href={siteConfig.legal.privacyUrl}>{isArabic ? "حماية البيانات" : "Datenschutz"}</a>}</div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <strong class="footer-logo">Shaker Consulting</strong>
+        <p class="footer-desc">
+          {isArabic
+            ? "مكتب معتمد للترجمة بين العربية والألمانية في كريفيلد، وترجمة شفوية ومساعدة في الطلبات."
+            : "Beglaubigte Übersetzungen Arabisch–Deutsch in Krefeld, Dolmetschen und persönliche Antragsunterstützung."}
+        </p>
+        <div class="footer-location">
+          <p><bdi dir="ltr">{siteConfig.address}</bdi></p>
+          <p>{isArabic ? <><span>الاثنين–الجمعة</span> <bdi dir="ltr">10:00–16:30</bdi><span> · السبت بالاتفاق</span></> : siteConfig.hours}</p>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <p class="footer-heading">{isArabic ? "الخدمات" : "Leistungen"}</p>
+        <ul>
+          <li><a href={`${prefix}#uebersetzungen`}>{isArabic ? "ترجمات معتمدة" : "Beglaubigte Übersetzungen"}</a></li>
+          <li><a href={`${prefix}#dolmetschen`}>{isArabic ? "الترجمة الشفوية" : "Dolmetschen"}</a></li>
+          <li><a href={`${prefix}#antraege`}>{isArabic ? "مساعدة الطلبات" : "Antragsunterstützung"}</a></li>
+          <li><a href={`${prefix}#ablauf`}>{isArabic ? "خطوات الطلب" : "Ablauf der Anfrage"}</a></li>
+          <li><a href={`${prefix}#mpu`}>{isArabic ? "التحضير لـ MPU" : "MPU-Vorbereitung"}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <p class="footer-heading">{isArabic ? "التواصل المباشر" : "Direktkontakt"}</p>
+        <ul>
+          <li>
+            <a href={`tel:${siteConfig.phone.replace(/\s|\(|\)/g, "")}`} class="footer-contact-link">
+              <span class="footer-contact-label">{isArabic ? "الهاتف" : "Telefon"}:</span>
+              <bdi dir="ltr">{siteConfig.phone}</bdi>
+            </a>
+          </li>
+          <li>
+            <a href={siteConfig.whatsapp} target="_blank" rel="noreferrer" class="footer-contact-link footer-whatsapp">
+              <span class="footer-contact-label">WhatsApp:</span>
+              <bdi dir="ltr">{siteConfig.mobile}</bdi>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${siteConfig.email}`} class="footer-contact-link">
+              <span class="footer-contact-label">E-Mail:</span>
+              <bdi dir="ltr">{siteConfig.email}</bdi>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© {new Date().getFullYear()} Shaker Consulting. {isArabic ? "جميع الحقوق محفوظة." : "Alle Rechte vorbehalten."}</p>
+      <div class="footer-legal">
+        <a href="/impressum">{isArabic ? "بيانات الناشر" : "Impressum"}</a>
+        <span class="footer-legal-divider" aria-hidden="true">·</span>
+        <a href="/datenschutz">{isArabic ? "حماية البيانات" : "Datenschutz"}</a>
+      </div>
+    </div>
   </div>
 </footer>
+
