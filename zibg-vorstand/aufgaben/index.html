@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Dediziertes Vorstands-Board mit Kanban-Spalten, Zuweisung für Abdul Aziz, Engin, Mahmoud und Sammy und 1-Klick-Export für WhatsApp."><meta name="theme-color" content="#212121"><meta name="robots" content="noindex, nofollow, noarchive"><link rel="icon" type="image/svg+xml" href="../zibg-logo.svg"><title>ZIBG e.V. | Vorstands-Aufgaben &amp; Kanban-Board</title><link rel="stylesheet" href="/_astro/ZibgLayout.Dn5fwyMJ.css"></head><body><div class="access-gate" id="access-gate"><form class="access-box" id="access-form"><img class="brand-logo brand-logo--access" src="../zibg-logo.svg" alt="ZIBG – Zentrum für Islamische Bildung und Gemeinschaft Krefeld" width="165" height="165"><h1>Interner Bereich</h1><p>Bitte gib den Zugangscode ein, um die Vorstandsinformationen zu öffnen.</p><p class="access-error" id="access-error" role="alert" hidden>Der eingegebene Zugangscode ist nicht richtig.</p><label for="access-code">Zugangscode</label><input id="access-code" name="access-code" type="password" autocomplete="current-password" required autofocus><button type="submit">Seite öffnen</button><p class="access-note">ZIBG e.V. · Geschützter Zugriff</p></form></div><script>
+  (function () {
+    const accessHash = '8ea22477221e40c13a1ae12d84cf897769b4aa60e247c98a735c51feb60e415a';
+    const accessStorageKey = 'zibg_access_until';
+    const accessDuration = 12 * 60 * 60 * 1000;
+
+    async function sha256(value) {
+      const bytes = new TextEncoder().encode(value);
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
+      return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    function openSite() {
+      const accessGate = document.querySelector('#access-gate');
+      const protectedSite = document.querySelector('#protected-site');
+      if (accessGate) accessGate.hidden = true;
+      if (protectedSite) protectedSite.hidden = false;
+      document.body.style.overflow = '';
+    }
+
+    function initGate() {
+      const accessForm = document.querySelector('#access-form');
+      const accessCode = document.querySelector('#access-code');
+      const accessError = document.querySelector('#access-error');
+
+      if (Number(localStorage.getItem(accessStorageKey) || 0) > Date.now()) {
+        openSite();
+      } else {
+        localStorage.removeItem(accessStorageKey);
+        document.body.style.overflow = 'hidden';
+      }
+
+      if (accessForm && accessCode) {
+        accessForm.addEventListener('submit', async event => {
+          event.preventDefault();
+          if (accessError) accessError.hidden = true;
+          if (await sha256(accessCode.value) === accessHash) {
+            localStorage.setItem(accessStorageKey, String(Date.now() + accessDuration));
+            accessCode.value = '';
+            openSite();
+          } else {
+            if (accessError) accessError.hidden = false;
+            accessCode.select();
+          }
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGate);
+    } else {
+      initGate();
+    }
+  })();
+</script><div id="protected-site" hidden><header><div class="wrap nav"><a class="brand" href="../index.html"><img class="brand-logo brand-logo--nav" src="../zibg-logo.svg" alt="" width="44" height="44"><span>ZIBG e.V.</span></a><nav aria-label="Seitennavigation"><a href="../index.html">← Zurück zur Übersicht</a><a href="#top">Fortschritt</a><a href="#kanban-grid">Kanban-Board</a></nav></div></header><div class="hero" id="top"><div class="wrap"><p class="eyebrow">Vorstands-Dashboard · Aufgaben &amp; Zuständigkeiten</p><h1>Vorstandsaufgaben gemeinsam abarbeiten.</h1><p class="lead">Interaktives Kanban-Board mit Drag &amp; Drop, flexiblen Zuständigkeiten und Status-Tracking für die anstehenden Beschlüsse und Anmeldungen.</p><div class="status"><span class="status-dot"></span>14 Vorstandsaufgaben · Browser-Synchronisation aktiv</div></div></div><main class="wrap" style="padding-top: 32px;"><div style="margin-bottom: 20px;"><a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;"><span>← Zurück zur Vorstandsübersicht</span></a></div><section id="aufgaben" aria-labelledby="aufgaben-title" class="board-section" style="margin-top: 0;"><div class="section-head" style="display: none;"><p class="kicker">Vorstands-Dashboard · Aufgaben & Zuständigkeiten</p><h2 id="aufgaben-title">Aufgaben gemeinsam abarbeiten</h2><p class="muted">Hier kann der Vorstand Aufgaben per Drag & Drop oder Klick zuweisen, den Bearbeitungsstand festhalten und den aktuellen Stand für die WhatsApp-Gruppe exportieren.</p></div><!-- Progress & Stats Card --><div class="card board-stats-card" id="board-stats"><div class="board-stats-header"><div><span class="board-stats-caption">Gesamtfortschritt</span><strong class="board-stats-headline" id="board-total-stats">0 von 14 Aufgaben erledigt (0 %)</strong></div><div class="board-actions"><button type="button" class="button-link whatsapp-btn" id="board-whatsapp-btn"><span>📲 Stand für WhatsApp kopieren</span></button><button type="button" class="board-reset-btn" id="board-reset-btn" title="Aufgaben auf Standard zurücksetzen">↺ Zurücksetzen</button></div></div><!-- Progress Bar --><div class="board-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="board-progress-bar"><div class="board-progress-fill" id="board-progress-fill" style="width: 0%;"></div></div><!-- Per-Member Stats --><div class="board-members-grid" id="board-members-stats"><div class="board-member-stat" data-member-stat="Abdul Aziz"><span class="board-member-badge" data-member-name="Abdul Aziz">Abdul Aziz</span><strong class="board-member-count" data-member-count="Abdul Aziz">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Engin"><span class="board-member-badge" data-member-name="Engin">Engin</span><strong class="board-member-count" data-member-count="Engin">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Mahmoud"><span class="board-member-badge" data-member-name="Mahmoud">Mahmoud</span><strong class="board-member-count" data-member-count="Mahmoud">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Sammy"><span class="board-member-badge" data-member-name="Sammy">Sammy</span><strong class="board-member-count" data-member-count="Sammy">0 / 0</strong></div></div></div><!-- Filter Bar --><div class="board-filter-wrap" role="toolbar" aria-label="Aufgaben nach Person filtern"><span class="board-filter-label">Filter nach Person:</span><div class="board-filter-pills" id="board-filter-pills"><button type="button" class="board-pill active" data-filter="all">Alle (<span id="count-all">14</span>)</button><button type="button" class="board-pill" data-filter="Abdul Aziz">Abdul Aziz (<span data-pill-count="Abdul Aziz">0</span>)</button><button type="button" class="board-pill" data-filter="Engin">Engin (<span data-pill-count="Engin">0</span>)</button><button type="button" class="board-pill" data-filter="Mahmoud">Mahmoud (<span data-pill-count="Mahmoud">0</span>)</button><button type="button" class="board-pill" data-filter="Sammy">Sammy (<span data-pill-count="Sammy">0</span>)</button></div></div><!-- Kanban Board Container --><div class="kanban-grid" id="kanban-grid"><!-- Column: Offen --><div class="kanban-col" data-col="todo" id="col-todo"><div class="kanban-col-head kanban-col-head--todo"><span class="kanban-dot dot--todo"></span><h3>Offen</h3><span class="kanban-count" id="count-todo">0</span></div><div class="kanban-list" id="list-todo" data-dropzone="todo"></div></div><!-- Column: In Bearbeitung --><div class="kanban-col" data-col="in-progress" id="col-in-progress"><div class="kanban-col-head kanban-col-head--progress"><span class="kanban-dot dot--progress"></span><h3>In Bearbeitung</h3><span class="kanban-count" id="count-in-progress">0</span></div><div class="kanban-list" id="list-in-progress" data-dropzone="in-progress"></div></div><!-- Column: Erledigt --><div class="kanban-col" data-col="done" id="col-done"><div class="kanban-col-head kanban-col-head--done"><span class="kanban-dot dot--done"></span><h3>Erledigt</h3><span class="kanban-count" id="count-done">0</span></div><div class="kanban-list" id="list-done" data-dropzone="done"></div></div></div><!-- Toast Notice --><div class="board-toast" id="board-toast" role="status" aria-live="polite" hidden>✓ WhatsApp-Text in die Zwischenablage kopiert!</div></section><!-- Raw Data for Client Script --><script>(function(){const initialZibgTasks = [{"id":"task-1","title":"Mitgliederbestand erfassen & abgleichen","description":"WhatsApp-Gruppe mit schriftlichen Aufnahmeanträgen und tatsächlichen Kontoeingängen abgleichen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Sammy","defaultStatus":"todo"},{"id":"task-2","title":"Entwurf der Beitragsordnung erstellen","description":"240 € Jahresbeitrag (optional 12x 20 €), Fälligkeiten, Ermäßigungen und Mahnverfahren formulieren.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-3","title":"Gemeinnützigkeitsnachweis prüfen","description":"Gültigen Freistellungsbescheid zur Körperschaftsteuer oder Feststellungsbescheid nach § 60a AO bereithalten.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-4","title":"Vereinskonto & IBAN prüfen","description":"Sicherstellen, dass das Bankkonto korrekt auf den Vereinsnamen lautet (kein Privatkonto).","category":"Finanzen & Bank","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-5","title":"Mitgliederversammlung fristgerecht einladen","description":"Mindestens 2 Wochen vorher mit Tagesordnungspunkt „Beschluss der Beitragsordnung“ einladen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Sammy","defaultStatus":"todo"},{"id":"task-6","title":"Beschluss fassen & Protokoll unterzeichnen","description":"Abstimmungsergebnis protokollieren; von Versammlungsleitung und Protokollführung unterschreiben lassen.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-7","title":"Mitglieder über neues Modell informieren","description":"Beitragshöhe, monatliche Zahlungsoption, Starttermin, Bankdaten und eindeutige Verwendungszwecke mitteilen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Sammy","defaultStatus":"todo"},{"id":"task-8","title":"ClubDesk Free einrichten & testen","description":"Mitgliederliste importieren, Benutzerrollen vergeben und Buchungskategorien (Beitrag vs. Spende) anlegen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-9","title":"ClubDesk Auftragsverarbeitung & DSGVO","description":"AVV mit ClubDesk online abschließen und vereinsinterne Datenschutzerklärung ergänzen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-10","title":"Betterplace: Organisationsprofil anlegen","description":"Vereinsname, Kontaktdaten, Vereinsregister und Freistellungsbescheid im Portal hinterlegen.","category":"Fundraising","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-11","title":"Betterplace: Projektseite & Bedarfe anlegen","description":"Aussagekräftigen Projekttitel, Beschreibung, Zielgruppe, Bildmaterial und konkrete Spendenbedarfe erstellen.","category":"Fundraising","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-12","title":"Betterplace: Bankverbindung für Auszahlung hinterlegen","description":"Vereinskonto bei erster Auszahlung eintragen und Verifizierungsnachweis bereithalten.","category":"Fundraising","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-13","title":"Mittelverwendung & Belegordnung","description":"Spendennachweise, Verträge und Mietbelege sicher und getrennt von Mitgliedsbeiträgen archivieren.","category":"Finanzen & Bank","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-14","title":"Beitragsrechner & Monatsabgleich pflegen","description":"Monatliche Einnahmen gegen Mietbedarf (650 €) gegenprüfen und Deckungsgrad aktualisieren.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"}];
+const ZIBG_MEMBERS = ["Abdul Aziz","Engin","Mahmoud","Sammy"];
+
+  (function () {
+    const STORAGE_KEY = 'zibg_kanban_tasks_v1';
+    let currentFilter = 'all';
+
+    function loadTasks() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            const savedMap = new Map(parsed.map(t => [t.id, t]));
+            return initialZibgTasks.map(t => savedMap.get(t.id) || t);
+          }
+        }
+      } catch (e) {
+        console.error('Error loading tasks:', e);
+      }
+      return JSON.parse(JSON.stringify(initialZibgTasks));
+    }
+
+    let tasks = loadTasks();
+
+    function saveTasks() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      } catch (e) {
+        console.error('Error saving tasks:', e);
+      }
+    }
+
+    function renderBoard() {
+      const listTodo = document.querySelector('#list-todo');
+      const listProgress = document.querySelector('#list-in-progress');
+      const listDone = document.querySelector('#list-done');
+
+      if (!listTodo || !listProgress || !listDone) return;
+
+      listTodo.innerHTML = '';
+      listProgress.innerHTML = '';
+      listDone.innerHTML = '';
+
+      let todoCount = 0;
+      let progressCount = 0;
+      let doneCount = 0;
+
+      const memberCounts = {};
+      ZIBG_MEMBERS.forEach(m => {
+        memberCounts[m] = { total: 0, done: 0 };
+      });
+
+      tasks.forEach(task => {
+        if (!memberCounts[task.defaultAssignee]) {
+          memberCounts[task.defaultAssignee] = { total: 0, done: 0 };
+        }
+        memberCounts[task.defaultAssignee].total++;
+        if (task.defaultStatus === 'done') {
+          memberCounts[task.defaultAssignee].done++;
+        }
+
+        if (task.defaultStatus === 'todo') todoCount++;
+        else if (task.defaultStatus === 'in-progress') progressCount++;
+        else if (task.defaultStatus === 'done') doneCount++;
+
+        // Filter check
+        if (currentFilter !== 'all' && task.defaultAssignee !== currentFilter) {
+          return;
+        }
+
+        const card = document.createElement('article');
+        card.className = `kanban-card kanban-card--${task.defaultStatus}`;
+        card.setAttribute('data-task-id', task.id);
+        card.setAttribute('draggable', 'true');
+
+        card.innerHTML = `
+          <div class="kanban-card-top">
+            <span class="kanban-tag">${escapeHtml(task.category)}</span>
+            <div class="kanban-assignee-wrap">
+              <label for="assignee-${task.id}" class="sr-only">Zuständig</label>
+              <select class="kanban-assignee-select" id="assignee-${task.id}" data-action="assign" data-id="${task.id}">
+                ${ZIBG_MEMBERS.map(m => `<option value="${m}" ${m === task.defaultAssignee ? 'selected' : ''}>${m}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+          <h4 class="kanban-card-title">${escapeHtml(task.title)}</h4>
+          <p class="kanban-card-desc">${escapeHtml(task.description)}</p>
+          <div class="kanban-card-footer">
+            <div class="kanban-status-controls">
+              <button type="button" class="kanban-status-btn ${task.defaultStatus === 'todo' ? 'is-active' : ''}" data-status="todo" data-id="${task.id}" title="Als Offen markieren">📋 Offen</button>
+              <button type="button" class="kanban-status-btn ${task.defaultStatus === 'in-progress' ? 'is-active' : ''}" data-status="in-progress" data-id="${task.id}" title="Als In Arbeit markieren">⏳ In Arbeit</button>
+              <button type="button" class="kanban-status-btn ${task.defaultStatus === 'done' ? 'is-active' : ''}" data-status="done" data-id="${task.id}" title="Als Erledigt markieren">✅ Erledigt</button>
+            </div>
+          </div>
+        `;
+
+        // Native Drag & Drop Handlers
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.setData('text/plain', task.id);
+          card.classList.add('is-dragging');
+          setTimeout(() => card.style.opacity = '0.4', 0);
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('is-dragging');
+          card.style.opacity = '1';
+          document.querySelectorAll('.kanban-col').forEach(c => c.classList.remove('drag-over'));
+        });
+
+        if (task.defaultStatus === 'todo') listTodo.appendChild(card);
+        else if (task.defaultStatus === 'in-progress') listProgress.appendChild(card);
+        else if (task.defaultStatus === 'done') listDone.appendChild(card);
+      });
+
+      // Update counters
+      const elCountTodo = document.querySelector('#count-todo');
+      const elCountProgress = document.querySelector('#count-in-progress');
+      const elCountDone = document.querySelector('#count-done');
+      const elCountAll = document.querySelector('#count-all');
+
+      if (elCountTodo) elCountTodo.textContent = String(todoCount);
+      if (elCountProgress) elCountProgress.textContent = String(progressCount);
+      if (elCountDone) elCountDone.textContent = String(doneCount);
+      if (elCountAll) elCountAll.textContent = String(tasks.length);
+
+      // Progress bar & Total stats
+      const total = tasks.length;
+      const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+      const totalStatsEl = document.querySelector('#board-total-stats');
+      const progressFill = document.querySelector('#board-progress-fill');
+      const progressBar = document.querySelector('#board-progress-bar');
+
+      if (totalStatsEl) {
+        totalStatsEl.textContent = `${doneCount} von ${total} Aufgaben erledigt (${pct} %)`;
+      }
+      if (progressFill) {
+        progressFill.style.width = `${pct}%`;
+      }
+      if (progressBar) {
+        progressBar.setAttribute('aria-valuenow', String(pct));
+      }
+
+      // Member pill & stat updates
+      ZIBG_MEMBERS.forEach(m => {
+        const stats = memberCounts[m] || { total: 0, done: 0 };
+        const memberCountEl = document.querySelector(`[data-member-count="${m}"]`);
+        if (memberCountEl) {
+          memberCountEl.textContent = `${stats.done} / ${stats.total} erledigt`;
+        }
+        const pillCountEl = document.querySelector(`[data-pill-count="${m}"]`);
+        if (pillCountEl) {
+          pillCountEl.textContent = String(stats.total);
+        }
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function initBoard() {
+      // Drag & Drop onto Columns
+      const columns = document.querySelectorAll('.kanban-col');
+      columns.forEach(col => {
+        col.addEventListener('dragover', e => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
+          col.classList.add('drag-over');
+        });
+
+        col.addEventListener('dragleave', () => {
+          col.classList.remove('drag-over');
+        });
+
+        col.addEventListener('drop', e => {
+          e.preventDefault();
+          col.classList.remove('drag-over');
+          const taskId = e.dataTransfer.getData('text/plain');
+          const newStatus = col.getAttribute('data-col');
+          if (taskId && newStatus) {
+            const targetTask = tasks.find(t => t.id === taskId);
+            if (targetTask && targetTask.defaultStatus !== newStatus) {
+              targetTask.defaultStatus = newStatus;
+              saveTasks();
+              renderBoard();
+            }
+          }
+        });
+      });
+
+      // Event Delegation for Buttons & Dropdowns
+      const kanbanGrid = document.querySelector('#kanban-grid');
+      if (kanbanGrid) {
+        kanbanGrid.addEventListener('click', e => {
+          const btn = e.target.closest('[data-status]');
+          if (btn) {
+            const id = btn.getAttribute('data-id');
+            const newStatus = btn.getAttribute('data-status');
+            const targetTask = tasks.find(t => t.id === id);
+            if (targetTask && targetTask.defaultStatus !== newStatus) {
+              targetTask.defaultStatus = newStatus;
+              saveTasks();
+              renderBoard();
+            }
+          }
+        });
+
+        kanbanGrid.addEventListener('change', e => {
+          const select = e.target.closest('[data-action="assign"]');
+          if (select) {
+            const id = select.getAttribute('data-id');
+            const newAssignee = select.value;
+            const targetTask = tasks.find(t => t.id === id);
+            if (targetTask && targetTask.defaultAssignee !== newAssignee) {
+              targetTask.defaultAssignee = newAssignee;
+              saveTasks();
+              renderBoard();
+            }
+          }
+        });
+      }
+
+      // Filter Pills
+      const filterPills = document.querySelector('#board-filter-pills');
+      if (filterPills) {
+        filterPills.addEventListener('click', e => {
+          const pill = e.target.closest('[data-filter]');
+          if (pill) {
+            filterPills.querySelectorAll('.board-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            currentFilter = pill.getAttribute('data-filter') || 'all';
+            renderBoard();
+          }
+        });
+      }
+
+      // Reset Button
+      const resetBtn = document.querySelector('#board-reset-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Möchtest du alle Aufgaben auf den Ausgangszustand zurücksetzen?')) {
+            localStorage.removeItem(STORAGE_KEY);
+            tasks = JSON.parse(JSON.stringify(initialZibgTasks));
+            saveTasks();
+            renderBoard();
+          }
+        });
+      }
+
+      // WhatsApp Copy Export
+      const whatsappBtn = document.querySelector('#board-whatsapp-btn');
+      const toast = document.querySelector('#board-toast');
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', async () => {
+          const doneTasks = tasks.filter(t => t.defaultStatus === 'done');
+          const progressTasks = tasks.filter(t => t.defaultStatus === 'in-progress');
+          const todoTasks = tasks.filter(t => t.defaultStatus === 'todo');
+          const total = tasks.length;
+          const pct = Math.round((doneTasks.length / total) * 100);
+
+          let text = `*📊 ZIBG e.V. – Aufgaben- und Vorstandsstand*\n`;
+          text += `Stand: ${new Date().toLocaleDateString('de-DE')} · ${doneTasks.length}/${total} erledigt (${pct}%)\n\n`;
+
+          text += `*Zuständigkeiten Übersicht:*\n`;
+          ZIBG_MEMBERS.forEach(m => {
+            const mTasks = tasks.filter(t => t.defaultAssignee === m);
+            const mDone = mTasks.filter(t => t.defaultStatus === 'done').length;
+            text += `• ${m}: ${mDone}/${mTasks.length} erledigt\n`;
+          });
+
+          if (progressTasks.length > 0) {
+            text += `\n*⏳ Aktuell in Bearbeitung:*\n`;
+            progressTasks.forEach(t => {
+              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+            });
+          }
+
+          if (todoTasks.length > 0) {
+            text += `\n*📋 Noch offen:*\n`;
+            todoTasks.forEach(t => {
+              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+            });
+          }
+
+          if (doneTasks.length > 0) {
+            text += `\n*✅ Bereits erledigt:*\n`;
+            doneTasks.forEach(t => {
+              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+            });
+          }
+
+          text += `\n_Live-Vorstandsboard:_ https://nikcommits.github.io/zibg-vorstand/aufgaben/`;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (toast) {
+              toast.hidden = false;
+              setTimeout(() => {
+                toast.hidden = true;
+              }, 3500);
+            }
+          } catch (err) {
+            alert('Kopieren fehlgeschlagen: ' + err);
+          }
+        });
+      }
+
+      // Initial render
+      renderBoard();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBoard);
+    } else {
+      initBoard();
+    }
+  })();
+})();</script></main><footer><div class="wrap">Zentrum für Islamische Bildung und Gemeinschaft in Krefeld e.V. · Interne Informationsseite · Arbeitsstand vom 21.08.2026</div></footer></div></body></html>
