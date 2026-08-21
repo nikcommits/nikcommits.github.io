@@ -1,0 +1,20 @@
+---
+// src/components/zibg/TableOfContents.astro
+import { zibgSections } from '../../data/zibg-sections';
+---
+
+<aside class="toc wrap" id="inhaltsverzeichnis" aria-labelledby="toc-title">
+  <div class="toc-box">
+    <div class="toc-head">
+      <h2 id="toc-title">Inhaltsverzeichnis</h2>
+      <span>Direkt zum gewünschten Thema springen</span>
+    </div>
+    <div class="toc-links">
+      {zibgSections.map(section => (
+        <a href={`#${section.id}`}>
+          <b>{section.badge}</b> {section.title}
+        </a>
+      ))}
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,33 @@
+---
+// src/pages/zibg-vorstand/index.astro
+import ZibgLayout from '../../layouts/ZibgLayout.astro';
+import TableOfContents from '../../components/zibg/TableOfContents.astro';
+import Ausgangslage from '../../components/zibg/sections/Ausgangslage.astro';
+import Satzungslage from '../../components/zibg/sections/Satzungslage.astro';
+import SatzungDokument from '../../components/zibg/sections/SatzungDokument.astro';
+import Zahlungen from '../../components/zibg/sections/Zahlungen.astro';
+import Beschluss from '../../components/zibg/sections/Beschluss.astro';
+import Beitragsrechner from '../../components/zibg/sections/Beitragsrechner.astro';
+import ClubDesk from '../../components/zibg/sections/ClubDesk.astro';
+import NaechsteSchritte from '../../components/zibg/sections/NaechsteSchritte.astro';
+import Betterplace from '../../components/zibg/sections/Betterplace.astro';
+import Faq from '../../components/zibg/sections/Faq.astro';
+import Quellen from '../../components/zibg/sections/Quellen.astro';
+---
+
+<ZibgLayout>
+  <TableOfContents />
+  <main class="wrap">
+    <Ausgangslage />
+    <Satzungslage />
+    <SatzungDokument />
+    <Zahlungen />
+    <Beschluss />
+    <Beitragsrechner />
+    <ClubDesk />
+    <NaechsteSchritte />
+    <Betterplace />
+    <Faq />
+    <Quellen />
+  </main>
+</ZibgLayout>

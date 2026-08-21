@@ -1,0 +1,63 @@
+---
+// src/layouts/ZibgLayout.astro
+import AccessGate from '../components/zibg/AccessGate.astro';
+import { zibgNavItems } from '../data/zibg-sections';
+import '../styles/zibg.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'ZIBG e.V. | Mitgliedsbeiträge und Vereinsverwaltung',
+  description = 'Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk, Betterplace-Registrierung und den nächsten Beschlüssen.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#212121" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <link rel="icon" type="image/svg+xml" href="./zibg-logo.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <AccessGate />
+
+    <div id="protected-site" hidden>
+      <header>
+        <div class="wrap nav">
+          <a class="brand" href="#top">
+            <img class="brand-logo brand-logo--nav" src="./zibg-logo.svg" alt="" width="44" height="44" />
+            <span>ZIBG e.V.</span>
+          </a>
+          <nav aria-label="Seitennavigation">
+            {zibgNavItems.map(item => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+        </div>
+      </header>
+
+      <div class="hero" id="top">
+        <div class="wrap">
+          <p class="eyebrow">Interner Arbeitsstand für den Vorstand</p>
+          <h1>Mitgliedsbeiträge jetzt sauber ordnen.</h1>
+          <p class="lead">Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.</p>
+          <div class="status"><span class="status-dot"></span>Stand: 21. August 2026 · noch kein Beschluss</div>
+        </div>
+      </div>
+
+      <slot />
+
+      <footer>
+        <div class="wrap">Zentrum für Islamische Bildung und Gemeinschaft in Krefeld e.V. · Interne Informationsseite · Arbeitsstand vom 21.08.2026</div>
+      </footer>
+    </div>
+  </body>
+</html>
