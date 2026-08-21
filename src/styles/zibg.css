@@ -1314,3 +1314,221 @@ footer {
   outline-offset: -2px;
   background: #e9eaf2;
 }
+
+/* Safe Area Insets for Mobile Notch & Status Bar */
+header {
+  padding-top: max(env(safe-area-inset-top, 0px), 0px);
+}
+
+/* ==========================================================================
+   First-Class Dark Mode for iOS & Mobile Browsers
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f4f4f5;
+    --muted: #a1a1aa;
+    --paper: #121214;
+    --card: #1c1c20;
+    --green: #f4f4f5;
+    --green-2: #60a5fa;
+    --blue: #38bdf8;
+    --mint: #13241b;
+    --gold: #fbbf24;
+    --line: #2e2e34;
+    --warn: #272115;
+    --warn-line: #92400e;
+    --danger: #f87171;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  header {
+    background: rgba(18, 18, 20, 0.94);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    color: #ffffff;
+  }
+
+  nav a {
+    color: var(--muted);
+  }
+  nav a:hover {
+    color: #ffffff;
+  }
+
+  .toc-box {
+    background: #1c1c20;
+    border-color: var(--line);
+  }
+  .toc-links a {
+    background: #24242a;
+    border-color: var(--line);
+    color: var(--ink);
+  }
+  .toc-links a:hover {
+    border-color: var(--blue);
+  }
+  .toc-links b {
+    background: #1e3a8a;
+    color: #93c5fd;
+  }
+
+  .card,
+  .metric,
+  .step,
+  .checklist-card,
+  .source,
+  .board-stats-card,
+  .board-member-stat,
+  .board-teaser-card {
+    background: #1c1c20 !important;
+    border-color: var(--line) !important;
+    color: var(--ink);
+  }
+
+  .quote {
+    background: #24242a;
+    color: #e4e4e7;
+    border-left-color: var(--gold);
+  }
+
+  .notice {
+    background: var(--warn);
+    border-color: var(--warn-line);
+    color: #fef3c7;
+  }
+
+  .kanban-col {
+    background: #161618 !important;
+    border-color: var(--line) !important;
+  }
+  .kanban-col-head h3 {
+    color: #ffffff;
+  }
+  .kanban-count {
+    background: #24242a;
+    color: #ffffff;
+    border-color: var(--line);
+  }
+
+  .kanban-card {
+    background: #24242a !important;
+    border-color: var(--line) !important;
+  }
+  .kanban-card--done {
+    background: #16241a !important;
+    border-color: #1e3a24 !important;
+  }
+  .kanban-card-title {
+    color: #ffffff !important;
+  }
+  .kanban-card-desc {
+    color: #a1a1aa !important;
+  }
+
+  .kanban-assignee-select {
+    background: #2e2e36 !important;
+    color: #ffffff !important;
+    border-color: #444450 !important;
+  }
+
+  .kanban-status-btn {
+    background: #2e2e36 !important;
+    color: #d4d4d8 !important;
+    border-color: #444450 !important;
+  }
+  .kanban-status-btn:hover {
+    background: #3a3a44 !important;
+    color: #ffffff !important;
+  }
+  .kanban-status-btn.is-active {
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-color: #2563eb !important;
+  }
+
+  .board-pill {
+    background: #24242a;
+    border-color: var(--line);
+    color: var(--muted);
+  }
+  .board-pill.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+  }
+
+  .board-reset-btn {
+    background: #24242a;
+    border-color: var(--line);
+    color: var(--muted);
+  }
+  .board-reset-btn:hover {
+    background: #2e2e36;
+    color: #ffffff;
+  }
+
+  input, select, textarea {
+    background: #24242a !important;
+    border-color: var(--line) !important;
+    color: #ffffff !important;
+  }
+
+  .calc {
+    background: #1c1c20;
+  }
+
+  .result {
+    background: #13241b;
+    border-color: #1e3a24;
+    color: #86efac;
+  }
+  .result span, .result strong {
+    color: #86efac;
+  }
+
+  details {
+    background: #1c1c20;
+    border-color: var(--line);
+  }
+  details summary {
+    color: #ffffff;
+  }
+  details > div {
+    color: var(--muted);
+  }
+
+  .document-bar {
+    background: #1c1c20;
+    border-color: var(--line);
+  }
+  .document-frame {
+    background: #121214;
+  }
+
+  .button-link.secondary {
+    background: #24242a;
+    border-color: var(--line);
+    color: #ffffff;
+  }
+  .button-link.secondary:hover {
+    background: #2e2e36;
+  }
+
+  .access-box {
+    background: #1c1c20;
+    border-color: var(--line);
+  }
+  .access-box h1 {
+    color: #ffffff;
+  }
+  .access-box p {
+    color: var(--muted);
+  }
+}

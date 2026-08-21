@@ -39,14 +39,16 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#212121" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121214" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
 
     <!-- Web App & PWA / Home-Screen App Meta Tags -->
     <link rel="manifest" href={manifestPath} />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="ZIBG Vorstand" />
     <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconPath} />
     <link rel="icon" type="image/png" sizes="192x192" href={icon192Path} />
