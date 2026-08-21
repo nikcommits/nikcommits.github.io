@@ -26,7 +26,9 @@ const {
   heroStatus = 'Stand: 21. August 2026 · noch kein Beschluss',
 } = Astro.props;
 
-const logoPath = `${basePath}zibg-logo.svg`;
+const logoSvgPath = `${basePath}zibg-logo.svg`;
+const appleTouchIconPath = `${basePath}apple-touch-icon.png`;
+const icon192Path = `${basePath}icon-192.png`;
 const manifestPath = `${basePath}manifest.json`;
 const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
 ---
@@ -46,8 +48,9 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="ZIBG Vorstand" />
-    <link rel="apple-touch-icon" href={logoPath} />
-    <link rel="icon" type="image/svg+xml" href={logoPath} />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconPath} />
+    <link rel="icon" type="image/png" sizes="192x192" href={icon192Path} />
+    <link rel="icon" type="image/svg+xml" href={logoSvgPath} />
 
     <title>{title}</title>
   </head>
@@ -58,7 +61,7 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
       <header>
         <div class="wrap nav">
           <a class="brand" href={isBoardPage ? '../index.html' : '#top'}>
-            <img class="brand-logo brand-logo--nav" src={logoPath} alt="" width="44" height="44" />
+            <img class="brand-logo brand-logo--nav" src={logoSvgPath} alt="" width="44" height="44" />
             <span>ZIBG e.V.</span>
           </a>
           <nav aria-label="Seitennavigation">
