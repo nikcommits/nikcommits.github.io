@@ -109,7 +109,6 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            // merge in case new tasks are added
             const savedMap = new Map(parsed.map(t => [t.id, t]));
             return initialZibgTasks.map(t => savedMap.get(t.id) || t);
           }
@@ -244,125 +243,132 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
       return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    // Event Delegation for Kanban Cards
-    const kanbanGrid = document.querySelector('#kanban-grid');
-    if (kanbanGrid) {
-      kanbanGrid.addEventListener('click', e => {
-        const btn = e.target.closest('[data-status]');
-        if (btn) {
-          const id = btn.getAttribute('data-id');
-          const newStatus = btn.getAttribute('data-status');
-          const targetTask = tasks.find(t => t.id === id);
-          if (targetTask && targetTask.defaultStatus !== newStatus) {
-            targetTask.defaultStatus = newStatus;
-            saveTasks();
-            renderBoard();
+    function initBoard() {
+      // Event Delegation for Kanban Cards
+      const kanbanGrid = document.querySelector('#kanban-grid');
+      if (kanbanGrid) {
+        kanbanGrid.addEventListener('click', e => {
+          const btn = e.target.closest('[data-status]');
+          if (btn) {
+            const id = btn.getAttribute('data-id');
+            const newStatus = btn.getAttribute('data-status');
+            const targetTask = tasks.find(t => t.id === id);
+            if (targetTask && targetTask.defaultStatus !== newStatus) {
+              targetTask.defaultStatus = newStatus;
+              saveTasks();
+              renderBoard();
+            }
           }
-        }
-      });
-
-      kanbanGrid.addEventListener('change', e => {
-        const select = e.target.closest('[data-action="assign"]');
-        if (select) {
-          const id = select.getAttribute('data-id');
-          const newAssignee = select.value;
-          const targetTask = tasks.find(t => t.id === id);
-          if (targetTask && targetTask.defaultAssignee !== newAssignee) {
-            targetTask.defaultAssignee = newAssignee;
-            saveTasks();
-            renderBoard();
-          }
-        }
-      });
-    }
-
-    // Filter Pills
-    const filterPills = document.querySelector('#board-filter-pills');
-    if (filterPills) {
-      filterPills.addEventListener('click', e => {
-        const pill = e.target.closest('[data-filter]');
-        if (pill) {
-          filterPills.querySelectorAll('.board-pill').forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          currentFilter = pill.getAttribute('data-filter') || 'all';
-          renderBoard();
-        }
-      });
-    }
-
-    // Reset Button
-    const resetBtn = document.querySelector('#board-reset-btn');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        if (confirm('Möchtest du alle Aufgaben auf den Ausgangszustand zurücksetzen?')) {
-          localStorage.removeItem(STORAGE_KEY);
-          tasks = JSON.parse(JSON.stringify(initialZibgTasks));
-          saveTasks();
-          renderBoard();
-        }
-      });
-    }
-
-    // WhatsApp Copy Export
-    const whatsappBtn = document.querySelector('#board-whatsapp-btn');
-    const toast = document.querySelector('#board-toast');
-    if (whatsappBtn) {
-      whatsappBtn.addEventListener('click', async () => {
-        const doneTasks = tasks.filter(t => t.defaultStatus === 'done');
-        const progressTasks = tasks.filter(t => t.defaultStatus === 'in-progress');
-        const todoTasks = tasks.filter(t => t.defaultStatus === 'todo');
-        const total = tasks.length;
-        const pct = Math.round((doneTasks.length / total) * 100);
-
-        let text = `*📊 ZIBG e.V. – Aufgaben- und Vorstandsstand*\n`;
-        text += `Stand: ${new Date().toLocaleDateString('de-DE')} · ${doneTasks.length}/${total} erledigt (${pct}%)\n\n`;
-
-        // Breakdown per member
-        text += `*Zuständigkeiten Übersicht:*\n`;
-        ZIBG_MEMBERS.forEach(m => {
-          const mTasks = tasks.filter(t => t.defaultAssignee === m);
-          const mDone = mTasks.filter(t => t.defaultStatus === 'done').length;
-          text += `• ${m}: ${mDone}/${mTasks.length} erledigt\n`;
         });
 
-        if (progressTasks.length > 0) {
-          text += `\n*⏳ Aktuell in Bearbeitung:*\n`;
-          progressTasks.forEach(t => {
-            text += `• [${t.defaultAssignee}] ${t.title}\n`;
-          });
-        }
-
-        if (todoTasks.length > 0) {
-          text += `\n*📋 Noch offen:*\n`;
-          todoTasks.forEach(t => {
-            text += `• [${t.defaultAssignee}] ${t.title}\n`;
-          });
-        }
-
-        if (doneTasks.length > 0) {
-          text += `\n*✅ Bereits erledigt:*\n`;
-          doneTasks.forEach(t => {
-            text += `• [${t.defaultAssignee}] ${t.title}\n`;
-          });
-        }
-
-        text += `\n_Live-Vorstandsboard:_ https://nikcommits.github.io/zibg-vorstand/index.html#aufgaben`;
-
-        try {
-          await navigator.clipboard.writeText(text);
-          if (toast) {
-            toast.hidden = false;
-            setTimeout(() => {
-              toast.hidden = true;
-            }, 3500);
+        kanbanGrid.addEventListener('change', e => {
+          const select = e.target.closest('[data-action="assign"]');
+          if (select) {
+            const id = select.getAttribute('data-id');
+            const newAssignee = select.value;
+            const targetTask = tasks.find(t => t.id === id);
+            if (targetTask && targetTask.defaultAssignee !== newAssignee) {
+              targetTask.defaultAssignee = newAssignee;
+              saveTasks();
+              renderBoard();
+            }
           }
-        } catch (err) {
-          alert('Kopieren fehlgeschlagen: ' + err);
-        }
-      });
+        });
+      }
+
+      // Filter Pills
+      const filterPills = document.querySelector('#board-filter-pills');
+      if (filterPills) {
+        filterPills.addEventListener('click', e => {
+          const pill = e.target.closest('[data-filter]');
+          if (pill) {
+            filterPills.querySelectorAll('.board-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            currentFilter = pill.getAttribute('data-filter') || 'all';
+            renderBoard();
+          }
+        });
+      }
+
+      // Reset Button
+      const resetBtn = document.querySelector('#board-reset-btn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          if (confirm('Möchtest du alle Aufgaben auf den Ausgangszustand zurücksetzen?')) {
+            localStorage.removeItem(STORAGE_KEY);
+            tasks = JSON.parse(JSON.stringify(initialZibgTasks));
+            saveTasks();
+            renderBoard();
+          }
+        });
+      }
+
+      // WhatsApp Copy Export
+      const whatsappBtn = document.querySelector('#board-whatsapp-btn');
+      const toast = document.querySelector('#board-toast');
+      if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', async () => {
+          const doneTasks = tasks.filter(t => t.defaultStatus === 'done');
+          const progressTasks = tasks.filter(t => t.defaultStatus === 'in-progress');
+          const todoTasks = tasks.filter(t => t.defaultStatus === 'todo');
+          const total = tasks.length;
+          const pct = Math.round((doneTasks.length / total) * 100);
+
+          let text = `*📊 ZIBG e.V. – Aufgaben- und Vorstandsstand*\n`;
+          text += `Stand: ${new Date().toLocaleDateString('de-DE')} · ${doneTasks.length}/${total} erledigt (${pct}%)\n\n`;
+
+          text += `*Zuständigkeiten Übersicht:*\n`;
+          ZIBG_MEMBERS.forEach(m => {
+            const mTasks = tasks.filter(t => t.defaultAssignee === m);
+            const mDone = mTasks.filter(t => t.defaultStatus === 'done').length;
+            text += `• ${m}: ${mDone}/${mTasks.length} erledigt\n`;
+          });
+
+          if (progressTasks.length > 0) {
+            text += `\n*⏳ Aktuell in Bearbeitung:*\n`;
+            progressTasks.forEach(t => {
+              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+            });
+          }
+
+          if (todoTasks.length > 0) {
+            text += `\n*📋 Noch offen:*\n`;
+            todoTasks.forEach(t => {
+              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+            });
+          }
+
+          if (doneTasks.length > 0) {
+            text += `\n*✅ Bereits erledigt:*\n`;
+            doneTasks.forEach(t => {
+              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+            });
+          }
+
+          text += `\n_Live-Vorstandsboard:_ https://nikcommits.github.io/zibg-vorstand/index.html#aufgaben`;
+
+          try {
+            await navigator.clipboard.writeText(text);
+            if (toast) {
+              toast.hidden = false;
+              setTimeout(() => {
+                toast.hidden = true;
+              }, 3500);
+            }
+          } catch (err) {
+            alert('Kopieren fehlgeschlagen: ' + err);
+          }
+        });
+      }
+
+      // Initial render
+      renderBoard();
     }
 
-    // Initial render
-    renderBoard();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBoard);
+    } else {
+      initBoard();
+    }
   })();
 </script>

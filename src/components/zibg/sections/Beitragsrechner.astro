@@ -19,24 +19,34 @@
 </section>
 
 <script is:inline>
-  const members = document.querySelector('#members');
-  const rate = document.querySelector('#rate');
-  const income = document.querySelector('#income');
-  const gap = document.querySelector('#gap');
-  const rent = 650;
-  const euro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  (function () {
+    function initCalc() {
+      const members = document.querySelector('#members');
+      const rate = document.querySelector('#rate');
+      const income = document.querySelector('#income');
+      const gap = document.querySelector('#gap');
+      const rent = 650;
+      const euro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
-  function updateCalculator() {
-    if (!members || !rate || !income || !gap) return;
-    const total = Math.max(0, Number(members.value) || 0) * Math.max(0, Number(rate.value) || 0);
-    income.textContent = euro.format(total);
-    const difference = rent - total;
-    gap.textContent = difference > 0 ? `Zur Miete fehlen ${euro.format(difference)}.` : `Die Miete ist gedeckt; Überschuss ${euro.format(Math.abs(difference))}.`;
-  }
+      function updateCalculator() {
+        if (!members || !rate || !income || !gap) return;
+        const total = Math.max(0, Number(members.value) || 0) * Math.max(0, Number(rate.value) || 0);
+        income.textContent = euro.format(total);
+        const difference = rent - total;
+        gap.textContent = difference > 0 ? `Zur Miete fehlen ${euro.format(difference)}.` : `Die Miete ist gedeckt; Überschuss ${euro.format(Math.abs(difference))}.`;
+      }
 
-  if (members && rate) {
-    members.addEventListener('input', updateCalculator);
-    rate.addEventListener('input', updateCalculator);
-    updateCalculator();
-  }
+      if (members && rate) {
+        members.addEventListener('input', updateCalculator);
+        rate.addEventListener('input', updateCalculator);
+        updateCalculator();
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCalc);
+    } else {
+      initCalc();
+    }
+  })();
 </script>

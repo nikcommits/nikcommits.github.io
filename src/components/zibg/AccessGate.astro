@@ -16,46 +16,57 @@
 </div>
 
 <script is:inline>
-  const accessGate = document.querySelector('#access-gate');
-  const accessForm = document.querySelector('#access-form');
-  const accessCode = document.querySelector('#access-code');
-  const accessError = document.querySelector('#access-error');
-  const protectedSite = document.querySelector('#protected-site');
-  const accessHash = '8ea22477221e40c13a1ae12d84cf897769b4aa60e247c98a735c51feb60e415a';
-  const accessStorageKey = 'zibg_access_until';
-  const accessDuration = 12 * 60 * 60 * 1000;
+  (function () {
+    const accessHash = '8ea22477221e40c13a1ae12d84cf897769b4aa60e247c98a735c51feb60e415a';
+    const accessStorageKey = 'zibg_access_until';
+    const accessDuration = 12 * 60 * 60 * 1000;
 
-  async function sha256(value) {
-    const bytes = new TextEncoder().encode(value);
-    const digest = await crypto.subtle.digest('SHA-256', bytes);
-    return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
-  }
+    async function sha256(value) {
+      const bytes = new TextEncoder().encode(value);
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
+      return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+    }
 
-  function openSite() {
-    if (accessGate) accessGate.hidden = true;
-    if (protectedSite) protectedSite.hidden = false;
-    document.body.style.overflow = '';
-  }
+    function openSite() {
+      const accessGate = document.querySelector('#access-gate');
+      const protectedSite = document.querySelector('#protected-site');
+      if (accessGate) accessGate.hidden = true;
+      if (protectedSite) protectedSite.hidden = false;
+      document.body.style.overflow = '';
+    }
 
-  if (Number(localStorage.getItem(accessStorageKey) || 0) > Date.now()) {
-    openSite();
-  } else {
-    localStorage.removeItem(accessStorageKey);
-    document.body.style.overflow = 'hidden';
-  }
+    function initGate() {
+      const accessForm = document.querySelector('#access-form');
+      const accessCode = document.querySelector('#access-code');
+      const accessError = document.querySelector('#access-error');
 
-  if (accessForm && accessCode) {
-    accessForm.addEventListener('submit', async event => {
-      event.preventDefault();
-      if (accessError) accessError.hidden = true;
-      if (await sha256(accessCode.value) === accessHash) {
-        localStorage.setItem(accessStorageKey, String(Date.now() + accessDuration));
-        accessCode.value = '';
+      if (Number(localStorage.getItem(accessStorageKey) || 0) > Date.now()) {
         openSite();
       } else {
-        if (accessError) accessError.hidden = false;
-        accessCode.select();
+        localStorage.removeItem(accessStorageKey);
+        document.body.style.overflow = 'hidden';
       }
-    });
-  }
+
+      if (accessForm && accessCode) {
+        accessForm.addEventListener('submit', async event => {
+          event.preventDefault();
+          if (accessError) accessError.hidden = true;
+          if (await sha256(accessCode.value) === accessHash) {
+            localStorage.setItem(accessStorageKey, String(Date.now() + accessDuration));
+            accessCode.value = '';
+            openSite();
+          } else {
+            if (accessError) accessError.hidden = false;
+            accessCode.select();
+          }
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initGate);
+    } else {
+      initGate();
+    }
+  })();
 </script>
