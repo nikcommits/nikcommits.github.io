@@ -1,0 +1,19 @@
+{
+  "name": "ZIBG e.V. – Vorstand & Aufgaben",
+  "short_name": "ZIBG Vorstand",
+  "description": "Interner Arbeitsbereich und Vorstands-Board des ZIBG e.V.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#212121",
+  "theme_color": "#212121",
+  "icons": [
+    {
+      "src": "./zibg-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
