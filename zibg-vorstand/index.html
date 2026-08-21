@@ -4,25 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk und den nächsten Beschlüssen.">
-  <meta name="theme-color" content="#12352d">
+  <meta name="theme-color" content="#212121">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <title>ZIBG e.V. | Mitgliedsbeiträge und Vereinsverwaltung</title>
   <style>
     :root {
-      --ink: #16201d;
-      --muted: #5f6e69;
-      --paper: #f4f5f1;
+      --ink: #212121;
+      --muted: #626262;
+      --paper: #f7f7f5;
       --card: #ffffff;
-      --green: #12352d;
-      --green-2: #1c5546;
-      --mint: #dfece5;
-      --gold: #d7b45a;
-      --line: #dbe2dd;
-      --warn: #fff5d9;
-      --warn-line: #e8c86b;
+      --green: #212121;
+      --green-2: #3200ff;
+      --blue: #00baff;
+      --mint: #eef5ff;
+      --gold: #ffb817;
+      --line: #e4e1dc;
+      --warn: #fff7df;
+      --warn-line: #ffb817;
       --danger: #8f342b;
       --radius: 18px;
-      --shadow: 0 18px 50px rgba(18, 53, 45, .08);
+      --shadow: 0 18px 50px rgba(33, 33, 33, .08);
     }
 
     * { box-sizing: border-box; }
@@ -42,13 +43,15 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(244, 245, 241, .92);
-      border-bottom: 1px solid rgba(18, 53, 45, .1);
+      background: rgba(247, 247, 245, .92);
+      border-bottom: 1px solid rgba(33, 33, 33, .1);
       backdrop-filter: blur(14px);
     }
     .nav { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { display: flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; font-weight: 800; }
-    .mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: #fff; background: var(--green); letter-spacing: -.5px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 850; }
+    .brand-logo { display: block; object-fit: contain; }
+    .brand-logo--nav { width: 44px; height: 44px; }
+    .brand-logo--access { width: min(165px, 48vw); height: auto; margin: 0 auto 18px; }
     nav { display: flex; gap: 18px; }
     nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 650; }
 
@@ -56,16 +59,27 @@
       overflow: hidden;
       color: #fff;
       background:
-        radial-gradient(circle at 85% 15%, rgba(215, 180, 90, .23), transparent 31%),
-        linear-gradient(135deg, #0d2923 0%, #16483c 100%);
+        radial-gradient(circle at 83% 12%, rgba(255, 184, 23, .26), transparent 29%),
+        radial-gradient(circle at 10% 100%, rgba(50, 0, 255, .22), transparent 34%),
+        linear-gradient(135deg, #171717 0%, #292929 100%);
       padding: 78px 0 68px;
     }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; color: #e5cf8a; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; color: #ffd064; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
     .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
     h1 { max-width: 850px; margin: 0; font-size: clamp(38px, 7vw, 72px); line-height: .98; letter-spacing: -.055em; }
-    .lead { max-width: 760px; margin: 26px 0 0; color: #d9e5e1; font-size: clamp(17px, 2.2vw, 21px); }
+    .lead { max-width: 760px; margin: 26px 0 0; color: #ededed; font-size: clamp(17px, 2.2vw, 21px); }
     .status { display: inline-flex; align-items: center; gap: 9px; margin-top: 28px; padding: 10px 14px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(255,255,255,.08); font-size: 14px; }
-    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(215,180,90,.12); }
+    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(255,184,23,.15); }
+
+    .toc { margin-top: -26px; position: relative; z-index: 2; }
+    .toc-box { padding: 23px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,255,255,.97); box-shadow: var(--shadow); }
+    .toc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+    .toc-head h2 { font-size: 22px; letter-spacing: -.02em; }
+    .toc-head span { color: var(--muted); font-size: 13px; }
+    .toc-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+    .toc-links a { display: flex; align-items: center; gap: 9px; min-height: 48px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: #fff; text-decoration: none; font-size: 14px; font-weight: 750; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+    .toc-links a:hover { transform: translateY(-1px); border-color: var(--gold); box-shadow: 0 8px 20px rgba(33,33,33,.07); }
+    .toc-links b { color: #3200ff; font-size: 12px; }
 
     main { padding: 42px 0 80px; }
     section { scroll-margin-top: 85px; margin-top: 64px; }
@@ -87,36 +101,38 @@
 
     .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
     .card { padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
-    .card-number { width: 34px; height: 34px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 10px; color: #fff; background: var(--green); font-weight: 800; }
+    .card-number { width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 11px; color: #fff; background: linear-gradient(135deg, var(--blue), var(--green-2)); font-weight: 800; }
     .tag { display: inline-block; padding: 5px 9px; border-radius: 999px; background: var(--mint); color: var(--green); font-size: 12px; font-weight: 800; }
-    .quote { margin-top: 15px; padding: 15px 17px; border-left: 3px solid var(--gold); background: #f7f8f5; color: #34433e; font-size: 14px; }
+    .quote { margin-top: 15px; padding: 15px 17px; border-left: 3px solid var(--gold); background: #faf9f6; color: #404040; font-size: 14px; }
+    .inline-source { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; padding: 6px 9px; border-radius: 999px; color: #2810b6; background: #f0edff; text-decoration: none; font-size: 12px; font-weight: 800; }
+    .inline-source:hover { color: #fff; background: var(--green-2); }
 
     .steps { display: grid; gap: 13px; counter-reset: steps; }
     .step { position: relative; padding: 22px 22px 22px 72px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
-    .step::before { counter-increment: steps; content: counter(steps); position: absolute; left: 22px; top: 22px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green); font-weight: 800; }
+    .step::before { counter-increment: steps; content: counter(steps); position: absolute; left: 22px; top: 22px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: var(--ink); background: linear-gradient(135deg, #ffc617, #ff9c17); font-weight: 900; }
 
-    .recommendation { padding: clamp(24px, 5vw, 46px); border-radius: 24px; color: #fff; background: var(--green); }
+    .recommendation { padding: clamp(24px, 5vw, 46px); border-radius: 24px; color: #fff; background: radial-gradient(circle at 90% 5%, rgba(50,0,255,.32), transparent 34%), radial-gradient(circle at 0 100%, rgba(255,184,23,.15), transparent 30%), #212121; }
     .recommendation h2 { max-width: 760px; }
-    .recommendation .sub { margin-top: 16px; max-width: 790px; color: #d7e4df; }
+    .recommendation .sub { margin-top: 16px; max-width: 790px; color: #e8e8e8; }
     .proposal { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-top: 28px; }
     .proposal > div { padding: 23px; border: 1px solid rgba(255,255,255,.17); border-radius: 16px; background: rgba(255,255,255,.075); }
-    .proposal strong { color: #f1d780; }
+    .proposal strong { color: #ffd064; }
 
     .calc { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 16px; align-items: end; }
     label { display: block; color: var(--muted); font-size: 13px; font-weight: 750; }
     input { width: 100%; margin-top: 7px; padding: 13px 14px; border: 1px solid #bcc9c3; border-radius: 10px; background: #fff; color: var(--ink); }
-    input:focus { outline: 3px solid rgba(28,85,70,.16); border-color: var(--green-2); }
+    input:focus { outline: 3px solid rgba(50,0,255,.14); border-color: var(--green-2); }
     .result { min-height: 77px; padding: 13px 16px; border-radius: 12px; background: var(--mint); }
     .result span { display: block; color: var(--muted); font-size: 13px; }
     .result strong { color: var(--green); font-size: 25px; }
 
     .clubdesk { display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; align-items: stretch; }
-    .price-card { display: grid; align-content: center; padding: 30px; border-radius: 22px; color: #fff; background: linear-gradient(145deg, var(--green), var(--green-2)); }
+    .price-card { display: grid; align-content: center; padding: 30px; border-radius: 22px; color: #fff; background: radial-gradient(circle at 100% 0, rgba(50,0,255,.55), transparent 45%), #212121; }
     .price { margin: 18px 0 5px; font-size: 56px; line-height: 1; font-weight: 850; letter-spacing: -.05em; }
     .checks { list-style: none; margin: 15px 0 0; padding: 0; }
     .checks li { position: relative; margin-top: 10px; padding-left: 29px; }
-    .checks li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green-2); font-size: 12px; font-weight: 900; }
-    .caution { margin-top: 18px; padding: 14px 16px; border-radius: 12px; background: #f3eee0; color: #504834; font-size: 14px; }
+    .checks li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: var(--ink); background: var(--gold); font-size: 12px; font-weight: 900; }
+    .caution { margin-top: 18px; padding: 14px 16px; border-radius: 12px; background: #fff7df; color: #514524; font-size: 14px; }
 
     details { border-top: 1px solid var(--line); background: #fff; }
     details:last-child { border-bottom: 1px solid var(--line); }
@@ -142,14 +158,15 @@
       place-items: center;
       padding: 22px;
       background:
-        radial-gradient(circle at 82% 12%, rgba(215,180,90,.24), transparent 34%),
-        linear-gradient(145deg, #0c2821, #17493d);
+        radial-gradient(circle at 82% 12%, rgba(255,184,23,.27), transparent 34%),
+        radial-gradient(circle at 10% 92%, rgba(50,0,255,.28), transparent 36%),
+        linear-gradient(145deg, #151515, #292929);
     }
-    .access-box { width: min(100%, 430px); padding: 34px; border-radius: 22px; background: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.24); }
-    .access-box h1 { margin: 24px 0 8px; color: var(--ink); font-size: 32px; line-height: 1.05; letter-spacing: -.04em; }
+    .access-box { width: min(100%, 460px); padding: 34px; border-radius: 24px; border-top: 5px solid var(--gold); background: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.28); }
+    .access-box h1 { margin: 5px 0 8px; color: var(--ink); font-size: 32px; line-height: 1.05; letter-spacing: -.04em; text-align: center; }
     .access-box p { color: var(--muted); }
-    .access-box button { width: 100%; margin-top: 14px; padding: 14px; border: 0; border-radius: 11px; background: var(--green); color: #fff; font-weight: 800; cursor: pointer; }
-    .access-box button:hover { background: var(--green-2); }
+    .access-box button { width: 100%; margin-top: 14px; padding: 14px; border: 0; border-radius: 11px; background: linear-gradient(135deg, #ffc617, #ff9c17); color: var(--ink); font-weight: 900; cursor: pointer; }
+    .access-box button:hover { filter: brightness(.96); }
     .access-error { margin: 0 0 15px; padding: 11px 13px; border-radius: 10px; background: #fff0ee; color: var(--danger) !important; font-size: 14px; }
     .access-note { margin: 15px 0 0 !important; text-align: center; font-size: 12px; }
 
@@ -162,6 +179,7 @@
       .grid-2, .proposal, .clubdesk { grid-template-columns: 1fr; }
       .calc { grid-template-columns: 1fr 1fr; }
       .result { grid-column: 1 / -1; }
+      .toc-links { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 480px) {
       .wrap { width: min(100% - 22px, 1100px); }
@@ -173,6 +191,9 @@
       .result { grid-column: auto; }
       .step { padding-left: 62px; }
       .step::before { left: 17px; }
+      .toc-head { display: block; }
+      .toc-head span { display: block; margin-top: 3px; }
+      .toc-links { grid-template-columns: 1fr; }
     }
     @media print {
       header, .calc { display: none; }
@@ -189,7 +210,7 @@
 <body>
   <div class="access-gate" id="access-gate">
     <form class="access-box" id="access-form">
-      <div class="mark">ZI</div>
+      <img class="brand-logo brand-logo--access" src="./zibg-logo.svg" alt="ZIBG – Zentrum für Islamische Bildung und Gemeinschaft Krefeld">
       <h1>Interner Bereich</h1>
       <p>Bitte gib den Zugangscode ein, um die Vorstandsinformationen zu öffnen.</p>
       <p class="access-error" id="access-error" role="alert" hidden>Der eingegebene Zugangscode ist nicht richtig.</p>
@@ -203,12 +224,12 @@
   <div id="protected-site" hidden>
   <header>
     <div class="wrap nav">
-      <a class="brand" href="#top"><span class="mark">ZI</span><span>ZIBG e.V.</span></a>
+      <a class="brand" href="#top"><img class="brand-logo brand-logo--nav" src="./zibg-logo.svg" alt=""><span>ZIBG e.V.</span></a>
       <nav aria-label="Seitennavigation">
         <a href="#satzung">Satzungslage</a>
         <a href="#zahlungen">Zahlungen</a>
         <a href="#clubdesk">ClubDesk</a>
-        <a href="#beschluss">Nächste Schritte</a>
+        <a href="#naechste-schritte">Nächste Schritte</a>
       </nav>
     </div>
   </header>
@@ -222,8 +243,27 @@
     </div>
   </div>
 
+  <aside class="toc wrap" id="inhaltsverzeichnis" aria-labelledby="toc-title">
+    <div class="toc-box">
+      <div class="toc-head">
+        <h2 id="toc-title">Inhaltsverzeichnis</h2>
+        <span>Direkt zum gewünschten Thema springen</span>
+      </div>
+      <div class="toc-links">
+        <a href="#ausgangslage"><b>01</b> Ausgangslage</a>
+        <a href="#satzung"><b>02</b> Satzungslage</a>
+        <a href="#zahlungen"><b>03</b> Bisherige Zahlungen</a>
+        <a href="#beschluss"><b>04</b> Empfehlung</a>
+        <a href="#rechner"><b>05</b> Beitragsrechner</a>
+        <a href="#clubdesk"><b>06</b> ClubDesk</a>
+        <a href="#naechste-schritte"><b>07</b> Nächste Schritte</a>
+        <a href="#quellen"><b>08</b> Rechtsquellen</a>
+      </div>
+    </div>
+  </aside>
+
   <main class="wrap">
-    <section aria-labelledby="lage-title">
+    <section id="ausgangslage" aria-labelledby="lage-title">
       <div class="section-head">
         <p class="kicker">01 · Ausgangslage</p>
         <h2 id="lage-title">Was wir derzeit sicher wissen</h2>
@@ -252,6 +292,7 @@
           <h3>Jahresbeitrag und Beitragsordnung</h3>
           <p>Nach § 5 der Satzung werden Jahresbeiträge erhoben. Die Mitgliederversammlung setzt die Höhe fest und beschließt die Beitragsordnung mit einfacher Mehrheit.</p>
           <div class="quote">Ein Jahresbeitrag von 240 € kann wahlweise einmal jährlich oder in zwölf Monatsraten zu je 20 € gezahlt werden. Dafür ist keine monatliche Beitragspflicht in der Satzung nötig.</div>
+          <a class="inline-source" href="https://www.gesetze-im-internet.de/bgb/__58.html" target="_blank" rel="noopener">§ 58 BGB beim Bundesministerium ↗</a>
         </article>
         <article class="card">
           <div class="card-number">§8</div>
@@ -263,11 +304,14 @@
           <span class="tag">Kein Registereintrag nötig</span>
           <h3 style="margin-top:12px">Beitragsordnung statt Satzungsänderung</h3>
           <p>Bleibt es bei einem Jahresbeitrag mit monatlicher Ratenzahlung, wird lediglich die von der Satzung vorgesehene Beitragsordnung beschlossen. Sie muss grundsätzlich nicht ins Vereinsregister eingetragen werden.</p>
+          <a class="inline-source" href="https://www.gesetze-im-internet.de/bgb/__58.html" target="_blank" rel="noopener">Gesetzliche Satzungsanforderungen ↗</a>
         </article>
         <article class="card">
           <span class="tag">Online-Aufnahme später</span>
           <h3 style="margin-top:12px">„Schriftlich“ ist für Webformulare ungünstig</h3>
           <p>§ 3 verlangt einen schriftlichen Aufnahmeantrag. Für eine unkomplizierte Online-Anmeldung wäre „Textform“ eindeutiger. Diese Umstellung wäre eine echte Satzungsänderung und müsste nach dem satzungsmäßigen Verfahren beschlossen und zum Vereinsregister angemeldet werden.</p>
+          <a class="inline-source" href="https://www.gesetze-im-internet.de/bgb/__126.html" target="_blank" rel="noopener">§ 126 BGB: Schriftform ↗</a>
+          <a class="inline-source" href="https://www.gesetze-im-internet.de/bgb/__126b.html" target="_blank" rel="noopener">§ 126b BGB: Textform ↗</a>
         </article>
       </div>
     </section>
@@ -304,11 +348,13 @@
           <h3>Freiwillig mehr zahlen</h3>
           <p>Zusätzliche Beträge sind nur dann Spenden, wenn sie freiwillig und ohne Gegenleistung geleistet werden. Am saubersten sind zwei getrennte Überweisungen:</p>
           <p><strong>„Mitgliedsbeitrag – Name“</strong><br>und<br><strong>„Spende – Name“</strong></p>
+          <a class="inline-source" href="https://www.finanzamt.nrw.de/steuerinfos/weitere-themen/vereine-und-stiftungen/zuwendungsbestaetigung" target="_blank" rel="noopener">Finanzverwaltung NRW: Zuwendungen ↗</a>
+          <a class="inline-source" href="https://www.gesetze-im-internet.de/estg/__10b.html" target="_blank" rel="noopener">§ 10b EStG ↗</a>
         </div>
       </div>
     </section>
 
-    <section aria-labelledby="rechner-title">
+    <section id="rechner" aria-labelledby="rechner-title">
       <div class="section-head">
         <p class="kicker">04 · Beitragsrechner</p>
         <h2 id="rechner-title">Was bringt das Modell monatlich?</h2>
@@ -346,12 +392,12 @@
             <li>Zugriffsrechte für Vorstand und Schatzmeister festlegen</li>
             <li>Online-Formulare und spätere Mitgliederaufnahme testen</li>
           </ul>
-          <div class="caution"><strong>Wichtig:</strong> In ClubDesk Free sind die Module vorhanden, der Funktionsumfang ist aber eingeschränkt. Deshalb zuerst mit wenigen Datensätzen testen, insbesondere Bankabgleich, Buchhaltung, Export und Aufnahmeformular. Außerdem ist ein Auftragsverarbeitungsvertrag abzuschließen und die Datenschutzerklärung anzupassen.</div>
+          <div class="caution"><strong>Wichtig:</strong> In ClubDesk Free sind die Module vorhanden, der Funktionsumfang ist aber eingeschränkt. Deshalb zuerst mit wenigen Datensätzen testen, insbesondere Bankabgleich, Buchhaltung, Export und Aufnahmeformular. Außerdem ist ein Auftragsverarbeitungsvertrag abzuschließen und die Datenschutzerklärung anzupassen. <a href="https://www.clubdesk.de/de/vorteile/datensicherheit-und-datenschutz-verein" target="_blank" rel="noopener">Datenschutzangaben von ClubDesk prüfen ↗</a></div>
         </div>
       </div>
     </section>
 
-    <section aria-labelledby="todo-title">
+    <section id="naechste-schritte" aria-labelledby="todo-title">
       <div class="section-head">
         <p class="kicker">06 · Konkreter Ablauf</p>
         <h2 id="todo-title">Was der Vorstand jetzt entscheiden sollte</h2>
@@ -366,7 +412,7 @@
       </div>
     </section>
 
-    <section aria-labelledby="faq-title">
+    <section id="faq" aria-labelledby="faq-title">
       <div class="section-head">
         <p class="kicker">07 · Kurz beantwortet</p>
         <h2 id="faq-title">Häufige Fragen</h2>
@@ -377,7 +423,7 @@
       <details><summary>Ersetzt ClubDesk die eigene Website?</summary><div>Nein. ClubDesk kann Verwaltung, Finanzen und Formulare übernehmen. Die öffentliche Vereinswebsite kann weiterhin unabhängig auf Cloudflare Pages betrieben und später über ein Formular oder einen Link mit dem Verwaltungsprozess verbunden werden.</div></details>
     </section>
 
-    <section aria-labelledby="sources-title">
+    <section id="quellen" aria-labelledby="sources-title">
       <div class="section-head">
         <p class="kicker">08 · Quellen zum Gegenprüfen</p>
         <h2 id="sources-title">Rechts- und Anbieterquellen</h2>
@@ -387,6 +433,7 @@
         <a class="source" href="https://www.gesetze-im-internet.de/bgb/__58.html" target="_blank" rel="noopener"><span><strong>§ 58 BGB</strong><br>Regelungen zu Eintritt, Austritt und Beiträgen in der Satzung</span></a>
         <a class="source" href="https://www.gesetze-im-internet.de/bgb/__126.html" target="_blank" rel="noopener"><span><strong>§ 126 BGB</strong><br>Gesetzliche Schriftform</span></a>
         <a class="source" href="https://www.gesetze-im-internet.de/bgb/__126a.html" target="_blank" rel="noopener"><span><strong>§ 126a BGB</strong><br>Elektronische Form und qualifizierte elektronische Signatur</span></a>
+        <a class="source" href="https://www.gesetze-im-internet.de/bgb/__126b.html" target="_blank" rel="noopener"><span><strong>§ 126b BGB</strong><br>Textform und lesbare Erklärung auf dauerhaftem Datenträger</span></a>
         <a class="source" href="https://www.gesetze-im-internet.de/estg/__10b.html" target="_blank" rel="noopener"><span><strong>§ 10b EStG</strong><br>Steuerbegünstigte Zuwendungen: Spenden und Mitgliedsbeiträge</span></a>
         <a class="source" href="https://www.finanzamt.nrw.de/steuerinfos/weitere-themen/vereine-und-stiftungen/zuwendungsbestaetigung" target="_blank" rel="noopener"><span><strong>Finanzverwaltung NRW</strong><br>Freiwilligkeit, Unentgeltlichkeit und Zuwendungsbestätigung</span></a>
         <a class="source" href="https://www.finanzamt.nrw.de/steuerinfos/weitere-themen/vereine-und-stiftungen/taetigkeitsbereiche-eines-vereins" target="_blank" rel="noopener"><span><strong>Finanzverwaltung NRW</strong><br>Mitgliedsbeiträge und Spenden im ideellen Bereich</span></a>
