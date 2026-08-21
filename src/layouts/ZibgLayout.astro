@@ -27,6 +27,7 @@ const {
 } = Astro.props;
 
 const logoPath = `${basePath}zibg-logo.svg`;
+const manifestPath = `${basePath}manifest.json`;
 const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
 ---
 
@@ -34,11 +35,20 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#212121" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
+
+    <!-- Web App & PWA / Home-Screen App Meta Tags -->
+    <link rel="manifest" href={manifestPath} />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ZIBG Vorstand" />
+    <link rel="apple-touch-icon" href={logoPath} />
     <link rel="icon" type="image/svg+xml" href={logoPath} />
+
     <title>{title}</title>
   </head>
   <body>
