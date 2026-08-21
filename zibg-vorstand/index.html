@@ -107,6 +107,16 @@
     .inline-source { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; padding: 6px 9px; border-radius: 999px; color: #2810b6; background: #f0edff; text-decoration: none; font-size: 12px; font-weight: 800; }
     .inline-source:hover { color: #fff; background: var(--green-2); }
 
+    .document-card { overflow: hidden; padding: 0; }
+    .document-bar { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 22px 24px; border-bottom: 1px solid var(--line); background: #fff; }
+    .document-bar p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    .document-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+    .button-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 9px 14px; border-radius: 10px; color: var(--ink); background: linear-gradient(135deg, #ffc617, #ff9c17); text-decoration: none; font-size: 14px; font-weight: 850; }
+    .button-link.secondary { border: 1px solid var(--line); background: #fff; }
+    .button-link:hover { color: var(--ink); filter: brightness(.96); }
+    .document-frame { display: block; width: 100%; height: min(78vh, 820px); min-height: 560px; border: 0; background: #ececec; }
+    .privacy-note { margin-top: 14px; padding: 13px 15px; border-left: 3px solid var(--gold); background: var(--warn); color: #514524; font-size: 13px; }
+
     .steps { display: grid; gap: 13px; counter-reset: steps; }
     .step { position: relative; padding: 22px 22px 22px 72px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
     .step::before { counter-increment: steps; content: counter(steps); position: absolute; left: 22px; top: 22px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: var(--ink); background: linear-gradient(135deg, #ffc617, #ff9c17); font-weight: 900; }
@@ -180,6 +190,7 @@
       .calc { grid-template-columns: 1fr 1fr; }
       .result { grid-column: 1 / -1; }
       .toc-links { grid-template-columns: repeat(2, 1fr); }
+      .document-bar { align-items: flex-start; flex-direction: column; }
     }
     @media (max-width: 480px) {
       .wrap { width: min(100% - 22px, 1100px); }
@@ -194,6 +205,7 @@
       .toc-head { display: block; }
       .toc-head span { display: block; margin-top: 3px; }
       .toc-links { grid-template-columns: 1fr; }
+      .document-frame { min-height: 480px; height: 68vh; }
     }
     @media print {
       header, .calc { display: none; }
@@ -252,6 +264,7 @@
       <div class="toc-links">
         <a href="#ausgangslage"><b>01</b> Ausgangslage</a>
         <a href="#satzung"><b>02</b> Satzungslage</a>
+        <a href="#satzung-dokument"><b>PDF</b> Vollständige Satzung</a>
         <a href="#zahlungen"><b>03</b> Bisherige Zahlungen</a>
         <a href="#beschluss"><b>04</b> Empfehlung</a>
         <a href="#rechner"><b>05</b> Beitragsrechner</a>
@@ -314,6 +327,28 @@
           <a class="inline-source" href="https://www.gesetze-im-internet.de/bgb/__126b.html" target="_blank" rel="noopener">§ 126b BGB: Textform ↗</a>
         </article>
       </div>
+    </section>
+
+    <section id="satzung-dokument" aria-labelledby="satzung-dokument-title">
+      <div class="section-head">
+        <p class="kicker">Satzungsdokument</p>
+        <h2 id="satzung-dokument-title">Die vollständige Satzung zum Nachlesen</h2>
+        <p class="muted">Diese Onlinefassung enthält den vollständigen Regelungstext. Personenbezogene Angaben des Gründungsvorstands und das Unterschriftenblatt wurden für die Veröffentlichung entfernt.</p>
+      </div>
+      <div class="card document-card">
+        <div class="document-bar">
+          <div>
+            <h3>ZIBG-Satzung · Datenschutzfassung</h3>
+            <p>Fassung vom 12. Juli 2025 · 4 Seiten · PDF</p>
+          </div>
+          <div class="document-actions">
+            <a class="button-link" href="./ZIBG_Satzung_Datenschutzfassung.pdf" target="_blank" rel="noopener">PDF öffnen ↗</a>
+            <a class="button-link secondary" href="./ZIBG_Satzung_Datenschutzfassung.pdf" download>Herunterladen ↓</a>
+          </div>
+        </div>
+        <iframe class="document-frame" src="./ZIBG_Satzung_Datenschutzfassung.pdf#view=FitH" title="ZIBG-Satzung als PDF"></iframe>
+      </div>
+      <p class="privacy-note"><strong>Datenschutzhinweis:</strong> Nur die personenbezogenen Angaben in § 7 Absatz 6 sowie das Unterschriftenblatt wurden entfernt. Das unveränderte Original verbleibt in den Vereinsunterlagen.</p>
     </section>
 
     <section id="zahlungen" aria-labelledby="zahlungen-title">
