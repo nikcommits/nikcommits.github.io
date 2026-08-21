@@ -73,13 +73,23 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--paper);
-  font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font:
+    16px/1.65 ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   color: var(--ink);
   text-wrap: balance;
 }
@@ -99,7 +109,9 @@ a:hover {
   color: var(--accent);
 }
 
-button, input, select {
+button,
+input,
+select {
   font: inherit;
 }
 
@@ -179,11 +191,15 @@ header {
 @media (prefers-color-scheme: dark) {
   .brand-logo--nav {
     background: #ffffff;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.5);
   }
   .brand-logo--access {
     background: #ffffff;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3), 0 8px 30px rgba(0, 0, 0, 0.6);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.3),
+      0 8px 30px rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -243,7 +259,9 @@ header {
   width: 100%;
   background: var(--ink);
   border-radius: 2px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .burger-btn[aria-expanded="true"] .burger-icon span:nth-child(1) {
@@ -290,7 +308,8 @@ header {
     border: 1px solid transparent;
   }
 
-  .nav-item-link:hover, .nav-item-link:active {
+  .nav-item-link:hover,
+  .nav-item-link:active {
     background: var(--card-alt);
     border-color: var(--line);
   }
@@ -746,16 +765,14 @@ h3 {
   color: #ffffff;
   background:
     radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.28), transparent 36%),
-    radial-gradient(circle at 5% 95%, rgba(217, 119, 6, 0.16), transparent 32%),
-    #0f172a;
+    radial-gradient(circle at 5% 95%, rgba(217, 119, 6, 0.16), transparent 32%), #0f172a;
 }
 
 @media (prefers-color-scheme: dark) {
   .recommendation {
     background:
       radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.2), transparent 36%),
-      radial-gradient(circle at 5% 95%, rgba(217, 119, 6, 0.12), transparent 32%),
-      #090b10;
+      radial-gradient(circle at 5% 95%, rgba(217, 119, 6, 0.12), transparent 32%), #090b10;
     border: 1px solid var(--line);
   }
 }
@@ -809,7 +826,8 @@ label {
   font-weight: 700;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   margin-top: 6px;
   padding: 12px 14px;
@@ -817,10 +835,13 @@ input, select {
   border-radius: 10px;
   background: var(--card);
   color: var(--ink);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: var(--primary-light);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
@@ -868,7 +889,8 @@ input:focus, select:focus {
 
 @media (prefers-color-scheme: dark) {
   .price-card {
-    background: radial-gradient(circle at 100% 0, rgba(37, 99, 235, 0.25), transparent 45%), #090b10;
+    background:
+      radial-gradient(circle at 100% 0, rgba(37, 99, 235, 0.25), transparent 45%), #090b10;
     border: 1px solid var(--line);
   }
 }
@@ -1403,7 +1425,9 @@ footer {
   border-radius: var(--radius);
   background: var(--card-alt);
   min-height: 240px;
-  transition: outline 0.15s ease, background-color 0.15s ease;
+  transition:
+    outline 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .kanban-col.drag-over {
@@ -1434,9 +1458,15 @@ footer {
   border-radius: 50%;
 }
 
-.dot--todo { background: #f59e0b; }
-.dot--progress { background: var(--accent); }
-.dot--done { background: #16a34a; }
+.dot--todo {
+  background: #f59e0b;
+}
+.dot--progress {
+  background: var(--accent);
+}
+.dot--done {
+  background: #16a34a;
+}
 
 .kanban-count {
   margin-left: auto;
@@ -1466,7 +1496,9 @@ footer {
   border-radius: 12px;
   background: var(--card);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .kanban-card[draggable="true"] {
@@ -1736,4 +1768,78 @@ footer {
   a {
     color: #000000;
   }
+}
+
+/* Collapsible Document Styles */
+.document-collapse {
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.document-summary {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px !important;
+  cursor: pointer;
+  list-style: none;
+  background: var(--card);
+  transition: background-color 0.15s ease;
+}
+
+.document-summary:hover {
+  background: var(--card-alt);
+}
+
+.document-summary::after {
+  display: none !important;
+}
+
+.document-summary-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.document-badge {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--primary-light);
+  color: #ffffff;
+  font-weight: 850;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.document-summary h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.document-summary-action {
+  flex-shrink: 0;
+}
+
+.document-toggle-btn {
+  font-size: 13.5px !important;
+  min-height: 38px !important;
+  padding: 6px 14px !important;
+}
+
+.document-collapse[open] .toggle-text-closed {
+  display: none;
+}
+
+.document-collapse:not([open]) .toggle-text-open {
+  display: none;
+}
+
+.document-content {
+  border-top: 1px solid var(--line);
+  padding: 0 !important;
+  background: var(--card);
 }
