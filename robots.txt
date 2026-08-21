@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://nikcommits.github.io/sitemap-index.xml
