@@ -1,0 +1,368 @@
+---
+// src/components/zibg/sections/AufgabenBoard.astro
+import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
+---
+
+<section id="aufgaben" aria-labelledby="aufgaben-title" class="board-section">
+  <div class="section-head">
+    <p class="kicker">Vorstands-Dashboard · Aufgaben & Zuständigkeiten</p>
+    <h2 id="aufgaben-title">Aufgaben gemeinsam abarbeiten</h2>
+    <p class="muted">
+      Hier kann der Vorstand Aufgaben zuweisen, den Bearbeitungsstand festhalten und den aktuellen Stand für die WhatsApp-Gruppe exportieren. Der Status wird lokal im Browser gespeichert.
+    </p>
+  </div>
+
+  <!-- Progress & Stats Card -->
+  <div class="card board-stats-card">
+    <div class="board-stats-header">
+      <div>
+        <span class="board-stats-caption">Gesamtfortschritt</span>
+        <strong class="board-stats-headline" id="board-total-stats">0 von 14 Aufgaben erledigt (0 %)</strong>
+      </div>
+      <div class="board-actions">
+        <button type="button" class="button-link whatsapp-btn" id="board-whatsapp-btn">
+          <span>📲 Stand für WhatsApp kopieren</span>
+        </button>
+        <button type="button" class="board-reset-btn" id="board-reset-btn" title="Aufgaben auf Standard zurücksetzen">
+          ↺ Zurücksetzen
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="board-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="board-progress-bar">
+      <div class="board-progress-fill" id="board-progress-fill" style="width: 0%;"></div>
+    </div>
+
+    <!-- Per-Member Stats -->
+    <div class="board-members-grid" id="board-members-stats">
+      {ZIBG_MEMBERS.map(member => (
+        <div class="board-member-stat" data-member-stat={member}>
+          <span class="board-member-badge" data-member-name={member}>{member}</span>
+          <strong class="board-member-count" data-member-count={member}>0 / 0</strong>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="board-filter-wrap" role="toolbar" aria-label="Aufgaben nach Person filtern">
+    <span class="board-filter-label">Filter nach Person:</span>
+    <div class="board-filter-pills" id="board-filter-pills">
+      <button type="button" class="board-pill active" data-filter="all">Alle (<span id="count-all">14</span>)</button>
+      {ZIBG_MEMBERS.map(member => (
+        <button type="button" class="board-pill" data-filter={member}>
+          {member} (<span data-pill-count={member}>0</span>)
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Kanban Board Container -->
+  <div class="kanban-grid" id="kanban-grid">
+    <!-- Column: Offen -->
+    <div class="kanban-col" data-col="todo">
+      <div class="kanban-col-head kanban-col-head--todo">
+        <span class="kanban-dot dot--todo"></span>
+        <h3>Offen</h3>
+        <span class="kanban-count" id="count-todo">0</span>
+      </div>
+      <div class="kanban-list" id="list-todo"></div>
+    </div>
+
+    <!-- Column: In Bearbeitung -->
+    <div class="kanban-col" data-col="in-progress">
+      <div class="kanban-col-head kanban-col-head--progress">
+        <span class="kanban-dot dot--progress"></span>
+        <h3>In Bearbeitung</h3>
+        <span class="kanban-count" id="count-in-progress">0</span>
+      </div>
+      <div class="kanban-list" id="list-in-progress"></div>
+    </div>
+
+    <!-- Column: Erledigt -->
+    <div class="kanban-col" data-col="done">
+      <div class="kanban-col-head kanban-col-head--done">
+        <span class="kanban-dot dot--done"></span>
+        <h3>Erledigt</h3>
+        <span class="kanban-count" id="count-done">0</span>
+      </div>
+      <div class="kanban-list" id="list-done"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notice -->
+  <div class="board-toast" id="board-toast" role="status" aria-live="polite" hidden>
+    ✓ WhatsApp-Text in die Zwischenablage kopiert!
+  </div>
+</section>
+
+<!-- Raw Data for Client Script -->
+<script is:inline define:vars={{ initialZibgTasks, ZIBG_MEMBERS }}>
+  (function () {
+    const STORAGE_KEY = 'zibg_kanban_tasks_v1';
+    let currentFilter = 'all';
+
+    function loadTasks() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            // merge in case new tasks are added
+            const savedMap = new Map(parsed.map(t => [t.id, t]));
+            return initialZibgTasks.map(t => savedMap.get(t.id) || t);
+          }
+        }
+      } catch (e) {
+        console.error('Error loading tasks:', e);
+      }
+      return JSON.parse(JSON.stringify(initialZibgTasks));
+    }
+
+    let tasks = loadTasks();
+
+    function saveTasks() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      } catch (e) {
+        console.error('Error saving tasks:', e);
+      }
+    }
+
+    function renderBoard() {
+      const listTodo = document.querySelector('#list-todo');
+      const listProgress = document.querySelector('#list-in-progress');
+      const listDone = document.querySelector('#list-done');
+
+      if (!listTodo || !listProgress || !listDone) return;
+
+      listTodo.innerHTML = '';
+      listProgress.innerHTML = '';
+      listDone.innerHTML = '';
+
+      let todoCount = 0;
+      let progressCount = 0;
+      let doneCount = 0;
+
+      const memberCounts = {};
+      ZIBG_MEMBERS.forEach(m => {
+        memberCounts[m] = { total: 0, done: 0 };
+      });
+
+      tasks.forEach(task => {
+        if (!memberCounts[task.defaultAssignee]) {
+          memberCounts[task.defaultAssignee] = { total: 0, done: 0 };
+        }
+        memberCounts[task.defaultAssignee].total++;
+        if (task.defaultStatus === 'done') {
+          memberCounts[task.defaultAssignee].done++;
+        }
+
+        if (task.defaultStatus === 'todo') todoCount++;
+        else if (task.defaultStatus === 'in-progress') progressCount++;
+        else if (task.defaultStatus === 'done') doneCount++;
+
+        // Filter check
+        if (currentFilter !== 'all' && task.defaultAssignee !== currentFilter) {
+          return;
+        }
+
+        const card = document.createElement('article');
+        card.className = `kanban-card kanban-card--${task.defaultStatus}`;
+        card.setAttribute('data-task-id', task.id);
+
+        card.innerHTML = `
+          <div class="kanban-card-top">
+            <span class="kanban-tag">${escapeHtml(task.category)}</span>
+            <div class="kanban-assignee-wrap">
+              <label for="assignee-${task.id}" class="sr-only">Zuständig</label>
+              <select class="kanban-assignee-select" id="assignee-${task.id}" data-action="assign" data-id="${task.id}">
+                ${ZIBG_MEMBERS.map(m => `<option value="${m}" ${m === task.defaultAssignee ? 'selected' : ''}>${m}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+          <h4 class="kanban-card-title">${escapeHtml(task.title)}</h4>
+          <p class="kanban-card-desc">${escapeHtml(task.description)}</p>
+          <div class="kanban-card-footer">
+            <div class="kanban-status-controls">
+              <button type="button" class="kanban-status-btn ${task.defaultStatus === 'todo' ? 'is-active' : ''}" data-status="todo" data-id="${task.id}" title="Als Offen markieren">📋 Offen</button>
+              <button type="button" class="kanban-status-btn ${task.defaultStatus === 'in-progress' ? 'is-active' : ''}" data-status="in-progress" data-id="${task.id}" title="Als In Arbeit markieren">⏳ In Arbeit</button>
+              <button type="button" class="kanban-status-btn ${task.defaultStatus === 'done' ? 'is-active' : ''}" data-status="done" data-id="${task.id}" title="Als Erledigt markieren">✅ Erledigt</button>
+            </div>
+          </div>
+        `;
+
+        if (task.defaultStatus === 'todo') listTodo.appendChild(card);
+        else if (task.defaultStatus === 'in-progress') listProgress.appendChild(card);
+        else if (task.defaultStatus === 'done') listDone.appendChild(card);
+      });
+
+      // Update counters
+      const elCountTodo = document.querySelector('#count-todo');
+      const elCountProgress = document.querySelector('#count-in-progress');
+      const elCountDone = document.querySelector('#count-done');
+      const elCountAll = document.querySelector('#count-all');
+
+      if (elCountTodo) elCountTodo.textContent = String(todoCount);
+      if (elCountProgress) elCountProgress.textContent = String(progressCount);
+      if (elCountDone) elCountDone.textContent = String(doneCount);
+      if (elCountAll) elCountAll.textContent = String(tasks.length);
+
+      // Progress bar & Total stats
+      const total = tasks.length;
+      const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+      const totalStatsEl = document.querySelector('#board-total-stats');
+      const progressFill = document.querySelector('#board-progress-fill');
+      const progressBar = document.querySelector('#board-progress-bar');
+
+      if (totalStatsEl) {
+        totalStatsEl.textContent = `${doneCount} von ${total} Aufgaben erledigt (${pct} %)`;
+      }
+      if (progressFill) {
+        progressFill.style.width = `${pct}%`;
+      }
+      if (progressBar) {
+        progressBar.setAttribute('aria-valuenow', String(pct));
+      }
+
+      // Member pill & stat updates
+      ZIBG_MEMBERS.forEach(m => {
+        const stats = memberCounts[m] || { total: 0, done: 0 };
+        const memberCountEl = document.querySelector(`[data-member-count="${m}"]`);
+        if (memberCountEl) {
+          memberCountEl.textContent = `${stats.done} / ${stats.total} erledigt`;
+        }
+        const pillCountEl = document.querySelector(`[data-pill-count="${m}"]`);
+        if (pillCountEl) {
+          pillCountEl.textContent = String(stats.total);
+        }
+      });
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Event Delegation for Kanban Cards
+    const kanbanGrid = document.querySelector('#kanban-grid');
+    if (kanbanGrid) {
+      kanbanGrid.addEventListener('click', e => {
+        const btn = e.target.closest('[data-status]');
+        if (btn) {
+          const id = btn.getAttribute('data-id');
+          const newStatus = btn.getAttribute('data-status');
+          const targetTask = tasks.find(t => t.id === id);
+          if (targetTask && targetTask.defaultStatus !== newStatus) {
+            targetTask.defaultStatus = newStatus;
+            saveTasks();
+            renderBoard();
+          }
+        }
+      });
+
+      kanbanGrid.addEventListener('change', e => {
+        const select = e.target.closest('[data-action="assign"]');
+        if (select) {
+          const id = select.getAttribute('data-id');
+          const newAssignee = select.value;
+          const targetTask = tasks.find(t => t.id === id);
+          if (targetTask && targetTask.defaultAssignee !== newAssignee) {
+            targetTask.defaultAssignee = newAssignee;
+            saveTasks();
+            renderBoard();
+          }
+        }
+      });
+    }
+
+    // Filter Pills
+    const filterPills = document.querySelector('#board-filter-pills');
+    if (filterPills) {
+      filterPills.addEventListener('click', e => {
+        const pill = e.target.closest('[data-filter]');
+        if (pill) {
+          filterPills.querySelectorAll('.board-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentFilter = pill.getAttribute('data-filter') || 'all';
+          renderBoard();
+        }
+      });
+    }
+
+    // Reset Button
+    const resetBtn = document.querySelector('#board-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (confirm('Möchtest du alle Aufgaben auf den Ausgangszustand zurücksetzen?')) {
+          localStorage.removeItem(STORAGE_KEY);
+          tasks = JSON.parse(JSON.stringify(initialZibgTasks));
+          saveTasks();
+          renderBoard();
+        }
+      });
+    }
+
+    // WhatsApp Copy Export
+    const whatsappBtn = document.querySelector('#board-whatsapp-btn');
+    const toast = document.querySelector('#board-toast');
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', async () => {
+        const doneTasks = tasks.filter(t => t.defaultStatus === 'done');
+        const progressTasks = tasks.filter(t => t.defaultStatus === 'in-progress');
+        const todoTasks = tasks.filter(t => t.defaultStatus === 'todo');
+        const total = tasks.length;
+        const pct = Math.round((doneTasks.length / total) * 100);
+
+        let text = `*📊 ZIBG e.V. – Aufgaben- und Vorstandsstand*\n`;
+        text += `Stand: ${new Date().toLocaleDateString('de-DE')} · ${doneTasks.length}/${total} erledigt (${pct}%)\n\n`;
+
+        // Breakdown per member
+        text += `*Zuständigkeiten Übersicht:*\n`;
+        ZIBG_MEMBERS.forEach(m => {
+          const mTasks = tasks.filter(t => t.defaultAssignee === m);
+          const mDone = mTasks.filter(t => t.defaultStatus === 'done').length;
+          text += `• ${m}: ${mDone}/${mTasks.length} erledigt\n`;
+        });
+
+        if (progressTasks.length > 0) {
+          text += `\n*⏳ Aktuell in Bearbeitung:*\n`;
+          progressTasks.forEach(t => {
+            text += `• [${t.defaultAssignee}] ${t.title}\n`;
+          });
+        }
+
+        if (todoTasks.length > 0) {
+          text += `\n*📋 Noch offen:*\n`;
+          todoTasks.forEach(t => {
+            text += `• [${t.defaultAssignee}] ${t.title}\n`;
+          });
+        }
+
+        if (doneTasks.length > 0) {
+          text += `\n*✅ Bereits erledigt:*\n`;
+          doneTasks.forEach(t => {
+            text += `• [${t.defaultAssignee}] ${t.title}\n`;
+          });
+        }
+
+        text += `\n_Live-Vorstandsboard:_ https://nikcommits.github.io/zibg-vorstand/index.html#aufgaben`;
+
+        try {
+          await navigator.clipboard.writeText(text);
+          if (toast) {
+            toast.hidden = false;
+            setTimeout(() => {
+              toast.hidden = true;
+            }, 3500);
+          }
+        } catch (err) {
+          alert('Kopieren fehlgeschlagen: ' + err);
+        }
+      });
+    }
+
+    // Initial render
+    renderBoard();
+  })();
+</script>
