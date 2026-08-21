@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk und den nächsten Beschlüssen.">
+  <meta name="theme-color" content="#12352d">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>ZIBG e.V. | Mitgliedsbeiträge und Vereinsverwaltung</title>
+  <style>
+    :root {
+      --ink: #16201d;
+      --muted: #5f6e69;
+      --paper: #f4f5f1;
+      --card: #ffffff;
+      --green: #12352d;
+      --green-2: #1c5546;
+      --mint: #dfece5;
+      --gold: #d7b45a;
+      --line: #dbe2dd;
+      --warn: #fff5d9;
+      --warn-line: #e8c86b;
+      --danger: #8f342b;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(18, 53, 45, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--green-2); text-underline-offset: 3px; }
+    a:hover { color: var(--green); }
+    button, input { font: inherit; }
+    .wrap { width: min(1100px, calc(100% - 32px)); margin-inline: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(244, 245, 241, .92);
+      border-bottom: 1px solid rgba(18, 53, 45, .1);
+      backdrop-filter: blur(14px);
+    }
+    .nav { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; font-weight: 800; }
+    .mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; color: #fff; background: var(--green); letter-spacing: -.5px; }
+    nav { display: flex; gap: 18px; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 650; }
+
+    .hero {
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(215, 180, 90, .23), transparent 31%),
+        linear-gradient(135deg, #0d2923 0%, #16483c 100%);
+      padding: 78px 0 68px;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 18px; color: #e5cf8a; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+    h1 { max-width: 850px; margin: 0; font-size: clamp(38px, 7vw, 72px); line-height: .98; letter-spacing: -.055em; }
+    .lead { max-width: 760px; margin: 26px 0 0; color: #d9e5e1; font-size: clamp(17px, 2.2vw, 21px); }
+    .status { display: inline-flex; align-items: center; gap: 9px; margin-top: 28px; padding: 10px 14px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; background: rgba(255,255,255,.08); font-size: 14px; }
+    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px rgba(215,180,90,.12); }
+
+    main { padding: 42px 0 80px; }
+    section { scroll-margin-top: 85px; margin-top: 64px; }
+    section:first-child { margin-top: 0; }
+    .section-head { max-width: 760px; margin-bottom: 24px; }
+    .kicker { margin: 0 0 7px; color: var(--green-2); font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { margin: 0; font-size: clamp(29px, 4.4vw, 44px); line-height: 1.08; letter-spacing: -.035em; }
+    h3 { margin: 0 0 8px; font-size: 20px; line-height: 1.25; }
+    p { margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+
+    .notice { padding: 18px 20px; border: 1px solid var(--warn-line); border-radius: 14px; background: var(--warn); }
+    .notice strong { display: block; margin-bottom: 3px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 22px; }
+    .metric { padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+    .metric span { display: block; color: var(--muted); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+    .metric strong { display: block; margin-top: 4px; color: var(--green); font-size: 34px; line-height: 1.1; letter-spacing: -.04em; }
+    .metric.gap strong { color: var(--danger); }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .card { padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
+    .card-number { width: 34px; height: 34px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 10px; color: #fff; background: var(--green); font-weight: 800; }
+    .tag { display: inline-block; padding: 5px 9px; border-radius: 999px; background: var(--mint); color: var(--green); font-size: 12px; font-weight: 800; }
+    .quote { margin-top: 15px; padding: 15px 17px; border-left: 3px solid var(--gold); background: #f7f8f5; color: #34433e; font-size: 14px; }
+
+    .steps { display: grid; gap: 13px; counter-reset: steps; }
+    .step { position: relative; padding: 22px 22px 22px 72px; border: 1px solid var(--line); border-radius: 15px; background: #fff; }
+    .step::before { counter-increment: steps; content: counter(steps); position: absolute; left: 22px; top: 22px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green); font-weight: 800; }
+
+    .recommendation { padding: clamp(24px, 5vw, 46px); border-radius: 24px; color: #fff; background: var(--green); }
+    .recommendation h2 { max-width: 760px; }
+    .recommendation .sub { margin-top: 16px; max-width: 790px; color: #d7e4df; }
+    .proposal { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-top: 28px; }
+    .proposal > div { padding: 23px; border: 1px solid rgba(255,255,255,.17); border-radius: 16px; background: rgba(255,255,255,.075); }
+    .proposal strong { color: #f1d780; }
+
+    .calc { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 16px; align-items: end; }
+    label { display: block; color: var(--muted); font-size: 13px; font-weight: 750; }
+    input { width: 100%; margin-top: 7px; padding: 13px 14px; border: 1px solid #bcc9c3; border-radius: 10px; background: #fff; color: var(--ink); }
+    input:focus { outline: 3px solid rgba(28,85,70,.16); border-color: var(--green-2); }
+    .result { min-height: 77px; padding: 13px 16px; border-radius: 12px; background: var(--mint); }
+    .result span { display: block; color: var(--muted); font-size: 13px; }
+    .result strong { color: var(--green); font-size: 25px; }
+
+    .clubdesk { display: grid; grid-template-columns: .85fr 1.15fr; gap: 18px; align-items: stretch; }
+    .price-card { display: grid; align-content: center; padding: 30px; border-radius: 22px; color: #fff; background: linear-gradient(145deg, var(--green), var(--green-2)); }
+    .price { margin: 18px 0 5px; font-size: 56px; line-height: 1; font-weight: 850; letter-spacing: -.05em; }
+    .checks { list-style: none; margin: 15px 0 0; padding: 0; }
+    .checks li { position: relative; margin-top: 10px; padding-left: 29px; }
+    .checks li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--green-2); font-size: 12px; font-weight: 900; }
+    .caution { margin-top: 18px; padding: 14px 16px; border-radius: 12px; background: #f3eee0; color: #504834; font-size: 14px; }
+
+    details { border-top: 1px solid var(--line); background: #fff; }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { cursor: pointer; list-style: none; padding: 19px 8px; font-weight: 800; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--green-2); font-size: 24px; line-height: 1; }
+    details[open] summary::after { content: "–"; }
+    details > div { padding: 0 8px 20px; color: var(--muted); }
+
+    .sources { display: grid; gap: 10px; }
+    .source { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; padding: 16px 18px; border: 1px solid var(--line); border-radius: 13px; background: #fff; text-decoration: none; }
+    .source strong { color: var(--ink); }
+    .source span { color: var(--muted); font-size: 13px; }
+    .source::after { content: "↗"; color: var(--green-2); font-size: 20px; }
+    footer { padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+    [hidden] { display: none !important; }
+    .access-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(215,180,90,.24), transparent 34%),
+        linear-gradient(145deg, #0c2821, #17493d);
+    }
+    .access-box { width: min(100%, 430px); padding: 34px; border-radius: 22px; background: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.24); }
+    .access-box h1 { margin: 24px 0 8px; color: var(--ink); font-size: 32px; line-height: 1.05; letter-spacing: -.04em; }
+    .access-box p { color: var(--muted); }
+    .access-box button { width: 100%; margin-top: 14px; padding: 14px; border: 0; border-radius: 11px; background: var(--green); color: #fff; font-weight: 800; cursor: pointer; }
+    .access-box button:hover { background: var(--green-2); }
+    .access-error { margin: 0 0 15px; padding: 11px 13px; border-radius: 10px; background: #fff0ee; color: var(--danger) !important; font-size: 14px; }
+    .access-note { margin: 15px 0 0 !important; text-align: center; font-size: 12px; }
+
+    @media (max-width: 800px) {
+      nav { display: none; }
+      .hero { padding: 58px 0 52px; }
+      main { padding-top: 28px; }
+      section { margin-top: 50px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .proposal, .clubdesk { grid-template-columns: 1fr; }
+      .calc { grid-template-columns: 1fr 1fr; }
+      .result { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(100% - 22px, 1100px); }
+      .metrics { gap: 10px; }
+      .metric { padding: 17px; }
+      .metric strong { font-size: 28px; }
+      .card { padding: 21px; }
+      .calc { grid-template-columns: 1fr; }
+      .result { grid-column: auto; }
+      .step { padding-left: 62px; }
+      .step::before { left: 17px; }
+    }
+    @media print {
+      header, .calc { display: none; }
+      body { background: #fff; font-size: 11pt; }
+      .hero { color: #000; background: #fff; padding: 20px 0; border-bottom: 2px solid #000; }
+      .lead, .status { color: #222; }
+      .card, .metric { box-shadow: none; break-inside: avoid; }
+      .recommendation { color: #000; background: #fff; border: 2px solid #000; }
+      .recommendation .sub, .proposal strong { color: #222; }
+      a { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="access-gate" id="access-gate">
+    <form class="access-box" id="access-form">
+      <div class="mark">ZI</div>
+      <h1>Interner Bereich</h1>
+      <p>Bitte gib den Zugangscode ein, um die Vorstandsinformationen zu öffnen.</p>
+      <p class="access-error" id="access-error" role="alert" hidden>Der eingegebene Zugangscode ist nicht richtig.</p>
+      <label for="access-code">Zugangscode</label>
+      <input id="access-code" name="access-code" type="password" autocomplete="current-password" required autofocus>
+      <button type="submit">Seite öffnen</button>
+      <p class="access-note">ZIBG e.V. · Geschützter Zugriff</p>
+    </form>
+  </div>
+
+  <div id="protected-site" hidden>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top"><span class="mark">ZI</span><span>ZIBG e.V.</span></a>
+      <nav aria-label="Seitennavigation">
+        <a href="#satzung">Satzungslage</a>
+        <a href="#zahlungen">Zahlungen</a>
+        <a href="#clubdesk">ClubDesk</a>
+        <a href="#beschluss">Nächste Schritte</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">Interner Arbeitsstand für den Vorstand</p>
+      <h1>Mitgliedsbeiträge jetzt sauber ordnen.</h1>
+      <p class="lead">Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.</p>
+      <div class="status"><span class="status-dot"></span>Stand: 21. August 2026 · noch kein Beschluss</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section aria-labelledby="lage-title">
+      <div class="section-head">
+        <p class="kicker">01 · Ausgangslage</p>
+        <h2 id="lage-title">Was wir derzeit sicher wissen</h2>
+      </div>
+      <div class="notice">
+        <strong>Die WhatsApp-Gruppe ist keine Mitgliederliste.</strong>
+        Zu prüfen ist für jede Person: Liegt ein unterschriebener Antrag vor, hat der Vorstand über die Aufnahme entschieden und welche Zahlungen sind tatsächlich eingegangen?
+      </div>
+      <div class="metrics" aria-label="Aktuelle Kennzahlen">
+        <div class="metric"><span>WhatsApp-Gruppe</span><strong>16</strong><small>Personen</small></div>
+        <div class="metric"><span>Einnahmen</span><strong>ca. 330 €</strong><small>pro Monat</small></div>
+        <div class="metric"><span>Mietbedarf</span><strong>650 €</strong><small>pro Monat</small></div>
+        <div class="metric gap"><span>Offene Lücke</span><strong>ca. 320 €</strong><small>pro Monat</small></div>
+      </div>
+    </section>
+
+    <section id="satzung" aria-labelledby="satzung-title">
+      <div class="section-head">
+        <p class="kicker">02 · Satzungslage</p>
+        <h2 id="satzung-title">Die Satzung ist nicht automatisch falsch</h2>
+        <p class="muted">Sie sieht Jahresbeiträge vor, überlässt die konkrete Höhe und mögliche Ermäßigungen aber einer noch zu beschließenden Beitragsordnung.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <div class="card-number">§5</div>
+          <h3>Jahresbeitrag und Beitragsordnung</h3>
+          <p>Nach § 5 der Satzung werden Jahresbeiträge erhoben. Die Mitgliederversammlung setzt die Höhe fest und beschließt die Beitragsordnung mit einfacher Mehrheit.</p>
+          <div class="quote">Ein Jahresbeitrag von 240 € kann wahlweise einmal jährlich oder in zwölf Monatsraten zu je 20 € gezahlt werden. Dafür ist keine monatliche Beitragspflicht in der Satzung nötig.</div>
+        </article>
+        <article class="card">
+          <div class="card-number">§8</div>
+          <h3>Ein formeller Beschluss fehlt</h3>
+          <p>Nach dem derzeit bekannten Stand gibt es weder eine beschlossene Beitragshöhe noch eine Beitragsordnung. Eine WhatsApp-Nachricht oder eine mündliche Absprache ersetzt diesen Beschluss nicht.</p>
+          <div class="quote">Erforderlich sind Einladung mit Tagesordnung, Mitgliederversammlung, Mehrheitsbeschluss und ein unterschriebenes Protokoll.</div>
+        </article>
+        <article class="card">
+          <span class="tag">Kein Registereintrag nötig</span>
+          <h3 style="margin-top:12px">Beitragsordnung statt Satzungsänderung</h3>
+          <p>Bleibt es bei einem Jahresbeitrag mit monatlicher Ratenzahlung, wird lediglich die von der Satzung vorgesehene Beitragsordnung beschlossen. Sie muss grundsätzlich nicht ins Vereinsregister eingetragen werden.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Online-Aufnahme später</span>
+          <h3 style="margin-top:12px">„Schriftlich“ ist für Webformulare ungünstig</h3>
+          <p>§ 3 verlangt einen schriftlichen Aufnahmeantrag. Für eine unkomplizierte Online-Anmeldung wäre „Textform“ eindeutiger. Diese Umstellung wäre eine echte Satzungsänderung und müsste nach dem satzungsmäßigen Verfahren beschlossen und zum Vereinsregister angemeldet werden.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="zahlungen" aria-labelledby="zahlungen-title">
+      <div class="section-head">
+        <p class="kicker">03 · Bisherige Zahlungen</p>
+        <h2 id="zahlungen-title">Erst erfassen, dann richtig zuordnen</h2>
+        <p class="muted">Die unterschiedlichen Beträge sollten nicht rückwirkend pauschal in „20 € Beitrag plus Spende“ aufgeteilt werden.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><h3>Zahlungsliste erstellen</h3><p>Für jede Person werden Antrag, beantragte Beitragshöhe, Zahlungsdatum, Betrag und Verwendungszweck zusammengeführt.</p></article>
+        <article class="step"><h3>Mitgliedsstatus prüfen</h3><p>Festhalten, ob der Vorstand die Aufnahme angenommen hat. Nur die Zahl der Personen in der WhatsApp-Gruppe reicht dafür nicht aus.</p></article>
+        <article class="step"><h3>Unklare Beträge klären</h3><p>Fehlt eine eindeutige Zweckangabe, wird die zahlende Person kurz schriftlich gefragt, ob der Betrag als Mitgliedsbeitrag, freiwillige Spende oder Vorauszahlung gedacht war.</p></article>
+        <article class="step"><h3>Getrennt verbuchen</h3><p>Mitgliedsbeiträge und Spenden erhalten getrennte Buchungskategorien. Bis zur Klärung kann der Schatzmeister die Zahlung als ungeklärt kennzeichnen, statt sie eigenmächtig umzudeuten.</p></article>
+      </div>
+      <div class="notice" style="margin-top:18px">
+        <strong>Keine rückwirkenden Beitragsrückstände konstruieren.</strong>
+        Solange keine einheitliche Beitragshöhe wirksam beschlossen und fällig gestellt wurde, sollten Mitglieder nicht nachträglich so behandelt werden, als hätten sie bereits 20 € monatlich geschuldet.
+      </div>
+    </section>
+
+    <section id="beschluss" class="recommendation" aria-labelledby="beschluss-title">
+      <p class="eyebrow">Empfehlung</p>
+      <h2 id="beschluss-title">Ein einheitlicher Jahresbeitrag mit flexibler Zahlung</h2>
+      <p class="sub">Das Modell passt zur vorhandenen Satzung, ist für Mitglieder leicht verständlich und schafft eine klare Grundlage für Buchhaltung und Mahnwesen.</p>
+      <div class="proposal">
+        <div>
+          <h3>Vorgeschlagene Regelung</h3>
+          <p><strong>240 € Jahresbeitrag</strong>, zahlbar wahlweise als Jahresbetrag oder in zwölf monatlichen Raten zu je 20 €.</p>
+          <p>Fälligkeit, Ermäßigungen, Fördermitgliedschaft und Verfahren bei Zahlungsverzug werden in der Beitragsordnung eindeutig geregelt.</p>
+        </div>
+        <div>
+          <h3>Freiwillig mehr zahlen</h3>
+          <p>Zusätzliche Beträge sind nur dann Spenden, wenn sie freiwillig und ohne Gegenleistung geleistet werden. Am saubersten sind zwei getrennte Überweisungen:</p>
+          <p><strong>„Mitgliedsbeitrag – Name“</strong><br>und<br><strong>„Spende – Name“</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="rechner-title">
+      <div class="section-head">
+        <p class="kicker">04 · Beitragsrechner</p>
+        <h2 id="rechner-title">Was bringt das Modell monatlich?</h2>
+      </div>
+      <div class="card calc">
+        <label>Verifizierte zahlende Mitglieder
+          <input id="members" type="number" inputmode="numeric" min="0" max="500" value="16">
+        </label>
+        <label>Monatliche Rate in Euro
+          <input id="rate" type="number" inputmode="decimal" min="0" max="1000" step="1" value="20">
+        </label>
+        <div class="result" aria-live="polite"><span>Monatliche Beitragseinnahmen</span><strong id="income">320 €</strong><span id="gap">Zur Miete fehlen 330 €.</span></div>
+      </div>
+    </section>
+
+    <section id="clubdesk" aria-labelledby="clubdesk-title">
+      <div class="section-head">
+        <p class="kicker">05 · Vereinsverwaltung</p>
+        <h2 id="clubdesk-title">ClubDesk Free ist für den Start sinnvoll</h2>
+        <p class="muted">Bei rund 16 Personen liegt der Verein deutlich unter der Grenze der kostenlosen Version. Vor einer endgültigen Festlegung sollten die für euch wichtigsten Funktionen einmal praktisch getestet werden.</p>
+      </div>
+      <div class="clubdesk">
+        <div class="price-card">
+          <span class="tag">ClubDesk Free</span>
+          <div class="price">0 €</div>
+          <p>bis zu 50 Mitglieder<br>100 MB Speicher</p>
+          <a href="https://www.clubdesk.de/de/preise" target="_blank" rel="noopener" style="color:#fff">Aktuelle Preise beim Anbieter prüfen ↗</a>
+        </div>
+        <div class="card">
+          <h3>Empfohlener Einsatzzweck</h3>
+          <ul class="checks">
+            <li>Zentrale und überprüfbare Mitgliederliste</li>
+            <li>Beiträge, Spenden und offene Zahlungen getrennt verwalten</li>
+            <li>Vereinsdokumente und Protokolle zentral ablegen</li>
+            <li>Zugriffsrechte für Vorstand und Schatzmeister festlegen</li>
+            <li>Online-Formulare und spätere Mitgliederaufnahme testen</li>
+          </ul>
+          <div class="caution"><strong>Wichtig:</strong> In ClubDesk Free sind die Module vorhanden, der Funktionsumfang ist aber eingeschränkt. Deshalb zuerst mit wenigen Datensätzen testen, insbesondere Bankabgleich, Buchhaltung, Export und Aufnahmeformular. Außerdem ist ein Auftragsverarbeitungsvertrag abzuschließen und die Datenschutzerklärung anzupassen.</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="todo-title">
+      <div class="section-head">
+        <p class="kicker">06 · Konkreter Ablauf</p>
+        <h2 id="todo-title">Was der Vorstand jetzt entscheiden sollte</h2>
+      </div>
+      <div class="grid-2">
+        <article class="card"><h3>1. Bestand aufnehmen</h3><p>Mitglieder, Anträge, Aufnahmeentscheidungen und Kontoeingänge vollständig abgleichen.</p></article>
+        <article class="card"><h3>2. Entwurf beschließen lassen</h3><p>Beitragsordnung mit 240 € Jahresbeitrag, Zahlungsweisen, Fälligkeit, Ermäßigungen und Mahnverfahren vorbereiten.</p></article>
+        <article class="card"><h3>3. Mitgliederversammlung einladen</h3><p>Mindestens zwei Wochen vorher elektronisch oder schriftlich und mit dem Tagesordnungspunkt „Beschluss der Beitragsordnung“.</p></article>
+        <article class="card"><h3>4. Beschluss dokumentieren</h3><p>Beschluss und Abstimmungsergebnis protokollieren; Protokoll von Versammlungsleitung und Protokollführung unterschreiben lassen.</p></article>
+        <article class="card"><h3>5. Mitglieder informieren</h3><p>Beitrag, Zahlungswahl, Startdatum, Bankverbindung und eindeutige Verwendungszwecke mitteilen.</p></article>
+        <article class="card"><h3>6. ClubDesk einrichten</h3><p>Mitgliederbestand importieren, Rollen vergeben, Buchungskategorien anlegen und den Ablauf mit Testzahlungen prüfen.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <div class="section-head">
+        <p class="kicker">07 · Kurz beantwortet</p>
+        <h2 id="faq-title">Häufige Fragen</h2>
+      </div>
+      <details><summary>Muss die Satzung wegen monatlicher Zahlung geändert werden?</summary><div>Nein, wenn weiterhin ein Jahresbeitrag beschlossen wird und die monatliche Zahlung lediglich eine Ratenzahlungsoption ist. Eine echte monatliche, jeweils neu entstehende Beitragspflicht sollte dagegen rechtlich gesondert geprüft werden.</div></details>
+      <details><summary>Darf jemand einfach 30 € statt 20 € zahlen?</summary><div>Ja. Die zusätzlichen 10 € sollten aber nicht automatisch als Spende verbucht werden. Die freiwillige Spendenabsicht muss eindeutig sein – idealerweise durch einen getrennten Verwendungszweck oder eine kurze Erklärung.</div></details>
+      <details><summary>Können nicht zahlende Mitglieder ausgeschlossen werden?</summary><div>Die Satzung erlaubt dies bei einem Beitragsrückstand von mehr als drei Monaten und nach Gelegenheit zur Stellungnahme. Dafür muss jedoch zuerst klar sein, welcher Beitrag wirksam beschlossen, fällig und tatsächlich offen ist.</div></details>
+      <details><summary>Ersetzt ClubDesk die eigene Website?</summary><div>Nein. ClubDesk kann Verwaltung, Finanzen und Formulare übernehmen. Die öffentliche Vereinswebsite kann weiterhin unabhängig auf Cloudflare Pages betrieben und später über ein Formular oder einen Link mit dem Verwaltungsprozess verbunden werden.</div></details>
+    </section>
+
+    <section aria-labelledby="sources-title">
+      <div class="section-head">
+        <p class="kicker">08 · Quellen zum Gegenprüfen</p>
+        <h2 id="sources-title">Rechts- und Anbieterquellen</h2>
+        <p class="muted">Die Hinweise sind eine praktische Arbeitsgrundlage und ersetzen bei Zweifeln keine individuelle Prüfung durch Steuerberatung, Vereinsrecht oder das zuständige Finanzamt.</p>
+      </div>
+      <div class="sources">
+        <a class="source" href="https://www.gesetze-im-internet.de/bgb/__58.html" target="_blank" rel="noopener"><span><strong>§ 58 BGB</strong><br>Regelungen zu Eintritt, Austritt und Beiträgen in der Satzung</span></a>
+        <a class="source" href="https://www.gesetze-im-internet.de/bgb/__126.html" target="_blank" rel="noopener"><span><strong>§ 126 BGB</strong><br>Gesetzliche Schriftform</span></a>
+        <a class="source" href="https://www.gesetze-im-internet.de/bgb/__126a.html" target="_blank" rel="noopener"><span><strong>§ 126a BGB</strong><br>Elektronische Form und qualifizierte elektronische Signatur</span></a>
+        <a class="source" href="https://www.gesetze-im-internet.de/estg/__10b.html" target="_blank" rel="noopener"><span><strong>§ 10b EStG</strong><br>Steuerbegünstigte Zuwendungen: Spenden und Mitgliedsbeiträge</span></a>
+        <a class="source" href="https://www.finanzamt.nrw.de/steuerinfos/weitere-themen/vereine-und-stiftungen/zuwendungsbestaetigung" target="_blank" rel="noopener"><span><strong>Finanzverwaltung NRW</strong><br>Freiwilligkeit, Unentgeltlichkeit und Zuwendungsbestätigung</span></a>
+        <a class="source" href="https://www.finanzamt.nrw.de/steuerinfos/weitere-themen/vereine-und-stiftungen/taetigkeitsbereiche-eines-vereins" target="_blank" rel="noopener"><span><strong>Finanzverwaltung NRW</strong><br>Mitgliedsbeiträge und Spenden im ideellen Bereich</span></a>
+        <a class="source" href="https://www.clubdesk.de/de/preise" target="_blank" rel="noopener"><span><strong>ClubDesk – Preise</strong><br>Free-Version, Mitgliedergrenze und Speicher</span></a>
+        <a class="source" href="https://www.clubdesk.de/de/vorteile/datensicherheit-und-datenschutz-verein" target="_blank" rel="noopener"><span><strong>ClubDesk – Datenschutz</strong><br>DSGVO, Zugriffsrechte, Datensicherung und AVV</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Zentrum für Islamische Bildung und Gemeinschaft in Krefeld e.V. · Interne Informationsseite · Arbeitsstand vom 21.08.2026</div>
+  </footer>
+  </div>
+
+  <script>
+    const accessGate = document.querySelector('#access-gate');
+    const accessForm = document.querySelector('#access-form');
+    const accessCode = document.querySelector('#access-code');
+    const accessError = document.querySelector('#access-error');
+    const protectedSite = document.querySelector('#protected-site');
+    const accessHash = '8ea22477221e40c13a1ae12d84cf897769b4aa60e247c98a735c51feb60e415a';
+    const accessStorageKey = 'zibg_access_until';
+    const accessDuration = 12 * 60 * 60 * 1000;
+
+    async function sha256(value) {
+      const bytes = new TextEncoder().encode(value);
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
+      return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+    }
+
+    function openSite() {
+      accessGate.hidden = true;
+      protectedSite.hidden = false;
+      document.body.style.overflow = '';
+    }
+
+    if (Number(localStorage.getItem(accessStorageKey) || 0) > Date.now()) {
+      openSite();
+    } else {
+      localStorage.removeItem(accessStorageKey);
+      document.body.style.overflow = 'hidden';
+    }
+
+    accessForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      accessError.hidden = true;
+      if (await sha256(accessCode.value) === accessHash) {
+        localStorage.setItem(accessStorageKey, String(Date.now() + accessDuration));
+        accessCode.value = '';
+        openSite();
+      } else {
+        accessError.hidden = false;
+        accessCode.select();
+      }
+    });
+
+    const members = document.querySelector('#members');
+    const rate = document.querySelector('#rate');
+    const income = document.querySelector('#income');
+    const gap = document.querySelector('#gap');
+    const rent = 650;
+    const euro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    function updateCalculator() {
+      const total = Math.max(0, Number(members.value) || 0) * Math.max(0, Number(rate.value) || 0);
+      income.textContent = euro.format(total);
+      const difference = rent - total;
+      gap.textContent = difference > 0 ? `Zur Miete fehlen ${euro.format(difference)}.` : `Die Miete ist gedeckt; Überschuss ${euro.format(Math.abs(difference))}.`;
+    }
+    members.addEventListener('input', updateCalculator);
+    rate.addEventListener('input', updateCalculator);
+    updateCalculator();
+  </script>
+</body>
+</html>
