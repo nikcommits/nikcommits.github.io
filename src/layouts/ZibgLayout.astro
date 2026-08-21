@@ -40,8 +40,8 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f5" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121214" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090b10" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
 
     <!-- Web App & PWA / Home-Screen App Meta Tags -->
@@ -63,12 +63,23 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
       <header>
         <div class="wrap nav">
           <a class="brand" href={isBoardPage ? '../index.html' : '#top'}>
-            <img class="brand-logo brand-logo--nav" src={logoSvgPath} alt="" width="44" height="44" />
+            <img class="brand-logo brand-logo--nav" src={logoSvgPath} alt="" width="42" height="42" />
             <span>ZIBG e.V.</span>
           </a>
-          <nav aria-label="Seitennavigation">
+
+          <!-- Mobile Burger Button -->
+          <button type="button" class="burger-btn" id="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav">
+            <span class="burger-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+
+          <!-- Navigation Links (Desktop & Mobile Drawer) -->
+          <nav class="nav-links" id="main-nav" aria-label="Seitennavigation">
             {navItems.map(item => (
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} class="nav-item-link">{item.label}</a>
             ))}
           </nav>
         </div>
@@ -89,5 +100,56 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
         <div class="wrap">Zentrum für Islamische Bildung und Gemeinschaft in Krefeld e.V. · Interne Informationsseite · Arbeitsstand vom 21.08.2026</div>
       </footer>
     </div>
+
+    <!-- Burger Menu Script -->
+    <script is:inline>
+      (function () {
+        function initMobileMenu() {
+          const burgerBtn = document.querySelector('#burger-btn');
+          const mainNav = document.querySelector('#main-nav');
+          if (!burgerBtn || !mainNav) return;
+
+          function toggleMenu(open) {
+            const isExpanded = open !== undefined ? open : burgerBtn.getAttribute('aria-expanded') !== 'true';
+            burgerBtn.setAttribute('aria-expanded', String(isExpanded));
+            burgerBtn.setAttribute('aria-label', isExpanded ? 'Menü schließen' : 'Menü öffnen');
+            mainNav.classList.toggle('is-open', isExpanded);
+          }
+
+          burgerBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            toggleMenu();
+          });
+
+          // Close on clicking any link inside
+          mainNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              toggleMenu(false);
+            });
+          });
+
+          // Close when clicking outside
+          document.addEventListener('click', function (e) {
+            if (mainNav.classList.contains('is-open') && !mainNav.contains(e.target) && !burgerBtn.contains(e.target)) {
+              toggleMenu(false);
+            }
+          });
+
+          // Close on Escape key
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && mainNav.classList.contains('is-open')) {
+              toggleMenu(false);
+              burgerBtn.focus();
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initMobileMenu);
+        } else {
+          initMobileMenu();
+        }
+      })();
+    </script>
   </body>
 </html>
