@@ -11,7 +11,7 @@ import { zibgSections } from '../../data/zibg-sections';
     </div>
     <div class="toc-links">
       {zibgSections.map(section => (
-        <a href={`#${section.id}`}>
+        <a href={section.externalLink || `#${section.id}`}>
           <b>{section.badge}</b> {section.title}
         </a>
       ))}

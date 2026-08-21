@@ -1,18 +1,33 @@
 ---
 // src/layouts/ZibgLayout.astro
 import AccessGate from '../components/zibg/AccessGate.astro';
-import { zibgNavItems } from '../data/zibg-sections';
+import { zibgNavItems, zibgBoardNavItems } from '../data/zibg-sections';
 import '../styles/zibg.css';
 
 interface Props {
   title?: string;
   description?: string;
+  basePath?: string;
+  isBoardPage?: boolean;
+  heroEyebrow?: string;
+  heroTitle?: string;
+  heroLead?: string;
+  heroStatus?: string;
 }
 
 const {
   title = 'ZIBG e.V. | Mitgliedsbeiträge und Vereinsverwaltung',
   description = 'Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk, Betterplace-Registrierung und den nächsten Beschlüssen.',
+  basePath = './',
+  isBoardPage = false,
+  heroEyebrow = 'Interner Arbeitsstand für den Vorstand',
+  heroTitle = 'Mitgliedsbeiträge jetzt sauber ordnen.',
+  heroLead = 'Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.',
+  heroStatus = 'Stand: 21. August 2026 · noch kein Beschluss',
 } = Astro.props;
+
+const logoPath = `${basePath}zibg-logo.svg`;
+const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
 ---
 
 <!doctype html>
@@ -23,21 +38,21 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#212121" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
-    <link rel="icon" type="image/svg+xml" href="./zibg-logo.svg" />
+    <link rel="icon" type="image/svg+xml" href={logoPath} />
     <title>{title}</title>
   </head>
   <body>
-    <AccessGate />
+    <AccessGate basePath={basePath} />
 
     <div id="protected-site" hidden>
       <header>
         <div class="wrap nav">
-          <a class="brand" href="#top">
-            <img class="brand-logo brand-logo--nav" src="./zibg-logo.svg" alt="" width="44" height="44" />
+          <a class="brand" href={isBoardPage ? '../index.html' : '#top'}>
+            <img class="brand-logo brand-logo--nav" src={logoPath} alt="" width="44" height="44" />
             <span>ZIBG e.V.</span>
           </a>
           <nav aria-label="Seitennavigation">
-            {zibgNavItems.map(item => (
+            {navItems.map(item => (
               <a href={item.href}>{item.label}</a>
             ))}
           </nav>
@@ -46,10 +61,10 @@ const {
 
       <div class="hero" id="top">
         <div class="wrap">
-          <p class="eyebrow">Interner Arbeitsstand für den Vorstand</p>
-          <h1>Mitgliedsbeiträge jetzt sauber ordnen.</h1>
-          <p class="lead">Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.</p>
-          <div class="status"><span class="status-dot"></span>Stand: 21. August 2026 · noch kein Beschluss</div>
+          <p class="eyebrow">{heroEyebrow}</p>
+          <h1>{heroTitle}</h1>
+          <p class="lead">{heroLead}</p>
+          <div class="status"><span class="status-dot"></span>{heroStatus}</div>
         </div>
       </div>
 

@@ -1,10 +1,16 @@
 ---
 // src/components/zibg/AccessGate.astro
+interface Props {
+  basePath?: string;
+}
+
+const { basePath = './' } = Astro.props;
+const logoSrc = `${basePath}zibg-logo.svg`;
 ---
 
 <div class="access-gate" id="access-gate">
   <form class="access-box" id="access-form">
-    <img class="brand-logo brand-logo--access" src="./zibg-logo.svg" alt="ZIBG – Zentrum für Islamische Bildung und Gemeinschaft Krefeld" width="165" height="165" />
+    <img class="brand-logo brand-logo--access" src={logoSrc} alt="ZIBG – Zentrum für Islamische Bildung und Gemeinschaft Krefeld" width="165" height="165" />
     <h1>Interner Bereich</h1>
     <p>Bitte gib den Zugangscode ein, um die Vorstandsinformationen zu öffnen.</p>
     <p class="access-error" id="access-error" role="alert" hidden>Der eingegebene Zugangscode ist nicht richtig.</p>

@@ -1,19 +1,25 @@
 ---
 // src/components/zibg/sections/AufgabenBoard.astro
 import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
+
+interface Props {
+  isStandalone?: boolean;
+}
+
+const { isStandalone = false } = Astro.props;
 ---
 
-<section id="aufgaben" aria-labelledby="aufgaben-title" class="board-section">
-  <div class="section-head">
+<section id="aufgaben" aria-labelledby="aufgaben-title" class="board-section" style={isStandalone ? "margin-top: 0;" : ""}>
+  <div class="section-head" style={isStandalone ? "display: none;" : ""}>
     <p class="kicker">Vorstands-Dashboard · Aufgaben & Zuständigkeiten</p>
     <h2 id="aufgaben-title">Aufgaben gemeinsam abarbeiten</h2>
     <p class="muted">
-      Hier kann der Vorstand Aufgaben zuweisen, den Bearbeitungsstand festhalten und den aktuellen Stand für die WhatsApp-Gruppe exportieren. Der Status wird lokal im Browser gespeichert.
+      Hier kann der Vorstand Aufgaben per Drag & Drop oder Klick zuweisen, den Bearbeitungsstand festhalten und den aktuellen Stand für die WhatsApp-Gruppe exportieren.
     </p>
   </div>
 
   <!-- Progress & Stats Card -->
-  <div class="card board-stats-card">
+  <div class="card board-stats-card" id="board-stats">
     <div class="board-stats-header">
       <div>
         <span class="board-stats-caption">Gesamtfortschritt</span>
@@ -61,33 +67,33 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
   <!-- Kanban Board Container -->
   <div class="kanban-grid" id="kanban-grid">
     <!-- Column: Offen -->
-    <div class="kanban-col" data-col="todo">
+    <div class="kanban-col" data-col="todo" id="col-todo">
       <div class="kanban-col-head kanban-col-head--todo">
         <span class="kanban-dot dot--todo"></span>
         <h3>Offen</h3>
         <span class="kanban-count" id="count-todo">0</span>
       </div>
-      <div class="kanban-list" id="list-todo"></div>
+      <div class="kanban-list" id="list-todo" data-dropzone="todo"></div>
     </div>
 
     <!-- Column: In Bearbeitung -->
-    <div class="kanban-col" data-col="in-progress">
+    <div class="kanban-col" data-col="in-progress" id="col-in-progress">
       <div class="kanban-col-head kanban-col-head--progress">
         <span class="kanban-dot dot--progress"></span>
         <h3>In Bearbeitung</h3>
         <span class="kanban-count" id="count-in-progress">0</span>
       </div>
-      <div class="kanban-list" id="list-in-progress"></div>
+      <div class="kanban-list" id="list-in-progress" data-dropzone="in-progress"></div>
     </div>
 
     <!-- Column: Erledigt -->
-    <div class="kanban-col" data-col="done">
+    <div class="kanban-col" data-col="done" id="col-done">
       <div class="kanban-col-head kanban-col-head--done">
         <span class="kanban-dot dot--done"></span>
         <h3>Erledigt</h3>
         <span class="kanban-count" id="count-done">0</span>
       </div>
-      <div class="kanban-list" id="list-done"></div>
+      <div class="kanban-list" id="list-done" data-dropzone="done"></div>
     </div>
   </div>
 
@@ -170,6 +176,7 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
         const card = document.createElement('article');
         card.className = `kanban-card kanban-card--${task.defaultStatus}`;
         card.setAttribute('data-task-id', task.id);
+        card.setAttribute('draggable', 'true');
 
         card.innerHTML = `
           <div class="kanban-card-top">
@@ -191,6 +198,19 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
             </div>
           </div>
         `;
+
+        // Native Drag & Drop Handlers
+        card.addEventListener('dragstart', e => {
+          e.dataTransfer.setData('text/plain', task.id);
+          card.classList.add('is-dragging');
+          setTimeout(() => card.style.opacity = '0.4', 0);
+        });
+
+        card.addEventListener('dragend', () => {
+          card.classList.remove('is-dragging');
+          card.style.opacity = '1';
+          document.querySelectorAll('.kanban-col').forEach(c => c.classList.remove('drag-over'));
+        });
 
         if (task.defaultStatus === 'todo') listTodo.appendChild(card);
         else if (task.defaultStatus === 'in-progress') listProgress.appendChild(card);
@@ -244,7 +264,36 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
     }
 
     function initBoard() {
-      // Event Delegation for Kanban Cards
+      // Drag & Drop onto Columns
+      const columns = document.querySelectorAll('.kanban-col');
+      columns.forEach(col => {
+        col.addEventListener('dragover', e => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = 'move';
+          col.classList.add('drag-over');
+        });
+
+        col.addEventListener('dragleave', () => {
+          col.classList.remove('drag-over');
+        });
+
+        col.addEventListener('drop', e => {
+          e.preventDefault();
+          col.classList.remove('drag-over');
+          const taskId = e.dataTransfer.getData('text/plain');
+          const newStatus = col.getAttribute('data-col');
+          if (taskId && newStatus) {
+            const targetTask = tasks.find(t => t.id === taskId);
+            if (targetTask && targetTask.defaultStatus !== newStatus) {
+              targetTask.defaultStatus = newStatus;
+              saveTasks();
+              renderBoard();
+            }
+          }
+        });
+      });
+
+      // Event Delegation for Buttons & Dropdowns
       const kanbanGrid = document.querySelector('#kanban-grid');
       if (kanbanGrid) {
         kanbanGrid.addEventListener('click', e => {
@@ -345,7 +394,7 @@ import { initialZibgTasks, ZIBG_MEMBERS } from '../../../data/zibg-sections';
             });
           }
 
-          text += `\n_Live-Vorstandsboard:_ https://nikcommits.github.io/zibg-vorstand/index.html#aufgaben`;
+          text += `\n_Live-Vorstandsboard:_ https://nikcommits.github.io/zibg-vorstand/aufgaben/`;
 
           try {
             await navigator.clipboard.writeText(text);

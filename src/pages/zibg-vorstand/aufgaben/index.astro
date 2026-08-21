@@ -1,0 +1,25 @@
+---
+// src/pages/zibg-vorstand/aufgaben/index.astro
+import ZibgLayout from '../../../layouts/ZibgLayout.astro';
+import AufgabenBoard from '../../../components/zibg/sections/AufgabenBoard.astro';
+---
+
+<ZibgLayout
+  title="ZIBG e.V. | Vorstands-Aufgaben & Kanban-Board"
+  description="Dediziertes Vorstands-Board mit Kanban-Spalten, Zuweisung für Abdul Aziz, Engin, Mahmoud und Sammy und 1-Klick-Export für WhatsApp."
+  basePath="../"
+  isBoardPage={true}
+  heroEyebrow="Vorstands-Dashboard · Aufgaben & Zuständigkeiten"
+  heroTitle="Vorstandsaufgaben gemeinsam abarbeiten."
+  heroLead="Interaktives Kanban-Board mit Drag & Drop, flexiblen Zuständigkeiten und Status-Tracking für die anstehenden Beschlüsse und Anmeldungen."
+  heroStatus="14 Vorstandsaufgaben · Browser-Synchronisation aktiv"
+>
+  <main class="wrap" style="padding-top: 32px;">
+    <div style="margin-bottom: 20px;">
+      <a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>← Zurück zur Vorstandsübersicht</span>
+      </a>
+    </div>
+    <AufgabenBoard isStandalone={true} />
+  </main>
+</ZibgLayout>

@@ -2,6 +2,7 @@ export interface ZibgSection {
   id: string;
   badge: string;
   title: string;
+  externalLink?: string;
 }
 
 export interface ZibgTask {
@@ -17,7 +18,7 @@ export const ZIBG_MEMBERS = ["Abdul Aziz", "Engin", "Mahmoud", "Sammy"] as const
 export type ZibgMember = (typeof ZIBG_MEMBERS)[number];
 
 export const zibgSections: ZibgSection[] = [
-  { id: "aufgaben", badge: "Board", title: "Aufgaben & Board" },
+  { id: "aufgaben-teaser", badge: "Board", title: "Aufgaben-Board", externalLink: "./aufgaben/" },
   { id: "ausgangslage", badge: "01", title: "Ausgangslage" },
   { id: "satzung", badge: "02", title: "Satzungslage" },
   { id: "satzung-dokument", badge: "PDF", title: "Vollständige Satzung" },
@@ -31,12 +32,18 @@ export const zibgSections: ZibgSection[] = [
 ];
 
 export const zibgNavItems = [
-  { href: "#aufgaben", label: "Aufgaben-Board" },
+  { href: "./aufgaben/", label: "📋 Zum Aufgaben-Board" },
   { href: "#satzung", label: "Satzungslage" },
   { href: "#zahlungen", label: "Zahlungen" },
   { href: "#clubdesk", label: "ClubDesk" },
   { href: "#betterplace", label: "Betterplace" },
   { href: "#naechste-schritte", label: "Nächste Schritte" },
+];
+
+export const zibgBoardNavItems = [
+  { href: "../index.html", label: "← Zurück zur Übersicht" },
+  { href: "#top", label: "Fortschritt" },
+  { href: "#kanban-grid", label: "Kanban-Board" },
 ];
 
 export const initialZibgTasks: ZibgTask[] = [
