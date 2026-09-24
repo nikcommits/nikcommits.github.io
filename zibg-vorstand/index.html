@@ -1,58 +1,4 @@
-<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk, Betterplace-Registrierung und den nächsten Beschlüssen."><meta name="color-scheme" content="light dark"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090b10"><meta name="robots" content="noindex, nofollow, noarchive"><!-- Web App & PWA / Home-Screen App Meta Tags --><link rel="manifest" href="./manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="ZIBG Vorstand"><link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png"><link rel="icon" type="image/svg+xml" href="./zibg-logo.svg"><title>ZIBG e.V. | Mitgliedsbeiträge und Vereinsverwaltung</title><link rel="stylesheet" href="/_astro/ZibgLayout.C8FI-lZm.css"></head><body><div class="access-gate" id="access-gate"><form class="access-box" id="access-form"><img class="brand-logo brand-logo--access" src="./zibg-logo.svg" alt="ZIBG – Zentrum für Islamische Bildung und Gemeinschaft Krefeld" width="165" height="165"><h1>Interner Bereich</h1><p>Bitte gib den Zugangscode ein, um die Vorstandsinformationen zu öffnen.</p><p class="access-error" id="access-error" role="alert" hidden>Der eingegebene Zugangscode ist nicht richtig.</p><label for="access-code">Zugangscode</label><input id="access-code" name="access-code" type="password" autocomplete="current-password" required autofocus><button type="submit">Seite öffnen</button><p class="access-note">ZIBG e.V. · Geschützter Zugriff</p></form></div><script>
-  (function () {
-    const accessHash = '8ea22477221e40c13a1ae12d84cf897769b4aa60e247c98a735c51feb60e415a';
-    const accessStorageKey = 'zibg_access_until';
-    const accessDuration = 12 * 60 * 60 * 1000;
-
-    async function sha256(value) {
-      const bytes = new TextEncoder().encode(value);
-      const digest = await crypto.subtle.digest('SHA-256', bytes);
-      return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
-    }
-
-    function openSite() {
-      const accessGate = document.querySelector('#access-gate');
-      const protectedSite = document.querySelector('#protected-site');
-      if (accessGate) accessGate.hidden = true;
-      if (protectedSite) protectedSite.hidden = false;
-      document.body.style.overflow = '';
-    }
-
-    function initGate() {
-      const accessForm = document.querySelector('#access-form');
-      const accessCode = document.querySelector('#access-code');
-      const accessError = document.querySelector('#access-error');
-
-      if (Number(localStorage.getItem(accessStorageKey) || 0) > Date.now()) {
-        openSite();
-      } else {
-        localStorage.removeItem(accessStorageKey);
-        document.body.style.overflow = 'hidden';
-      }
-
-      if (accessForm && accessCode) {
-        accessForm.addEventListener('submit', async event => {
-          event.preventDefault();
-          if (accessError) accessError.hidden = true;
-          if (await sha256(accessCode.value) === accessHash) {
-            localStorage.setItem(accessStorageKey, String(Date.now() + accessDuration));
-            accessCode.value = '';
-            openSite();
-          } else {
-            if (accessError) accessError.hidden = false;
-            accessCode.select();
-          }
-        });
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initGate);
-    } else {
-      initGate();
-    }
-  })();
-</script><div id="protected-site" hidden><header><div class="wrap nav"><a class="brand" href="#top"><img class="brand-logo brand-logo--nav" src="./zibg-logo.svg" alt="" width="42" height="42"><span>ZIBG e.V.</span></a><!-- Mobile Burger Button --><button type="button" class="burger-btn" id="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav"><span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><!-- Navigation Links (Desktop & Mobile Drawer) --><nav class="nav-links" id="main-nav" aria-label="Seitennavigation"><a href="./aufgaben/" class="nav-item-link">📋 Zum Aufgaben-Board</a><a href="#satzung" class="nav-item-link">Satzungslage</a><a href="#zahlungen" class="nav-item-link">Zahlungen</a><a href="#clubdesk" class="nav-item-link">ClubDesk</a><a href="#betterplace" class="nav-item-link">Betterplace</a><a href="#naechste-schritte" class="nav-item-link">Nächste Schritte</a></nav></div></header><div class="hero" id="top"><div class="wrap"><p class="eyebrow">Interner Arbeitsstand für den Vorstand</p><h1>Mitgliedsbeiträge jetzt sauber ordnen.</h1><p class="lead">Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.</p><div class="status"><span class="status-dot"></span>Stand: 21. August 2026 · noch kein Beschluss</div></div></div><aside class="toc wrap" id="inhaltsverzeichnis" aria-labelledby="toc-title"><div class="toc-box"><div class="toc-head"><h2 id="toc-title">Inhaltsverzeichnis</h2><span>Direkt zum gewünschten Thema springen</span></div><div class="toc-links"><a href="./aufgaben/"><b>Board</b> Aufgaben-Board</a><a href="#ausgangslage"><b>01</b> Ausgangslage</a><a href="#satzung"><b>02</b> Satzungslage</a><a href="#satzung-dokument"><b>PDF</b> Vollständige Satzung</a><a href="#zahlungen"><b>03</b> Bisherige Zahlungen</a><a href="#beschluss"><b>04</b> Empfehlung</a><a href="#rechner"><b>05</b> Beitragsrechner</a><a href="#clubdesk"><b>06</b> ClubDesk</a><a href="#naechste-schritte"><b>07</b> Nächste Schritte</a><a href="#betterplace"><b>08</b> Betterplace-Registrierung</a><a href="#quellen"><b>09</b> Rechtsquellen</a></div></div></aside><main class="wrap"><section id="aufgaben-teaser" aria-labelledby="teaser-title"><div class="card board-teaser-card"><div class="board-teaser-content"><div><p class="kicker">Vorstands-Organisation</p><h2 id="teaser-title" style="font-size: clamp(24px, 3.5vw, 32px);">Aufgaben- & Kanban-Board</h2><p class="muted" style="max-width: 680px; margin-top: 8px;">Strukturiertes Board für <strong>Abdul Aziz</strong>, <strong>Engin</strong>, <strong>Mahmoud</strong> und <strong>Sammy</strong>. Alle 14 Vorstandsaufgaben mit Drag & Drop, Zuständigkeiten, Fortschrittsanzeige und 1-Klick-Export für die WhatsApp-Gruppe.</p></div><div class="board-teaser-actions"><a class="button-link board-open-btn" href="./aufgaben/"><span>👉 Zum Aufgaben-Board (14 Aufgaben) ↗</span></a></div></div><div class="board-teaser-stats" id="teaser-stats-wrap"><div class="board-teaser-stats-head"><span>Aktueller Bearbeitungsstand</span><strong id="teaser-stats-headline">0 von 14 Aufgaben erledigt (0 %)</strong></div><div class="board-progress-bar" style="margin-bottom: 0;"><div class="board-progress-fill" id="teaser-progress-fill" style="width: 0%;"></div></div></div></div></section><script>
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk, Betterplace-Registrierung und den nächsten Beschlüssen."><meta name="color-scheme" content="light dark"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090b10"><meta name="robots" content="noindex, nofollow, noarchive"><!-- Web App & PWA / Home-Screen App Meta Tags --><link rel="manifest" href="./manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="ZIBG Vorstand"><link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png"><link rel="icon" type="image/svg+xml" href="./zibg-logo.svg"><title>ZIBG e.V. | Mitgliedsbeiträge und Vereinsverwaltung</title><link rel="stylesheet" href="/_astro/ZibgLayout.IB02eZRt.css"></head><body><div id="protected-site"><header><div class="wrap nav"><a class="brand" href="#top"><img class="brand-logo brand-logo--nav" src="./zibg-logo.svg" alt="" width="42" height="42"><span>ZIBG e.V.</span></a><!-- Mobile Burger Button --><button type="button" class="burger-btn" id="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav"><span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><!-- Navigation Links (Desktop & Mobile Drawer) --><nav class="nav-links" id="main-nav" aria-label="Seitennavigation"><a href="./aufgaben/" class="nav-item-link">📋 Zum Aufgaben-Board</a><a href="#satzung" class="nav-item-link">Satzungslage</a><a href="#zahlungen" class="nav-item-link">Zahlungen</a><a href="#clubdesk" class="nav-item-link">ClubDesk</a><a href="#betterplace" class="nav-item-link">Betterplace</a><a href="#naechste-schritte" class="nav-item-link">Nächste Schritte</a></nav></div></header><div class="hero" id="top"><div class="wrap"><p class="eyebrow">Interner Arbeitsstand für den Vorstand</p><h1>Mitgliedsbeiträge jetzt sauber ordnen.</h1><p class="lead">Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.</p><div class="status"><span class="status-dot"></span>Stand: 21. August 2026 · noch kein Beschluss</div></div></div><aside class="toc wrap" id="inhaltsverzeichnis" aria-labelledby="toc-title"><div class="toc-box"><div class="toc-head"><h2 id="toc-title">Inhaltsverzeichnis</h2><span>Direkt zum gewünschten Thema springen</span></div><div class="toc-links"><a href="./aufgaben/"><b>Board</b> Aufgaben-Board</a><a href="#ausgangslage"><b>01</b> Ausgangslage</a><a href="#satzung"><b>02</b> Satzungslage</a><a href="#satzung-dokument"><b>PDF</b> Vollständige Satzung</a><a href="#zahlungen"><b>03</b> Bisherige Zahlungen</a><a href="#beschluss"><b>04</b> Empfehlung</a><a href="#rechner"><b>05</b> Beitragsrechner</a><a href="#clubdesk"><b>06</b> ClubDesk</a><a href="#naechste-schritte"><b>07</b> Nächste Schritte</a><a href="#betterplace"><b>08</b> Betterplace-Registrierung</a><a href="#quellen"><b>09</b> Rechtsquellen</a></div></div></aside><main class="wrap"><section id="aufgaben-teaser" aria-labelledby="teaser-title"><div class="card board-teaser-card"><div class="board-teaser-content"><div><p class="kicker">Vorstands-Organisation</p><h2 id="teaser-title" style="font-size: clamp(24px, 3.5vw, 32px);">Aufgaben- & Kanban-Board</h2><p class="muted" style="max-width: 680px; margin-top: 8px;">Strukturiertes Board mit Drag & Drop, flexiblen Zuständigkeiten, Fortschrittsanzeige und 1-Klick-Export für die WhatsApp-Gruppe.</p></div><div class="board-teaser-actions"><a class="button-link board-open-btn" href="./aufgaben/"><span>👉 Zum Aufgaben-Board ↗</span></a></div></div><div class="board-teaser-stats" id="teaser-stats-wrap"><div class="board-teaser-stats-head"><span>Aktueller Bearbeitungsstand</span><strong id="teaser-stats-headline">0 Aufgaben erledigt (0 %)</strong></div><div class="board-progress-bar" style="margin-bottom: 0;"><div class="board-progress-fill" id="teaser-progress-fill" style="width: 0%;"></div></div></div></div></section><script>
   (function () {
     const STORAGE_KEY = 'zibg_kanban_tasks_v1';
     function updateTeaser() {
@@ -64,10 +10,10 @@
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
           const tasks = JSON.parse(saved);
-          if (Array.isArray(tasks) && tasks.length > 0) {
+          if (Array.isArray(tasks)) {
             const done = tasks.filter(t => t.defaultStatus === 'done').length;
             const total = tasks.length;
-            const pct = Math.round((done / total) * 100);
+            const pct = total > 0 ? Math.round((done / total) * 100) : 0;
             headline.textContent = `${done} von ${total} Aufgaben erledigt (${pct} %)`;
             fill.style.width = `${pct}%`;
             return;
@@ -76,7 +22,7 @@
       } catch (e) {
         console.error(e);
       }
-      headline.textContent = '0 von 14 Aufgaben erledigt (0 %)';
+      headline.textContent = '0 Aufgaben erledigt (0 %)';
       fill.style.width = '0%';
     }
 
