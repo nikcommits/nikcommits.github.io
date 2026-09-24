@@ -1,0 +1,34 @@
+---
+// src/pages/zibg-vorstand/satzung/index.astro
+import ZibgLayout from '../../../layouts/ZibgLayout.astro';
+import Satzungslage from '../../../components/zibg/sections/Satzungslage.astro';
+import SatzungDokument from '../../../components/zibg/sections/SatzungDokument.astro';
+import Quellen from '../../../components/zibg/sections/Quellen.astro';
+import { zibgSatzungNavItems } from '../../../data/zibg-sections';
+---
+
+<ZibgLayout
+  title="ZIBG e.V. | Satzung & Rechtliche Grundlagen"
+  description="Offizielle Vereinssatzung, Datenschutzfassung im PDF-Viewer und rechtliche Grundlagen für den ZIBG e.V."
+  basePath="../"
+  customNavItems={zibgSatzungNavItems}
+  heroEyebrow="Rechtliche Dokumentation · ZIBG e.V."
+  heroTitle="Satzung & rechtliche Quellen."
+  heroLead="Vollständige Satzungsregelung, interaktive PDF-Vorschau und BGB-Rechtsquellen an einem übersichtlichen Ort zum Nachschlagen."
+  heroStatus="Stand: 12. Juli 2025 · Satzungsdokument archiviert"
+>
+  <main class="wrap" style="padding-top: 32px;">
+    <div style="margin-bottom: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>← Zurück zur Vorstandsübersicht</span>
+      </a>
+      <a href="../aufgaben/" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>📋 Zum Aufgaben-Board ↗</span>
+      </a>
+    </div>
+
+    <Satzungslage />
+    <SatzungDokument pdfPath="../ZIBG_Satzung_Datenschutzfassung.pdf" />
+    <Quellen />
+  </main>
+</ZibgLayout>

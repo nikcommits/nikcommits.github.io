@@ -20,30 +20,38 @@ export type ZibgMember = (typeof ZIBG_MEMBERS)[number];
 export const zibgSections: ZibgSection[] = [
   { id: "aufgaben-teaser", badge: "Board", title: "Aufgaben-Board", externalLink: "./aufgaben/" },
   { id: "ausgangslage", badge: "01", title: "Ausgangslage" },
-  { id: "satzung", badge: "02", title: "Satzungslage" },
-  { id: "satzung-dokument", badge: "PDF", title: "Vollständige Satzung" },
-  { id: "zahlungen", badge: "03", title: "Bisherige Zahlungen" },
-  { id: "beschluss", badge: "04", title: "Empfehlung" },
-  { id: "rechner", badge: "05", title: "Beitragsrechner" },
-  { id: "clubdesk", badge: "06", title: "ClubDesk" },
+  { id: "zahlungen", badge: "02", title: "Bisherige Zahlungen" },
+  { id: "beschluss", badge: "03", title: "Empfehlung" },
+  { id: "rechner", badge: "04", title: "Beitragsrechner" },
+  { id: "clubdesk", badge: "05", title: "ClubDesk" },
+  { id: "betterplace", badge: "06", title: "Betterplace-Registrierung" },
   { id: "naechste-schritte", badge: "07", title: "Nächste Schritte" },
-  { id: "betterplace", badge: "08", title: "Betterplace-Registrierung" },
-  { id: "quellen", badge: "09", title: "Rechtsquellen" },
+  { id: "satzung-extern", badge: "Recht", title: "Satzung & Dokumente", externalLink: "./satzung/" },
 ];
 
 export const zibgNavItems = [
-  { href: "./aufgaben/", label: "📋 Zum Aufgaben-Board" },
-  { href: "#satzung", label: "Satzungslage" },
+  { href: "./aufgaben/", label: "📋 Aufgaben-Board" },
   { href: "#zahlungen", label: "Zahlungen" },
+  { href: "#rechner", label: "Beitragsrechner" },
   { href: "#clubdesk", label: "ClubDesk" },
   { href: "#betterplace", label: "Betterplace" },
   { href: "#naechste-schritte", label: "Nächste Schritte" },
+  { href: "./satzung/", label: "📜 Satzung & PDF" },
 ];
 
 export const zibgBoardNavItems = [
   { href: "../index.html", label: "← Zurück zur Übersicht" },
+  { href: "../satzung/", label: "📜 Satzung & Dokumente" },
   { href: "#top", label: "Fortschritt" },
   { href: "#kanban-grid", label: "Kanban-Board" },
+];
+
+export const zibgSatzungNavItems = [
+  { href: "../index.html", label: "← Zurück zur Übersicht" },
+  { href: "../aufgaben/", label: "📋 Aufgaben-Board" },
+  { href: "#satzung", label: "Satzungslage" },
+  { href: "#satzung-dokument", label: "Vollständige Satzung (PDF)" },
+  { href: "#quellen", label: "Rechtsquellen" },
 ];
 
 export const initialZibgTasks: ZibgTask[] = [

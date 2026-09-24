@@ -1,5 +1,10 @@
 ---
 // src/components/zibg/sections/SatzungDokument.astro
+interface Props {
+  pdfPath?: string;
+}
+
+const { pdfPath = "./ZIBG_Satzung_Datenschutzfassung.pdf" } = Astro.props;
 ---
 
 <section id="satzung-dokument" aria-labelledby="satzung-dokument-title">
@@ -30,11 +35,11 @@
       <div class="document-bar">
         <span style="font-weight: 700; font-size: 14px; color: var(--muted);">Interaktive Dokumentenvorschau</span>
         <div class="document-actions">
-          <a class="button-link" href="./ZIBG_Satzung_Datenschutzfassung.pdf" target="_blank" rel="noopener">PDF in neuem Tab ↗</a>
-          <a class="button-link secondary" href="./ZIBG_Satzung_Datenschutzfassung.pdf" download>Herunterladen ↓</a>
+          <a class="button-link" href={pdfPath} target="_blank" rel="noopener">PDF in neuem Tab ↗</a>
+          <a class="button-link secondary" href={pdfPath} download>Herunterladen ↓</a>
         </div>
       </div>
-      <iframe class="document-frame" src="./ZIBG_Satzung_Datenschutzfassung.pdf#view=FitH" title="ZIBG-Satzung als PDF" loading="lazy"></iframe>
+      <iframe class="document-frame" src={`${pdfPath}#view=FitH`} title="ZIBG-Satzung als PDF" loading="lazy"></iframe>
     </div>
   </details>
 

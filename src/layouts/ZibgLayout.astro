@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   basePath?: string;
   isBoardPage?: boolean;
+  customNavItems?: { href: string; label: string }[];
   heroEyebrow?: string;
   heroTitle?: string;
   heroLead?: string;
@@ -19,6 +20,7 @@ const {
   description = 'Arbeitsstand des ZIBG e.V. zu Mitgliedsbeiträgen, bisherigen Zahlungen, ClubDesk, Betterplace-Registrierung und den nächsten Beschlüssen.',
   basePath = './',
   isBoardPage = false,
+  customNavItems,
   heroEyebrow = 'Interner Arbeitsstand für den Vorstand',
   heroTitle = 'Mitgliedsbeiträge jetzt sauber ordnen.',
   heroLead = 'Ausgangslage, Satzungsregelung, bisherige Zahlungen und eine konkrete Empfehlung für ein einheitliches Beitragsmodell – kompakt an einem Ort.',
@@ -29,7 +31,7 @@ const logoSvgPath = `${basePath}zibg-logo.svg`;
 const appleTouchIconPath = `${basePath}apple-touch-icon.png`;
 const icon192Path = `${basePath}icon-192.png`;
 const manifestPath = `${basePath}manifest.json`;
-const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
+const navItems = customNavItems || (isBoardPage ? zibgBoardNavItems : zibgNavItems);
 ---
 
 <!doctype html>
