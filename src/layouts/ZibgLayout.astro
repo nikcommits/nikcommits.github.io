@@ -1,6 +1,5 @@
 ---
 // src/layouts/ZibgLayout.astro
-import AccessGate from '../components/zibg/AccessGate.astro';
 import { zibgNavItems, zibgBoardNavItems } from '../data/zibg-sections';
 import '../styles/zibg.css';
 
@@ -57,9 +56,7 @@ const navItems = isBoardPage ? zibgBoardNavItems : zibgNavItems;
     <title>{title}</title>
   </head>
   <body>
-    <AccessGate basePath={basePath} />
-
-    <div id="protected-site" hidden>
+    <div id="protected-site">
       <header>
         <div class="wrap nav">
           <a class="brand" href={isBoardPage ? '../index.html' : '#top'}>

@@ -9,13 +9,13 @@
         <p class="kicker">Vorstands-Organisation</p>
         <h2 id="teaser-title" style="font-size: clamp(24px, 3.5vw, 32px);">Aufgaben- & Kanban-Board</h2>
         <p class="muted" style="max-width: 680px; margin-top: 8px;">
-          Strukturiertes Board für <strong>Abdul Aziz</strong>, <strong>Engin</strong>, <strong>Mahmoud</strong> und <strong>Sammy</strong>. Alle 14 Vorstandsaufgaben mit Drag & Drop, Zuständigkeiten, Fortschrittsanzeige und 1-Klick-Export für die WhatsApp-Gruppe.
+          Strukturiertes Board mit Drag & Drop, flexiblen Zuständigkeiten, Fortschrittsanzeige und 1-Klick-Export für die WhatsApp-Gruppe.
         </p>
       </div>
 
       <div class="board-teaser-actions">
         <a class="button-link board-open-btn" href="./aufgaben/">
-          <span>👉 Zum Aufgaben-Board (14 Aufgaben) ↗</span>
+          <span>👉 Zum Aufgaben-Board ↗</span>
         </a>
       </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="board-teaser-stats" id="teaser-stats-wrap">
       <div class="board-teaser-stats-head">
         <span>Aktueller Bearbeitungsstand</span>
-        <strong id="teaser-stats-headline">0 von 14 Aufgaben erledigt (0 %)</strong>
+        <strong id="teaser-stats-headline">0 Aufgaben erledigt (0 %)</strong>
       </div>
       <div class="board-progress-bar" style="margin-bottom: 0;">
         <div class="board-progress-fill" id="teaser-progress-fill" style="width: 0%;"></div>
@@ -44,10 +44,10 @@
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) {
           const tasks = JSON.parse(saved);
-          if (Array.isArray(tasks) && tasks.length > 0) {
+          if (Array.isArray(tasks)) {
             const done = tasks.filter(t => t.defaultStatus === 'done').length;
             const total = tasks.length;
-            const pct = Math.round((done / total) * 100);
+            const pct = total > 0 ? Math.round((done / total) * 100) : 0;
             headline.textContent = `${done} von ${total} Aufgaben erledigt (${pct} %)`;
             fill.style.width = `${pct}%`;
             return;
@@ -56,7 +56,7 @@
       } catch (e) {
         console.error(e);
       }
-      headline.textContent = '0 von 14 Aufgaben erledigt (0 %)';
+      headline.textContent = '0 Aufgaben erledigt (0 %)';
       fill.style.width = '0%';
     }
 
