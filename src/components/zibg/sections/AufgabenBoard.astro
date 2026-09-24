@@ -197,8 +197,15 @@ const { isStandalone = false } = Astro.props;
       try {
         const saved = localStorage.getItem(MEMBERS_STORAGE_KEY);
         if (saved) {
-          const parsed = JSON.parse(saved);
+          let parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
+            // Migrate Sammy -> Samih
+            parsed = parsed.map(m => m === 'Sammy' ? 'Samih' : m);
+            // Ensure newly added members from meeting (e.g. Samih, Inan, Hassib) are present
+            ZIBG_MEMBERS.forEach(m => {
+              if (!parsed.includes(m)) parsed.push(m);
+            });
+            localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(parsed));
             return parsed;
           }
         }
@@ -220,8 +227,20 @@ const { isStandalone = false } = Astro.props;
       try {
         const saved = localStorage.getItem(TASKS_STORAGE_KEY);
         if (saved) {
-          const parsed = JSON.parse(saved);
+          let parsed = JSON.parse(saved);
           if (Array.isArray(parsed)) {
+            // Migrate old tasks defaultAssignee Sammy -> Samih
+            parsed.forEach(t => {
+              if (t.defaultAssignee === 'Sammy') t.defaultAssignee = 'Samih';
+            });
+
+            // Automatically merge newly added meeting tasks that aren't in storage yet
+            const existingIds = new Set(parsed.map(t => t.id));
+            const newMeetingTasks = initialZibgTasks.filter(t => !existingIds.has(t.id));
+            if (newMeetingTasks.length > 0) {
+              parsed.unshift(...newMeetingTasks);
+              localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(parsed));
+            }
             return parsed;
           }
         }

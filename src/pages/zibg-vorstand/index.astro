@@ -17,6 +17,26 @@ import Faq from '../../components/zibg/sections/Faq.astro';
   <TableOfContents />
   <main class="wrap">
     <AufgabenTeaser />
+
+    <!-- Latest Meeting Protocol Teaser -->
+    <section id="protokolle-teaser" style="margin-top: 24px;">
+      <div class="card" style="border-left: 4px solid var(--accent); background: var(--card); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="max-width: 680px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <span class="tag" style="background: var(--mint); color: var(--mint-text); border: 1px solid var(--mint-border);">Neues Protokoll</span>
+            <span class="muted" style="font-size: 13px;">Sitzung vom 24.09.2026</span>
+          </div>
+          <h3 style="margin: 0 0 6px; font-size: 18.5px; color: var(--ink);">Verbindliche Neustrukturierung & Beschlüsse</h3>
+          <p class="muted" style="margin: 0; font-size: 14px; line-height: 1.5;">
+            Wöchentliches Status-Meeting (Do, 21:30 Uhr), Samih als handlungsfähiger Schatzmeister, Better Place Vorzug, digitale Vereinsablage und Kriterien für die Raumsuche (Gewerbe bis 700 €).
+          </p>
+        </div>
+        <a href="./protokolle/" class="button-link primary-action-btn" style="white-space: nowrap;">
+          <span>📝 Zum Sitzungsprotokoll ↗</span>
+        </a>
+      </div>
+    </section>
+
     <Ausgangslage />
     <Zahlungen />
     <Beschluss />

@@ -1,0 +1,342 @@
+---
+// src/pages/zibg-vorstand/protokolle/index.astro
+import ZibgLayout from '../../../layouts/ZibgLayout.astro';
+import { zibgProtokollNavItems } from '../../../data/zibg-sections';
+---
+
+<ZibgLayout
+  title="ZIBG e.V. | Sitzungsprotokolle & Beschlüsse"
+  description="Offizielles Sitzungsprotokoll des ZIBG e.V. vom 24. September 2026: Verbindliche Neustrukturierung, Aufgabenverteilung, Räumlichkeiten, Schatzmeister & Better Place."
+  basePath="../"
+  customNavItems={zibgProtokollNavItems}
+  heroEyebrow="Vorstands-Dokumentation · ZIBG e.V."
+  heroTitle="Sitzungsprotokolle & Beschlüsse."
+  heroLead="Verbindliche Dokumentation aller Vorstandssitzungen, getroffener Beschlüsse und Zuständigkeiten – übersichtlich und jederzeit griffbereit."
+  heroStatus="Neues Protokoll: Sitzung vom 24.09.2026"
+>
+  <main class="wrap" style="padding-top: 32px;">
+    <!-- Navigation Bar -->
+    <div style="margin-bottom: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>← Zurück zur Vorstandsübersicht</span>
+      </a>
+      <a href="../aufgaben/" class="button-link primary-action-btn" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>📋 Zum Kanban-Board ↗</span>
+      </a>
+      <a href="../satzung/" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>📜 Zur Satzung ↗</span>
+      </a>
+    </div>
+
+    <!-- Regular Meeting Callout -->
+    <section style="margin-bottom: 36px;">
+      <div class="card" style="border-left: 4px solid var(--primary-light); background: var(--card-alt); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div>
+          <span class="tag" style="background: var(--primary-light); color: #fff;">Regelmäßiger Termin</span>
+          <h2 style="margin: 8px 0 4px; font-size: 20px; color: var(--ink);">Wöchentliches Status-Meeting</h2>
+          <p class="muted" style="margin: 0; font-size: 14.5px;">
+            🗓️ <strong>Jeden Donnerstag um 21:30 Uhr</strong> · Verbindliche & pünktliche Teilnahme aller Verantwortlichen zur schnellen Aufgabenkontrolle.
+          </p>
+        </div>
+        <div style="font-size: 13.5px; font-weight: 700; color: var(--primary-light);">
+          Nächster Termin: Do, 01.10.2026 (21:30)
+        </div>
+      </div>
+    </section>
+
+    <!-- Meeting Protocol Section -->
+    <article class="protocol-entry" id="sitzung-2026-09-24">
+      <div class="section-head">
+        <p class="kicker">Sitzungsprotokoll · 24. September 2026</p>
+        <h1 style="font-size: clamp(26px, 4vw, 36px); margin: 0 0 10px;">Neustrukturierung der Vereinsarbeit & Aufgabenverteilung</h1>
+        <p class="muted" style="font-size: 15px; max-width: 800px;">
+          Die Sitzung diente vor allem dazu, die bisher schleppende Vereinsarbeit neu zu strukturieren, Verantwortlichkeiten verbindlich zu verteilen und bei den drei drängendsten Themen voranzukommen: <strong>Räumlichkeiten</strong>, <strong>Finanzen/Bankzugang</strong> und <strong>Spenden über Better Place</strong>.
+        </p>
+      </div>
+
+      <!-- Key Decisions Grid -->
+      <section id="beschluesse" style="margin-top: 32px;" aria-labelledby="beschluesse-title">
+        <div class="section-head" style="margin-bottom: 18px;">
+          <h2 id="beschluesse-title" style="font-size: 22px;">Verbindliche Kernbeschlüsse</h2>
+          <p class="muted">Die wichtigsten Entscheidungen der Sitzung im Überblick.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" style="border-top: 3px solid #16a34a;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">⏱️</span>
+              <h3 style="margin: 0; font-size: 16px;">Wöchentliches Statusmeeting</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Fester wöchentlicher Termin donnerstags um 21:30 Uhr zur Überprüfung offener Aufgaben und frühzeitigen Problembehebung.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid var(--primary-light);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">👤</span>
+              <h3 style="margin: 0; font-size: 16px;">Klare Hauptverantwortliche</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Keine unklare Sammelzuständigkeit mehr beim Vorstand. Jedes Thema hat eine feste Lead-Person mit nötigen Vollmachten und Unterlagen.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #d97706;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">🏦</span>
+              <h3 style="margin: 0; font-size: 16px;">Schatzmeister handlungsfähig</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Samih wird offiziell und praktisch als Schatzmeister eingesetzt und erhält eigenständigen Bank- und Online-Banking-Zugang.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #0284c7;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">📂</span>
+              <h3 style="margin: 0; font-size: 16px;">Zentrale digitale Vereinsablage</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Aufbau einer strukturierten Cloud-Ablage (Share). Papierakten (Anträge, Nachweise, Kontoauszüge) werden von Abdul Aziz & Engin S digitalisiert.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #ea580c;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">💛</span>
+              <h3 style="margin: 0; font-size: 16px;">Better Place vor Raumbezug</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Better Place wird nicht aufgeschoben, sondern sofort startklar gemacht (Lead: Abdul Aziz), um vorab Spenden sammeln zu können.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #9333ea;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">🏢</span>
+              <h3 style="margin: 0; font-size: 16px;">Räumlichkeiten: Gewerbe bis 700 €</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Suche nach Gewerbeeinheit (keine Privatwohnung), bis 700 € warm, ca. 2,5 km Radius Hbf Krefeld, ebenerdig/gut erreichbar (Lead: Inan).
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #059669;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">✉️</span>
+              <h3 style="margin: 0; font-size: 16px;">Vermieter-Akquise & Nachfassen</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Erst E-Mail-Anfrage mit Fokus auf Bildung, Deutschunterricht und Treffpunkt, danach telefonisch nachfassen (Lead: Samih).
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #4f46e5;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">🤝</span>
+              <h3 style="margin: 0; font-size: 16px;">Persönliche Kontakte (Vitamin B)</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Gezielte Ansprache im eigenen Umfeld; Hassib kontaktiert tschetschenischen Kontakt; Elias wird um Einschätzung gebeten.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Topic Sections -->
+      <section id="themen" style="margin-top: 48px;" aria-labelledby="themen-title">
+        <div class="section-head">
+          <p class="kicker">Detaillierter Verlauf</p>
+          <h2 id="themen-title">Themen & Diskussionen der Sitzung</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <!-- Topic 1 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">1. Anlass, Arbeitsweise und regelmäßige Abstimmung</h3>
+            <p>
+              Als Hauptproblem der bisherigen Vereinsarbeit wurde analysiert, dass Aufgaben meist beim Vorstand gebündelt waren, Zuständigkeiten oft unklar blieben und Arbeiten dadurch über Wochen liegen blieben.
+            </p>
+            <p>
+              <strong>Neues Arbeitsmodell:</strong>
+            </p>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li><strong>Wöchentlicher Jour Fixe:</strong> Jeden Donnerstag um 21:30 Uhr. Verlässliche und pünktliche Teilnahme aller Beteiligten.</li>
+              <li><strong>Kanban-Board & Transparenz:</strong> Abdul Aziz stellte das Kanban-Board (Offen / In Bearbeitung / Erledigt) vor. Alle Aufgaben und Zuständigkeiten werden hier tagesaktuell gepflegt.</li>
+              <li><strong>Frühzeitige Übergabe:</strong> Wenn jemand nicht weiterkommt oder zeitlich blockiert ist, wird unmittelbar Unterstützung gerufen oder die Aufgabe neu vergeben, statt sie aufzuschieben.</li>
+            </ul>
+            <div class="quote">
+              „Aufgaben bleiben nicht mehr automatisch beim Vorstand hängen. Für jedes Thema gibt es einen klaren Hauptverantwortlichen mit den nötigen Berechtigungen.“
+            </div>
+          </article>
+
+          <!-- Topic 2 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">2. Schatzmeister, Bank und Online-Banking</h3>
+            <p>
+              Da Vorstandsmitglieder zeitlich eingeschränkt oder nicht durchgehend vor Ort sind, soll <strong>Samih</strong> entsprechend der Satzung offiziell und operativ als Schatzmeister agieren.
+            </p>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li>Die Bank hat Samih bereits als Schatzmeister anerkannt; der Online-Banking-Zugang muss nun final eingerichtet werden.</li>
+              <li><strong>Nächster Schritt für Samih:</strong> Mit der Bank klären, ob der Online-Zugang allein mit Ausweis und Vereinsunterlagen aktiviert werden kann oder ob ein weiteres Vorstandsmitglied persönlich anwesend sein muss.</li>
+              <li>Alle benötigten Dokumente und Vollmachten werden ihm kurzfristig zur Verfügung gestellt.</li>
+            </ul>
+          </article>
+
+          <!-- Topic 3 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">3. Digitalisierung und zentrale Ablage der Vereinsunterlagen</h3>
+            <p>
+              Diskutiert wurde, ob nur anlassbezogen einzelne Dokumente digitalisiert werden oder grundsätzlich eine vollständige digitale Vereinsablage aufgebaut wird. Wegen gesetzlicher Nachweis- und Aufbewahrungspflichten wurde der **vollständige Aufbau** beschlossen.
+            </p>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li><strong>Umfang:</strong> Mitgliedsanträge, Kontoauszüge, Zahlungsbelege, Gemeinnützigkeitsnachweise und Verträge. Bereits digital vorliegende Dokumente (wie die Satzung) müssen nicht erneut gescannt werden.</li>
+              <li><strong>Umsetzung:</strong> <strong>Engin S</strong> übernimmt gemeinsam mit <strong>Abdul Aziz</strong> die Digitalisierung der physischen Dokumentenbox und richtet einen gemeinsamen, sicheren Share für Berechtigte ein.</li>
+              <li><strong>Nutzen:</strong> Direkte Arbeitserleichterung für Better Place, Buchhaltung, Bankfragen und offizielle Nachweise.</li>
+            </ul>
+          </article>
+
+          <!-- Topic 4 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">4. Better Place, Flyer und Spendensammlung</h3>
+            <p>
+              Better Place und der geplante Flyer wurden als zwei getrennte Maßnahmen eingeordnet: Der Flyer sollte ursprünglich einspringen, weil Better Place ins Stocken geraten war.
+            </p>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li><strong>Kein Warten auf Räumlichkeiten:</strong> Better Place soll jetzt sofort einsatzbereit gemacht werden, um bereits Spendengelder akquirieren zu können und späteren Zeitdruck zu vermeiden.</li>
+              <li><strong>Zuständigkeit:</strong> <strong>Abdul Aziz</strong> übernimmt die Plattform vollständig.</li>
+              <li><strong>Vorstandszusage:</strong> Mahmoud und der Vorstand stellen Kontodaten, Freistellungsbescheide und Zugangsdaten unmittelbar bereit. Hindernisse werden im wöchentlichen Meeting direkt behoben.</li>
+            </ul>
+          </article>
+
+          <!-- Topic 5 & 6: Räumlichkeiten -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">5. Räumlichkeitssuche: Profil & Vorgehen</h3>
+            <div class="grid-2" style="margin-bottom: 16px;">
+              <div style="background: var(--card-alt); padding: 14px; border-radius: 8px; border: 1px solid var(--line);">
+                <strong style="color: var(--ink); display: block; margin-bottom: 6px;">Anforderungsprofil:</strong>
+                <ul style="padding-left: 18px; margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--muted);">
+                  <li>Ausschließlich <strong>Gewerbefläche</strong> (keine Privatwohnung in oberen Etagen)</li>
+                  <li>Maximal <strong>700 € warm</strong> (Nebenkosten/Strom beachten)</li>
+                  <li>Radius ca. <strong>2,5 km um Krefeld Hbf</strong> (ÖPNV-Erreichbarkeit)</li>
+                  <li>Ebenerdig oder barrierearm zugänglich</li>
+                  <li>Seriöser Eindruck (Schaufenster nicht zwingend; Vorhänge/Milchglas denkbar)</li>
+                  <li>Frühzeitige Prüfung von Brandschutz, Türbreiten und zulässiger Personenzahl</li>
+                </ul>
+              </div>
+
+              <div style="background: var(--card-alt); padding: 14px; border-radius: 8px; border: 1px solid var(--line);">
+                <strong style="color: var(--ink); display: block; margin-bottom: 6px;">Operatives Vorgehen & Akquise:</strong>
+                <ul style="padding-left: 18px; margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--muted);">
+                  <li><strong>Objektsuche:</strong> <strong>Inan</strong> durchsucht Portale und teilt passende Inserate vorab intern in der Gruppe.</li>
+                  <li><strong>Kontaktstrategie:</strong> <strong>Samih</strong> kontaktiert Vermieter zuerst per <strong>E-Mail</strong>, danach erfolgt ein telefonisches Nachfassen.</li>
+                  <li><strong>Nutzerdarstellung:</strong> Seriöser Fokus auf <em>Bildung, Deutschförderung, Unterrichte und Treffpunkt</em>.</li>
+                  <li><strong>Besichtigungen:</strong> Mindestens ein, optimal zwei Vorstandsmitglieder nehmen teil.</li>
+                  <li><strong>Vitamin B:</strong> <strong>Hassib</strong> kontaktiert tschetschenischen Kontakt; <strong>Elias</strong> wird einbezogen; alle hören sich privat um.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Topic 7: Weitere Themen -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">6. Weitere Themen & Ausblick</h3>
+            <p style="margin-bottom: 8px;">
+              <strong>Lehrermangel:</strong> Wurde als wichtiges strukturelles Thema benannt, aber für diese Sitzung vertagt. Wird in einer gesonderten Sitzung tiefer behandelt.
+            </p>
+            <p style="margin: 0;">
+              <strong>Mitgliederbestand:</strong> Aktuell wird von ca. 14 aktiven Mitgliedern ausgegangen; der exakte Bestand wird über die Mitgliedergruppe gegen die Aufnahmeanträge finalisiert.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Action Items & Assignment Section -->
+      <section id="massnahmen" style="margin-top: 48px;" aria-labelledby="massnahmen-title">
+        <div class="card" style="border: 2px solid var(--primary-light); background: var(--card);">
+          <div class="section-head" style="margin-bottom: 18px;">
+            <p class="kicker">Verbindliche Aufgabenverteilung</p>
+            <h2 id="massnahmen-title" style="margin: 0 0 6px;">Vereinbarte To-Dos aus der Sitzung</h2>
+            <p class="muted">Alle 9 Aufgaben sind bereits im Kanban-Board angelegt und können dort direkt verschoben und abgearbeitet werden.</p>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--line); color: var(--muted);">
+                  <th style="padding: 10px 12px;">Zuständige(r)</th>
+                  <th style="padding: 10px 12px;">Aufgabe / Vorhaben</th>
+                  <th style="padding: 10px 12px;">Bereich</th>
+                  <th style="padding: 10px 12px;">Status</th>
+                </tr>
+              </thead>
+              <tbody style="line-height: 1.5;">
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Abdul Aziz</td>
+                  <td style="padding: 12px;">Better Place vollständig übernehmen, Anforderungen abarbeiten, Unterlagen & Rechte anfordern</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Fundraising</span></td>
+                  <td style="padding: 12px;"><span class="tag" style="background: var(--gold-surface); color: var(--gold); border: 1px solid var(--gold-border);">In Bearbeitung</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Abdul Aziz & Engin S</td>
+                  <td style="padding: 12px;">Papierunterlagen übernehmen, scannen und zentrale digitale Share-Ablage einrichten</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Organisation & IT</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Samih</td>
+                  <td style="padding: 12px;">Bei der Bank Online-Banking-Zugang klären (Prüfung: Alleingang oder Vorstandsbegleitung)</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Finanzen & Bank</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Inan</td>
+                  <td style="padding: 12px;">Gewerbeflächen (bis 700 € warm, ~2,5 km Hbf) suchen und Links in die Gruppe stellen</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Samih</td>
+                  <td style="padding: 12px;">Freigegebene Vermieter/Makler kontaktieren (erst E-Mail, dann telefonisch nachfassen)</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Hassib</td>
+                  <td style="padding: 12px;">Tschetschenischen Kontakt wegen möglicher Gewerbeimmobilien in Krefeld anschreiben</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Mahmoud / Vorstand</td>
+                  <td style="padding: 12px;">Unterlagen, Ausweise und Vollmachten zügig an Abdul Aziz & Samih übergeben</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Vorstand & Recht</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Alle Beteiligten</td>
+                  <td style="padding: 12px;">Im privaten Netzwerk aktiv nach geeigneten Gewerbeflächen umhören (Vitamin B)</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Alle Verantwortlichen</td>
+                  <td style="padding: 12px;">Fortschritt im wöchentlichen Meeting berichten (jeden Donnerstag um 21:30 Uhr)</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Organisation</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+            <a href="../aufgaben/" class="button-link primary-action-btn" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>👉 Zu den Aufgaben im Kanban-Board ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+</ZibgLayout>
