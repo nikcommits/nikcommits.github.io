@@ -1,20 +1,35 @@
-<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Dediziertes Vorstands-Board mit Kanban-Spalten, Zuweisung für Abdul Aziz, Engin, Mahmoud und Sammy und 1-Klick-Export für WhatsApp."><meta name="color-scheme" content="light dark"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090b10"><meta name="robots" content="noindex, nofollow, noarchive"><!-- Web App & PWA / Home-Screen App Meta Tags --><link rel="manifest" href="../manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="ZIBG Vorstand"><link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png"><link rel="icon" type="image/svg+xml" href="../zibg-logo.svg"><title>ZIBG e.V. | Vorstands-Aufgaben &amp; Kanban-Board</title><link rel="stylesheet" href="/_astro/ZibgLayout.IB02eZRt.css"></head><body><div id="protected-site"><header><div class="wrap nav"><a class="brand" href="../index.html"><img class="brand-logo brand-logo--nav" src="../zibg-logo.svg" alt="" width="42" height="42"><span>ZIBG e.V.</span></a><!-- Mobile Burger Button --><button type="button" class="burger-btn" id="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav"><span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><!-- Navigation Links (Desktop & Mobile Drawer) --><nav class="nav-links" id="main-nav" aria-label="Seitennavigation"><a href="../index.html" class="nav-item-link">← Zurück zur Übersicht</a><a href="../protokolle/" class="nav-item-link">📝 Protokolle &amp; Beschlüsse</a><a href="../satzung/" class="nav-item-link">📜 Satzung &amp; Dokumente</a><a href="#top" class="nav-item-link">Fortschritt</a><a href="#kanban-grid" class="nav-item-link">Kanban-Board</a></nav></div></header><div class="hero" id="top"><div class="wrap"><p class="eyebrow">Vorstands-Dashboard · Aufgaben &amp; Zuständigkeiten</p><h1>Vorstandsaufgaben gemeinsam abarbeiten.</h1><p class="lead">Interaktives Kanban-Board mit Drag &amp; Drop, flexiblen Zuständigkeiten und Status-Tracking für die anstehenden Beschlüsse und Anmeldungen.</p><div class="status"><span class="status-dot"></span>Vorstandsaufgaben &amp; Kanban-Board · Browser-Synchronisation aktiv</div></div></div><main class="wrap" style="padding-top: 32px;"><div style="margin-bottom: 20px;"><a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;"><span>← Zurück zur Vorstandsübersicht</span></a></div><section id="aufgaben" aria-labelledby="aufgaben-title" class="board-section" style="margin-top: 0;"><div class="section-head" style="display: none;"><p class="kicker">Vorstands-Dashboard · Aufgaben & Zuständigkeiten</p><h2 id="aufgaben-title">Aufgaben gemeinsam abarbeiten</h2><p class="muted">Hier kann der Vorstand Aufgaben flexibel anlegen, bearbeiten, per Drag & Drop oder Klick zuweisen, erledigte Aufgaben bereinigen und den aktuellen Stand für WhatsApp exportieren.</p></div><!-- Progress & Stats Card --><div class="card board-stats-card" id="board-stats"><div class="board-stats-header"><div><span class="board-stats-caption">Gesamtfortschritt</span><strong class="board-stats-headline" id="board-total-stats">0 Aufgaben erledigt (0 %)</strong></div><div class="board-actions"><button type="button" class="board-btn board-btn--primary" id="board-add-task-btn"><span>➕ Neue Aufgabe</span></button><button type="button" class="board-btn" id="board-manage-members-btn"><span>👥 Personen verwalten</span></button><button type="button" class="board-btn board-btn--danger" id="board-clear-done-btn" title="Alle als erledigt markierten Aufgaben endgültig löschen"><span>🗑️ Erledigte löschen</span></button><button type="button" class="button-link whatsapp-btn" id="board-whatsapp-btn"><span>📲 Für WhatsApp kopieren</span></button><button type="button" class="board-reset-btn" id="board-reset-btn" title="Aufgaben &amp; Personen auf Standard zurücksetzen">↺ Zurücksetzen</button></div></div><!-- Progress Bar --><div class="board-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="board-progress-bar"><div class="board-progress-fill" id="board-progress-fill" style="width: 0%;"></div></div><!-- Per-Member Stats (Dynamic via JS) --><div class="board-members-grid" id="board-members-stats"><div class="board-member-stat" data-member-stat="Abdul Aziz"><span class="board-member-badge" data-member-name="Abdul Aziz">Abdul Aziz</span><strong class="board-member-count" data-member-count="Abdul Aziz">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Samih"><span class="board-member-badge" data-member-name="Samih">Samih</span><strong class="board-member-count" data-member-count="Samih">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Engin"><span class="board-member-badge" data-member-name="Engin">Engin</span><strong class="board-member-count" data-member-count="Engin">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Mahmoud"><span class="board-member-badge" data-member-name="Mahmoud">Mahmoud</span><strong class="board-member-count" data-member-count="Mahmoud">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Inan"><span class="board-member-badge" data-member-name="Inan">Inan</span><strong class="board-member-count" data-member-count="Inan">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Hassib"><span class="board-member-badge" data-member-name="Hassib">Hassib</span><strong class="board-member-count" data-member-count="Hassib">0 / 0</strong></div></div></div><!-- Filter Bar --><div class="board-filter-wrap" role="toolbar" aria-label="Aufgaben nach Person filtern"><span class="board-filter-label">Filter nach Person:</span><div class="board-filter-pills" id="board-filter-pills"><button type="button" class="board-pill active" data-filter="all">Alle (<span id="count-all">0</span>)</button></div></div><!-- Kanban Board Container --><div class="kanban-grid" id="kanban-grid"><!-- Column: Offen --><div class="kanban-col" data-col="todo" id="col-todo"><div class="kanban-col-head kanban-col-head--todo"><span class="kanban-dot dot--todo"></span><h3>Offen</h3><span class="kanban-count" id="count-todo">0</span></div><div class="kanban-list" id="list-todo" data-dropzone="todo"></div></div><!-- Column: In Bearbeitung --><div class="kanban-col" data-col="in-progress" id="col-in-progress"><div class="kanban-col-head kanban-col-head--progress"><span class="kanban-dot dot--progress"></span><h3>In Bearbeitung</h3><span class="kanban-count" id="count-in-progress">0</span></div><div class="kanban-list" id="list-in-progress" data-dropzone="in-progress"></div></div><!-- Column: Erledigt --><div class="kanban-col" data-col="done" id="col-done"><div class="kanban-col-head kanban-col-head--done"><span class="kanban-dot dot--done"></span><h3>Erledigt</h3><button type="button" class="col-action-clear-btn" id="col-clear-done-btn" title="Alle erledigten Aufgaben löschen">🗑️ Leeren</button><span class="kanban-count" id="count-done">0</span></div><div class="kanban-list" id="list-done" data-dropzone="done"></div></div></div><!-- Modal: Neue Aufgabe hinzufügen --><div class="board-modal-backdrop" id="modal-new-task" hidden><div class="board-modal" role="dialog" aria-labelledby="modal-task-title" aria-modal="true"><div class="board-modal-head"><h3 id="modal-task-title">➕ Neue Vorstandsaufgabe</h3><button type="button" class="board-modal-close" data-close-modal="modal-new-task" aria-label="Schließen">✕</button></div><form id="form-new-task" class="board-modal-body"><div class="form-group"><label for="new-task-title">Titel der Aufgabe <span class="required">*</span></label><input type="text" id="new-task-title" required placeholder="z. B. Freistellungsbescheid beim Finanzamt anfordern"></div><div class="form-group"><label for="new-task-desc">Beschreibung / Details</label><textarea id="new-task-desc" rows="3" placeholder="Optionale Notizen, Fristen oder Verwendungszwecke..."></textarea></div><div class="form-row"><div class="form-group"><label for="new-task-cat">Kategorie</label><input type="text" id="new-task-cat" list="cat-suggestions" placeholder="z. B. Finanzen &amp; Bank"><datalist id="cat-suggestions"><option value="Mitglieder &amp; Verwaltung"></option><option value="Recht &amp; Satzung"></option><option value="Finanzen &amp; Bank"></option><option value="Software &amp; IT"></option><option value="Fundraising"></option><option value="Allgemein"></option></datalist></div><div class="form-group"><label for="new-task-assignee">Zuständige Person</label><select id="new-task-assignee"></select></div></div><div class="form-group"><label for="new-task-status">Start-Status</label><select id="new-task-status"><option value="todo" selected>📋 Offen</option><option value="in-progress">⏳ In Bearbeitung</option><option value="done">✅ Erledigt</option></select></div><div class="board-modal-footer"><button type="button" class="board-btn" data-close-modal="modal-new-task">Abbrechen</button><button type="submit" class="board-btn board-btn--primary">Aufgabe anlegen</button></div></form></div></div><!-- Modal: Personen verwalten --><div class="board-modal-backdrop" id="modal-manage-members" hidden><div class="board-modal" role="dialog" aria-labelledby="modal-member-title" aria-modal="true"><div class="board-modal-head"><h3 id="modal-member-title">👥 Personen & Zuständige verwalten</h3><button type="button" class="board-modal-close" data-close-modal="modal-manage-members" aria-label="Schließen">✕</button></div><div class="board-modal-body"><p class="muted" style="margin-top: 0; font-size: 13px;">Füge neue Vorstandsmitglieder oder Helfer hinzu oder entferne Personen aus der Auswahl.</p><form id="form-add-member" class="add-member-form"><input type="text" id="new-member-name" required placeholder="Name der Person (z. B. Bilal)"><button type="submit" class="board-btn board-btn--primary"><span>+ Hinzufügen</span></button></form><div class="member-list-label">Aktuelle Personen:</div><div class="members-management-list" id="members-management-list"><!-- Dynamically populated --></div></div><div class="board-modal-footer"><button type="button" class="board-btn" data-close-modal="modal-manage-members">Fertig</button></div></div></div><!-- Toast Notice --><div class="board-toast" id="board-toast" role="status" aria-live="polite" hidden><span id="board-toast-text">✓ Erfolgreich ausgeführt</span></div></section><!-- Raw Data for Client Script --><script>(function(){const initialZibgTasks = [{"id":"task-m-1","title":"Better Place: Plattform vollständig übernehmen & einrichten","description":"Vollständige Betreuung übernehmen; Freistellungsbescheid, Vereinsunterlagen und Bankdaten beim Vorstand anfordern; Profil und Projektseite vor Raumbezug fertigstellen.","category":"Fundraising & Spenden","defaultAssignee":"Abdul Aziz","defaultStatus":"in-progress"},{"id":"task-m-2","title":"Vereinsunterlagen scannen & zentrale digitale Ablage aufbauen","description":"Vorhandene physische Mappe/Dokumentenbox übernehmen, Papierunterlagen (Anträge, Nachweise, Kontoauszüge) strukturieren und auf einem sicheren Share für berechtigte Vorstandsmitglieder ablegen.","category":"Organisation & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-m-3","title":"Bank & Online-Banking als Schatzmeister klären","description":"Bei der Bank die Voraussetzungen für den Online-Banking-Zugang prüfen und feststellen, ob der Zugang allein mit Ausweis und Satzung beantragt werden kann oder eine Vorstandsbegleitung nötig ist.","category":"Finanzen & Bank","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-m-4","title":"Gewerbeflächen suchen & Inserate in die Gruppe stellen","description":"Operative Suche nach geeigneter Gewerbeeinheit: Max. 700 € warm, ca. 2,5 km um Krefeld Hbf, ebenerdig/gut zugänglich, seriöser Eindruck. Links intern zur Prüfung teilen.","category":"Räumlichkeiten","defaultAssignee":"Inan","defaultStatus":"todo"},{"id":"task-m-5","title":"Freigegebene Vermieter/Makler kontaktieren","description":"Systematisches Vorgehen: Nach interner Freigabe zuerst schriftlich per E-Mail anfragen (Fokus auf Bildung, Deutschunterricht, Treffpunkt), anschließend telefonisch nachfassen.","category":"Räumlichkeiten","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-m-6","title":"Tschetschenischen Kontakt wegen Gewerbeobjekten anfragen","description":"Den genannten tschetschenischen Kontakt bezüglich potenzieller Gewerbeimmobilien oder weiterführender Kontakte in Krefeld anschreiben.","category":"Räumlichkeiten","defaultAssignee":"Hassib","defaultStatus":"todo"},{"id":"task-m-7","title":"Unterlagen & Vollmachten an Verantwortliche übergeben","description":"Abdul Aziz (Better Place/Digitalisierung) und Samih (Bank) alle benötigten Dokumente, Nachweise und Berechtigungen zügig und unkompliziert bereitstellen.","category":"Vorstand & Recht","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-m-8","title":"Im privaten Umfeld nach Gewerbeflächen umhören (Vitamin B)","description":"Gezielte Abfrage im persönlichen Netzwerk nach passenden Gewerbeobjekten oder hilfreichen Vermieterkontakten im 2,5-km-Bereich um den Krefelder Hauptbahnhof.","category":"Räumlichkeiten","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-m-9","title":"Wöchentliches Status-Meeting durchführen (Do, 21:30 Uhr)","description":"Fester wöchentlicher Jour Fixe zur Fortschrittskontrolle von Kanban-Board, Better Place, Raumsuche und Finanzen. Frühzeitige Hilfestellung bei Engpässen.","category":"Organisation & Vorstand","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-1","title":"Mitgliederbestand erfassen & abgleichen","description":"WhatsApp-Gruppe mit schriftlichen Aufnahmeanträgen und tatsächlichen Kontoeingängen abgleichen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-2","title":"Entwurf der Beitragsordnung erstellen","description":"240 € Jahresbeitrag (optional 12x 20 €), Fälligkeiten, Ermäßigungen und Mahnverfahren formulieren.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-3","title":"Gemeinnützigkeitsnachweis prüfen","description":"Gültigen Freistellungsbescheid zur Körperschaftsteuer oder Feststellungsbescheid nach § 60a AO bereithalten.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-4","title":"Vereinskonto & IBAN prüfen","description":"Sicherstellen, dass das Bankkonto korrekt auf den Vereinsnamen lautet (kein Privatkonto).","category":"Finanzen & Bank","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-5","title":"Mitgliederversammlung fristgerecht einladen","description":"Mindestens 2 Wochen vorher mit Tagesordnungspunkt „Beschluss der Beitragsordnung“ einladen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-6","title":"Beschluss fassen & Protokoll unterzeichnen","description":"Abstimmungsergebnis protokollieren; von Versammlungsleitung und Protokollführung unterschreiben lassen.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-7","title":"Mitglieder über neues Modell informieren","description":"Beitragshöhe, monatliche Zahlungsoption, Starttermin, Bankdaten und eindeutige Verwendungszwecke mitteilen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-8","title":"ClubDesk Free einrichten & testen","description":"Mitgliederliste importieren, Benutzerrollen vergeben und Buchungskategorien (Beitrag vs. Spende) anlegen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-9","title":"ClubDesk Auftragsverarbeitung & DSGVO","description":"AVV mit ClubDesk online abschließen und vereinsinterne Datenschutzerklärung ergänzen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-13","title":"Mittelverwendung & Belegordnung","description":"Spendennachweise, Verträge und Mietbelege sicher und getrennt von Mitgliedsbeiträgen archivieren.","category":"Finanzen & Bank","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-14","title":"Beitragsrechner & Monatsabgleich pflegen","description":"Monatliche Einnahmen gegen Mietbedarf (650 €) gegenprüfen und Deckungsgrad aktualisieren.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"}];
-const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
+<!DOCTYPE html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="description" content="Dediziertes Vorstands-Board mit Kanban-Spalten, Zuweisung für Abdul Aziz, Engin, Mahmoud und Sammy und 1-Klick-Export für WhatsApp."><meta name="color-scheme" content="light dark"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090b10"><meta name="robots" content="noindex, nofollow, noarchive"><!-- Web App & PWA / Home-Screen App Meta Tags --><link rel="manifest" href="../manifest.json"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="ZIBG Vorstand"><link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="../icon-192.png"><link rel="icon" type="image/svg+xml" href="../zibg-logo.svg"><title>ZIBG e.V. | Vorstands-Aufgaben &amp; Kanban-Board</title><link rel="stylesheet" href="/_astro/ZibgLayout.CMcCRdvy.css"></head><body><div id="protected-site"><header><div class="wrap nav"><a class="brand" href="../index.html"><img class="brand-logo brand-logo--nav" src="../zibg-logo.svg" alt="" width="42" height="42"><span>ZIBG e.V.</span></a><!-- Mobile Burger Button --><button type="button" class="burger-btn" id="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav"><span class="burger-icon" aria-hidden="true"><span></span><span></span><span></span></span></button><!-- Navigation Links (Desktop & Mobile Drawer) --><nav class="nav-links" id="main-nav" aria-label="Seitennavigation"><a href="../index.html" class="nav-item-link">← Zurück zur Übersicht</a><a href="../protokolle/" class="nav-item-link">📝 Protokolle &amp; Beschlüsse</a><a href="../satzung/" class="nav-item-link">📜 Satzung &amp; Dokumente</a><a href="#top" class="nav-item-link">Fortschritt</a><a href="#kanban-grid" class="nav-item-link">Kanban-Board</a></nav></div></header><div class="hero" id="top"><div class="wrap"><p class="eyebrow">Vorstands-Dashboard · Aufgaben &amp; Zuständigkeiten</p><h1>Vorstandsaufgaben gemeinsam abarbeiten.</h1><p class="lead">Interaktives Kanban-Board mit Drag &amp; Drop, flexiblen Zuständigkeiten und Status-Tracking für die anstehenden Beschlüsse und Anmeldungen.</p><div class="status"><span class="status-dot"></span>Vorstandsaufgaben &amp; Kanban-Board · Browser-Synchronisation aktiv</div></div></div><main class="wrap" style="padding-top: 32px;"><div style="margin-bottom: 20px;"><a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;"><span>← Zurück zur Vorstandsübersicht</span></a></div><section id="aufgaben" aria-labelledby="aufgaben-title" class="board-section" style="margin-top: 0;"><div class="section-head" style="display: none;"><p class="kicker">Vorstands-Dashboard · Aufgaben & Zuständigkeiten</p><h2 id="aufgaben-title">Aufgaben gemeinsam abarbeiten</h2><p class="muted">Hier kann der Vorstand Aufgaben flexibel anlegen, bearbeiten, per Drag & Drop oder Klick zuweisen, erledigte Aufgaben bereinigen und den aktuellen Stand für WhatsApp exportieren.</p></div><!-- Progress & Stats Card --><div class="card board-stats-card" id="board-stats"><div class="board-stats-header"><div><span class="board-stats-caption">Gesamtfortschritt</span><strong class="board-stats-headline" id="board-total-stats">0 Aufgaben erledigt (0 %)</strong></div><div class="board-actions"><button type="button" class="board-btn board-btn--primary" id="board-add-task-btn"><span>➕ Neue Aufgabe</span></button><button type="button" class="board-btn" id="board-manage-members-btn"><span>👥 Personen verwalten</span></button><button type="button" class="board-btn board-btn--danger" id="board-clear-done-btn" title="Alle als erledigt markierten Aufgaben endgültig löschen"><span>🗑️ Erledigte löschen</span></button><button type="button" class="button-link whatsapp-btn" id="board-whatsapp-btn"><span>📲 Für WhatsApp kopieren</span></button><button type="button" class="board-reset-btn" id="board-reset-btn" title="Aufgaben &amp; Personen auf Standard zurücksetzen">↺ Zurücksetzen</button></div></div><!-- Progress Bar --><div class="board-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="board-progress-bar"><div class="board-progress-fill" id="board-progress-fill" style="width: 0%;"></div></div><!-- Per-Member Stats (Dynamic via JS) --><div class="board-members-grid" id="board-members-stats"><div class="board-member-stat" data-member-stat="Abdul Aziz"><span class="board-member-badge" data-member-name="Abdul Aziz">Abdul Aziz</span><strong class="board-member-count" data-member-count="Abdul Aziz">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Samih"><span class="board-member-badge" data-member-name="Samih">Samih</span><strong class="board-member-count" data-member-count="Samih">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Mahmoud"><span class="board-member-badge" data-member-name="Mahmoud">Mahmoud</span><strong class="board-member-count" data-member-count="Mahmoud">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Engin"><span class="board-member-badge" data-member-name="Engin">Engin</span><strong class="board-member-count" data-member-count="Engin">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Inan"><span class="board-member-badge" data-member-name="Inan">Inan</span><strong class="board-member-count" data-member-count="Inan">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Hassib"><span class="board-member-badge" data-member-name="Hassib">Hassib</span><strong class="board-member-count" data-member-count="Hassib">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Elias"><span class="board-member-badge" data-member-name="Elias">Elias</span><strong class="board-member-count" data-member-count="Elias">0 / 0</strong></div><div class="board-member-stat" data-member-stat="Nik Frühschulz"><span class="board-member-badge" data-member-name="Nik Frühschulz">Nik Frühschulz</span><strong class="board-member-count" data-member-count="Nik Frühschulz">0 / 0</strong></div></div></div><!-- Filter Bar --><div class="board-filter-wrap" role="toolbar" aria-label="Aufgaben nach Person filtern"><span class="board-filter-label">Filter nach Person:</span><div class="board-filter-pills" id="board-filter-pills"><button type="button" class="board-pill active" data-filter="all">Alle (<span id="count-all">0</span>)</button></div></div><!-- Kanban Board Container --><div class="kanban-grid" id="kanban-grid"><!-- Column: Offen --><div class="kanban-col" data-col="todo" id="col-todo"><div class="kanban-col-head kanban-col-head--todo"><span class="kanban-dot dot--todo"></span><h3>Offen</h3><span class="kanban-count" id="count-todo">0</span></div><div class="kanban-list" id="list-todo" data-dropzone="todo"></div></div><!-- Column: In Bearbeitung --><div class="kanban-col" data-col="in-progress" id="col-in-progress"><div class="kanban-col-head kanban-col-head--progress"><span class="kanban-dot dot--progress"></span><h3>In Bearbeitung</h3><span class="kanban-count" id="count-in-progress">0</span></div><div class="kanban-list" id="list-in-progress" data-dropzone="in-progress"></div></div><!-- Column: Erledigt --><div class="kanban-col" data-col="done" id="col-done"><div class="kanban-col-head kanban-col-head--done"><span class="kanban-dot dot--done"></span><h3>Erledigt</h3><button type="button" class="col-action-clear-btn" id="col-clear-done-btn" title="Alle erledigten Aufgaben löschen">🗑️ Leeren</button><span class="kanban-count" id="count-done">0</span></div><div class="kanban-list" id="list-done" data-dropzone="done"></div></div></div><!-- Modal: Neue Aufgabe hinzufügen --><div class="board-modal-backdrop" id="modal-new-task" hidden><div class="board-modal" role="dialog" aria-labelledby="modal-task-title" aria-modal="true"><div class="board-modal-head"><h3 id="modal-task-title">➕ Neue Vorstandsaufgabe</h3><button type="button" class="board-modal-close" data-close-modal="modal-new-task" aria-label="Schließen">✕</button></div><form id="form-new-task" class="board-modal-body"><div class="form-group"><label for="new-task-title">Titel der Aufgabe <span class="required">*</span></label><input type="text" id="new-task-title" required placeholder="z. B. Freistellungsbescheid beim Finanzamt anfordern"></div><div class="form-group"><label for="new-task-desc">Beschreibung / Details</label><textarea id="new-task-desc" rows="3" placeholder="Optionale Notizen, Fristen oder Verwendungszwecke..."></textarea></div><div class="form-row"><div class="form-group"><label for="new-task-cat">Kategorie</label><input type="text" id="new-task-cat" list="cat-suggestions" placeholder="z. B. Finanzen &amp; Bank"><datalist id="cat-suggestions"><option value="Mitglieder &amp; Verwaltung"></option><option value="Recht &amp; Satzung"></option><option value="Finanzen &amp; Bank"></option><option value="Software &amp; IT"></option><option value="Fundraising"></option><option value="Räumlichkeiten"></option><option value="Allgemein"></option></datalist></div><div class="form-group"><label for="new-task-status">Start-Status</label><select id="new-task-status"><option value="todo" selected>📋 Offen</option><option value="in-progress">⏳ In Bearbeitung</option><option value="done">✅ Erledigt</option></select></div></div><div class="form-group"><label>Zuständige Person(en) <span class="muted" style="font-size: 12px; font-weight: 400;">(Mehrfachauswahl möglich)</span></label><div class="assignees-checkbox-grid" id="new-task-assignees-grid"><!-- Dynamically populated checkboxes --></div></div><div class="board-modal-footer"><button type="button" class="board-btn" data-close-modal="modal-new-task">Abbrechen</button><button type="submit" class="board-btn board-btn--primary">Aufgabe anlegen</button></div></form></div></div><!-- Modal: Zuständige für Aufgabe bearbeiten --><div class="board-modal-backdrop" id="modal-edit-assignees" hidden><div class="board-modal" role="dialog" aria-labelledby="modal-assignees-title" aria-modal="true"><div class="board-modal-head"><h3 id="modal-assignees-title">👥 Zuständige Personen zuweisen</h3><button type="button" class="board-modal-close" data-close-modal="modal-edit-assignees" aria-label="Schließen">✕</button></div><div class="board-modal-body"><p class="muted" style="margin-top: 0; font-size: 13.5px;" id="modal-assignees-task-name">Aufgabe auswählen...</p><div class="assignees-checkbox-grid" id="edit-assignees-grid"><!-- Dynamically populated checkboxes --></div></div><div class="board-modal-footer"><button type="button" class="board-btn board-btn--primary" data-close-modal="modal-edit-assignees">Fertig</button></div></div></div><!-- Modal: Personen verwalten --><div class="board-modal-backdrop" id="modal-manage-members" hidden><div class="board-modal" role="dialog" aria-labelledby="modal-member-title" aria-modal="true"><div class="board-modal-head"><h3 id="modal-member-title">👥 Personen & Zuständige verwalten</h3><button type="button" class="board-modal-close" data-close-modal="modal-manage-members" aria-label="Schließen">✕</button></div><div class="board-modal-body"><p class="muted" style="margin-top: 0; font-size: 13px;">Füge neue Vorstandsmitglieder oder Helfer hinzu oder entferne Personen aus der Auswahl.</p><form id="form-add-member" class="add-member-form"><input type="text" id="new-member-name" required placeholder="Name der Person (z. B. Bilal)"><button type="submit" class="board-btn board-btn--primary"><span>+ Hinzufügen</span></button></form><div class="member-list-label">Aktuelle Personen:</div><div class="members-management-list" id="members-management-list"><!-- Dynamically populated --></div></div><div class="board-modal-footer"><button type="button" class="board-btn" data-close-modal="modal-manage-members">Fertig</button></div></div></div><!-- Toast Notice --><div class="board-toast" id="board-toast" role="status" aria-live="polite" hidden><span id="board-toast-text">✓ Erfolgreich ausgeführt</span></div></section><!-- Raw Data for Client Script --><script>(function(){const initialZibgTasks = [{"id":"task-m-6","title":"Tschetschenischen Kontakt wegen Gewerbeobjekten anfragen","description":"Gespräch geführt: Hat selbst keine Fläche frei, fragt aber seine Kontakte nach passenden Räumen ab. Folgebeschluss: Besuch in Schulferien geplant.","category":"Räumlichkeiten","defaultAssignee":"Hassib","assignees":["Hassib"],"defaultStatus":"done"},{"id":"task-m-8","title":"Maklerkontakt & Vitamin B in Krefeld ausloten","description":"Gespräch mit Makler Bilal in Krefeld geführt: Gewerbemarkt ist schwierig und angespannt, Vitamin B und direkte Kontakte sind der vielversprechendste Weg.","category":"Räumlichkeiten","defaultAssignee":"Nik Frühschulz","assignees":["Nik Frühschulz","Engin"],"defaultStatus":"done"},{"id":"task-m-9","title":"Wöchentliches Status-Meeting durchführen (Do, 21:30 Uhr)","description":"Wiederkehrend: Fester wöchentlicher Jour Fixe zur Fortschrittskontrolle von Kanban-Board, Raumsuche, Bankfortschritt und Beseitigung von Engpässen.","category":"Organisation & Vorstand","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz","Mahmoud","Samih"],"defaultStatus":"in-progress"},{"id":"task-m-4","title":"Gewerbeflächen suchen & Inserate in Räumlichkeiten-Gruppe stellen","description":"Wiederkehrend: Max. 700 € warm, ca. 2,5 km um Krefeld Hbf, 30–34 qm. Neue Anzeigen ab sofort ausschließlich in die dedizierte Räumlichkeiten-Gruppe stellen als Puffer für Samy.","category":"Räumlichkeiten","defaultAssignee":"Inan","assignees":["Inan","Abdul Aziz"],"defaultStatus":"in-progress"},{"id":"task-m-3","title":"Banktermin wahrnehmen: Online-Banking vor Ort einrichten","description":"Vorprüfung abgeschlossen: Persönliches Erscheinen eines Vorstandsmitglieds erforderlich. Fester Banktermin vereinbart für Mittwoch, 14.10. um 10:30 Uhr (Samih & Mahmoud; Ersatz springt bei Bedarf ein).","category":"Finanzen & Bank","defaultAssignee":"Samih","assignees":["Samih","Mahmoud"],"defaultStatus":"in-progress"},{"id":"task-m-5","title":"Objekte abtelefonieren & Vermieter-Erstkontakt","description":"Samih telefoniert freigegebene und ältere Inserate ab. Bei Nichterreichen oder für schriftliche Anfragen wird die neue Muster-E-Mail versendet.","category":"Räumlichkeiten","defaultAssignee":"Samih","assignees":["Samih"],"defaultStatus":"in-progress"},{"id":"task-m-2","title":"Vereinsunterlagen übergeben & digitale Ablage aufbauen","description":"Übergabe der physischen Dokumentenbox stockte mangels Übergabetermin; Papierunterlagen zügig von Mahmoud an Abdul Aziz übergeben, scannen und Cloud-Share für Vorstand anlegen.","category":"Organisation & IT","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz","Mahmoud"],"defaultStatus":"in-progress"},{"id":"task-m-1","title":"Better Place: Plattform vollständig einrichten & freischalten","description":"Plattformbetreuung übernommen; Registrierung pausiert derzeit bis zur Übergabe der Vereinsdokumente & des Freistellungsbescheids.","category":"Fundraising & Spenden","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz"],"defaultStatus":"in-progress"},{"id":"task-m-10","title":"Muster-E-Mail für Vermieter vorbereiten & von Elias gegenlesen lassen","description":"Professionelles Anschreiben erstellen mit Schwerpunkt auf Lern-, Kultur- und Bildungsverein (30–34 qm genügen, kein abstoßendes Wording). Vor Versand Gegenlesen durch Elias.","category":"Räumlichkeiten","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz","Elias"],"defaultStatus":"todo"},{"id":"task-m-11","title":"Weitere neue Objekte als Puffer in Räumlichkeiten-Gruppe schicken","description":"Gefundene Gewerbeobjekte (u. a. die leerstehende ehemalige Sparkassenfiliale) direkt in die separate Räumlichkeiten-Gruppe senden.","category":"Räumlichkeiten","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz"],"defaultStatus":"todo"},{"id":"task-m-12","title":"Kanban-Board für Mehrfach-Zuständigkeiten erweitern","description":"Board-System so ausbauen, dass Aufgaben flexibel mehreren Personen gleichzeitig zugeteilt werden können und Filter/Export dies abbilden.","category":"Organisation & IT","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz"],"defaultStatus":"todo"},{"id":"task-m-13","title":"Tschetschenischen Kontakt in den Schulferien besuchen","description":"Persönlicher Vor-Ort-Besuch in ein bis zwei Wochen während der Schulferien, um mögliche Raumkontakte und Netzwerke weiter zu vertiefen.","category":"Räumlichkeiten","defaultAssignee":"Hassib","assignees":["Hassib"],"defaultStatus":"todo"},{"id":"task-m-14","title":"Haruns Vereinsstatus klären & ggf. in Gruppe aufnehmen","description":"Mahmoud klärt den aktuellen Status des Mitgründers Harun ab und nimmt ihn bei Bereitschaft zur Mitarbeit wieder in die WhatsApp-Gruppe auf.","category":"Vorstand & Recht","defaultAssignee":"Mahmoud","assignees":["Mahmoud"],"defaultStatus":"todo"},{"id":"task-m-15","title":"Zahlungswege & Vereinssoftware evaluieren","description":"Unkomplizierte Spendenannahme vor Ort (QR-Code, Bargeldkasse), PayPal-Geschäftskonto sowie EasyVerein (kostenlos bis 50 Mitgl.) oder ClubDesk im Hintergrund prüfen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","assignees":["Abdul Aziz","Samih"],"defaultStatus":"todo"},{"id":"task-1","title":"Mitgliederbestand erfassen & abgleichen","description":"WhatsApp-Gruppe mit schriftlichen Aufnahmeanträgen und tatsächlichen Kontoeingängen abgleichen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-2","title":"Entwurf der Beitragsordnung erstellen","description":"240 € Jahresbeitrag (optional 12x 20 €), Fälligkeiten, Ermäßigungen und Mahnverfahren formulieren.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-3","title":"Gemeinnützigkeitsnachweis prüfen","description":"Gültigen Freistellungsbescheid zur Körperschaftsteuer oder Feststellungsbescheid nach § 60a AO bereithalten.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-4","title":"Vereinskonto & IBAN prüfen","description":"Sicherstellen, dass das Bankkonto korrekt auf den Vereinsnamen lautet (kein Privatkonto).","category":"Finanzen & Bank","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-5","title":"Mitgliederversammlung fristgerecht einladen","description":"Mindestens 2 Wochen vorher mit Tagesordnungspunkt „Beschluss der Beitragsordnung“ einladen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-6","title":"Beschluss fassen & Protokoll unterzeichnen","description":"Abstimmungsergebnis protokollieren; von Versammlungsleitung und Protokollführung unterschreiben lassen.","category":"Recht & Satzung","defaultAssignee":"Mahmoud","defaultStatus":"todo"},{"id":"task-7","title":"Mitglieder über neues Modell informieren","description":"Beitragshöhe, monatliche Zahlungsoption, Starttermin, Bankdaten und eindeutige Verwendungszwecke mitteilen.","category":"Mitglieder & Verwaltung","defaultAssignee":"Samih","defaultStatus":"todo"},{"id":"task-8","title":"ClubDesk Free einrichten & testen","description":"Mitgliederliste importieren, Benutzerrollen vergeben und Buchungskategorien (Beitrag vs. Spende) anlegen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-9","title":"ClubDesk Auftragsverarbeitung & DSGVO","description":"AVV mit ClubDesk online abschließen und vereinsinterne Datenschutzerklärung ergänzen.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"},{"id":"task-13","title":"Mittelverwendung & Belegordnung","description":"Spendennachweise, Verträge und Mietbelege sicher und getrennt von Mitgliedsbeiträgen archivieren.","category":"Finanzen & Bank","defaultAssignee":"Engin","defaultStatus":"todo"},{"id":"task-14","title":"Beitragsrechner & Monatsabgleich pflegen","description":"Monatliche Einnahmen gegen Mietbedarf (650 €) gegenprüfen und Deckungsgrad aktualisieren.","category":"Software & IT","defaultAssignee":"Abdul Aziz","defaultStatus":"todo"}];
+const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Mahmoud","Engin","Inan","Hassib","Elias","Nik Frühschulz"];
 
   (function () {
-    const TASKS_STORAGE_KEY = 'zibg_kanban_tasks_v1';
-    const MEMBERS_STORAGE_KEY = 'zibg_kanban_members_v1';
+    const TASKS_STORAGE_KEY = 'zibg_kanban_tasks_v2';
+    const MEMBERS_STORAGE_KEY = 'zibg_kanban_members_v2';
+    const OLD_TASKS_KEY = 'zibg_kanban_tasks_v1';
+    const OLD_MEMBERS_KEY = 'zibg_kanban_members_v1';
     let currentFilter = 'all';
+    let activeEditingTaskId = null;
+
+    function getTaskAssignees(task) {
+      if (Array.isArray(task.assignees) && task.assignees.length > 0) {
+        return task.assignees;
+      }
+      if (typeof task.defaultAssignee === 'string' && task.defaultAssignee.trim()) {
+        return task.defaultAssignee.split(',').map(s => s.trim()).filter(Boolean);
+      }
+      return [members[0] || 'Abdul Aziz'];
+    }
 
     function loadMembers() {
       try {
-        const saved = localStorage.getItem(MEMBERS_STORAGE_KEY);
+        let saved = localStorage.getItem(MEMBERS_STORAGE_KEY);
+        if (!saved) {
+          // Check old v1 storage
+          saved = localStorage.getItem(OLD_MEMBERS_KEY);
+        }
         if (saved) {
           let parsed = JSON.parse(saved);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            // Migrate Sammy -> Samih
             parsed = parsed.map(m => m === 'Sammy' ? 'Samih' : m);
-            // Ensure newly added members from meeting (e.g. Samih, Inan, Hassib) are present
             ZIBG_MEMBERS.forEach(m => {
               if (!parsed.includes(m)) parsed.push(m);
             });
@@ -25,7 +40,9 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
       } catch (e) {
         console.error('Error loading members:', e);
       }
-      return [...ZIBG_MEMBERS];
+      const initial = [...ZIBG_MEMBERS];
+      localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(initial));
+      return initial;
     }
 
     function saveMembers() {
@@ -38,29 +55,60 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
 
     function loadTasks() {
       try {
-        const saved = localStorage.getItem(TASKS_STORAGE_KEY);
-        if (saved) {
-          let parsed = JSON.parse(saved);
+        const savedV2 = localStorage.getItem(TASKS_STORAGE_KEY);
+        if (savedV2) {
+          let parsed = JSON.parse(savedV2);
           if (Array.isArray(parsed)) {
-            // Migrate old tasks defaultAssignee Sammy -> Samih
-            parsed.forEach(t => {
-              if (t.defaultAssignee === 'Sammy') t.defaultAssignee = 'Samih';
-            });
-
-            // Automatically merge newly added meeting tasks that aren't in storage yet
+            // Merge any new tasks from initialZibgTasks that might not be in v2
             const existingIds = new Set(parsed.map(t => t.id));
-            const newMeetingTasks = initialZibgTasks.filter(t => !existingIds.has(t.id));
-            if (newMeetingTasks.length > 0) {
-              parsed.unshift(...newMeetingTasks);
+            const newTasks = initialZibgTasks.filter(t => !existingIds.has(t.id));
+            if (newTasks.length > 0) {
+              parsed.unshift(...newTasks);
               localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(parsed));
             }
             return parsed;
           }
         }
+
+        // Migrate from v1 if v2 does not exist yet
+        const savedV1 = localStorage.getItem(OLD_TASKS_KEY);
+        if (savedV1) {
+          let parsedV1 = JSON.parse(savedV1);
+          if (Array.isArray(parsedV1)) {
+            // Map over v1 tasks and merge with updated initialZibgTasks
+            const initialMap = new Map(initialZibgTasks.map(t => [t.id, t]));
+            const migrated = initialZibgTasks.map(initTask => {
+              const old = parsedV1.find(t => t.id === initTask.id);
+              if (old) {
+                return {
+                  ...initTask,
+                  defaultStatus: initTask.defaultStatus || old.defaultStatus,
+                  assignees: initTask.assignees || (old.defaultAssignee ? [old.defaultAssignee] : initTask.assignees),
+                };
+              }
+              return initTask;
+            });
+
+            // Keep any user-created custom tasks (id not in initialTasks)
+            parsedV1.forEach(t => {
+              if (!initialMap.has(t.id)) {
+                migrated.push({
+                  ...t,
+                  assignees: Array.isArray(t.assignees) ? t.assignees : (t.defaultAssignee ? [t.defaultAssignee] : ['Abdul Aziz']),
+                });
+              }
+            });
+
+            localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(migrated));
+            return migrated;
+          }
+        }
       } catch (e) {
         console.error('Error loading tasks:', e);
       }
-      return JSON.parse(JSON.stringify(initialZibgTasks));
+      const initial = JSON.parse(JSON.stringify(initialZibgTasks));
+      localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(initial));
+      return initial;
     }
 
     function saveTasks() {
@@ -111,21 +159,25 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
       });
 
       tasks.forEach(task => {
-        const assignee = task.defaultAssignee || members[0] || 'Engin';
-        if (!memberCounts[assignee]) {
-          memberCounts[assignee] = { total: 0, done: 0 };
-        }
-        memberCounts[assignee].total++;
-        if (task.defaultStatus === 'done') {
-          memberCounts[assignee].done++;
-        }
+        const taskAssignees = getTaskAssignees(task);
+
+        // Update stats for all assignees
+        taskAssignees.forEach(assignee => {
+          if (!memberCounts[assignee]) {
+            memberCounts[assignee] = { total: 0, done: 0 };
+          }
+          memberCounts[assignee].total++;
+          if (task.defaultStatus === 'done') {
+            memberCounts[assignee].done++;
+          }
+        });
 
         if (task.defaultStatus === 'todo') todoCount++;
         else if (task.defaultStatus === 'in-progress') progressCount++;
         else if (task.defaultStatus === 'done') doneCount++;
 
-        // Filter check
-        if (currentFilter !== 'all' && assignee !== currentFilter) {
+        // Filter check: Show task if "all" or if currentFilter is one of its assignees
+        if (currentFilter !== 'all' && !taskAssignees.includes(currentFilter)) {
           return;
         }
 
@@ -137,20 +189,20 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
         card.innerHTML = `
           <div class="kanban-card-top">
             <span class="kanban-tag">${escapeHtml(task.category || 'Allgemein')}</span>
-            <div class="kanban-card-actions">
-              <div class="kanban-assignee-wrap">
-                <label for="assignee-${task.id}" class="sr-only">Zuständig</label>
-                <select class="kanban-assignee-select" id="assignee-${task.id}" data-action="assign" data-id="${task.id}">
-                  ${members.map(m => `<option value="${escapeHtml(m)}" ${m === assignee ? 'selected' : ''}>${escapeHtml(m)}</option>`).join('')}
-                </select>
-              </div>
-              <button type="button" class="kanban-card-del-btn" data-action="delete" data-id="${task.id}" title="Aufgabe endgültig löschen" aria-label="Aufgabe löschen">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-              </button>
-            </div>
+            <button type="button" class="kanban-card-del-btn" data-action="delete" data-id="${task.id}" title="Aufgabe endgültig löschen" aria-label="Aufgabe löschen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            </button>
           </div>
           <h4 class="kanban-card-title">${escapeHtml(task.title)}</h4>
           ${task.description ? `<p class="kanban-card-desc">${escapeHtml(task.description)}</p>` : ''}
+          <div class="kanban-assignees-container">
+            <div class="kanban-assignees-badges" title="Zuständige Person(en)">
+              ${taskAssignees.map(a => `<span class="board-member-badge--card">${escapeHtml(a)}</span>`).join('')}
+            </div>
+            <button type="button" class="kanban-edit-assignees-btn" data-action="edit-assignees" data-id="${task.id}" title="Zuständige Personen ändern">
+              👥 Zuständige (${taskAssignees.length})
+            </button>
+          </div>
           <div class="kanban-card-footer">
             <div class="kanban-status-controls">
               <button type="button" class="kanban-status-btn ${task.defaultStatus === 'todo' ? 'is-active' : ''}" data-status="todo" data-id="${task.id}" title="Als Offen markieren">📋 Offen</button>
@@ -239,20 +291,61 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
         filterPillsContainer.innerHTML = pillsHtml;
       }
 
-      // Update New Task Modal Assignee Select Options
-      const newTaskAssigneeSelect = document.querySelector('#new-task-assignee');
-      if (newTaskAssigneeSelect) {
-        newTaskAssigneeSelect.innerHTML = members.map(m => `
-          <option value="${escapeHtml(m)}">${escapeHtml(m)}</option>
-        `).join('');
+      // Populate New Task Modal checkboxes
+      renderNewTaskAssigneesGrid();
+    }
+
+    function renderNewTaskAssigneesGrid() {
+      const grid = document.querySelector('#new-task-assignees-grid');
+      if (!grid) return;
+      grid.innerHTML = members.map((m, idx) => `
+        <label class="assignee-checkbox-label">
+          <input type="checkbox" name="new-task-assignee" value="${escapeHtml(m)}" ${idx === 0 ? 'checked' : ''} />
+          <span>${escapeHtml(m)}</span>
+        </label>
+      `).join('');
+    }
+
+    function openEditAssigneesModal(taskId) {
+      const task = tasks.find(t => t.id === taskId);
+      if (!task) return;
+      activeEditingTaskId = taskId;
+
+      const titleEl = document.querySelector('#modal-assignees-task-name');
+      if (titleEl) {
+        titleEl.innerHTML = `Aufgabe: <strong>${escapeHtml(task.title)}</strong>`;
       }
+
+      const grid = document.querySelector('#edit-assignees-grid');
+      if (grid) {
+        const currentAssignees = getTaskAssignees(task);
+        grid.innerHTML = members.map(m => `
+          <label class="assignee-checkbox-label">
+            <input type="checkbox" name="edit-task-assignee" value="${escapeHtml(m)}" ${currentAssignees.includes(m) ? 'checked' : ''} />
+            <span>${escapeHtml(m)}</span>
+          </label>
+        `).join('');
+
+        // Listen for checkbox changes directly
+        grid.querySelectorAll('input[name="edit-task-assignee"]').forEach(cb => {
+          cb.addEventListener('change', () => {
+            const checked = Array.from(grid.querySelectorAll('input[name="edit-task-assignee"]:checked')).map(c => c.value);
+            task.assignees = checked.length > 0 ? checked : [members[0]];
+            task.defaultAssignee = task.assignees[0];
+            saveTasks();
+            renderBoard();
+          });
+        });
+      }
+
+      openModal('modal-edit-assignees');
     }
 
     function renderMembersManager() {
       const listEl = document.querySelector('#members-management-list');
       if (!listEl) return;
       listEl.innerHTML = members.map(m => {
-        const count = tasks.filter(t => t.defaultAssignee === m).length;
+        const count = tasks.filter(t => getTaskAssignees(t).includes(m)).length;
         return `
           <div class="member-manage-item">
             <div class="member-manage-item-info">
@@ -315,17 +408,21 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
         alert('Es muss mindestens eine Person in der Liste bleiben.');
         return;
       }
-      const taskCount = tasks.filter(t => t.defaultAssignee === name).length;
       const fallback = members.find(m => m !== name);
-      const msg = taskCount > 0
-        ? `Person "${name}" wirklich entfernen?\n${taskCount} Aufgabe(n) dieser Person werden auf "${fallback}" übertragen.`
+      const affectedTasks = tasks.filter(t => getTaskAssignees(t).includes(name));
+      const msg = affectedTasks.length > 0
+        ? `Person "${name}" wirklich entfernen?\n${affectedTasks.length} Aufgabe(n) dieser Person werden angepasst.`
         : `Person "${name}" wirklich aus der Vorstandsliste entfernen?`;
 
       if (!confirm(msg)) return;
 
       tasks.forEach(t => {
-        if (t.defaultAssignee === name) {
-          t.defaultAssignee = fallback;
+        let assignees = getTaskAssignees(t);
+        if (assignees.includes(name)) {
+          assignees = assignees.filter(m => m !== name);
+          if (assignees.length === 0) assignees = [fallback];
+          t.assignees = assignees;
+          t.defaultAssignee = assignees[0];
         }
       });
       members = members.filter(m => m !== name);
@@ -348,6 +445,7 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
           const input = modal.querySelector('#new-member-name');
           if (input) setTimeout(() => input.focus(), 50);
         } else if (id === 'modal-new-task') {
+          renderNewTaskAssigneesGrid();
           const input = modal.querySelector('#new-task-title');
           if (input) setTimeout(() => input.focus(), 50);
         }
@@ -389,7 +487,7 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
         });
       });
 
-      // Event Delegation for Buttons, Delete & Dropdowns inside Board
+      // Event Delegation for Buttons, Delete & Edit Assignees inside Board
       const kanbanGrid = document.querySelector('#kanban-grid');
       if (kanbanGrid) {
         kanbanGrid.addEventListener('click', e => {
@@ -414,19 +512,13 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
             if (id) deleteTask(id);
             return;
           }
-        });
 
-        kanbanGrid.addEventListener('change', e => {
-          const select = e.target.closest('[data-action="assign"]');
-          if (select) {
-            const id = select.getAttribute('data-id');
-            const newAssignee = select.value;
-            const targetTask = tasks.find(t => t.id === id);
-            if (targetTask && targetTask.defaultAssignee !== newAssignee) {
-              targetTask.defaultAssignee = newAssignee;
-              saveTasks();
-              renderBoard();
-            }
+          // Edit Assignees Button
+          const editAssigneesBtn = e.target.closest('[data-action="edit-assignees"]');
+          if (editAssigneesBtn) {
+            const id = editAssigneesBtn.getAttribute('data-id');
+            if (id) openEditAssigneesModal(id);
+            return;
           }
         });
       }
@@ -490,17 +582,21 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
           const titleInput = document.querySelector('#new-task-title');
           const descInput = document.querySelector('#new-task-desc');
           const catInput = document.querySelector('#new-task-cat');
-          const assigneeInput = document.querySelector('#new-task-assignee');
           const statusInput = document.querySelector('#new-task-status');
 
           if (!titleInput || !titleInput.value.trim()) return;
+
+          const checkedCbs = Array.from(document.querySelectorAll('#new-task-assignees-grid input:checked'));
+          const selectedAssignees = checkedCbs.map(cb => cb.value);
+          const finalAssignees = selectedAssignees.length > 0 ? selectedAssignees : [members[0] || 'Abdul Aziz'];
 
           const newTask = {
             id: 'task-' + Date.now(),
             title: titleInput.value.trim(),
             description: descInput ? descInput.value.trim() : '',
             category: (catInput && catInput.value.trim()) || 'Allgemein',
-            defaultAssignee: (assigneeInput && assigneeInput.value) || members[0] || 'Engin',
+            assignees: finalAssignees,
+            defaultAssignee: finalAssignees[0],
             defaultStatus: (statusInput && statusInput.value) || 'todo',
           };
 
@@ -542,9 +638,11 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
       const resetBtn = document.querySelector('#board-reset-btn');
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-          if (confirm('Möchtest du alle Aufgaben und Personen auf den Ausgangszustand zurücksetzen?')) {
+          if (confirm('Möchtest du alle Aufgaben und Personen auf den aktuellen Sitzungsstand (01.10.2026) zurücksetzen?')) {
             localStorage.removeItem(TASKS_STORAGE_KEY);
             localStorage.removeItem(MEMBERS_STORAGE_KEY);
+            localStorage.removeItem(OLD_TASKS_KEY);
+            localStorage.removeItem(OLD_MEMBERS_KEY);
             tasks = JSON.parse(JSON.stringify(initialZibgTasks));
             members = [...ZIBG_MEMBERS];
             currentFilter = 'all';
@@ -552,7 +650,7 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
             saveMembers();
             renderBoard();
             renderMembersManager();
-            showToast('✓ Board auf Ausgangszustand zurückgesetzt.');
+            showToast('✓ Board auf aktuellen Stand vom 01.10.2026 zurückgesetzt.');
           }
         });
       }
@@ -572,7 +670,7 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
 
           text += `*Zuständigkeiten Übersicht:*\n`;
           members.forEach(m => {
-            const mTasks = tasks.filter(t => t.defaultAssignee === m);
+            const mTasks = tasks.filter(t => getTaskAssignees(t).includes(m));
             const mDone = mTasks.filter(t => t.defaultStatus === 'done').length;
             text += `• ${m}: ${mDone}/${mTasks.length} erledigt\n`;
           });
@@ -580,21 +678,24 @@ const ZIBG_MEMBERS = ["Abdul Aziz","Samih","Engin","Mahmoud","Inan","Hassib"];
           if (progressTasks.length > 0) {
             text += `\n*⏳ Aktuell in Bearbeitung:*\n`;
             progressTasks.forEach(t => {
-              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+              const a = getTaskAssignees(t);
+              text += `• [${a.join(', ')}] ${t.title}\n`;
             });
           }
 
           if (todoTasks.length > 0) {
             text += `\n*📋 Noch offen:*\n`;
             todoTasks.forEach(t => {
-              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+              const a = getTaskAssignees(t);
+              text += `• [${a.join(', ')}] ${t.title}\n`;
             });
           }
 
           if (doneTasks.length > 0) {
             text += `\n*✅ Bereits erledigt:*\n`;
             doneTasks.forEach(t => {
-              text += `• [${t.defaultAssignee}] ${t.title}\n`;
+              const a = getTaskAssignees(t);
+              text += `• [${a.join(', ')}] ${t.title}\n`;
             });
           }
 
