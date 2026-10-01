@@ -21,6 +21,12 @@ HEADERS = {
     'Accept-Language': 'de-DE,de;q=0.9,en-US;q=0.8',
 }
 
+BLACKLISTED_NUMBERS = [
+    '97581300',   # shareDnC GmbH Köln
+    '6060440',    # Sirius Facilities GmbH
+    '4040880',    # Sirius Hotline
+]
+
 def clean_phone(raw_phone):
     clean_display = re.sub(r'[\/\-]+', ' ', raw_phone)
     clean_display = ' '.join(clean_display.split())
@@ -36,16 +42,31 @@ def extract_phone_from_detail(href):
         r.encoding = 'utf-8'
         page_html = r.text
         
+        # 1. adPhoneNumber (offizielle Kleinanzeigen-Telefonnummer)
         m = re.search(r"adPhoneNumber:\s*['\"]([^'\"]+)['\"]", page_html)
         if m and len(m.group(1).strip()) >= 6:
-            return clean_phone(m.group(1).strip())
+            val = m.group(1).strip()
+            if not any(b in val for b in BLACKLISTED_NUMBERS):
+                return clean_phone(val)
             
-        body_clean = re.sub(r'<(script|style|svg|path)[^>]*>.*?</\1>', '', page_html, flags=re.DOTALL)
+        # 2. tel: Link
+        tel_links = re.findall(r'href=[\"\']tel:([^\"\']+)[\"\']', page_html)
+        if tel_links:
+            val = tel_links[0].strip()
+            if not any(b in val for b in BLACKLISTED_NUMBERS):
+                return clean_phone(val)
+
+        # 3. Nur Beschreibungstext VOR Impressum / Rechtliche Angaben
+        parts = re.split(r'Rechtliche Angaben|Angaben gemäß § 5 TMG|Impressum', page_html, flags=re.IGNORECASE)
+        main_part = parts[0]
+        body_clean = re.sub(r'<(script|style|svg|path)[^>]*>.*?</\1>', '', main_part, flags=re.DOTALL)
         body_text = re.sub(r'<[^>]+>', ' ', body_clean)
         
         candidates = re.findall(r'(?:(?:\+49|0049|0)\s*[1-9]\d{1,4}[ \/\-\.]?\s*(?:\d[ \/\-\.]?){5,9}\d)', body_text)
         for c in candidates:
             digits = re.sub(r'\D', '', c)
+            if any(b in digits for b in BLACKLISTED_NUMBERS):
+                continue
             if 8 <= len(digits) <= 15 and not c.startswith('000'):
                 return clean_phone(c.strip())
     except Exception:
