@@ -142,7 +142,7 @@ const { isStandalone = false } = Astro.props;
           </div>
         </div>
         <div class="form-group">
-          <label>Zuständige Person(en) <span class="muted" style="font-size: 12px; font-weight: 400;">(Mehrfachauswahl möglich)</span></label>
+          <label>Zuständige Brüder / Personen <span class="muted" style="font-size: 12px; font-weight: 400;">(Mehrfachauswahl möglich)</span></label>
           <div class="assignees-checkbox-grid" id="new-task-assignees-grid">
             <!-- Dynamically populated checkboxes -->
           </div>
@@ -159,7 +159,7 @@ const { isStandalone = false } = Astro.props;
   <div class="board-modal-backdrop" id="modal-edit-assignees" hidden>
     <div class="board-modal" role="dialog" aria-labelledby="modal-assignees-title" aria-modal="true">
       <div class="board-modal-head">
-        <h3 id="modal-assignees-title">👥 Zuständige Personen zuweisen</h3>
+        <h3 id="modal-assignees-title">👥 Brüder / Zuständige zuweisen</h3>
         <button type="button" class="board-modal-close" data-close-modal="modal-edit-assignees" aria-label="Schließen">✕</button>
       </div>
       <div class="board-modal-body">
@@ -213,10 +213,12 @@ const { isStandalone = false } = Astro.props;
 <!-- Raw Data for Client Script -->
 <script is:inline define:vars={{ initialZibgTasks, ZIBG_MEMBERS }}>
   (function () {
-    const TASKS_STORAGE_KEY = 'zibg_kanban_tasks_v2';
-    const MEMBERS_STORAGE_KEY = 'zibg_kanban_members_v2';
-    const OLD_TASKS_KEY = 'zibg_kanban_tasks_v1';
-    const OLD_MEMBERS_KEY = 'zibg_kanban_members_v1';
+    const TASKS_STORAGE_KEY = 'zibg_kanban_tasks_v3';
+    const MEMBERS_STORAGE_KEY = 'zibg_kanban_members_v3';
+    const OLD_TASKS_KEY_V2 = 'zibg_kanban_tasks_v2';
+    const OLD_TASKS_KEY_V1 = 'zibg_kanban_tasks_v1';
+    const OLD_MEMBERS_KEY_V2 = 'zibg_kanban_members_v2';
+    const OLD_MEMBERS_KEY_V1 = 'zibg_kanban_members_v1';
     let currentFilter = 'all';
     let activeEditingTaskId = null;
 
@@ -234,8 +236,7 @@ const { isStandalone = false } = Astro.props;
       try {
         let saved = localStorage.getItem(MEMBERS_STORAGE_KEY);
         if (!saved) {
-          // Check old v1 storage
-          saved = localStorage.getItem(OLD_MEMBERS_KEY);
+          saved = localStorage.getItem(OLD_MEMBERS_KEY_V2) || localStorage.getItem(OLD_MEMBERS_KEY_V1);
         }
         if (saved) {
           let parsed = JSON.parse(saved);
@@ -266,11 +267,10 @@ const { isStandalone = false } = Astro.props;
 
     function loadTasks() {
       try {
-        const savedV2 = localStorage.getItem(TASKS_STORAGE_KEY);
-        if (savedV2) {
-          let parsed = JSON.parse(savedV2);
+        const savedV3 = localStorage.getItem(TASKS_STORAGE_KEY);
+        if (savedV3) {
+          let parsed = JSON.parse(savedV3);
           if (Array.isArray(parsed)) {
-            // Merge any new tasks from initialZibgTasks that might not be in v2
             const existingIds = new Set(parsed.map(t => t.id));
             const newTasks = initialZibgTasks.filter(t => !existingIds.has(t.id));
             if (newTasks.length > 0) {
@@ -278,40 +278,6 @@ const { isStandalone = false } = Astro.props;
               localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(parsed));
             }
             return parsed;
-          }
-        }
-
-        // Migrate from v1 if v2 does not exist yet
-        const savedV1 = localStorage.getItem(OLD_TASKS_KEY);
-        if (savedV1) {
-          let parsedV1 = JSON.parse(savedV1);
-          if (Array.isArray(parsedV1)) {
-            // Map over v1 tasks and merge with updated initialZibgTasks
-            const initialMap = new Map(initialZibgTasks.map(t => [t.id, t]));
-            const migrated = initialZibgTasks.map(initTask => {
-              const old = parsedV1.find(t => t.id === initTask.id);
-              if (old) {
-                return {
-                  ...initTask,
-                  defaultStatus: initTask.defaultStatus || old.defaultStatus,
-                  assignees: initTask.assignees || (old.defaultAssignee ? [old.defaultAssignee] : initTask.assignees),
-                };
-              }
-              return initTask;
-            });
-
-            // Keep any user-created custom tasks (id not in initialTasks)
-            parsedV1.forEach(t => {
-              if (!initialMap.has(t.id)) {
-                migrated.push({
-                  ...t,
-                  assignees: Array.isArray(t.assignees) ? t.assignees : (t.defaultAssignee ? [t.defaultAssignee] : ['Abdul Aziz']),
-                });
-              }
-            });
-
-            localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(migrated));
-            return migrated;
           }
         }
       } catch (e) {
@@ -407,11 +373,11 @@ const { isStandalone = false } = Astro.props;
           <h4 class="kanban-card-title">${escapeHtml(task.title)}</h4>
           ${task.description ? `<p class="kanban-card-desc">${escapeHtml(task.description)}</p>` : ''}
           <div class="kanban-assignees-container">
-            <div class="kanban-assignees-badges" title="Zuständige Person(en)">
+            <div class="kanban-assignees-badges" data-action="edit-assignees" data-id="${task.id}" style="cursor: pointer;" title="Klicken, um Brüder zu bearbeiten">
               ${taskAssignees.map(a => `<span class="board-member-badge--card">${escapeHtml(a)}</span>`).join('')}
             </div>
-            <button type="button" class="kanban-edit-assignees-btn" data-action="edit-assignees" data-id="${task.id}" title="Zuständige Personen ändern">
-              👥 Zuständige (${taskAssignees.length})
+            <button type="button" class="kanban-edit-assignees-btn" data-action="edit-assignees" data-id="${task.id}" title="Zuständige Brüder zuweisen oder ändern">
+              👥 Brüder zuweisen (${taskAssignees.length})
             </button>
           </div>
           <div class="kanban-card-footer">

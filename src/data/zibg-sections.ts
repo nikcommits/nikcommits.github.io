@@ -76,148 +76,139 @@ export const zibgSatzungNavItems = [
 ];
 
 export const initialZibgTasks: ZibgTask[] = [
-  // --- Stand aus der Sitzung vom 01.10.2026: 2 erledigt, 6 in Arbeit (2 wiederkehrend), Rest offen ---
-
-  // 1. ERLEDIGTE AUFGABEN (2)
+  // --- 1. ERLEDIGT ---
   {
-    id: "task-m-6",
-    title: "Tschetschenischen Kontakt wegen Gewerbeobjekten anfragen",
-    description:
-      "Gespräch geführt: Hat selbst keine Fläche frei, fragt aber seine Kontakte nach passenden Räumen ab. Folgebeschluss: Besuch in Schulferien geplant.",
+    id: "task-bank-klaeren",
+    title: "Bank und Online-Banking klären",
+    description: "Samy hat mit der Bank gesprochen: Ein Vorstandsmitglied muss persönlich zur Bank erscheinen.",
+    category: "Finanzen & Bank",
+    defaultAssignee: "Samih",
+    assignees: ["Samih"],
+    defaultStatus: "done",
+  },
+  {
+    id: "task-kontakt-tschetschene",
+    title: "Kontakt zum Tschetschenen",
+    description: "Hassib hat mit ihm gesprochen: Er selbst hat keinen Raum, will aber seine Kontakte nach geeigneten Räumlichkeiten fragen.",
     category: "Räumlichkeiten",
     defaultAssignee: "Hassib",
     assignees: ["Hassib"],
     defaultStatus: "done",
   },
   {
-    id: "task-m-8",
+    id: "task-board-verbessern",
+    title: "Board verbessern (Mehrere Personen zuweisbar)",
+    description: "Das Board soll so eingestellt werden, dass mehrere Personen einer Aufgabe zugewiesen werden können.",
+    category: "Organisation & IT",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz"],
+    defaultStatus: "done",
+  },
+  {
+    id: "task-makler-bilal",
     title: "Maklerkontakt & Vitamin B in Krefeld ausloten",
-    description:
-      "Gespräch mit Makler Bilal in Krefeld geführt: Gewerbemarkt ist schwierig und angespannt, Vitamin B und direkte Kontakte sind der vielversprechendste Weg.",
+    description: "Nik sprach mit Makler Bilal in Krefeld: Gewerbemarkt schwierig und angespannt, Vitamin B und private Kontakte sind der beste Weg.",
     category: "Räumlichkeiten",
     defaultAssignee: "Nik Frühschulz",
     assignees: ["Nik Frühschulz", "Engin"],
     defaultStatus: "done",
   },
 
-  // 2. IN ARBEIT (6 Aufgaben, davon 2 wiederkehrend)
+  // --- 2. NOCH OFFEN BZW. IN ARBEIT ---
   {
-    id: "task-m-9",
-    title: "Wöchentliches Status-Meeting durchführen (Do, 21:30 Uhr)",
-    description:
-      "Wiederkehrend: Fester wöchentlicher Jour Fixe zur Fortschrittskontrolle von Kanban-Board, Raumsuche, Bankfortschritt und Beseitigung von Engpässen.",
-    category: "Organisation & Vorstand",
-    defaultAssignee: "Abdul Aziz",
-    assignees: ["Abdul Aziz", "Mahmoud", "Samih"],
+    id: "task-banktermin-vereinbaren",
+    title: "Banktermin vereinbaren & wahrnehmen (14.10., 10:30 Uhr)",
+    description: "Der Termin wurde für den 14. um 10:30 Uhr vereinbart. Samy geht voraussichtlich mit Mahmud; falls Mahmud nicht kann, springt Nik ein.",
+    category: "Finanzen & Bank",
+    defaultAssignee: "Samih",
+    assignees: ["Samih", "Mahmoud", "Nik Frühschulz"],
     defaultStatus: "in-progress",
   },
   {
-    id: "task-m-4",
-    title: "Gewerbeflächen suchen & Inserate in Räumlichkeiten-Gruppe stellen",
-    description:
-      "Wiederkehrend: Max. 700 € warm, ca. 2,5 km um Krefeld Hbf, 30–34 qm. Neue Anzeigen ab sofort ausschließlich in die dedizierte Räumlichkeiten-Gruppe stellen als Puffer für Samy.",
+    id: "task-raumsuche",
+    title: "Raumsuche (Räumlichkeiten-Gruppe & Puffer)",
+    description: "Neue Gewerbeobjekte sollen weiterhin in die Räumlichkeiten-Gruppe geschickt werden. Die bereits gesammelten Anzeigen sollen ebenfalls kontaktiert werden.",
     category: "Räumlichkeiten",
     defaultAssignee: "Inan",
     assignees: ["Inan", "Abdul Aziz"],
     defaultStatus: "in-progress",
   },
   {
-    id: "task-m-3",
-    title: "Banktermin wahrnehmen: Online-Banking vor Ort einrichten",
-    description:
-      "Vorprüfung abgeschlossen: Persönliches Erscheinen eines Vorstandsmitglieds erforderlich. Fester Banktermin vereinbart für Mittwoch, 14.10. um 10:30 Uhr (Samih & Mahmoud; Ersatz springt bei Bedarf ein).",
-    category: "Finanzen & Bank",
-    defaultAssignee: "Samih",
-    assignees: ["Samih", "Mahmoud"],
-    defaultStatus: "in-progress",
-  },
-  {
-    id: "task-m-5",
-    title: "Objekte abtelefonieren & Vermieter-Erstkontakt",
-    description:
-      "Samih telefoniert freigegebene und ältere Inserate ab. Bei Nichterreichen oder für schriftliche Anfragen wird die neue Muster-E-Mail versendet.",
+    id: "task-objekte-abtelefonieren",
+    title: "Objekte abtelefonieren",
+    description: "Samy soll die passenden Anzeigen durchgehen und die Vermieter kontaktieren.",
     category: "Räumlichkeiten",
     defaultAssignee: "Samih",
     assignees: ["Samih"],
     defaultStatus: "in-progress",
   },
   {
-    id: "task-m-2",
-    title: "Vereinsunterlagen übergeben & digitale Ablage aufbauen",
-    description:
-      "Übergabe der physischen Dokumentenbox stockte mangels Übergabetermin; Papierunterlagen zügig von Mahmoud an Abdul Aziz übergeben, scannen und Cloud-Share für Vorstand anlegen.",
-    category: "Organisation & IT",
-    defaultAssignee: "Abdul Aziz",
-    assignees: ["Abdul Aziz", "Mahmoud"],
-    defaultStatus: "in-progress",
-  },
-  {
-    id: "task-m-1",
-    title: "Better Place: Plattform vollständig einrichten & freischalten",
-    description:
-      "Plattformbetreuung übernommen; Registrierung pausiert derzeit bis zur Übergabe der Vereinsdokumente & des Freistellungsbescheids.",
+    id: "task-betterplace-profil",
+    title: "Betterplace-Profil einrichten",
+    description: "Ohne die digitalisierten Unterlagen kann das Profil noch nicht eingerichtet werden.",
     category: "Fundraising & Spenden",
     defaultAssignee: "Abdul Aziz",
     assignees: ["Abdul Aziz"],
     defaultStatus: "in-progress",
   },
-
-  // 3. OFFENE AUFGABEN & NÄCHSTE SCHRITTE AUS SITZUNG 01.10.2026
   {
-    id: "task-m-10",
-    title: "Muster-E-Mail für Vermieter vorbereiten & von Elias gegenlesen lassen",
-    description:
-      "Professionelles Anschreiben erstellen mit Schwerpunkt auf Lern-, Kultur- und Bildungsverein (30–34 qm genügen, kein abstoßendes Wording). Vor Versand Gegenlesen durch Elias.",
+    id: "task-meeting-weekly",
+    title: "Wöchentliches Status-Meeting (Do, 21:30 Uhr)",
+    description: "Wiederkehrend: Verbindlicher Jour Fixe zur Aufgabenkontrolle, Raumsuche und Beseitigung von Blockern.",
+    category: "Organisation & Vorstand",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz", "Mahmoud", "Samih"],
+    defaultStatus: "in-progress",
+  },
+  {
+    id: "task-muster-email",
+    title: "Muster-E-Mail für Vermieter",
+    description: "Eine Vorlage soll erstellt und von Elias gegengelesen werden. Bei Nichterreichbarkeit soll die E-Mail verschickt werden.",
     category: "Räumlichkeiten",
     defaultAssignee: "Abdul Aziz",
     assignees: ["Abdul Aziz", "Elias"],
     defaultStatus: "todo",
   },
   {
-    id: "task-m-11",
-    title: "Weitere neue Objekte als Puffer in Räumlichkeiten-Gruppe schicken",
-    description:
-      "Gefundene Gewerbeobjekte (u. a. die leerstehende ehemalige Sparkassenfiliale) direkt in die separate Räumlichkeiten-Gruppe senden.",
+    id: "task-suchfilter-einrichten",
+    title: "Suchfilter einrichten (Kleinanzeigen & ImmoScout)",
+    description: "Nik wollte Benachrichtigungen für neue Gewerbeflächen auf Kleinanzeigen und ImmoScout einrichten.",
     category: "Räumlichkeiten",
-    defaultAssignee: "Abdul Aziz",
-    assignees: ["Abdul Aziz"],
+    defaultAssignee: "Nik Frühschulz",
+    assignees: ["Nik Frühschulz"],
     defaultStatus: "todo",
   },
   {
-    id: "task-m-12",
-    title: "Kanban-Board für Mehrfach-Zuständigkeiten erweitern",
-    description:
-      "Board-System so ausbauen, dass Aufgaben flexibel mehreren Personen gleichzeitig zugeteilt werden können und Filter/Export dies abbilden.",
+    id: "task-dokumente-digitalisieren",
+    title: "Dokumente digitalisieren",
+    description: "Die Übergabe der Unterlagen hat noch nicht funktioniert. Das Thema bleibt offen.",
     category: "Organisation & IT",
-    defaultAssignee: "Abdul Aziz",
-    assignees: ["Abdul Aziz"],
+    defaultAssignee: "Mahmoud",
+    assignees: ["Mahmoud", "Abdul Aziz"],
     defaultStatus: "todo",
   },
   {
-    id: "task-m-13",
-    title: "Tschetschenischen Kontakt in den Schulferien besuchen",
-    description:
-      "Persönlicher Vor-Ort-Besuch in ein bis zwei Wochen während der Schulferien, um mögliche Raumkontakte und Netzwerke weiter zu vertiefen.",
-    category: "Räumlichkeiten",
-    defaultAssignee: "Hassib",
-    assignees: ["Hassib"],
-    defaultStatus: "todo",
-  },
-  {
-    id: "task-m-14",
-    title: "Haruns Vereinsstatus klären & ggf. in Gruppe aufnehmen",
-    description:
-      "Mahmoud klärt den aktuellen Status des Mitgründers Harun ab und nimmt ihn bei Bereitschaft zur Mitarbeit wieder in die WhatsApp-Gruppe auf.",
+    id: "task-harun-status",
+    title: "Haruns Status klären",
+    description: "Es war unklar, ob Harun noch in der Gruppe ist. Gegebenenfalls soll Mahmud ihn wieder aufnehmen.",
     category: "Vorstand & Recht",
     defaultAssignee: "Mahmoud",
     assignees: ["Mahmoud"],
     defaultStatus: "todo",
   },
   {
-    id: "task-m-15",
+    id: "task-tschetschene-besuch",
+    title: "Kontakt zum Tschetschenen: Besuch in den Schulferien",
+    description: "Persönlicher Vor-Ort-Besuch in ein bis zwei Wochen während der Ferien, um Kontakte zu Gewerberäumen zu vertiefen.",
+    category: "Räumlichkeiten",
+    defaultAssignee: "Hassib",
+    assignees: ["Hassib"],
+    defaultStatus: "todo",
+  },
+  {
+    id: "task-zahlungswege-evaluieren",
     title: "Zahlungswege & Vereinssoftware evaluieren",
-    description:
-      "Unkomplizierte Spendenannahme vor Ort (QR-Code, Bargeldkasse), PayPal-Geschäftskonto sowie EasyVerein (kostenlos bis 50 Mitgl.) oder ClubDesk im Hintergrund prüfen.",
+    description: "QR-Codes, PayPal Geschäftskonto, Barkasse am Eingang und EasyVerein (bis 50 Mitgl. kostenlos) / ClubDesk prüfen.",
     category: "Software & IT",
     defaultAssignee: "Abdul Aziz",
     assignees: ["Abdul Aziz", "Samih"],
