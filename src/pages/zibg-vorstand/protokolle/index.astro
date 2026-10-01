@@ -6,13 +6,13 @@ import { zibgProtokollNavItems } from '../../../data/zibg-sections';
 
 <ZibgLayout
   title="ZIBG e.V. | Sitzungsprotokolle & Beschlüsse"
-  description="Offizielles Sitzungsprotokoll des ZIBG e.V. vom 24. September 2026: Verbindliche Neustrukturierung, Aufgabenverteilung, Räumlichkeiten, Schatzmeister & Better Place."
+  description="Offizielle Sitzungsprotokolle des ZIBG e.V.: Aktuelles Protokoll vom 01.10.2026 (Banktermin, Raumsuche, Digitalisierung & Board) und Vorstandsmeeting vom 24.09.2026."
   basePath="../"
   customNavItems={zibgProtokollNavItems}
   heroEyebrow="Vorstands-Dokumentation · ZIBG e.V."
   heroTitle="Sitzungsprotokolle & Beschlüsse."
   heroLead="Verbindliche Dokumentation aller Vorstandssitzungen, getroffener Beschlüsse und Zuständigkeiten – übersichtlich und jederzeit griffbereit."
-  heroStatus="Neues Protokoll: Sitzung vom 24.09.2026"
+  heroStatus="Aktuelles Protokoll: Sitzung vom 01.10.2026"
 >
   <main class="wrap" style="padding-top: 32px;">
     <!-- Navigation Bar -->
@@ -28,6 +28,16 @@ import { zibgProtokollNavItems } from '../../../data/zibg-sections';
       </a>
     </div>
 
+    <!-- Protocol Quick Jump / Switcher -->
+    <div style="margin-bottom: 28px; display: flex; gap: 8px; flex-wrap: wrap;">
+      <a href="#sitzung-2026-10-01" class="board-pill active" style="text-decoration: none;">
+        <span>🌟 01.10.2026 (Aktuelles Meeting)</span>
+      </a>
+      <a href="#sitzung-2026-09-24" class="board-pill" style="text-decoration: none;">
+        <span>📁 24.09.2026 (Neustrukturierung)</span>
+      </a>
+    </div>
+
     <!-- Regular Meeting Callout -->
     <section style="margin-bottom: 36px;">
       <div class="card" style="border-left: 4px solid var(--primary-light); background: var(--card-alt); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
@@ -39,12 +49,259 @@ import { zibgProtokollNavItems } from '../../../data/zibg-sections';
           </p>
         </div>
         <div style="font-size: 13.5px; font-weight: 700; color: var(--primary-light);">
-          Nächster Termin: Do, 01.10.2026 (21:30)
+          Nächster Termin: Do, 08.10.2026 (21:30)
         </div>
       </div>
     </section>
 
-    <!-- Meeting Protocol Section -->
+    <!-- Meeting Protocol Section: 01.10.2026 -->
+    <article class="protocol-entry" id="sitzung-2026-10-01" style="margin-bottom: 64px;">
+      <div class="section-head">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <span class="tag" style="background: var(--mint); color: var(--mint-text); border: 1px solid var(--mint-border);">Aktuelle Sitzung</span>
+          <span class="muted" style="font-size: 13.5px;">01. Oktober 2026 · 21:30 – 22:30 Uhr</span>
+        </div>
+        <h1 style="font-size: clamp(26px, 4vw, 36px); margin: 0 0 10px;">Bankfortschritt, Raumsuche, Digitalisierung & Board-Aufgaben</h1>
+        <p class="muted" style="font-size: 15px; max-width: 820px;">
+          Wöchentliches ZIBG-Statusmeeting zur operativen Fortschrittskontrolle. Wesentliche Schwerpunkte: Festlegung des Vor-Ort-Banktermins für den Online-Banking-Zugang, Schärfung der Raumsuche (Bündelung in separater Räumlichkeiten-Gruppe, gezieltes Vermieter-Wording & Krefelder Markt-Einschätzung), Priorisierung der Unterlagen-Digitalisierung für Better Place sowie Umstellung des Kanban-Boards auf Mehrfach-Zuständigkeiten.
+        </p>
+      </div>
+
+      <!-- Key Decisions Grid: 01.10.2026 -->
+      <section style="margin-top: 32px;" aria-labelledby="beschluesse-title-1001">
+        <div class="section-head" style="margin-bottom: 18px;">
+          <h2 id="beschluesse-title-1001" style="font-size: 22px;">Verbindliche Kernbeschlüsse (01.10.2026)</h2>
+          <p class="muted">Die wichtigsten Vereinbarungen und Festlegungen des heutigen Abends.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" style="border-top: 3px solid #16a34a;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">🏦</span>
+              <h3 style="margin: 0; font-size: 16px;">Fester Banktermin am 14.10. um 10:30 Uhr</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Online-Banking erfordert persönliches Erscheinen eines Vorstandsmitglieds. Samih geht gemeinsam mit Mahmoud am 14.10. zur Bank (Vertretung steht bereit).
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid var(--primary-light);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">🏢</span>
+              <h3 style="margin: 0; font-size: 16px;">Raumsuche: Nur noch in Räumlichkeiten-Gruppe</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Objekte werden ab sofort ausschließlich in die separate Räumlichkeiten-Gruppe gestellt und von Samy verbindlich abtelefoniert.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #d97706;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">✉️</span>
+              <h3 style="margin: 0; font-size: 16px;">Muster-Mail für Vermieter & Wording</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Abdul Aziz erstellt Vorlage mit Fokus auf Lern-, Nachhilfe- und Kulturverein (30–34 m² genügen, kein abstoßendes Wording). Gegenlesen durch Elias.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #0284c7;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">🤝</span>
+              <h3 style="margin: 0; font-size: 16px;">Vitamin B & Makler-Einschätzung</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Gewerbemarkt in Krefeld schwierig (Makler Bilal via Nik). Hassib besucht tschetschenischen Kontakt in den Ferien. Zwei Objekte (u. a. Sparkasse) in Prüfung.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #ea580c;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">📂</span>
+              <h3 style="margin: 0; font-size: 16px;">Digitalisierung: Schnelle Übergabe nötig</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Papierunterlagen müssen unverzüglich von Mahmoud an Abdul Aziz übergeben werden. Ohne Unterlagen und Freistellungsbescheid stockt Better Place.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #9333ea;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">💳</span>
+              <h3 style="margin: 0; font-size: 16px;">Zahlungen: PayPal & Bar vor Website</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Website vorerst nachrangig. Priorität haben Raum, Instagram, Bankkonto & PayPal-Geschäftskonto. EasyVerein (bis 50 Mitgl. gratis) / ClubDesk im Fokus.
+            </p>
+          </div>
+
+          <div class="card" style="border-top: 3px solid #059669;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="font-size: 18px;">📋</span>
+              <h3 style="margin: 0; font-size: 16px;">Board: Mehrere Zuständige pro Aufgabe</h3>
+            </div>
+            <p style="margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.5;">
+              Das Kanban-Board wurde für Mehrfach-Zuständigkeiten erweitert. Status von Mitgründer Harun wird von Mahmoud geklärt.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detailed Discussions: 01.10.2026 -->
+      <section style="margin-top: 48px;" aria-labelledby="themen-title-1001">
+        <div class="section-head">
+          <p class="kicker">Detaillierter Sitzungsverlauf</p>
+          <h2 id="themen-title-1001">Themen & Beratungen im Detail</h2>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <!-- Topic 1 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">1. Aufgabenstand: Kontakte, Vitamin B und Bank</h3>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li><strong>Tschetschenischer Kontakt:</strong> Hassib (Ha No) hat mit dem tschetschenischen Kontakt gesprochen. Er hat aktuell selbst keine freie Immobilie, fragt aber in seinem persönlichen Netzwerk aktiv nach Gewerbeflächen. Ein persönlicher Besuch vor Ort ist für in ein bis zwei Wochen während der anstehenden Schulferien vereinbart.</li>
+              <li><strong>Bank & Online-Banking:</strong> Samih hat die Rückmeldung der Bank eingeholt. Das Einrichten des Online-Banking-Zugangs erfordert das persönliche Erscheinen eines eingetragenen Vorstandsmitglieds. Ein verbindlicher Termin wurde für <strong>Mittwoch, 14. Oktober um 10:30 Uhr</strong> vereinbart. Samiabubakr geht gemeinsam mit Mahmoud hin. Ein weiteres Vorstandsmitglied steht als Vertretung bereit, falls Mahmoud verhindert sein sollte.</li>
+              <li><strong>Dokumenten-Digitalisierung:</strong> Die Übergabe der Papierunterlagenbox stockte in der vergangenen Woche, da die persönliche Übergabe nicht zustande kam. Ohne die amtlichen Vereinsunterlagen und den aktuellen Freistellungsbescheid kann das Better-Place-Profil nicht verifiziert und freigeschaltet werden. Die Übergabe hat nun oberste Priorität.</li>
+            </ul>
+          </article>
+
+          <!-- Topic 2 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">2. Raumsuche, Vermieteransprache & Krefelder Markt</h3>
+            <div class="grid-2" style="margin-bottom: 16px;">
+              <div style="background: var(--card-alt); padding: 14px; border-radius: 8px; border: 1px solid var(--line);">
+                <strong style="color: var(--ink); display: block; margin-bottom: 6px;">Vorgehen & Akquise:</strong>
+                <ul style="padding-left: 18px; margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--muted);">
+                  <li><strong>Objekte bündeln:</strong> Alle Inserate fließen ab sofort ausschließlich in die separate <em>Räumlichkeiten-Gruppe</em>, um die Hauptgruppe zu entlasten.</li>
+                  <li><strong>Abtelefonieren:</strong> Samiabubakr kontaktiert sowohl neu eingestellte als auch ältere Anzeigen telefonisch.</li>
+                  <li><strong>Puffer aufbauen:</strong> Trotz bestehender Kontakte sollen weiterhin kontinuierlich neue Inserate eingestellt werden.</li>
+                  <li><strong>Muster-E-Mail:</strong> Bei Nichterreichen oder für schriftliche Erstkontakte erstellt Abdul Aziz eine standardisierte Anschreiben-Vorlage, die von Elias gegengelesen wird.</li>
+                </ul>
+              </div>
+
+              <div style="background: var(--card-alt); padding: 14px; border-radius: 8px; border: 1px solid var(--line);">
+                <strong style="color: var(--ink); display: block; margin-bottom: 6px;">Wording, Kriterien & Makler-Feedback:</strong>
+                <ul style="padding-left: 18px; margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--muted);">
+                  <li><strong>Strategisches Wording:</strong> Vermieter reagieren häufig reserviert auf reine Moschee-Begriffe. Empfohlen wird das Auftreten als <em>Lern-, Bildungs- oder Kulturverein</em> (Nachhilfe, Deutschunterricht, Treffpunkt).</li>
+                  <li><strong>Fläche & Budget:</strong> Bereits <strong>30 bis 34 qm</strong> reichen als Startraum vollkommen aus. Budget bleibt bei max. 700 € warm.</li>
+                  <li><strong>Makler Bilal (Krefeld):</strong> Nik Frühschulz hat den Markt mit Makler Bilal erörtert: Gewerbeflächen sind rar und schwierig; Vitamin B und direkte Beziehungen gelten als bester Hebel.</li>
+                  <li><strong>Aktuelle Pipeline:</strong> Von vier neuen Objekten kommen zwei in die engere Auswahl – darunter eine seit Jahren leerstehende ehemalige Sparkassenfiliale in guter Lage.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Topic 3 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">3. Webseite, Zahlungsverkehr und Mitgliederverwaltung</h3>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li><strong>Prioritäten:</strong> Eine aufwendige Vereinswebseite ist vorerst nicht nötig. Der Fokus liegt klar auf: <strong>Fester Raum</strong>, <strong>Instagram-Präsenz</strong>, <strong>Bankkonto & Online-Banking</strong> sowie <strong>PayPal-Geschäftskonto</strong>.</li>
+              <li><strong>Einfacher Zahlungsprozess:</strong> Spenden und Beiträge sollen maximal niederschwellig ermöglicht werden: QR-Codes vor Ort (z. B. PayPal-Spende), kontaktlose Zahlung und klassische Barkasse bzw. Spardose am Eingang.</li>
+              <li><strong>Online-Mitgliedsantrag:</strong> Eine digitale Beitrittserklärung ist denkbar, bedarf jedoch vorheriger Prüfung hinsichtlich Datenschutz (DSGVO), Widerruf und Anti-Bot-Schutz.</li>
+              <li><strong>Software im Hintergrund:</strong> Bevorzugung schlanker Vereinsverwaltung wie <strong>EasyVerein</strong> (in der Basis bis 50 Mitglieder kostenlos) oder <strong>ClubDesk</strong> für Adressen und Finanzen.</li>
+            </ul>
+          </article>
+
+          <!-- Topic 4 -->
+          <article class="card">
+            <h3 style="margin-top: 0; font-size: 18px; color: var(--ink);">4. Board-Durchgang und Organisatorisches</h3>
+            <ul style="padding-left: 20px; line-height: 1.6; margin-bottom: 12px;">
+              <li><strong>Aktueller Aufgabenstand:</strong> Zwei Aufgaben sind abgeschlossen (Tschetschenischer Kontakt kontaktiert; Makler Bilal befragt), sechs befinden sich in Bearbeitung (zwei davon wiederkehrende Dauerläufer), der Rest ist offen.</li>
+              <li><strong>Mehrfach-Zuständigkeit:</strong> Das Kanban-Board unterstützte bislang nur eine Person pro Aufgabe. Dies wurde von Abdul Aziz erfolgreich umgestellt, sodass Aufgaben nun flexibel mehreren Personen gleichzeitig zugewiesen werden können.</li>
+              <li><strong>Status von Harun:</strong> Harun gehörte zu den Gründern des Vereins, sein aktueller Aktivitätsstatus ist unklar. Mahmoud nimmt Kontakt mit ihm auf und nimmt ihn bei Bereitschaft wieder in die WhatsApp-Gruppe auf.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Action Items: 01.10.2026 -->
+      <section style="margin-top: 48px;" aria-labelledby="massnahmen-title-1001">
+        <div class="card" style="border: 2px solid var(--primary-light); background: var(--card);">
+          <div class="section-head" style="margin-bottom: 18px;">
+            <p class="kicker">Nächste Schritte & To-Dos</p>
+            <h2 id="massnahmen-title-1001" style="margin: 0 0 6px;">Vereinbarte Aufgaben aus der Sitzung vom 01.10.2026</h2>
+            <p class="muted">Alle Aufgaben sind im Kanban-Board erfasst und können dort direkt mit Mehrfach-Zuständigkeiten gepflegt werden.</p>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--line); color: var(--muted);">
+                  <th style="padding: 10px 12px;">Zuständige(r)</th>
+                  <th style="padding: 10px 12px;">Aufgabe / Vorhaben</th>
+                  <th style="padding: 10px 12px;">Bereich</th>
+                  <th style="padding: 10px 12px;">Status</th>
+                </tr>
+              </thead>
+              <tbody style="line-height: 1.5;">
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Abdul Aziz & Elias</td>
+                  <td style="padding: 12px;">Muster-E-Mail für Vermieter vorbereiten (Fokus: Lern-, Bildungs- & Kulturverein, 30–34 qm) und von Elias gegenlesen lassen</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Abdul Aziz</td>
+                  <td style="padding: 12px;">Weitere neue Objekte (u. a. ehemalige Sparkassenfiliale) als Puffer in die Räumlichkeiten-Gruppe schicken</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Abdul Aziz</td>
+                  <td style="padding: 12px;">Board so einstellen, dass Aufgaben flexibel mehreren Zuständigen zugeteilt werden können</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Organisation & IT</span></td>
+                  <td style="padding: 12px;"><span class="tag" style="background: var(--mint); color: var(--mint-text); border: 1px solid var(--mint-border);">Erledigt / Live</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Samih (Samiabubakr) & Mahmoud</td>
+                  <td style="padding: 12px;">Mahmud über den Banktermin am Mi, 14.10. um 10:30 Uhr informieren und gemeinsam hingehen (Vertretung bereit halten)</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Finanzen & Bank</span></td>
+                  <td style="padding: 12px;"><span class="tag" style="background: var(--gold-surface); color: var(--gold); border: 1px solid var(--gold-border);">In Bearbeitung</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Samih (Samiabubakr)</td>
+                  <td style="padding: 12px;">Objekte in Räumlichkeiten-Gruppe abtelefonieren; bei Nichterreichen oder Bedarf die Muster-E-Mail versenden</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag" style="background: var(--gold-surface); color: var(--gold); border: 1px solid var(--gold-border);">In Bearbeitung</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Hassib (Ha No)</td>
+                  <td style="padding: 12px;">Den tschetschenischen Kontakt in den Schulferien persönlich besuchen und nach Raumkontakten fragen</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Räumlichkeiten</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--line);">
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Mahmoud</td>
+                  <td style="padding: 12px;">Papierunterlagen/Mappe zeitnah an Abdul Aziz für Digitalisierung & Better Place übergeben; Status Harun klären</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Vorstand & Recht</span></td>
+                  <td style="padding: 12px;"><span class="tag" style="background: var(--gold-surface); color: var(--gold); border: 1px solid var(--gold-border);">In Bearbeitung</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px; font-weight: 750; color: var(--ink);">Abdul Aziz & Samih</td>
+                  <td style="padding: 12px;">Zahlungsprozess (PayPal Geschäftskonto, QR-Codes) und Vereinssoftware (EasyVerein bis 50 Mitgl. kostenlos / ClubDesk) prüfen</td>
+                  <td style="padding: 12px;"><span class="kanban-tag">Software & IT</span></td>
+                  <td style="padding: 12px;"><span class="tag">Offen</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; justify-content: flex-end;">
+            <a href="../aufgaben/" class="button-link primary-action-btn" style="display: inline-flex; align-items: center; gap: 8px;">
+              <span>👉 Zu den Aufgaben im Kanban-Board ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <div style="border-top: 2px dashed var(--line); margin: 64px 0 48px; position: relative; text-align: center;">
+      <span style="position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--bg); padding: 0 16px; font-size: 13px; font-weight: 800; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase;">
+        📁 Vorherige Sitzung
+      </span>
+    </div>
+
+    <!-- Meeting Protocol Section: 24.09.2026 -->
     <article class="protocol-entry" id="sitzung-2026-09-24">
       <div class="section-head">
         <p class="kicker">Sitzungsprotokoll · 24. September 2026</p>

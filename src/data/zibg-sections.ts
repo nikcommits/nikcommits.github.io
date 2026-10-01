@@ -10,17 +10,20 @@ export interface ZibgTask {
   title: string;
   description: string;
   category: string;
-  defaultAssignee: string;
+  defaultAssignee?: string;
+  assignees?: string[];
   defaultStatus: "todo" | "in-progress" | "done";
 }
 
 export const ZIBG_MEMBERS = [
   "Abdul Aziz",
   "Samih",
-  "Engin",
   "Mahmoud",
+  "Engin",
   "Inan",
   "Hassib",
+  "Elias",
+  "Nik Frühschulz",
 ] as const;
 export type ZibgMember = (typeof ZIBG_MEMBERS)[number];
 
@@ -58,9 +61,8 @@ export const zibgBoardNavItems = [
 export const zibgProtokollNavItems = [
   { href: "../index.html", label: "← Zurück zur Übersicht" },
   { href: "../aufgaben/", label: "📋 Zum Aufgaben-Board" },
-  { href: "#beschluesse", label: "Verbindliche Beschlüsse" },
-  { href: "#themen", label: "Sitzungsthemen" },
-  { href: "#massnahmen", label: "Aufgabenverteilung" },
+  { href: "#sitzung-2026-10-01", label: "Sitzung 01.10.2026" },
+  { href: "#sitzung-2026-09-24", label: "Sitzung 24.09.2026" },
   { href: "../satzung/", label: "📜 Satzung & PDF" },
 ];
 
@@ -74,86 +76,151 @@ export const zibgSatzungNavItems = [
 ];
 
 export const initialZibgTasks: ZibgTask[] = [
-  // --- Beschlossene Aufgaben aus der Sitzung vom 24.09.2026 ---
-  {
-    id: "task-m-1",
-    title: "Better Place: Plattform vollständig übernehmen & einrichten",
-    description:
-      "Vollständige Betreuung übernehmen; Freistellungsbescheid, Vereinsunterlagen und Bankdaten beim Vorstand anfordern; Profil und Projektseite vor Raumbezug fertigstellen.",
-    category: "Fundraising & Spenden",
-    defaultAssignee: "Abdul Aziz",
-    defaultStatus: "in-progress",
-  },
-  {
-    id: "task-m-2",
-    title: "Vereinsunterlagen scannen & zentrale digitale Ablage aufbauen",
-    description:
-      "Vorhandene physische Mappe/Dokumentenbox übernehmen, Papierunterlagen (Anträge, Nachweise, Kontoauszüge) strukturieren und auf einem sicheren Share für berechtigte Vorstandsmitglieder ablegen.",
-    category: "Organisation & IT",
-    defaultAssignee: "Abdul Aziz",
-    defaultStatus: "todo",
-  },
-  {
-    id: "task-m-3",
-    title: "Bank & Online-Banking als Schatzmeister klären",
-    description:
-      "Bei der Bank die Voraussetzungen für den Online-Banking-Zugang prüfen und feststellen, ob der Zugang allein mit Ausweis und Satzung beantragt werden kann oder eine Vorstandsbegleitung nötig ist.",
-    category: "Finanzen & Bank",
-    defaultAssignee: "Samih",
-    defaultStatus: "todo",
-  },
-  {
-    id: "task-m-4",
-    title: "Gewerbeflächen suchen & Inserate in die Gruppe stellen",
-    description:
-      "Operative Suche nach geeigneter Gewerbeeinheit: Max. 700 € warm, ca. 2,5 km um Krefeld Hbf, ebenerdig/gut zugänglich, seriöser Eindruck. Links intern zur Prüfung teilen.",
-    category: "Räumlichkeiten",
-    defaultAssignee: "Inan",
-    defaultStatus: "todo",
-  },
-  {
-    id: "task-m-5",
-    title: "Freigegebene Vermieter/Makler kontaktieren",
-    description:
-      "Systematisches Vorgehen: Nach interner Freigabe zuerst schriftlich per E-Mail anfragen (Fokus auf Bildung, Deutschunterricht, Treffpunkt), anschließend telefonisch nachfassen.",
-    category: "Räumlichkeiten",
-    defaultAssignee: "Samih",
-    defaultStatus: "todo",
-  },
+  // --- Stand aus der Sitzung vom 01.10.2026: 2 erledigt, 6 in Arbeit (2 wiederkehrend), Rest offen ---
+
+  // 1. ERLEDIGTE AUFGABEN (2)
   {
     id: "task-m-6",
     title: "Tschetschenischen Kontakt wegen Gewerbeobjekten anfragen",
     description:
-      "Den genannten tschetschenischen Kontakt bezüglich potenzieller Gewerbeimmobilien oder weiterführender Kontakte in Krefeld anschreiben.",
+      "Gespräch geführt: Hat selbst keine Fläche frei, fragt aber seine Kontakte nach passenden Räumen ab. Folgebeschluss: Besuch in Schulferien geplant.",
     category: "Räumlichkeiten",
     defaultAssignee: "Hassib",
-    defaultStatus: "todo",
-  },
-  {
-    id: "task-m-7",
-    title: "Unterlagen & Vollmachten an Verantwortliche übergeben",
-    description:
-      "Abdul Aziz (Better Place/Digitalisierung) und Samih (Bank) alle benötigten Dokumente, Nachweise und Berechtigungen zügig und unkompliziert bereitstellen.",
-    category: "Vorstand & Recht",
-    defaultAssignee: "Mahmoud",
-    defaultStatus: "todo",
+    assignees: ["Hassib"],
+    defaultStatus: "done",
   },
   {
     id: "task-m-8",
-    title: "Im privaten Umfeld nach Gewerbeflächen umhören (Vitamin B)",
+    title: "Maklerkontakt & Vitamin B in Krefeld ausloten",
     description:
-      "Gezielte Abfrage im persönlichen Netzwerk nach passenden Gewerbeobjekten oder hilfreichen Vermieterkontakten im 2,5-km-Bereich um den Krefelder Hauptbahnhof.",
+      "Gespräch mit Makler Bilal in Krefeld geführt: Gewerbemarkt ist schwierig und angespannt, Vitamin B und direkte Kontakte sind der vielversprechendste Weg.",
     category: "Räumlichkeiten",
-    defaultAssignee: "Engin",
-    defaultStatus: "todo",
+    defaultAssignee: "Nik Frühschulz",
+    assignees: ["Nik Frühschulz", "Engin"],
+    defaultStatus: "done",
   },
+
+  // 2. IN ARBEIT (6 Aufgaben, davon 2 wiederkehrend)
   {
     id: "task-m-9",
     title: "Wöchentliches Status-Meeting durchführen (Do, 21:30 Uhr)",
     description:
-      "Fester wöchentlicher Jour Fixe zur Fortschrittskontrolle von Kanban-Board, Better Place, Raumsuche und Finanzen. Frühzeitige Hilfestellung bei Engpässen.",
+      "Wiederkehrend: Fester wöchentlicher Jour Fixe zur Fortschrittskontrolle von Kanban-Board, Raumsuche, Bankfortschritt und Beseitigung von Engpässen.",
     category: "Organisation & Vorstand",
     defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz", "Mahmoud", "Samih"],
+    defaultStatus: "in-progress",
+  },
+  {
+    id: "task-m-4",
+    title: "Gewerbeflächen suchen & Inserate in Räumlichkeiten-Gruppe stellen",
+    description:
+      "Wiederkehrend: Max. 700 € warm, ca. 2,5 km um Krefeld Hbf, 30–34 qm. Neue Anzeigen ab sofort ausschließlich in die dedizierte Räumlichkeiten-Gruppe stellen als Puffer für Samy.",
+    category: "Räumlichkeiten",
+    defaultAssignee: "Inan",
+    assignees: ["Inan", "Abdul Aziz"],
+    defaultStatus: "in-progress",
+  },
+  {
+    id: "task-m-3",
+    title: "Banktermin wahrnehmen: Online-Banking vor Ort einrichten",
+    description:
+      "Vorprüfung abgeschlossen: Persönliches Erscheinen eines Vorstandsmitglieds erforderlich. Fester Banktermin vereinbart für Mittwoch, 14.10. um 10:30 Uhr (Samih & Mahmoud; Ersatz springt bei Bedarf ein).",
+    category: "Finanzen & Bank",
+    defaultAssignee: "Samih",
+    assignees: ["Samih", "Mahmoud"],
+    defaultStatus: "in-progress",
+  },
+  {
+    id: "task-m-5",
+    title: "Objekte abtelefonieren & Vermieter-Erstkontakt",
+    description:
+      "Samih telefoniert freigegebene und ältere Inserate ab. Bei Nichterreichen oder für schriftliche Anfragen wird die neue Muster-E-Mail versendet.",
+    category: "Räumlichkeiten",
+    defaultAssignee: "Samih",
+    assignees: ["Samih"],
+    defaultStatus: "in-progress",
+  },
+  {
+    id: "task-m-2",
+    title: "Vereinsunterlagen übergeben & digitale Ablage aufbauen",
+    description:
+      "Übergabe der physischen Dokumentenbox stockte mangels Übergabetermin; Papierunterlagen zügig von Mahmoud an Abdul Aziz übergeben, scannen und Cloud-Share für Vorstand anlegen.",
+    category: "Organisation & IT",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz", "Mahmoud"],
+    defaultStatus: "in-progress",
+  },
+  {
+    id: "task-m-1",
+    title: "Better Place: Plattform vollständig einrichten & freischalten",
+    description:
+      "Plattformbetreuung übernommen; Registrierung pausiert derzeit bis zur Übergabe der Vereinsdokumente & des Freistellungsbescheids.",
+    category: "Fundraising & Spenden",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz"],
+    defaultStatus: "in-progress",
+  },
+
+  // 3. OFFENE AUFGABEN & NÄCHSTE SCHRITTE AUS SITZUNG 01.10.2026
+  {
+    id: "task-m-10",
+    title: "Muster-E-Mail für Vermieter vorbereiten & von Elias gegenlesen lassen",
+    description:
+      "Professionelles Anschreiben erstellen mit Schwerpunkt auf Lern-, Kultur- und Bildungsverein (30–34 qm genügen, kein abstoßendes Wording). Vor Versand Gegenlesen durch Elias.",
+    category: "Räumlichkeiten",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz", "Elias"],
+    defaultStatus: "todo",
+  },
+  {
+    id: "task-m-11",
+    title: "Weitere neue Objekte als Puffer in Räumlichkeiten-Gruppe schicken",
+    description:
+      "Gefundene Gewerbeobjekte (u. a. die leerstehende ehemalige Sparkassenfiliale) direkt in die separate Räumlichkeiten-Gruppe senden.",
+    category: "Räumlichkeiten",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz"],
+    defaultStatus: "todo",
+  },
+  {
+    id: "task-m-12",
+    title: "Kanban-Board für Mehrfach-Zuständigkeiten erweitern",
+    description:
+      "Board-System so ausbauen, dass Aufgaben flexibel mehreren Personen gleichzeitig zugeteilt werden können und Filter/Export dies abbilden.",
+    category: "Organisation & IT",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz"],
+    defaultStatus: "todo",
+  },
+  {
+    id: "task-m-13",
+    title: "Tschetschenischen Kontakt in den Schulferien besuchen",
+    description:
+      "Persönlicher Vor-Ort-Besuch in ein bis zwei Wochen während der Schulferien, um mögliche Raumkontakte und Netzwerke weiter zu vertiefen.",
+    category: "Räumlichkeiten",
+    defaultAssignee: "Hassib",
+    assignees: ["Hassib"],
+    defaultStatus: "todo",
+  },
+  {
+    id: "task-m-14",
+    title: "Haruns Vereinsstatus klären & ggf. in Gruppe aufnehmen",
+    description:
+      "Mahmoud klärt den aktuellen Status des Mitgründers Harun ab und nimmt ihn bei Bereitschaft zur Mitarbeit wieder in die WhatsApp-Gruppe auf.",
+    category: "Vorstand & Recht",
+    defaultAssignee: "Mahmoud",
+    assignees: ["Mahmoud"],
+    defaultStatus: "todo",
+  },
+  {
+    id: "task-m-15",
+    title: "Zahlungswege & Vereinssoftware evaluieren",
+    description:
+      "Unkomplizierte Spendenannahme vor Ort (QR-Code, Bargeldkasse), PayPal-Geschäftskonto sowie EasyVerein (kostenlos bis 50 Mitgl.) oder ClubDesk im Hintergrund prüfen.",
+    category: "Software & IT",
+    defaultAssignee: "Abdul Aziz",
+    assignees: ["Abdul Aziz", "Samih"],
     defaultStatus: "todo",
   },
 

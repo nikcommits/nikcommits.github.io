@@ -34,14 +34,16 @@
 
 <script is:inline>
   (function () {
-    const STORAGE_KEY = 'zibg_kanban_tasks_v1';
+    const STORAGE_KEY = 'zibg_kanban_tasks_v2';
+    const OLD_STORAGE_KEY = 'zibg_kanban_tasks_v1';
     function updateTeaser() {
       const headline = document.querySelector('#teaser-stats-headline');
       const fill = document.querySelector('#teaser-progress-fill');
       if (!headline || !fill) return;
 
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
+        let saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) saved = localStorage.getItem(OLD_STORAGE_KEY);
         if (saved) {
           const tasks = JSON.parse(saved);
           if (Array.isArray(tasks)) {
