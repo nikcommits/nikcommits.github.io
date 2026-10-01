@@ -1,0 +1,1078 @@
+---
+// src/pages/zibg-vorstand/raeumlichkeiten/index.astro
+import ZibgLayout from '../../../layouts/ZibgLayout.astro';
+import { zibgRaeumlichkeitenNavItems, ZIBG_MEMBERS } from '../../../data/zibg-sections';
+import { ZIBG_GEWERBE_LISTE } from '../../../data/zibg-gewerbe-objects';
+
+const totalCount = ZIBG_GEWERBE_LISTE.length;
+const phoneCount = ZIBG_GEWERBE_LISTE.filter(item => Boolean(item.phone)).length;
+---
+
+<ZibgLayout
+  title="ZIBG e.V. | Gewerbe-Telefonliste Krefeld"
+  description="74 Gewerbeobjekte in Krefeld bis 750 € warm zum Abtelefonieren für Samy & Vorstand. Live-Status, Notizen und Cloud-Speicherung."
+  basePath="../"
+  customNavItems={zibgRaeumlichkeitenNavItems}
+  heroEyebrow="Raumsuche & Akquise · ZIBG e.V."
+  heroTitle="Gewerbe-Telefonliste Krefeld."
+  heroLead="74 gefilterte Gewerbeflächen bis 750 € (57 mit Direkt-Anruf) zum systematischen Abtelefonieren. Bearbeitungsstand („Nicht erreicht“, „Erreicht“, „Besichtigung“) und Notizen werden live und geräteübergreifend gespeichert."
+  heroStatus={`KW 39 / Oktober 2026 · ${phoneCount} von ${totalCount} Objekten mit Telefon`}
+>
+  <main class="wrap" style="padding-top: 32px; padding-bottom: 90px;">
+    <!-- Top Navigation Row -->
+    <div style="margin-bottom: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+      <a href="../index.html" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>← Zurück zur Vorstandsübersicht</span>
+      </a>
+      <a href="../aufgaben/" class="button-link primary-action-btn" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>📋 Zum Kanban-Board ↗</span>
+      </a>
+      <a href="../protokolle/" class="button-link secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+        <span>📝 Zu den Protokollen ↗</span>
+      </a>
+    </div>
+
+    <!-- Live Statistics & Cloud Sync Status Header -->
+    <div class="card" style="margin-bottom: 28px; border: 2px solid var(--primary-light); background: var(--card);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 20px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <span class="tag" style="background: var(--mint); color: var(--mint-text); border: 1px solid var(--mint-border); font-weight: 700;">
+              KW 39 · Max. 750 € warm
+            </span>
+            <span id="cloud-sync-status" class="tag" style="background: var(--card-alt); color: var(--muted); border: 1px solid var(--line); font-size: 12px; display: inline-flex; align-items: center; gap: 6px;">
+              <span class="sync-dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--gold); display: inline-block;"></span>
+              <span id="sync-status-text">Verbinde Cloud...</span>
+            </span>
+          </div>
+          <h2 style="margin: 0; font-size: clamp(20px, 3vw, 26px); color: var(--ink);">
+            Fortschritt Gewerbe-Akquise
+          </h2>
+          <p class="muted" style="margin: 4px 0 0; font-size: 14px;">
+            Objekte werden nur in die Räumlichkeiten-Gruppe geteilt und von <strong>Samy</strong> abtelefoniert. Bei Nichterreichbarkeit greift die Muster-E-Mail von Elias & Abdul Aziz.
+          </p>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button type="button" id="btn-copy-wa" class="button-link primary-action-btn" style="cursor: pointer; font-size: 13.5px; padding: 9px 14px; display: inline-flex; align-items: center; gap: 6px;">
+            <span>📋 WhatsApp-Status kopieren</span>
+          </button>
+          <button type="button" id="btn-open-email-modal" class="button-link secondary" style="cursor: pointer; font-size: 13.5px; padding: 9px 14px; display: inline-flex; align-items: center; gap: 6px;">
+            <span>✉️ Muster-E-Mail Vorlage</span>
+          </button>
+          <button type="button" id="btn-cloud-reload" class="button-link secondary" title="Aktualisiert die Cloud-Daten" style="cursor: pointer; font-size: 13.5px; padding: 9px 12px;">
+            <span>🔄 Sync</span>
+          </button>
+          <button type="button" id="btn-open-backup-modal" class="button-link secondary" title="Backup exportieren oder importieren" style="cursor: pointer; font-size: 13.5px; padding: 9px 12px;">
+            <span>💾 Backup</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Counters Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+        <div class="stat-pill" style="background: var(--card-alt); padding: 12px; border-radius: 10px; border: 1px solid var(--line); text-align: center;">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700;">Gesamt</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--ink);" id="count-total">{totalCount}</div>
+          <div style="font-size: 11px; color: var(--muted);">{phoneCount} mit Tel.</div>
+        </div>
+
+        <div class="stat-pill" style="background: var(--card-alt); padding: 12px; border-radius: 10px; border: 1px solid var(--line); text-align: center;">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700;">⚪ Offen</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--ink);" id="count-offen">0</div>
+          <div style="font-size: 11px; color: var(--muted);">Noch anzurufen</div>
+        </div>
+
+        <div class="stat-pill" style="background: var(--warn); padding: 12px; border-radius: 10px; border: 1px solid var(--warn-line); text-align: center;">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--warn-text); font-weight: 700;">📵 Nicht erreicht</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--warn-text);" id="count-nicht-erreicht">0</div>
+          <div style="font-size: 11px; color: var(--warn-text);">Muster-Mail nötig</div>
+        </div>
+
+        <div class="stat-pill" style="background: var(--mint); padding: 12px; border-radius: 10px; border: 1px solid var(--mint-border); text-align: center;">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--mint-text); font-weight: 700;">📞 Erreicht</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--mint-text);" id="count-erreicht">0</div>
+          <div style="font-size: 11px; color: var(--mint-text);">Im Gespräch</div>
+        </div>
+
+        <div class="stat-pill" style="background: rgba(37, 99, 235, 0.12); padding: 12px; border-radius: 10px; border: 1px solid rgba(37, 99, 235, 0.3); text-align: center;">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--primary-light); font-weight: 700;">📅 Besichtigung</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--primary-light);" id="count-besichtigung">0</div>
+          <div style="font-size: 11px; color: var(--primary-light);">Fester Termin</div>
+        </div>
+
+        <div class="stat-pill" style="background: var(--danger-surface); padding: 12px; border-radius: 10px; border: 1px solid var(--danger-line); text-align: center;">
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--danger); font-weight: 700;">❌ Absage</div>
+          <div style="font-size: 24px; font-weight: 800; color: var(--danger);" id="count-absage">0</div>
+          <div style="font-size: 11px; color: var(--danger);">Unpassend/Weg</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Live Search Section -->
+    <section id="filter-section" class="card" style="margin-bottom: 24px; background: var(--card);">
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+        <div style="flex: 1; min-width: 260px; position: relative;">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Live-Suche (z. B. Bockum, Laden, Büro, Straße, Notiz, Samy)..."
+            style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-size: 14.5px; box-sizing: border-box;"
+          />
+        </div>
+        <div style="min-width: 180px;">
+          <select
+            id="sortSelect"
+            style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-size: 14px; cursor: pointer;"
+          >
+            <option value="standard">Sortierung: Standard (KW 39)</option>
+            <option value="price-asc">Preis: Günstigste zuerst</option>
+            <option value="price-desc">Preis: Höchste zuerst</option>
+            <option value="phone-first">📞 Nur mit Telefon zuerst</option>
+            <option value="besichtigung-first">📅 Besichtigungen & Erreicht zuerst</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+        <span style="font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-right: 4px;">Status:</span>
+        <button type="button" class="filter-chip active" data-filter-type="status" data-filter-val="all">Alle (<span id="chip-count-all">{totalCount}</span>)</button>
+        <button type="button" class="filter-chip" data-filter-type="status" data-filter-val="phone">📞 Mit Telefon (<span id="chip-count-phone">{phoneCount}</span>)</button>
+        <button type="button" class="filter-chip" data-filter-type="status" data-filter-val="offen">⚪ Offen</button>
+        <button type="button" class="filter-chip" data-filter-type="status" data-filter-val="nicht_erreicht">📵 Nicht erreicht</button>
+        <button type="button" class="filter-chip" data-filter-type="status" data-filter-val="erreicht">📞 Erreicht</button>
+        <button type="button" class="filter-chip" data-filter-type="status" data-filter-val="besichtigung">📅 Besichtigung</button>
+        <button type="button" class="filter-chip" data-filter-type="status" data-filter-val="absage">❌ Absage</button>
+      </div>
+
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line);">
+        <span style="font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-right: 4px;">Kategorie:</span>
+        <button type="button" class="filter-chip active" data-filter-type="cat" data-filter-val="all">Alle Kategorien</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Ladenlokal">🏢 Ladenlokale</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Büro">📑 Büro / Verein</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Lager">📦 Lager / Halle</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Gewerbefläche">📐 Gewerbeflächen</button>
+      </div>
+    </section>
+
+    <!-- Cards Result Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <h3 style="margin: 0; font-size: 18px; color: var(--ink);">
+        Ergebnisse (<span id="visible-count">{totalCount}</span> Objekte sichtbar)
+      </h3>
+      <div style="font-size: 12.5px; color: var(--muted);" id="filter-hint">
+        Klicke auf die Status-Buttons zum Speichern
+      </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" style="display: flex; flex-direction: column; gap: 16px;">
+      {ZIBG_GEWERBE_LISTE.map((obj) => (
+        <article
+          class="card gewerbe-card"
+          id={`gewerbe-card-${obj.id}`}
+          data-id={obj.id}
+          data-cat={obj.category}
+          data-has-phone={obj.phone ? "true" : "false"}
+          data-price={obj.price}
+          data-title={obj.title}
+          data-status="offen"
+          style="background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; transition: border-color 0.2s, box-shadow 0.2s;"
+        >
+          <!-- Card Top Bar: Badges & Price -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span class="kanban-tag" style="font-size: 12px; padding: 4px 10px;">
+                {obj.category}
+              </span>
+              <span class="status-indicator-pill" id={`status-pill-${obj.id}`} style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: var(--card-alt); color: var(--muted); border: 1px solid var(--line);">
+                ⚪ Offen
+              </span>
+            </div>
+            <div class="price-badge" style="font-size: 20px; font-weight: 800; color: var(--primary-light);">
+              {obj.price}
+            </div>
+          </div>
+
+          <!-- Title with Link -->
+          <h3 style="margin: 0 0 10px; font-size: 17px; line-height: 1.4;">
+            <a
+              href={obj.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: var(--ink); text-decoration: none; display: inline-flex; align-items: baseline; gap: 6px;"
+              title="Auf Kleinanzeigen öffnen"
+            >
+              <span>{obj.title}</span>
+              <span style="color: var(--primary-light); font-size: 14px;">↗</span>
+            </a>
+          </h3>
+
+          <!-- Meta Information -->
+          <div style="display: flex; gap: 16px; margin-bottom: 12px; font-size: 13.5px; color: var(--muted); flex-wrap: wrap;">
+            <div style="display: inline-flex; align-items: center; gap: 5px;">
+              <span>📍</span>
+              <span>{obj.location}</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 5px;">
+              <span>📐</span>
+              <span>Fläche: <strong>{obj.area}</strong></span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 5px;">
+              <span>🆔</span>
+              <span>Nr. {obj.id}</span>
+            </div>
+          </div>
+
+          <!-- Description Box -->
+          <div style="background: var(--card-alt); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; font-size: 13.5px; line-height: 1.5; color: var(--muted); margin-bottom: 14px; white-space: pre-line;">
+            {obj.description}
+          </div>
+
+          <!-- Primary Call / Chat Action Box -->
+          <div style="margin-bottom: 14px;">
+            {obj.phone ? (
+              <a
+                href={`tel:${obj.phone}`}
+                class="button-link primary-action-btn btn-direct-call"
+                data-id={obj.id}
+                style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 48px; font-size: 16px; font-weight: 750; text-decoration: none; border-radius: 10px; box-sizing: border-box;"
+              >
+                <span>📞 {obj.phoneFormatted || obj.phone} anrufen</span>
+              </a>
+            ) : (
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a
+                  href={obj.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="button-link secondary"
+                  style="flex: 1; min-width: 200px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; font-size: 14px; text-decoration: none; border-radius: 10px;"
+                >
+                  <span>💬 Kleinanzeigen-Nachricht ↗</span>
+                </a>
+                <button
+                  type="button"
+                  class="button-link secondary btn-copy-mail-single"
+                  data-title={obj.title}
+                  data-url={obj.url}
+                  style="display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; min-height: 44px; padding: 0 14px; cursor: pointer;"
+                >
+                  <span>✉️ Muster-Mail kopieren</span>
+                </button>
+              </div>
+            )}
+          </div>
+
+          <!-- Status Selector Bar (5 Stufen) -->
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 6px;">
+              Bearbeitungsstand:
+            </div>
+            <div class="status-btn-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px;">
+              <button type="button" class="action-status-btn active" data-id={obj.id} data-val="offen">
+                ⚪ Offen
+              </button>
+              <button type="button" class="action-status-btn btn-nicht-erreicht" data-id={obj.id} data-val="nicht_erreicht">
+                📵 Nicht erreicht
+              </button>
+              <button type="button" class="action-status-btn btn-erreicht" data-id={obj.id} data-val="erreicht">
+                📞 Erreicht
+              </button>
+              <button type="button" class="action-status-btn btn-besichtigung" data-id={obj.id} data-val="besichtigung">
+                📅 Besichtigung
+              </button>
+              <button type="button" class="action-status-btn btn-absage" data-id={obj.id} data-val="absage">
+                ❌ Absage
+              </button>
+            </div>
+          </div>
+
+          <!-- Note & Caller Meta Inputs -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <div style="flex: 2; min-width: 220px;">
+              <input
+                type="text"
+                class="gewerbe-note-input"
+                id={`note-${obj.id}`}
+                data-id={obj.id}
+                placeholder="Notiz erfassen (z. B. Herr Müller, Rückruf Fr, 450 € warm)..."
+                style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-size: 13.5px; box-sizing: border-box;"
+              />
+            </div>
+            <div style="flex: 1; min-width: 140px;">
+              <select
+                class="gewerbe-caller-select"
+                id={`caller-${obj.id}`}
+                data-id={obj.id}
+                style="width: 100%; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-size: 13px; cursor: pointer; box-sizing: border-box;"
+              >
+                <option value="">👤 Angerufen von...</option>
+                {ZIBG_MEMBERS.map(m => (
+                  <option value={m}>{m}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <!-- Last Updated Meta -->
+          <div style="margin-top: 8px; font-size: 11.5px; color: var(--muted); text-align: right;" id={`updated-${obj.id}`}>
+            {/* dynamically populated */}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Muster-E-Mail Modal -->
+    <div id="modal-email" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div class="card" style="background: var(--card); max-width: 680px; width: 100%; max-height: 90vh; overflow-y: auto; border: 2px solid var(--primary-light); border-radius: var(--radius); padding: 24px; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="margin: 0; font-size: 20px; color: var(--ink);">✉️ Muster-E-Mail an Vermieter</h3>
+          <button type="button" id="btn-close-email-modal" style="background: none; border: none; font-size: 22px; cursor: pointer; color: var(--muted);">✕</button>
+        </div>
+        <p class="muted" style="margin-bottom: 14px; font-size: 14px;">
+          Diese Vorlage wurde im Meeting vom 01.10.2026 beschlossen (von Elias & Abdul Aziz) und stellt den Verein seriös als Bildungsträger vor:
+        </p>
+        <div style="background: var(--card-alt); border: 1px solid var(--line); border-radius: 8px; padding: 14px; font-family: monospace; font-size: 13px; line-height: 1.6; color: var(--ink); white-space: pre-wrap; margin-bottom: 16px;" id="email-template-text">
+Sehr geehrte Damen und Herren,
+
+wir haben Ihr Inserat für die Gewerbefläche in Krefeld mit großem Interesse gesehen.
+
+Wir sind das „Zentrum für Islamische Bildung und Gemeinschaft in Krefeld e.V.“ (ZIBG e.V.), ein eingetragener gemeinnütziger Verein. Für unsere Vereinsaktivitäten suchen wir eine gepflegte Räumlichkeit vor allem für Bildungsangebote, Hausaufgabenbetreuung, Deutschförderung sowie einen ruhigen Begegnungstreffpunkt für unsere Mitglieder.
+
+Gerne würden wir das Objekt zeitnah besichtigen und Ihnen unser Nutzungskonzept persönlich kurz vorstellen. Eine pünktliche und zuverlässige Mietzahlung ist durch den Verein vollumfänglich gewährleistet.
+
+Über eine kurze Rückmeldung zur Verfügbarkeit und einem möglichen Besichtigungstermin würden wir uns sehr freuen.
+
+Mit freundlichen Grüßen,
+Vorstand ZIBG e.V.
+Telefon: 0151 50 75 42 21 / 0177 7653473
+E-Mail: info@zibg-krefeld.de
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" id="btn-copy-template-text" class="button-link primary-action-btn" style="cursor: pointer; padding: 10px 18px;">
+            <span>📋 Text in Zwischenablage kopieren</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Backup Modal -->
+    <div id="modal-backup" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 20px;">
+      <div class="card" style="background: var(--card); max-width: 600px; width: 100%; border: 2px solid var(--primary-light); border-radius: var(--radius); padding: 24px; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 style="margin: 0; font-size: 20px; color: var(--ink);">💾 Backup & Daten teilen</h3>
+          <button type="button" id="btn-close-backup-modal" style="background: none; border: none; font-size: 22px; cursor: pointer; color: var(--muted);">✕</button>
+        </div>
+        <p class="muted" style="margin-bottom: 12px; font-size: 13.5px;">
+          Hier kannst du den kompletten Bearbeitungsstand aller 74 Objekte als JSON kopieren oder ein vorhandenes Backup einfügen:
+        </p>
+        <textarea id="backup-json-area" style="width: 100%; height: 160px; padding: 10px; font-family: monospace; font-size: 12px; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; box-sizing: border-box; margin-bottom: 14px;"></textarea>
+        <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+          <button type="button" id="btn-export-backup" class="button-link secondary" style="cursor: pointer; padding: 9px 14px;">
+            <span>📋 Backup kopieren</span>
+          </button>
+          <button type="button" id="btn-import-backup" class="button-link primary-action-btn" style="cursor: pointer; padding: 9px 14px;">
+            <span>📥 Backup einspielen & syncen</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</ZibgLayout>
+
+<style>
+  .filter-chip {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--card-alt);
+    border: 1px solid var(--line);
+    font-size: 13px;
+    font-weight: 550;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .filter-chip:hover {
+    border-color: var(--primary-light);
+    color: var(--ink);
+  }
+  .filter-chip.active {
+    background: var(--primary-light);
+    color: #ffffff;
+    border-color: var(--primary-light);
+  }
+
+  .action-status-btn {
+    background: var(--card-alt);
+    border: 1px solid var(--line);
+    padding: 8px 6px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s ease;
+  }
+  .action-status-btn:hover {
+    border-color: var(--primary-light);
+    color: var(--ink);
+  }
+  .action-status-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+  .action-status-btn.active.btn-nicht-erreicht {
+    background: var(--gold);
+    color: #ffffff;
+    border-color: var(--gold);
+  }
+  .action-status-btn.active.btn-erreicht {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #0284c7;
+  }
+  .action-status-btn.active.btn-besichtigung {
+    background: #16a34a;
+    color: #ffffff;
+    border-color: #16a34a;
+  }
+  .action-status-btn.active.btn-absage {
+    background: var(--danger);
+    color: #ffffff;
+    border-color: var(--danger);
+  }
+
+  /* Card Status highlights */
+  .gewerbe-card.status-is-besichtigung {
+    border-color: #16a34a !important;
+    box-shadow: 0 0 0 1px #16a34a, 0 4px 12px rgba(22, 163, 74, 0.12);
+  }
+  .gewerbe-card.status-is-erreicht {
+    border-color: #0284c7 !important;
+  }
+  .gewerbe-card.status-is-nicht_erreicht {
+    border-color: var(--gold) !important;
+  }
+  .gewerbe-card.status-is-absage {
+    opacity: 0.65;
+  }
+</style>
+
+<script>
+  // Robust Dual-Layer Storage & Cloud Sync Logic
+  const STORAGE_KEY = 'zibg_gewerbe_data_v2';
+  const CLOUD_OBJECT_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a0f93dc8045b83';
+  
+  let currentStatusFilter = 'all';
+  let currentCatFilter = 'all';
+  let currentSearchQuery = '';
+  let currentSort = 'standard';
+
+  let localData = {};
+  let cloudSyncTimeout = null;
+
+  // 1. Initial Load & Render
+  function initApp() {
+    loadFromLocalStorage();
+    renderAllCards();
+    updateStatistics();
+    setupEventListeners();
+    syncFromCloud();
+  }
+
+  function loadFromLocalStorage() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        localData = JSON.parse(saved);
+      }
+    } catch (e) {
+      console.error('Error loading local storage:', e);
+    }
+  }
+
+  function saveToLocalStorage() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(localData));
+    } catch (e) {
+      console.error('Error saving to local storage:', e);
+    }
+  }
+
+  // 2. Cloud Sync Functions
+  async function syncFromCloud() {
+    setSyncStatus('syncing', 'Synchronisiere mit Cloud...');
+    try {
+      const res = await fetch(CLOUD_OBJECT_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Cloud HTTP error ' + res.status);
+      const json = await res.json();
+      if (json && json.data && typeof json.data === 'object') {
+        const cloudData = json.data;
+        // Merge strategy: cloud data merged with local
+        let hasChanges = false;
+        for (const [id, item] of Object.entries(cloudData)) {
+          if (!localData[id] || (item.updatedAt && (!localData[id].updatedAt || item.updatedAt > localData[id].updatedAt))) {
+            localData[id] = item;
+            hasChanges = true;
+          }
+        }
+        if (hasChanges) {
+          saveToLocalStorage();
+          renderAllCards();
+          updateStatistics();
+        }
+        setSyncStatus('online', '🟢 Cloud synchronisiert');
+        return;
+      }
+    } catch (err) {
+      console.warn('Cloud sync error:', err);
+      setSyncStatus('offline', '💾 Offline gespeichert (Lokal)');
+    }
+  }
+
+  function scheduleCloudPush() {
+    setSyncStatus('syncing', 'Speichere in Cloud...');
+    if (cloudSyncTimeout) clearTimeout(cloudSyncTimeout);
+    cloudSyncTimeout = setTimeout(async () => {
+      try {
+        const res = await fetch(CLOUD_OBJECT_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'ZIBG Gewerbe Status KW39',
+            data: localData
+          })
+        });
+        if (res.ok) {
+          setSyncStatus('online', '🟢 Gespeichert & synchronisiert');
+        } else {
+          setSyncStatus('offline', '💾 Lokal gesichert');
+        }
+      } catch (e) {
+        setSyncStatus('offline', '💾 Lokal gesichert');
+      }
+    }, 800);
+  }
+
+  function setSyncStatus(type, text) {
+    const statusEl = document.getElementById('cloud-sync-status');
+    const textEl = document.getElementById('sync-status-text');
+    if (!statusEl || !textEl) return;
+
+    textEl.textContent = text;
+    const dot = statusEl.querySelector('.sync-dot');
+    if (dot) {
+      if (type === 'online') dot.style.background = '#16a34a';
+      else if (type === 'syncing') dot.style.background = '#d97706';
+      else dot.style.background = '#64748b';
+    }
+  }
+
+  // 3. UI Update & Rendering
+  function renderAllCards() {
+    document.querySelectorAll('.gewerbe-card').forEach(card => {
+      const id = card.getAttribute('data-id');
+      const item = localData[id] || { status: 'offen' };
+      applyItemStateToCard(card, id, item);
+    });
+    applyFilters();
+  }
+
+  function applyItemStateToCard(card, id, item) {
+    const status = item.status || 'offen';
+    card.setAttribute('data-status', status);
+
+    // Card border class
+    card.classList.remove('status-is-besichtigung', 'status-is-erreicht', 'status-is-nicht_erreicht', 'status-is-absage');
+    if (status !== 'offen') {
+      card.classList.add(`status-is-${status}`);
+    }
+
+    // Status pill
+    const pill = document.getElementById(`status-pill-${id}`);
+    if (pill) {
+      if (status === 'besichtigung') {
+        pill.textContent = '📅 Besichtigung';
+        pill.style.background = 'rgba(22, 163, 74, 0.15)';
+        pill.style.color = '#16a34a';
+        pill.style.borderColor = 'rgba(22, 163, 74, 0.3)';
+      } else if (status === 'erreicht') {
+        pill.textContent = '📞 Erreicht';
+        pill.style.background = 'rgba(2, 132, 199, 0.15)';
+        pill.style.color = '#0284c7';
+        pill.style.borderColor = 'rgba(2, 132, 199, 0.3)';
+      } else if (status === 'nicht_erreicht') {
+        pill.textContent = '📵 Nicht erreicht';
+        pill.style.background = 'var(--gold-surface)';
+        pill.style.color = 'var(--gold)';
+        pill.style.borderColor = 'var(--gold-border)';
+      } else if (status === 'absage') {
+        pill.textContent = '❌ Absage';
+        pill.style.background = 'var(--danger-surface)';
+        pill.style.color = 'var(--danger)';
+        pill.style.borderColor = 'var(--danger-line)';
+      } else {
+        pill.textContent = '⚪ Offen';
+        pill.style.background = 'var(--card-alt)';
+        pill.style.color = 'var(--muted)';
+        pill.style.borderColor = 'var(--line)';
+      }
+    }
+
+    // Buttons active state
+    card.querySelectorAll('.action-status-btn').forEach(btn => {
+      if (btn.getAttribute('data-val') === status) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Note Input
+    const noteInput = document.getElementById(`note-${id}`);
+    if (noteInput && item.note !== undefined && noteInput.value !== item.note) {
+      noteInput.value = item.note || '';
+    }
+
+    // Caller Select
+    const callerSelect = document.getElementById(`caller-${id}`);
+    if (callerSelect && item.calledBy !== undefined && callerSelect.value !== item.calledBy) {
+      callerSelect.value = item.calledBy || '';
+    }
+
+    // Updated Meta
+    const updatedMeta = document.getElementById(`updated-${id}`);
+    if (updatedMeta) {
+      if (item.updatedAt) {
+        const d = new Date(item.updatedAt);
+        const timeStr = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + ' ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+        const by = item.calledBy ? ` · von ${item.calledBy}` : '';
+        updatedMeta.textContent = `Stand: ${timeStr}${by}`;
+      } else {
+        updatedMeta.textContent = '';
+      }
+    }
+  }
+
+  function setCardStatus(id, newStatus) {
+    if (!localData[id]) localData[id] = {};
+    localData[id].status = newStatus;
+    localData[id].updatedAt = new Date().toISOString();
+
+    const card = document.getElementById(`gewerbe-card-${id}`);
+    if (card) {
+      applyItemStateToCard(card, id, localData[id]);
+    }
+
+    saveToLocalStorage();
+    scheduleCloudPush();
+    updateStatistics();
+    applyFilters();
+  }
+
+  function updateCardNote(id, noteVal) {
+    if (!localData[id]) localData[id] = { status: 'offen' };
+    localData[id].note = noteVal;
+    localData[id].updatedAt = new Date().toISOString();
+
+    saveToLocalStorage();
+    scheduleCloudPush();
+  }
+
+  function updateCardCaller(id, callerVal) {
+    if (!localData[id]) localData[id] = { status: 'offen' };
+    localData[id].calledBy = callerVal;
+    localData[id].updatedAt = new Date().toISOString();
+
+    const updatedMeta = document.getElementById(`updated-${id}`);
+    if (updatedMeta) {
+      const d = new Date();
+      const timeStr = d.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }) + ' ' + d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+      updatedMeta.textContent = `Stand: ${timeStr} · von ${callerVal}`;
+    }
+
+    saveToLocalStorage();
+    scheduleCloudPush();
+    updateStatistics();
+  }
+
+  // 4. Statistics Calculation
+  function updateStatistics() {
+    let countTotal = 0;
+    let countOffen = 0;
+    let countNichtErreicht = 0;
+    let countErreicht = 0;
+    let countBesichtigung = 0;
+    let countAbsage = 0;
+
+    document.querySelectorAll('.gewerbe-card').forEach(card => {
+      countTotal++;
+      const id = card.getAttribute('data-id');
+      const item = localData[id] || { status: 'offen' };
+      const s = item.status || 'offen';
+
+      if (s === 'besichtigung') countBesichtigung++;
+      else if (s === 'erreicht') countErreicht++;
+      else if (s === 'nicht_erreicht') countNichtErreicht++;
+      else if (s === 'absage') countAbsage++;
+      else countOffen++;
+    });
+
+    const elTotal = document.getElementById('count-total');
+    const elOffen = document.getElementById('count-offen');
+    const elNicht = document.getElementById('count-nicht-erreicht');
+    const elErreicht = document.getElementById('count-erreicht');
+    const elBesicht = document.getElementById('count-besichtigung');
+    const elAbsage = document.getElementById('count-absage');
+
+    if (elTotal) elTotal.textContent = countTotal;
+    if (elOffen) elOffen.textContent = countOffen;
+    if (elNicht) elNicht.textContent = countNichtErreicht;
+    if (elErreicht) elErreicht.textContent = countErreicht;
+    if (elBesicht) elBesicht.textContent = countBesichtigung;
+    if (elAbsage) elAbsage.textContent = countAbsage;
+  }
+
+  // 5. Filtering & Sorting
+  function applyFilters() {
+    let visibleCount = 0;
+    const cards = Array.from(document.querySelectorAll('.gewerbe-card'));
+
+    cards.forEach(card => {
+      const id = card.getAttribute('data-id');
+      const hasPhone = card.getAttribute('data-has-phone') === 'true';
+      const cat = (card.getAttribute('data-cat') || '').toLowerCase();
+      const item = localData[id] || { status: 'offen' };
+      const status = item.status || 'offen';
+      const note = (item.note || '').toLowerCase();
+      const caller = (item.calledBy || '').toLowerCase();
+      const cardText = (card.textContent || '').toLowerCase();
+
+      // Check Status filter
+      let matchStatus = false;
+      if (currentStatusFilter === 'all') matchStatus = true;
+      else if (currentStatusFilter === 'phone') matchStatus = hasPhone;
+      else matchStatus = (status === currentStatusFilter);
+
+      // Check Category filter
+      let matchCat = false;
+      if (currentCatFilter === 'all') matchCat = true;
+      else matchCat = cat.includes(currentCatFilter.toLowerCase());
+
+      // Check Search text
+      let matchSearch = true;
+      if (currentSearchQuery) {
+        matchSearch = cardText.includes(currentSearchQuery) || note.includes(currentSearchQuery) || caller.includes(currentSearchQuery);
+      }
+
+      if (matchStatus && matchCat && matchSearch) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const visibleCountEl = document.getElementById('visible-count');
+    if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+
+    // Sorting
+    sortCards(cards);
+  }
+
+  function sortCards(cards) {
+    const container = document.getElementById('cards-container');
+    if (!container) return;
+
+    if (currentSort === 'standard') return;
+
+    const sorted = [...cards].sort((a, b) => {
+      const priceA = parsePrice(a.getAttribute('data-price') || '');
+      const priceB = parsePrice(b.getAttribute('data-price') || '');
+
+      if (currentSort === 'price-asc') return priceA - priceB;
+      if (currentSort === 'price-desc') return priceB - priceA;
+
+      if (currentSort === 'phone-first') {
+        const phoneA = a.getAttribute('data-has-phone') === 'true' ? 1 : 0;
+        const phoneB = b.getAttribute('data-has-phone') === 'true' ? 1 : 0;
+        return phoneB - phoneA;
+      }
+
+      if (currentSort === 'besichtigung-first') {
+        const rank = { besichtigung: 4, erreicht: 3, nicht_erreicht: 2, offen: 1, absage: 0 };
+        const statusA = localData[a.getAttribute('data-id')]?.status || 'offen';
+        const statusB = localData[b.getAttribute('data-id')]?.status || 'offen';
+        return (rank[statusB] || 0) - (rank[statusA] || 0);
+      }
+
+      return 0;
+    });
+
+    sorted.forEach(card => container.appendChild(card));
+  }
+
+  function parsePrice(str) {
+    const m = str.match(/(\d+[\.,]?\d*)/);
+    return m ? parseFloat(m[1].replace(',', '.')) : 9999;
+  }
+
+  // 6. WhatsApp Status Export
+  function generateWhatsAppSummary() {
+    let besichtigungen = [];
+    let erreicht = [];
+    let nichtErreicht = [];
+    let absagen = 0;
+    let offen = 0;
+
+    document.querySelectorAll('.gewerbe-card').forEach(card => {
+      const id = card.getAttribute('data-id');
+      const title = card.getAttribute('data-title') || '';
+      const price = card.getAttribute('data-price') || '';
+      const item = localData[id] || { status: 'offen' };
+      const s = item.status || 'offen';
+
+      if (s === 'besichtigung') {
+        besichtigungen.push(`• 📅 *${title}* (${price})${item.note ? ' – ' + item.note : ''}`);
+      } else if (s === 'erreicht') {
+        erreicht.push(`• 📞 *${title}* (${price})${item.note ? ' – ' + item.note : ''}`);
+      } else if (s === 'nicht_erreicht') {
+        nichtErreicht.push(`• 📵 ${title} (${price})${item.note ? ' – ' + item.note : ''}`);
+      } else if (s === 'absage') {
+        absagen++;
+      } else {
+        offen++;
+      }
+    });
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+    let msg = `🏢 *ZIBG e.V. – Gewerbe-Telefonliste Status (${dateStr})*\n\n`;
+    msg += `📊 *Aktueller Stand (74 Objekte gesamt):*\n`;
+    msg += `📅 *Besichtigungen:* ${besichtigungen.length}\n`;
+    msg += `📞 *Erreicht / im Gespräch:* ${erreicht.length}\n`;
+    msg += `📵 *Nicht erreicht (Muster-Mail nötig):* ${nichtErreicht.length}\n`;
+    msg += `❌ *Absagen:* ${absagen}\n`;
+    msg += `⚪ *Noch offen:* ${offen}\n\n`;
+
+    if (besichtigungen.length > 0) {
+      msg += `📌 *Termine & Besichtigungen:*\n` + besichtigungen.join('\n') + `\n\n`;
+    }
+
+    if (erreicht.length > 0) {
+      msg += `💬 *Im Gespräch:*\n` + erreicht.slice(0, 5).join('\n') + `\n\n`;
+    }
+
+    if (nichtErreicht.length > 0) {
+      msg += `✉️ *Bitte Muster-E-Mail senden (${nichtErreicht.length} Objekte):*\n` + nichtErreicht.slice(0, 5).join('\n') + (nichtErreicht.length > 5 ? `\n... und weitere ${nichtErreicht.length - 5} Objekte` : '') + `\n\n`;
+    }
+
+    msg += `👉 *Zur Live-Liste:* https://nikcommits.github.io/zibg-vorstand/raeumlichkeiten/`;
+    return msg;
+  }
+
+  // 7. Event Listeners Setup
+  function setupEventListeners() {
+    // Status button clicks
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.action-status-btn');
+      if (btn) {
+        const id = btn.getAttribute('data-id');
+        const val = btn.getAttribute('data-val');
+        if (id && val) setCardStatus(id, val);
+      }
+
+      // Direct Call button auto status suggest
+      const callBtn = e.target.closest('.btn-direct-call');
+      if (callBtn) {
+        const id = callBtn.getAttribute('data-id');
+        if (id) {
+          const current = localData[id]?.status || 'offen';
+          if (current === 'offen') {
+            setCardStatus(id, 'erreicht');
+          }
+        }
+      }
+
+      // Single copy mail button
+      const copyMailBtn = e.target.closest('.btn-copy-mail-single');
+      if (copyMailBtn) {
+        const templateEl = document.getElementById('email-template-text');
+        if (templateEl) {
+          navigator.clipboard.writeText(templateEl.textContent.trim()).then(() => {
+            const originalText = copyMailBtn.innerHTML;
+            copyMailBtn.innerHTML = '<span>✅ Kopiert!</span>';
+            setTimeout(() => { copyMailBtn.innerHTML = originalText; }, 2000);
+          });
+        }
+      }
+    });
+
+    // Note inputs blur & change
+    document.querySelectorAll('.gewerbe-note-input').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const id = e.target.getAttribute('data-id');
+        if (id) updateCardNote(id, e.target.value.trim());
+      });
+      input.addEventListener('blur', (e) => {
+        const id = e.target.getAttribute('data-id');
+        if (id) updateCardNote(id, e.target.value.trim());
+      });
+    });
+
+    // Caller selects
+    document.querySelectorAll('.gewerbe-caller-select').forEach(select => {
+      select.addEventListener('change', (e) => {
+        const id = e.target.getAttribute('data-id');
+        if (id) updateCardCaller(id, e.target.value);
+      });
+    });
+
+    // Search Input
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value.trim().toLowerCase();
+        applyFilters();
+      });
+    }
+
+    // Sort Select
+    const sortSelect = document.getElementById('sortSelect');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        applyFilters();
+      });
+    }
+
+    // Filter Chips
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const type = chip.getAttribute('data-filter-type');
+        const val = chip.getAttribute('data-filter-val');
+
+        if (type === 'status') {
+          currentStatusFilter = val;
+          document.querySelectorAll('.filter-chip[data-filter-type="status"]').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        } else if (type === 'cat') {
+          currentCatFilter = val;
+          document.querySelectorAll('.filter-chip[data-filter-type="cat"]').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+        }
+        applyFilters();
+      });
+    });
+
+    // WhatsApp Copy Button
+    const btnCopyWa = document.getElementById('btn-copy-wa');
+    if (btnCopyWa) {
+      btnCopyWa.addEventListener('click', () => {
+        const summary = generateWhatsAppSummary();
+        navigator.clipboard.writeText(summary).then(() => {
+          const original = btnCopyWa.innerHTML;
+          btnCopyWa.innerHTML = '<span>✅ In Zwischenablage kopiert!</span>';
+          setTimeout(() => { btnCopyWa.innerHTML = original; }, 2500);
+        });
+      });
+    }
+
+    // Cloud Reload Button
+    const btnSync = document.getElementById('btn-cloud-reload');
+    if (btnSync) {
+      btnSync.addEventListener('click', () => {
+        syncFromCloud();
+      });
+    }
+
+    // Email Modal
+    const modalEmail = document.getElementById('modal-email');
+    const btnOpenEmail = document.getElementById('btn-open-email-modal');
+    const btnCloseEmail = document.getElementById('btn-close-email-modal');
+    const btnCopyTemplate = document.getElementById('btn-copy-template-text');
+
+    if (btnOpenEmail && modalEmail) {
+      btnOpenEmail.addEventListener('click', () => { modalEmail.style.display = 'flex'; });
+    }
+    if (btnCloseEmail && modalEmail) {
+      btnCloseEmail.addEventListener('click', () => { modalEmail.style.display = 'none'; });
+    }
+    if (modalEmail) {
+      modalEmail.addEventListener('click', (e) => {
+        if (e.target === modalEmail) modalEmail.style.display = 'none';
+      });
+    }
+    if (btnCopyTemplate) {
+      btnCopyTemplate.addEventListener('click', () => {
+        const text = document.getElementById('email-template-text')?.textContent || '';
+        navigator.clipboard.writeText(text.trim()).then(() => {
+          btnCopyTemplate.innerHTML = '<span>✅ Kopiert!</span>';
+          setTimeout(() => { btnCopyTemplate.innerHTML = '<span>📋 Text in Zwischenablage kopieren</span>'; }, 2000);
+        });
+      });
+    }
+
+    // Backup Modal
+    const modalBackup = document.getElementById('modal-backup');
+    const btnOpenBackup = document.getElementById('btn-open-backup-modal');
+    const btnCloseBackup = document.getElementById('btn-close-backup-modal');
+    const btnExport = document.getElementById('btn-export-backup');
+    const btnImport = document.getElementById('btn-import-backup');
+    const backupArea = document.getElementById('backup-json-area');
+
+    if (btnOpenBackup && modalBackup) {
+      btnOpenBackup.addEventListener('click', () => {
+        modalBackup.style.display = 'flex';
+        if (backupArea) backupArea.value = JSON.stringify(localData, null, 2);
+      });
+    }
+    if (btnCloseBackup && modalBackup) {
+      btnCloseBackup.addEventListener('click', () => { modalBackup.style.display = 'none'; });
+    }
+    if (modalBackup) {
+      modalBackup.addEventListener('click', (e) => {
+        if (e.target === modalBackup) modalBackup.style.display = 'none';
+      });
+    }
+    if (btnExport && backupArea) {
+      btnExport.addEventListener('click', () => {
+        navigator.clipboard.writeText(backupArea.value).then(() => {
+          btnExport.innerHTML = '<span>✅ Backup kopiert!</span>';
+          setTimeout(() => { btnExport.innerHTML = '<span>📋 Backup kopieren</span>'; }, 2000);
+        });
+      });
+    }
+    if (btnImport && backupArea) {
+      btnImport.addEventListener('click', () => {
+        try {
+          const parsed = JSON.parse(backupArea.value);
+          if (parsed && typeof parsed === 'object') {
+            localData = parsed;
+            saveToLocalStorage();
+            renderAllCards();
+            updateStatistics();
+            scheduleCloudPush();
+            alert('Backup erfolgreich importiert und synchronisiert!');
+            modalBackup.style.display = 'none';
+          }
+        } catch (e) {
+          alert('Ungültiges JSON-Format!');
+        }
+      });
+    }
+  }
+
+  // Run on page ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+</script>

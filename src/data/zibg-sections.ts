@@ -30,6 +30,7 @@ export type ZibgMember = (typeof ZIBG_MEMBERS)[number];
 export const zibgSections: ZibgSection[] = [
   { id: "aufgaben-teaser", badge: "Board", title: "Aufgaben-Board", externalLink: "./aufgaben/" },
   { id: "protokolle-teaser", badge: "Sitzung", title: "Protokolle & Beschlüsse", externalLink: "./protokolle/" },
+  { id: "raeumlichkeiten-teaser", badge: "Raum", title: "Gewerbe-Telefonliste", externalLink: "./raeumlichkeiten/" },
   { id: "ausgangslage", badge: "01", title: "Ausgangslage" },
   { id: "zahlungen", badge: "02", title: "Bisherige Zahlungen" },
   { id: "beschluss", badge: "03", title: "Empfehlung" },
@@ -43,6 +44,7 @@ export const zibgSections: ZibgSection[] = [
 export const zibgNavItems = [
   { href: "./aufgaben/", label: "📋 Aufgaben-Board" },
   { href: "./protokolle/", label: "📝 Sitzungsprotokolle" },
+  { href: "./raeumlichkeiten/", label: "📞 Gewerbe-Telefonliste" },
   { href: "#zahlungen", label: "Zahlungen" },
   { href: "#rechner", label: "Beitragsrechner" },
   { href: "#clubdesk", label: "ClubDesk" },
@@ -53,6 +55,7 @@ export const zibgNavItems = [
 export const zibgBoardNavItems = [
   { href: "../index.html", label: "← Zurück zur Übersicht" },
   { href: "../protokolle/", label: "📝 Protokolle & Beschlüsse" },
+  { href: "../raeumlichkeiten/", label: "📞 Gewerbe-Telefonliste" },
   { href: "../satzung/", label: "📜 Satzung & Dokumente" },
   { href: "#top", label: "Fortschritt" },
   { href: "#kanban-grid", label: "Kanban-Board" },
@@ -61,6 +64,7 @@ export const zibgBoardNavItems = [
 export const zibgProtokollNavItems = [
   { href: "../index.html", label: "← Zurück zur Übersicht" },
   { href: "../aufgaben/", label: "📋 Zum Aufgaben-Board" },
+  { href: "../raeumlichkeiten/", label: "📞 Gewerbe-Telefonliste" },
   { href: "#sitzung-2026-10-01", label: "Sitzung 01.10.2026" },
   { href: "#sitzung-2026-09-24", label: "Sitzung 24.09.2026" },
   { href: "../satzung/", label: "📜 Satzung & PDF" },
@@ -70,9 +74,19 @@ export const zibgSatzungNavItems = [
   { href: "../index.html", label: "← Zurück zur Übersicht" },
   { href: "../aufgaben/", label: "📋 Aufgaben-Board" },
   { href: "../protokolle/", label: "📝 Protokolle & Beschlüsse" },
+  { href: "../raeumlichkeiten/", label: "📞 Gewerbe-Telefonliste" },
   { href: "#satzung", label: "Satzungslage" },
   { href: "#satzung-dokument", label: "Vollständige Satzung (PDF)" },
   { href: "#quellen", label: "Rechtsquellen" },
+];
+
+export const zibgRaeumlichkeitenNavItems = [
+  { href: "../index.html", label: "← Zurück zur Übersicht" },
+  { href: "../aufgaben/", label: "📋 Aufgaben-Board" },
+  { href: "../protokolle/", label: "📝 Sitzungsprotokolle" },
+  { href: "#filter-section", label: "🔍 Filter & Suche" },
+  { href: "#cards-container", label: "📞 74 Gewerbeobjekte" },
+  { href: "../satzung/", label: "📜 Satzung & PDF" },
 ];
 
 export const initialZibgTasks: ZibgTask[] = [
