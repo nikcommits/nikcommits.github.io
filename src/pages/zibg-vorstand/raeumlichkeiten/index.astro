@@ -187,6 +187,11 @@ const phoneCount = ZIBG_GEWERBE_LISTE.filter(item => Boolean(item.phone)).length
               <span class="kanban-tag" style="font-size: 12px; padding: 4px 10px;">
                 {obj.category}
               </span>
+              {obj.isNew && (
+                <span class="tag" style="font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 6px; background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D;">
+                  ✨ NEU DIESE WOCHE
+                </span>
+              )}
               <span class="status-indicator-pill" id={`status-pill-${obj.id}`} style="font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: var(--card-alt); color: var(--muted); border: 1px solid var(--line);">
                 ⚪ Offen
               </span>

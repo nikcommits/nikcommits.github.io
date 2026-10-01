@@ -1,5 +1,6 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch extrahiert aus Telefonliste Krefeld KW 39 (74 Gewerbeobjekte bis 750 €)
+// Automatisch aktualisiert am 01.10.2026 (KW 39) via GitHub Actions Scraper
+// Enthält 74 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
   id: string;
@@ -12,6 +13,8 @@ export interface ZibgGewerbeObject {
   description: string;
   phone: string | null;
   phoneFormatted: string | null;
+  firstSeen?: string;
+  isNew?: boolean;
 }
 
 export type GewerbeStatus = "offen" | "nicht_erreicht" | "erreicht" | "besichtigung" | "absage";
@@ -34,7 +37,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "DEIN BÜROPLATZ. DEIN BUSINESS. OHNE EIN EIGENES BÜRO ANZUMIETEN.\n\nDu möchtest einen Arbeitsplatz, an dem du dich dauerhaft einrichten kannst – professionell, re...",
     "phone": "015150754221",
-    "phoneFormatted": "0151 50 75 42 21"
+    "phoneFormatted": "0151 50 75 42 21",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3479846315",
@@ -46,7 +51,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "55 m²",
     "description": "Studio Sollbrüggen – dein Coaching-, Praxis- und Beratungsraum in Krefeld-Bockum.\n\nEin ruhiger, hochwertig eingerichteter Raum für 1:1-Coachings, Therapiegesprä...",
     "phone": "+4915150754221",
-    "phoneFormatted": "+4915150754221"
+    "phoneFormatted": "+4915150754221",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3345907557",
@@ -58,7 +65,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "1 m²",
     "description": "ab 01.11.2026\n\nsehr gepflegte Lagerhalle in Krefeld maximal 1.000 qm\n\n·        teilbar in 2 Hälften a 500 qm.\n\n·        Gesamtfläche 25 x 40 m, maximale Höhe 4,...",
     "phone": "01711602022",
-    "phoneFormatted": "01711602022"
+    "phoneFormatted": "01711602022",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3528016578",
@@ -70,7 +79,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "28 m²",
     "description": "Ladenlokal für Beauty, Schmuck, Einzelhandel, Büro\n\nan der Königstrasse in Krefeld (ca. 30 m zur Fußgängerzone) \n\nDas Ladenlokall wurde Innen komplett renovierr...",
     "phone": "01777653473",
-    "phoneFormatted": "0177 7653473"
+    "phoneFormatted": "0177 7653473",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3342640948",
@@ -82,7 +93,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "5 m²",
     "description": "Entdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerflächen bieten ausreiche...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526168156",
@@ -94,7 +107,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "25 m²",
     "description": "Wir vermieten im ersten Obergeschoss alten, sehenswerten Gut Hauses, kleine Büroräume / Praxisräume. Die Räume haben jeweils ausreichend. Belichtung sind 24 sie...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526068495",
@@ -106,7 +121,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "24 m²",
     "description": "(Objekt-Nr.: 217375 GL)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Büroraum 2\nFlexible Konditionen\nMindestlaufzeit: 3 Monate\nKündigungsfrist:...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526066089",
@@ -118,7 +135,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "(Objekt-Nr.: 222921 DG)\nObjektkategorie: Schreibtischplatz\nTitel des Angebots: Schreibtischplätze\nFlexible Konditionen\nMindestlaufzeit: 1 Monat\nKündigungsfrist:...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526064075",
@@ -130,7 +149,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "(Objekt-Nr.: 228048 C)\nObjektkategorie: Schreibtischplatz\nTitel des Angebots: Freier Arbeitsplatz - Shared Work Desk\nBeschreibung: Ab sofort vermieten wir volls...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526063823",
@@ -142,7 +163,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526063175",
@@ -154,7 +177,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "16 m²",
     "description": "(Objekt-Nr.: 210174 DK)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Eigener Büroraum\nFlexible Konditionen\nMindestlaufzeit: 6 Monate\nKündigungs...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526061986",
@@ -166,7 +191,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "16 m²",
     "description": "(Objekt-Nr.: 203606 DA)\nObjektkategorie: Eigene Bürofläche\nTitel des Angebots: Eigener Büroraum\nFlexible Konditionen\nMindestlaufzeit: 12 Monate\nKündigungsfrist:...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526061478",
@@ -178,7 +205,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "27 m²",
     "description": "(Objekt-Nr.: 203188 TF)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: A.3-B0.03\nFlexible Konditionen\nMindestlaufzeit: 3 Monate\nKündigungsfrist: ...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526061049",
@@ -190,7 +219,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "22 m²",
     "description": "(Objekt-Nr.: 203188 TE)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: A.3-B0.06\nFlexible Konditionen\nMindestlaufzeit: 3 Monate\nKündigungsfrist: ...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526061042",
@@ -202,7 +233,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "25 m²",
     "description": "(Objekt-Nr.: 203188 TD)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: A.1-B4.16\nFlexible Konditionen\nMindestlaufzeit: 3 Monate\nKündigungsfrist: ...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526061005",
@@ -214,7 +247,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "21 m²",
     "description": "(Objekt-Nr.: 203188 TC)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: A.3-B0.20a\nFlexible Konditionen\nMindestlaufzeit: 3 Monate\nKündigungsfrist:...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526060678",
@@ -226,7 +261,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "20 m²",
     "description": "(Objekt-Nr.: 227291 BU)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: PRIVATE OFFICE | Ruhiges Büro mit eigener Terrasse in Krefeld-Bockum\nBesch...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526060646",
@@ -238,7 +275,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "(Objekt-Nr.: 227291 BS)\nObjektkategorie: Schreibtischplatz\nTitel des Angebots: TEAM OFFICE | 2 feste Arbeitsplätze im Boutique-Coworking\nBeschreibung: Ruhig, kl...",
     "phone": "015150754221",
-    "phoneFormatted": "0151 50 75 42 21"
+    "phoneFormatted": "0151 50 75 42 21",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526060604",
@@ -250,7 +289,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "(Objekt-Nr.: 227291 BQ)\nObjektkategorie: Schreibtischplatz\nTitel des Angebots: BUSINESS BASE klimatisiert | Arbeitsplatz + Geschäftsadresse im Boutique-Coworkin...",
     "phone": "015150754221",
-    "phoneFormatted": "0151 50 75 42 21"
+    "phoneFormatted": "0151 50 75 42 21",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526060632",
@@ -262,7 +303,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "24 m²",
     "description": "(Objekt-Nr.: 227291 BR)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: EXECUTIVE OFFICE | Exklusives Chefbüro mit privater Terrasse | 2–3 Tage/Wo...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526060582",
@@ -274,7 +317,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "(Objekt-Nr.: 227291 BP)\nObjektkategorie: Schreibtischplatz\nTitel des Angebots: FIX DESK mit Klima | Dein eigener fester, ruhiger Arbeitsplatz im Boutique-Cowork...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526060556",
@@ -286,7 +331,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "4 m²",
     "description": "(Objekt-Nr.: 227291 BN)\nObjektkategorie: Schreibtischplatz\nTitel des Angebots: Flex Desk in Boutique-Coworking, flexibler, ruhiger Arbeitsplaz\nBeschreibung: Dei...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3526057784",
@@ -298,7 +345,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "20 m²",
     "description": "(Objekt-Nr.: 217375 GM)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Büroraum 1 (2 Büros einzeln oder zusammen mieten)\nFlexible Konditionen\nMin...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3354647627",
@@ -310,7 +359,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "5 m²",
     "description": "Entdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerflächen bieten ausreiche...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3447222992",
@@ -322,7 +373,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "25 m²",
     "description": "OBJEKTBESCHREIBUNG\n\nSehr geehrte Interessenten,\n\nHier möchten wir Ihnen eine sehr hochwertige Bürofläche in unserem Bürogebäude im Stahlwerk Becker anbieten. Es...",
     "phone": "02131364300",
-    "phoneFormatted": "02131364300"
+    "phoneFormatted": "02131364300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3354584952",
@@ -334,7 +387,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "5 m²",
     "description": "Ein Standort mit vielen Vorteilen: Der Sirius Business Park Krefeld-Fichtenhain bietet eine Vielzahl von Büros, Lagerflächen und Produktionshallen für Unternehm...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525510421",
@@ -346,7 +401,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "In der Geitlingstr. 33 in Duisburg stehen im Moment nachfolgende Lagereinheiten zur Verfügung:\n\n59 - DU-OG - C - ab 01.11.2026\n47 - DU-OG - J - ab 01.01.2027\n\n\n...",
     "phone": "02099477652",
-    "phoneFormatted": "0209 947 76 52"
+    "phoneFormatted": "0209 947 76 52",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525475282",
@@ -358,7 +415,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "18 m²",
     "description": "(Objekt-Nr.: 226729 DW)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Büro NW 3.2-3.OG\nBeschreibung: Am Neuer Weg in Krefeld stehen Ihnen gepfle...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525474431",
@@ -370,7 +429,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "21 m²",
     "description": "(Objekt-Nr.: 226729 DT)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Büro NW 3.2-2.OG\nBeschreibung: Am Neuer Weg in Krefeld stehen Ihnen gepfle...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525429004",
@@ -382,7 +443,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "29 m²",
     "description": "(Objekt-Nr.: 228027 Q)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Möbliertes Büro mit Klima, Glasfaser und Parkplatz in Tönisvorst\nBeschreibu...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525428560",
@@ -394,7 +457,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "28 m²",
     "description": "(Objekt-Nr.: 228027 S)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Büroraum mit ESD-Boden, Klima und Glasfaser in Tönisvorst\nBeschreibung: Bür...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525428176",
@@ -406,7 +471,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "28 m²",
     "description": "(Objekt-Nr.: 228027 R)\nObjektkategorie: Abgeschlossener Büroraum\nTitel des Angebots: Unmöbliertes Büro mit Klima, Glasfaser und Parkplatz in Tönisvorst\nBeschrei...",
     "phone": "022197581300",
-    "phoneFormatted": "0221 97581 300"
+    "phoneFormatted": "0221 97581 300",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3525140552",
@@ -418,7 +485,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "50 m²",
     "description": "Vielseitig nutzbare Gewerbefläche mit hellen Räumen und modernem Eingangsbereich. Ideal für Einzelhandel, Dienstleistungen, Büro, Studio oder Praxis.",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3524959959",
@@ -430,7 +499,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "Ein gemütliches Zimmer in einer WG ist zu vermieten.\nDie monatliche Miete beträgt 250 €.\nDie Wohnung befindet sich in einer ruhigen und gut gelegenen Gegend.",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3420809986",
@@ -442,7 +513,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "43 m²",
     "description": "Spindelwerkstatt D5; Lagerräume im Untergeschoss Denkmalgeschützt\nDie Kellerräume der ehemaligen Spindelwerkstatt mit einer Gesamtfläche von 455m² werden aufwen...",
     "phone": "+492151440810",
-    "phoneFormatted": "+49 2151 4408 10"
+    "phoneFormatted": "+49 2151 4408 10",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3176758069",
@@ -454,7 +527,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "90 m²",
     "description": "Objektbeschreibung:\nDas hier angebotene Ladenlokal befindet sich im Erdgeschoss eines Wohn- und Geschäftshauses aus dem Jahr 1960 und bietet mit einer Gesamtflä...",
     "phone": "02151807218",
-    "phoneFormatted": "02151 807218"
+    "phoneFormatted": "02151 807218",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3523331288",
@@ -466,7 +541,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "43 m²",
     "description": "Zentrales, ebenerdiges Ladenlokal/ Büro in Krefeld Sankt Anton Str. 114.\nDie Einheit besteht aus 2 Räumen, ein Raum mit Schaufensterfront.\nDes weiteren sep. Toi...",
     "phone": "01745700000",
-    "phoneFormatted": "0174 5700000"
+    "phoneFormatted": "0174 5700000",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3523017789",
@@ -478,7 +555,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "92 m²",
     "description": "Lagerhalle zu vermieten, großes Hallentor, Zufahrt 24/7, Betonboden, LED-Beleuchtung innen und außen, Starkstromanschluss, Gemeinschaftstoilette, TEL.: 0170 340...",
     "phone": "01703402211",
-    "phoneFormatted": "0170 340 2211"
+    "phoneFormatted": "0170 340 2211",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3522965865",
@@ -490,7 +569,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "50 m²",
     "description": "",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3522538887",
@@ -502,7 +583,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "40 m²",
     "description": "In diesem Inserat bieten wir ein kleines Office in Wohn- und Geschäftshaus in Krefeld auf der Uerdinger Straße.\n\nDas Büro verfügt über 40 QM verteilt auf 2 gerä...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3264108872",
@@ -514,7 +597,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "5 m²",
     "description": "Objektbeschreibung:\nEin Standort mit vielen Vorteilen: Der Sirius Business Park Krefeld-Fichtenhain bietet eine Vielzahl von Büros, Lagerflächen und Produktions...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3264108599",
@@ -526,7 +611,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "247,68 m²",
     "description": "Entdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerflächen bieten ausreiche...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3438693788",
@@ -538,7 +625,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "462,24 m²",
     "description": "Ein Standort mit vielen Vorteilen: Der Sirius Business Park Krefeld-Fichtenhain bietet eine Vielzahl von Büros, Lagerflächen und Produktionshallen für Unternehm...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3522106996",
@@ -550,7 +639,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "25 m²",
     "description": "Kreativer Freiraum in geschichtsträchtiger Kulisse – Atelier/Raum für Künstler & Kreative in Krefeld zu vermieten!\nIn den Räumlichkeiten der ehemaligen, bekannt...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3438718681",
@@ -562,7 +653,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "261,63 m²",
     "description": "Ein Standort mit vielen Vorteilen: Der Sirius Business Park Krefeld-Fichtenhain bietet eine Vielzahl von Büros, Lagerflächen und Produktionshallen für Unternehm...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3264109842",
@@ -574,7 +667,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "582,26 m²",
     "description": "Objektbeschreibung:\nEntdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerfläc...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3438664234",
@@ -586,7 +681,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "732,72 m²",
     "description": "Entdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerflächen bieten ausreiche...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3438709485",
@@ -598,7 +695,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "261,63 m²",
     "description": "Ein Standort mit vielen Vorteilen: Der Sirius Business Park Krefeld-Fichtenhain bietet eine Vielzahl von Büros, Lagerflächen und Produktionshallen für Unternehm...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3264109488",
@@ -610,7 +709,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "496 m²",
     "description": "Objektbeschreibung:\nEntdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerfläc...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3264109030",
@@ -622,7 +723,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "60,71 m²",
     "description": "Objektbeschreibung:\nEin Standort mit vielen Vorteilen: Der Sirius Business Park Krefeld-Fichtenhain bietet eine Vielzahl von Büros, Lagerflächen und Produktions...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3389053660",
@@ -634,7 +737,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "28 m²",
     "description": "Exklusives Angebot von Storage24:\nSie suchen eine Lagerlösung, eine sichere Garage oder eine Niederlassung für ihr Unternehmen mit flexibler Mietlaufzeit? Dann ...",
     "phone": "+4971729469990",
-    "phoneFormatted": "+49 7172 9469990"
+    "phoneFormatted": "+49 7172 9469990",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3520848345",
@@ -646,7 +751,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3349499518",
@@ -658,7 +765,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "732,72 m²",
     "description": "Entdecken Sie im Sirius Business Park Krefeld eine Vielzahl von Gewerbeflächen, von Büros über Lager bis zu Produktionshallen. Die Lagerflächen bieten ausreiche...",
     "phone": "+49800606044084",
-    "phoneFormatted": "+49 800 6060440 84"
+    "phoneFormatted": "+49 800 6060440 84",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3520732420",
@@ -670,7 +779,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "In einem schönen, gut laufenden Salon im Zentrum von Krefeld ist ein Arbeitsplatz für eine Nageldesignerin zu vermieten.\n✨ angenehme und warme Räumlichkeiten\n✨ ...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3520009183",
@@ -682,7 +793,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "63 m²",
     "description": "Friseursalon in Willich abzugeben\n\nAus persönlichen Gründen biete ich meinen komplett eingerichteten Friseursalon in Willich zur Übernahme an.\n\nDer Salon ist so...",
     "phone": "01607909325",
-    "phoneFormatted": "01607909325"
+    "phoneFormatted": "01607909325",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3493391014",
@@ -694,7 +807,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "74 m²",
     "description": "Wir vermieten eine charmante und individuelle gestaltete Büro - oder Praxisfläche im 1. Obergeschoß. Das offene Gebälk und die hohen Decken verleihen den Räumli...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3469780269",
@@ -706,7 +821,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "131 m²",
     "description": "Saniertes Schmuckstück im Erdgeschoss eines charaktervollen Altbaus, das nur darauf wartet, von euch mit Leben gefüllt zu werden.\n44 qm im EG, Altbau\nPlatz für ...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3490432282",
@@ -718,7 +835,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "72 m²",
     "description": "Spindelwerkstatt D5; Kellerräume Denkmalgeschützt\nDie Kellerräume der ehemaligen Spindelwerkstatt mit einer Gesamtfläche von 455m² werden aufwendig separiert. H...",
     "phone": "+492151440810",
-    "phoneFormatted": "+49 2151 4408 10"
+    "phoneFormatted": "+49 2151 4408 10",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "2208903182",
@@ -730,7 +849,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "Hallo Zusammen,\nwir betreiben einen Selfstorage und bieten kleine Lagerfächen von 1-15 qm an. Jeder einzelne Parzelle hat einen separaten Eingang und ist versch...",
     "phone": "01633179329",
-    "phoneFormatted": "0163 31 79 329"
+    "phoneFormatted": "0163 31 79 329",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3516709411",
@@ -742,7 +863,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "✨ Modernes und gepflegtes Studio / Современная и ухоженная студия\n✨ Angenehme Atmosphäre / Приятная атмосфера\n✨ Für selbstständige Meisterin / Для самостоятельн...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3515580656",
@@ -754,7 +877,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "Fühlen Sie sich bei der Arbeit wie zuhause. Auf insgesamt ca. 300qm bietet „Casa Neersen“ verschiedene moderne und repräsentative CoWorking-Spaces in individuel...",
     "phone": "01783390395",
-    "phoneFormatted": "0178 3390395"
+    "phoneFormatted": "0178 3390395",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3515366563",
@@ -766,7 +891,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "50 m²",
     "description": "Wir bieten hier eine Lagerfläche im 1.OG im hinteren Bereich eines\nkleines Mehrfamilienhauses zentral in Tönisvorst an. Man gelangt über\neine kleine Treppe in d...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3514756290",
@@ -778,7 +905,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "Restaurant zu verkaufen – komplett eingerichtet & sofort übernehmbar\n\nIch verkaufe mein Restaurant aus familiären Gründen.\n\nDas Restaurant ist komplett eingeric...",
     "phone": "017661751351",
-    "phoneFormatted": "0176 61751351"
+    "phoneFormatted": "0176 61751351",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3251191741",
@@ -790,7 +919,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "42 m²",
     "description": "Objektbeschreibung:\nDie hellen Büro-/Praxisräume befinden sich im 2. Obergeschoss (mit Aufzug) eines denkmalgeschützten Geschäftshauses aus dem Baujahr 1956.\nAu...",
     "phone": "02151807226",
-    "phoneFormatted": "02151 80 72 26"
+    "phoneFormatted": "02151 80 72 26",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3514261040",
@@ -802,7 +933,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "69 m²",
     "description": "Ladenlokal an der Breite Straße zu vermieten.\n70qm\n2022 komplett saniert\nFür Gastronomie oder Kiosk ist nicht geeignet.\n\nIdeal als Ladenlokal, Büro oder Praxis.",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3514247243",
@@ -814,7 +947,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "67 m²",
     "description": "Entdecken Sie dieses charmante Büro zur Miete, ideal für Unternehmen, die eine zentrale Lage schätzen. Dieses Büro befindet sich im Erdgeschoss eines gepflegten...",
     "phone": "015252152485",
-    "phoneFormatted": "01525 2152485"
+    "phoneFormatted": "01525 2152485",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3513950611",
@@ -826,7 +961,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "63 m²",
     "description": "Ca. 63 m² Gesamtfläche | Großraumbüro ca. 6,50 × 5,15 m | eigener Eingang | Teeküche | ruhige Lage | A57 schnell erreichbar\n\nIn Duisburg-Rumeln-Kaldenhausen ste...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3409002908",
@@ -838,7 +975,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "73 m²",
     "description": "Diese Immobilie bietet eine vorteilhafte Kombination aus Wohn- und Gewerbebereichen.\n\nDer o. a. qm-Preis ist für die Büroflächen 73 qm im Hauptgebäude ohne Nebe...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3512226382",
@@ -850,7 +989,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "Pizzeria zu verkaufen – sehr gute Lage & großes Potenzial!\n\n✅ Sehr guter Umsatz\n✅ Viele Stammkunden\n✅ Sehr viele telefonische Bestellungen & Direktabholer\n✅ Top...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3355336648",
@@ -862,7 +1003,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "180 m²",
     "description": "Die angebotenen Schulungsräume befinden sich in einem freistehenden Bürogebäude in Krefeld und eignen sich ideal für Schulungen, Präsentationen, Seminare oder W...",
     "phone": "02151807210",
-    "phoneFormatted": "02151 80 72 10"
+    "phoneFormatted": "02151 80 72 10",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "2901259037",
@@ -874,7 +1017,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "85 m²",
     "description": "Bei der angebotenen Immobilie handelt es sich um eine ehemalige 4-Zimmer-Wohnung, die nun als Lagerflache fungiert, gelegen im 3. Obergeschoss eines gepflegten ...",
     "phone": "+492113679799999",
-    "phoneFormatted": "+49 211 3679799999"
+    "phoneFormatted": "+49 211 3679799999",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3510930930",
@@ -886,7 +1031,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "27 m²",
     "description": "In einem charmanten Altbau mit repräsentativer Fassade und herrschaftlichem Eingangsbereich befindet sich diese besondere Büro-, Praxis- oder Atelierfläche. Die...",
     "phone": null,
-    "phoneFormatted": null
+    "phoneFormatted": null,
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "3190335707",
@@ -898,7 +1045,9 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "57 m²",
     "description": "Objektbeschreibung:\nDie hier angebotene Bürofläche befindet sich im 2. Obergeschoss eines gepflegten Wohn- und Geschäftshauses aus dem Jahre 1951. Insgesamt bef...",
     "phone": "02151807218",
-    "phoneFormatted": "02151 807218"
+    "phoneFormatted": "02151 807218",
+    "isNew": false,
+    "firstSeen": "KW 39"
   },
   {
     "id": "2070745157",
@@ -910,6 +1059,8 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "area": "k.A.",
     "description": "Hallo Zusammen,\nwir betreiben einen Selfstorage und bieten kleine Lagerfächen von 1-15 qm an. Jeder einzelne Parzelle hat einen separaten Eingang und ist versch...",
     "phone": "01633179329",
-    "phoneFormatted": "0163 31 79 329"
+    "phoneFormatted": "0163 31 79 329",
+    "isNew": false,
+    "firstSeen": "KW 39"
   }
 ];

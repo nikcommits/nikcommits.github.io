@@ -1,0 +1,73 @@
+name: Gewerbeobjekte Krefeld Update
+
+on:
+  schedule:
+    # Jeden Montag um 06:00 UTC (08:00 Uhr deutsche Zeit)
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    # Ermöglicht manuelles Auslösen mit 1 Klick auf GitHub Actions
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Führe Scraper & Abgleich aus
+        run: |
+          python scripts/update_gewerbe.py
+
+      - name: Commit & Push geänderte Objektdaten
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain src/data/zibg-gewerbe-objects.ts)" ]; then
+            git add src/data/zibg-gewerbe-objects.ts
+            git commit -m "chore: automatisches Gewerbe-Update Krefeld (KW $(date +'%W'))"
+            git push origin main
+          else
+            echo "Keine neuen oder geänderten Gewerbeobjekte gefunden."
+          fi
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: false
+          enable_jekyll: false
