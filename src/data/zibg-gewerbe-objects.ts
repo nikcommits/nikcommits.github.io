@@ -43,7 +43,7 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
   },
   {
     "id": "3480008837",
-    "category": "Praxis- / Kursraum",
+    "category": "Schulungs- / Seminarraum",
     "price": "69 € VB",
     "title": "Yogaraum & Körpertherapie in Krefeld-Bockum – stundenweise & wöchentlich buchbar",
     "url": "https://www.kleinanzeigen.de/s-anzeige/yogaraum-koerpertherapie-in-krefeld-bockum-stundenweise-woechentlich-buchbar/3480008837-277-1975",
