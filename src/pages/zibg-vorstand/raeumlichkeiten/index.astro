@@ -9,14 +9,14 @@ const phoneCount = ZIBG_GEWERBE_LISTE.filter(item => Boolean(item.phone)).length
 ---
 
 <ZibgLayout
-  title="ZIBG e.V. | Gewerbe-Telefonliste Krefeld"
-  description="74 Gewerbeobjekte in Krefeld bis 750 € warm zum Abtelefonieren für Samy & Vorstand. Live-Status, Notizen und Cloud-Speicherung."
+  title="ZIBG e.V. | Räumlichkeiten für Bildung & Gemeinschaft"
+  description="Gefilterte Räume für Unterricht und Vereinsarbeit in Krefeld (5 km um Hbf) bis 750 € warm. Ladenlokale, Schulungs- und Praxisräume statt reiner Büros."
   basePath="../"
   customNavItems={zibgRaeumlichkeitenNavItems}
   heroEyebrow="Raumsuche & Akquise · ZIBG e.V."
-  heroTitle="Gewerbe-Telefonliste Krefeld."
-  heroLead="74 gefilterte Gewerbeflächen bis 750 € (57 mit Direkt-Anruf) zum systematischen Abtelefonieren. Bearbeitungsstand („Nicht erreicht“, „Erreicht“, „Besichtigung“) und Notizen werden live und geräteübergreifend gespeichert."
-  heroStatus={`KW 39 / Oktober 2026 · ${phoneCount} von ${totalCount} Objekten mit Telefon`}
+  heroTitle="Räume für Bildung & Unterricht."
+  heroLead="Gezielte Auswahl geeigneter Räumlichkeiten (Ladenlokale mit EG-Zugang, Schulungs-, Praxis- und Vereinsflächen ab 30 m²) im Umkreis von ca. 5 km um den Krefelder Hauptbahnhof bis max. 750 € warm. Reine Büros, Coworking-Desks, Lager und Garagen wurden vollständig ausgefiltert."
+  heroStatus={`Krefeld Hbf & 5 km · ${phoneCount} von ${totalCount} Objekten mit Direkt-Telefon`}
 >
   <main class="wrap" style="padding-top: 32px; padding-bottom: 90px;">
     <!-- Top Navigation Row -->
@@ -149,11 +149,11 @@ const phoneCount = ZIBG_GEWERBE_LISTE.filter(item => Boolean(item.phone)).length
 
       <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line);">
         <span style="font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-right: 4px;">Kategorie:</span>
-        <button type="button" class="filter-chip active" data-filter-type="cat" data-filter-val="all">Alle Kategorien</button>
-        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Ladenlokal">🏢 Ladenlokale</button>
-        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Büro">📑 Büro / Verein</button>
-        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Lager">📦 Lager / Halle</button>
-        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Gewerbefläche">📐 Gewerbeflächen</button>
+        <button type="button" class="filter-chip active" data-filter-type="cat" data-filter-val="all">Alle geeigneten Räume</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Ladenlokal">🏪 Ladenlokale (EG)</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Schulungs">🎓 Schulung & Seminar</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Praxis">🩺 Praxis & Kurse</button>
+        <button type="button" class="filter-chip" data-filter-type="cat" data-filter-val="Atelier">🎨 Atelier & Kreativ</button>
       </div>
     </section>
 
