@@ -1,5 +1,5 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch aktualisiert am 02.10.2026 (KW 39) via GitHub Actions Scraper
+// Automatisch aktualisiert am 05.10.2026 (KW 40) via GitHub Actions Scraper
 // Enthält 17 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
