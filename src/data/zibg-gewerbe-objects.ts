@@ -1,6 +1,6 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch aktualisiert am 19.10.2026 (KW 42) via GitHub Actions Scraper
-// Enthält 17 Gewerbeobjekte in Krefeld bis 750 € warm
+// Automatisch aktualisiert am 26.10.2026 (KW 43) via GitHub Actions Scraper
+// Enthält 18 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
   id: string;
@@ -27,6 +27,20 @@ export interface GewerbeStateItem {
 }
 
 export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
+  {
+    "id": "3176761823",
+    "category": "Ladenlokal (EG)",
+    "price": "706 €",
+    "title": "EXKLUSIVE LADEFLÄCHE IN KREFELD ZU MIETEN!",
+    "url": "https://www.kleinanzeigen.de/s-anzeige/exklusive-ladeflaeche-in-krefeld-zu-mieten-/3176761823-277-1981",
+    "location": "47798 Krefeld (0.5 km)",
+    "area": "98 m²",
+    "description": "Dieses attraktive Ladenlokal befindet sich im Erdgeschoss eines gepflegten Wohn- und Geschäftshauses aus dem Jahr 1960. Mit einer Gesamtfläche von rund 98 m² bietet die Einheit ein...",
+    "phone": "+4902151807218",
+    "phoneFormatted": "+49 (0)2151 80 72 18",
+    "isNew": true,
+    "firstSeen": "KW 43 (26.10.2026)"
+  },
   {
     "id": "3479975065",
     "category": "Schulungs- / Seminarraum",
