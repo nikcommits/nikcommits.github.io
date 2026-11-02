@@ -1,5 +1,5 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch aktualisiert am 26.10.2026 (KW 43) via GitHub Actions Scraper
+// Automatisch aktualisiert am 02.11.2026 (KW 44) via GitHub Actions Scraper
 // Enthält 18 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
@@ -38,7 +38,7 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "description": "Dieses attraktive Ladenlokal befindet sich im Erdgeschoss eines gepflegten Wohn- und Geschäftshauses aus dem Jahr 1960. Mit einer Gesamtfläche von rund 98 m² bietet die Einheit ein...",
     "phone": "+4902151807218",
     "phoneFormatted": "+49 (0)2151 80 72 18",
-    "isNew": true,
+    "isNew": false,
     "firstSeen": "KW 43 (26.10.2026)"
   },
   {
