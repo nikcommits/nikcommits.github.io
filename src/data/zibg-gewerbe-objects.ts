@@ -1,6 +1,6 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch aktualisiert am 02.11.2026 (KW 44) via GitHub Actions Scraper
-// Enthält 18 Gewerbeobjekte in Krefeld bis 750 € warm
+// Automatisch aktualisiert am 09.11.2026 (KW 45) via GitHub Actions Scraper
+// Enthält 22 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
   id: string;
@@ -27,6 +27,62 @@ export interface GewerbeStateItem {
 }
 
 export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
+  {
+    "id": "3566083443",
+    "category": "Ladenlokal (EG)",
+    "price": "700 €",
+    "title": "Ladenlokal - Frisörladen oder andere Nutzung",
+    "url": "https://www.kleinanzeigen.de/s-anzeige/ladenlokal-frisoerladen-oder-andere-nutzung/3566083443-277-1979",
+    "location": "47809 Krefeld (4 km)",
+    "area": "55 m²",
+    "description": "Zur Anmietung steht ein Ladenlokal im Herzen von Oppum. Parkmöglichkeiten, Bahn- und Bushaltestelle sind vorhanden bzw. fussläufig erreichbar.\n\nDas Ladenlokal befindet sich in Part...",
+    "phone": "01777777777",
+    "phoneFormatted": "0177 777 7777",
+    "isNew": true,
+    "firstSeen": "KW 45 (09.11.2026)"
+  },
+  {
+    "id": "3513935683",
+    "category": "Atelier / Kreativraum",
+    "price": "1.110 €",
+    "title": "Helle Bürofläche / Atelier, nach Wunsch renoviert",
+    "url": "https://www.kleinanzeigen.de/s-anzeige/helle-bueroflaeche-atelier-nach-wunsch-renoviert/3513935683-277-1982",
+    "location": "47799 Krefeld (1 km)",
+    "area": "k.A.",
+    "description": "Diese Bürofläche in der Blücherstraße bietet eine Gesamt-Nutzfläche von 35 m² und ermöglicht durch die zwei getrennten Bereiche eine flexible Gestaltung der Arbeitsabläufe.\n\nDie Bü...",
+    "phone": null,
+    "phoneFormatted": null,
+    "isNew": true,
+    "firstSeen": "KW 45 (09.11.2026)"
+  },
+  {
+    "id": "3560622785",
+    "category": "Ladenlokal (EG)",
+    "price": "550 €",
+    "title": "LADENLOKAL MIT GROSSEM SCHAUFENSTER ZU VERMIETEN",
+    "url": "https://www.kleinanzeigen.de/s-anzeige/ladenlokal-mit-grossem-schaufenster-zu-vermieten/3560622785-277-1982",
+    "location": "47799 Krefeld (1 km)",
+    "area": "k.A.",
+    "description": "Ladenlokal in zentraler Lage mit großem Schaufenster zu vermieten.\nDas Ladenlokal eignet sich hervorragend für den Einzelhandel, weil es über große Schaufenster und Laufkundschaft ...",
+    "phone": "01734",
+    "phoneFormatted": "01734...",
+    "isNew": true,
+    "firstSeen": "KW 45 (09.11.2026)"
+  },
+  {
+    "id": "3560424496",
+    "category": "Ladenlokal (EG)",
+    "price": "500 €",
+    "title": "ATTRAKTIVES LADENLOKAL IN GUTER LAGE – AB SOFORT ZU VERMIETEN!",
+    "url": "https://www.kleinanzeigen.de/s-anzeige/attraktives-ladenlokal-in-guter-lage-ab-sofort-zu-vermieten-/3560424496-277-1978",
+    "location": "47803 Krefeld (2 km)",
+    "area": "50 m²",
+    "description": "Sie suchen ein gepflegtes Ladenlokal für Ihr Geschäft, Studio oder Büro? Dann könnte diese Immobilie genau das Richtige für Sie sein!\n\nDas Ladenlokal auf einen Blick:\n\n* Ca. 50 m² ...",
+    "phone": null,
+    "phoneFormatted": null,
+    "isNew": true,
+    "firstSeen": "KW 45 (09.11.2026)"
+  },
   {
     "id": "3176761823",
     "category": "Ladenlokal (EG)",
@@ -128,11 +184,11 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
   {
     "id": "3479846315",
     "category": "Praxis- / Kursraum",
-    "price": "69 € VB",
+    "price": "25 € VB",
     "title": "Coaching- & Therapieraum Krefeld-Bockum | flexibel buchbar",
     "url": "https://www.kleinanzeigen.de/s-anzeige/coaching-therapieraum-krefeld-bockum-flexibel-buchbar/3479846315-277-1975",
-    "location": "47800 Krefeld (3 km)",
-    "area": "55 m²",
+    "location": "47800 Krefeld (4 km)",
+    "area": "k.A.",
     "description": "Studio Sollbrüggen – dein Coaching-, Praxis- und Beratungsraum in Krefeld-Bockum.\n\nEin ruhiger, hochwertig eingerichteter Raum für 1:1-Coachings, Therapiegesprä...",
     "phone": "+4915150754221",
     "phoneFormatted": "+4915150754221",
