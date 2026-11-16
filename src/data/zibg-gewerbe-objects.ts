@@ -1,5 +1,5 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch aktualisiert am 09.11.2026 (KW 45) via GitHub Actions Scraper
+// Automatisch aktualisiert am 16.11.2026 (KW 46) via GitHub Actions Scraper
 // Enthält 22 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
@@ -66,7 +66,7 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "description": "Ladenlokal in zentraler Lage mit großem Schaufenster zu vermieten.\nDas Ladenlokal eignet sich hervorragend für den Einzelhandel, weil es über große Schaufenster und Laufkundschaft ...",
     "phone": "01734",
     "phoneFormatted": "01734...",
-    "isNew": true,
+    "isNew": false,
     "firstSeen": "KW 45 (09.11.2026)"
   },
   {
@@ -80,7 +80,7 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "description": "Sie suchen ein gepflegtes Ladenlokal für Ihr Geschäft, Studio oder Büro? Dann könnte diese Immobilie genau das Richtige für Sie sein!\n\nDas Ladenlokal auf einen Blick:\n\n* Ca. 50 m² ...",
     "phone": null,
     "phoneFormatted": null,
-    "isNew": true,
+    "isNew": false,
     "firstSeen": "KW 45 (09.11.2026)"
   },
   {
@@ -215,7 +215,7 @@ export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
     "price": "750 €",
     "title": "Ladenlokal zu vermieten",
     "url": "https://www.kleinanzeigen.de/s-anzeige/ladenlokal-zu-vermieten/3525140552-277-1978",
-    "location": "47803 Krefeld (2 km)",
+    "location": "47803 Krefeld (1 km)",
     "area": "50 m²",
     "description": "Vielseitig nutzbare Gewerbefläche mit hellen Räumen und modernem Eingangsbereich. Ideal für Einzelhandel, Dienstleistungen, Büro, Studio oder Praxis.",
     "phone": null,
