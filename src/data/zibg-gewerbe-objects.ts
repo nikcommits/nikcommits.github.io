@@ -1,6 +1,6 @@
 // src/data/zibg-gewerbe-objects.ts
-// Automatisch aktualisiert am 16.11.2026 (KW 46) via GitHub Actions Scraper
-// Enthält 22 Gewerbeobjekte in Krefeld bis 750 € warm
+// Automatisch aktualisiert am 23.11.2026 (KW 47) via GitHub Actions Scraper
+// Enthält 23 Gewerbeobjekte in Krefeld bis 750 € warm
 
 export interface ZibgGewerbeObject {
   id: string;
@@ -27,6 +27,20 @@ export interface GewerbeStateItem {
 }
 
 export const ZIBG_GEWERBE_LISTE: ZibgGewerbeObject[] = [
+  {
+    "id": "3580181552",
+    "category": "Ladenlokal (EG)",
+    "price": "650 €",
+    "title": "Ladenlokal krefeld",
+    "url": "https://www.kleinanzeigen.de/s-anzeige/ladenlokal-krefeld/3580181552-277-1981",
+    "location": "47798 Krefeld (0.2 km)",
+    "area": "40 m²",
+    "description": "",
+    "phone": "01777777777",
+    "phoneFormatted": "0177 777 7777",
+    "isNew": true,
+    "firstSeen": "KW 47 (23.11.2026)"
+  },
   {
     "id": "3566083443",
     "category": "Ladenlokal (EG)",
